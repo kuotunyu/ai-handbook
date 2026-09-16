@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#102f3a" />
+  <meta name="robots" content="noindex" />
+  <meta name="apple-mobile-web-app-title" content="AI 手冊" />
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+  <title>研究所 AI 手冊</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+<!--
+  DIRECTION CONTRACT (pinned by the user: their own 智慧台中論壇 2026 site is the visual world)
+  THESIS: A research dossier, not a docs page: warm paper, a dark teal bar and opening panel, terracotta numerals that make every list feel authored, white sheets with a soft shadow, dark panels for anything she pastes into an AI. It refuses the grey sidebar reading desk and the flat documentation look.
+  OWN-WORLD: #F5F1E9 paper, #FFFEFB sheets, #102f3a bar, #173d4d to #102f3a hero, #1D2A30 ink and inverse panels, #7B4230 terracotta numerals, #2D5977 brand blue for buttons and chat tools, #355855 emerald for NotebookLM, terracotta for the Agent. Radii 3/6/10, shadow 0 6px 20px 6%. System sans, body 22px/1.6, h2 36px beside a 40px blue chapter numeral on a 2px ink rule, sheet width 1600px.
+  STORY: She opens on a dark panel that names the three tools and the three things to remember, reads numbered sheets exactly like the report she already trusts, and copies prompts out of dark boxes.
+  FIRST VIEWPORT: Dark bar with nine numbered chapters; dark hero, left an English kicker, the title and the one-line rule, right a bordered panel with three tool cards under coloured top rules and a three-cell row; below, on paper, chapter 01 under a 2px rule with four white concept cards.
+  FORM: The user's reference system executed at its own craft level; desktop first, phone rules kept working but not yet designed.
+  FINISH: screenshots at 1440 and 1700, tests, zero console errors, DESIGN.md synced.
+-->
+
+  <a class="skip-link" href="#keywords">跳到正文</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="logo" href="#hero" aria-label="回到最上面"><b>2026</b>AI 手冊</a>
+      <span class="nav-now" id="navNow" aria-live="polite"></span>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="topnav">目錄</button>
+      <nav class="topnav" id="topnav" aria-label="章節">
+        <a href="#keywords" data-num="01" data-sub="核心概念與延伸詞彙">關鍵字</a>
+        <a href="#situations" data-num="02" data-sub="遇到問題找哪個工具">使用情境</a>
+        <a href="#concepts" data-num="03" data-sub="功能分工與使用原則">工具與功能</a>
+        <a href="#prompt" data-num="04" data-sub="說目標、給材料、再追問">提問與任務說明</a>
+        <a href="#reading" data-num="05" data-sub="閱讀材料">文獻閱讀與查證</a>
+        <a href="#agent" data-num="06" data-sub="AI Agent">Agent 任務執行</a>
+        <a href="#diagrams" data-num="07" data-sub="把關係畫成圖">圖表選擇與製作</a>
+        <a href="#rules" data-num="08" data-sub="使用前的確認">AI 使用規範</a>
+        <a href="#cards" data-num="09" data-sub="提示詞庫">提示詞範例</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- 開場 -->
+    <section class="section hero" id="hero">
+      <div class="hero-inner">
+        <div class="hero-title">
+          <p class="hero-en">Graduate AI Handbook</p>
+          <h1>研究所 AI 手冊</h1>
+          <p class="lead"><strong>聊和查用對話型 AI、讀用 NotebookLM、動手用 Agent。</strong>遇到事情查使用情境，陌生名詞再回來看。</p>
+          <div class="hero-actions"><a class="btn primary" href="#keywords">開始閱讀</a><a class="btn ghost" href="#cards">查找提示詞</a></div>
+        </div>
+        <div class="hero-panel">
+          <div class="hero-panel-head"><b>依任務選擇工具</b><span>2026 年 9 月版</span></div>
+          <div class="hero-grid">
+            <div class="hero-card gemini"><span class="hero-card-role">聊和查</span><strong>對話型 AI</strong><p class="hero-tool-options">Gemini／ChatGPT／Claude</p><p>用你習慣的一個，理解概念、寫作、討論與查找資料。</p></div>
+            <div class="hero-card nlm"><span class="hero-card-role">讀</span><strong>NotebookLM</strong><p>圍繞講義與文獻提問，沿著引用回原文核對</p></div>
+            <div class="hero-card agent"><span class="hero-card-role">動手</span><strong>Agent</strong><p>Codex 或 Claude Code，在你的資料夾裡把任務做完</p></div>
+          </div>
+          <div class="hero-rule"><span class="hero-rule-label">先記住</span><span>給材料</span><span>說目標</span><span>檢查結果</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 關鍵字 -->
+    <section class="section" id="keywords">
+      <h2><span class="num">01</span>關鍵字</h2>
+      <p class="section-note">以下依本課程的學習目標分為兩類：核心概念需要理解與應用；延伸詞彙先認識名稱與大意。九個詞都會介紹，不要求背誦定義。</p>
+      <div class="keyword-group keyword-core"><div class="keyword-group-heading"><h3>核心概念</h3><p>需要理解，並在後續練習中實際運用。</p></div><div class="keyword-list"><article class="keyword-entry" id="keyword-prompt">
+            <h4>Prompt<span class="keyword-alias">提示詞</span></h4>
+            <p class="keyword-definition">你給 AI 的問題、任務說明與要求。</p>
+            <p class="keyword-action"><strong>使用要點</strong>說明目標、提供相關材料；回答不合用時，指出需要調整的部分。</p>
+            <details class="keyword-example"><summary>看例子<span class="sr-only">：Prompt</span></summary><p>你可能看到「改一下 prompt」。例如把「幫我讀這篇」補成「我不懂第二段，請用一個例子解釋」。補上真正缺少的資訊，比把句子寫長更有用。</p></details>
+          </article>
+<article class="keyword-entry" id="keyword-context">
+            <h4>Context<span class="keyword-alias">上下文</span></h4>
+            <p class="keyword-definition">模型這次回答時能參考的訊息與材料。</p>
+            <p class="keyword-action"><strong>使用要點</strong>提供重要原文，確認工具讀到了哪些內容，不假設它已看過你的檔案。</p>
+            <details class="keyword-example"><summary>看例子<span class="sr-only">：Context</span></summary><p>你可能看到「上下文太長」。能容納的內容有限，長對話可能省略細節；換新對話時，核對帶過去的摘要，並重新提供重要原文與要求。</p><figure class="clip"><video src="media/clip-context.mp4" controls muted loop playsinline preload="none" aria-label="Context示意動畫"></video><figcaption>無聲示意動畫，點播放觀看；內容虛構。</figcaption></figure></details>
+          </article>
+<article class="keyword-entry" id="keyword-hallucination">
+            <h4>幻覺<span class="keyword-alias">Hallucination</span></h4>
+            <p class="keyword-definition">AI 說得像真的，內容卻不正確或沒有根據。</p>
+            <p class="keyword-action"><strong>使用要點</strong>將準備採用的主張與關鍵數字回原始來源核對。</p>
+            <details class="keyword-example"><summary>看例子<span class="sr-only">：幻覺</span></summary><p>例如編出不存在的論文、錯誤數字或假的連結。看到重要事實，回原始來源核對；有引用也要確認原文是否真的支持它的說法。</p><figure class="clip"><video src="media/clip-hallucination.mp4" controls muted loop playsinline preload="none" aria-label="幻覺示意動畫"></video><figcaption>無聲示意動畫，點播放觀看；內容虛構。</figcaption></figure></details>
+          </article>
+<article class="keyword-entry" id="keyword-agent">
+            <h4>Agent<span class="keyword-alias">代理式 AI</span></h4>
+            <p class="keyword-definition">能使用工具、分步執行任務，根據結果繼續處理的 AI。</p>
+            <p class="keyword-action"><strong>使用要點</strong>先限定可處理的範圍，保留原始檔案，完成後核對輸出。</p>
+            <details class="keyword-example"><summary>看例子<span class="sr-only">：Agent</span></summary><p>例如把幾份課程文件整理成作業清單，存成檔案再檢查。交辦前要說清可處理的範圍，完成後打開成果核對。</p></details>
+          </article></div></div>
+      <div class="keyword-group keyword-reference"><div class="keyword-group-heading"><h3>延伸詞彙</h3><p>先認識名稱與大意，遇到時再查閱細節。</p></div><div class="keyword-list"><article class="keyword-entry" id="keyword-ai">
+            <h4>AI<span class="keyword-alias">人工智慧</span></h4>
+            <p class="keyword-definition">讓機器執行辨識、預測、生成等任務的技術統稱。</p>
+            <details class="keyword-example"><summary>看例子<span class="sr-only">：AI</span></summary><p>你可能看到「這個軟體有 AI 功能」。這是大範圍的說法，還要看它實際能幫你做什麼。生成式 AI 是其中一類。</p></details>
+          </article>
+<article class="keyword-entry" id="keyword-generative">
+            <h4>生成式 AI<span class="keyword-alias">Generative AI</span></h4>
+            <p class="keyword-definition">能產生文字、圖片、聲音等內容的 AI。</p>
+            <details class="keyword-example"><summary>看例子<span class="sr-only">：生成式 AI</span></summary><p>你可能在學校規則看到「generative AI」。聊天、生成圖片都可能在討論範圍內；能產生內容，不代表內容一定正確。</p></details>
+          </article>
+<article class="keyword-entry" id="keyword-llm">
+            <h4>LLM<span class="keyword-alias">大型語言模型</span></h4>
+            <p class="keyword-definition">處理與生成語言的模型，是許多聊天工具背後的核心。</p>
+            <details class="keyword-example"><summary>看例子<span class="sr-only">：LLM</span></summary><p>LLM 是 Large Language Model 的縮寫。看到「這個 App 使用哪個 LLM？」是在問背後的模型；App 還可能另外提供搜尋、讀檔等工具。</p></details>
+          </article>
+<article class="keyword-entry" id="keyword-multimodal">
+            <h4>多模態<span class="keyword-alias">Multimodal</span></h4>
+            <p class="keyword-definition">能處理不只一種形式的材料，例如文字、圖片或聲音。</p>
+            <details class="keyword-example"><summary>看例子<span class="sr-only">：多模態</span></summary><p>你可能看到「支援多模態」。例如讓 AI 看講義照片、聽錄音；實際支援哪些格式要看工具，提供後也要抽查有沒有讀對。</p></details>
+          </article>
+<article class="keyword-entry" id="keyword-token">
+            <h4>Token<span class="keyword-alias">詞元</span></h4>
+            <p class="keyword-definition">模型處理內容的單位；文字會分成字、單字或片段。</p>
+            <details class="keyword-example"><summary>看例子<span class="sr-only">：Token</span></summary><p>你可能看到「token 上限」，通常是在說模型能處理的內容量限制。不必自己計算；遇到限制時看實際提示，檔案大小與方案用量也可能另有限制。</p><figure class="clip"><video src="media/clip-token.mp4" controls muted loop playsinline preload="none" aria-label="Token示意動畫"></video><figcaption>無聲示意動畫，點播放觀看；內容虛構。</figcaption></figure></details>
+          </article></div></div>
+    </section>
+
+    <!-- 02 情境 -->
+    <section class="section" id="situations">
+      <h2><span class="num">02</span>使用情境</h2>
+      <p class="section-note">遇到問題時，找接近的情境，看看可以怎麼開始。</p>
+      <div class="situation-list">
+        <details class="situation-entry">
+          <summary><span class="situation-name">理解與查找資料</span><span class="situation-examples">讀不懂一段內容、比較文獻、找政策資料</span></summary>
+          <div class="situation-content">
+            <p>先把卡住的內容貼給對話型 AI；要反覆閱讀同一批文獻、講義或錄音，再用 NotebookLM。查找資料時，請它附上原始來源。</p>
+            <blockquote>「我想了解［問題］。這是手上的材料，請先解釋重點；還缺的資料，幫我找原始來源。」</blockquote>
+            <p class="situation-links"><a href="#reading">查看閱讀與查證方法</a></p>
+          </div>
+        </details>
+        <details class="situation-entry">
+          <summary><span class="situation-name">準備作業與表達</span><span class="situation-examples">規劃作業、修改初稿、練習 seminar、寫信</span></summary>
+          <div class="situation-content">
+            <p>先用你熟悉的對話型 AI，提供題目或草稿，說明你卡在哪裡。</p>
+            <blockquote>「這是我的作業題目。我不確定要回答哪些問題，請先幫我釐清要求，再一起決定第一步。」</blockquote>
+            <p class="situation-links"><a href="#prompt">查看提問範例</a></p>
+          </div>
+        </details>
+        <details class="situation-entry">
+          <summary><span class="situation-name">處理資料與製作圖表</span><span class="situation-examples">整理表格、批次處理檔案、製作圖表或地圖</span></summary>
+          <div class="situation-content">
+            <p>需要直接處理檔案時，用手上可用的 Agent；先讓它看材料、提出處理方式。</p>
+            <blockquote>「我想把這些表格整理成［成果］。請先讀取並說明處理方式，不要修改原始檔案。」</blockquote>
+            <p class="situation-links"><a href="#agent">查看檔案處理示範</a><a href="#diagrams">查看圖表選擇</a></p>
+          </div>
+        </details>
+        <details class="situation-entry">
+          <summary><span class="situation-name">處理操作問題</span><span class="situation-examples">軟體不會用、操作失敗、看不懂錯誤訊息</span></summary>
+          <div class="situation-content">
+            <p>把畫面或錯誤訊息提供給對話型 AI，補上軟體名稱、版本和你想做的事。</p>
+            <blockquote>「我用［軟體與版本］做［事情］，到這一步出現［錯誤訊息］。請先幫我判斷原因，再給一個可以試的步驟。」</blockquote>
+            <p class="situation-links"><a href="#prompt">查看追問與修正方法</a></p>
+          </div>
+        </details>
+      </div>
+      <p class="situation-reference">需要時再查：<a href="#rules">AI 使用規範與申報</a>、<a href="#citation-format">參考文獻與引用格式</a>、<a href="#cards">提示詞範例</a>。</p>
+    </section>
+
+    <!-- 03 工具與觀念 -->
+    <section class="section" id="concepts">
+      <h2><span class="num">03</span>工具與功能</h2>
+      <p class="section-note">本文的「對話型 AI」指 Gemini、ChatGPT 或 Claude。一般提問與練習可用你習慣的一個，不必全部訂閱；換工具時沿用說明任務與核對結果的方法。特定功能的名稱與可用範圍，以所用工具及方案為準。</p>
+      <div class="table-scroll"><table class="reading-table tool-table"><thead><tr><th>你的任務</th><th>用什麼</th><th>為什麼</th></tr></thead><tbody>
+      <tr><td>想搞懂一個概念、改寫自己的句子、練習發言、規劃作業</td><td class="t-gemini"><div class="chat-tool-links"><span class="tool-name">Gemini</span><span class="tool-name">ChatGPT</span><span class="tool-name">Claude</span></div></td><td>提供材料與目標，請它解釋、修改或一起討論。需要最新資訊時，確認這次有使用搜尋，並回原始來源核對。</td></tr>
+      <tr><td>讀講義、讀指定文獻、把幾篇放在一起比較</td><td class="t-nlm"><span class="tool-name">NotebookLM</span></td><td>依你選取的來源整理回答，提供引用方便回查；引用仍可能不支持它的結論。</td></tr>
+      <tr><td>整理表格、畫圖或地圖、批次處理檔案</td><td class="t-agent">Agent（Codex 或 Claude Code）</td><td>它會在你指定的資料夾裡動手做事，所以要先講範圍，做完再驗收。</td></tr>
+      <tr><td>找最新消息、官方數字、政策原文</td><td class="t-search">Gemini、ChatGPT、Claude 的網路搜尋；也可直接搜尋或到官方網站。</td><td>請它上網查找並附原始來源；確認這次有使用搜尋，再開啟重要來源核對日期、數字與適用地區。</td></tr>
+      </tbody></table></div>
+
+      <h3 class="compact-heading">工具使用原則</h3>
+      <dl class="concept-details">
+        <div><dt>確認功能</dt><dd>需要最新資訊或精確計算時，確認它有使用搜尋或計算工具。</dd></div>
+        <div><dt>確認材料</dt><dd>上傳檔案或貼上網址後，確認它有讀到需要的內容。</dd></div>
+        <div><dt>核對來源</dt><dd>打開重要引用，確認原文支持它的說法。</dd></div>
+        <div><dt>限定檔案範圍</dt><dd>讓 Agent 動手前限定範圍、保留原檔，完成後打開成果檢查。</dd></div>
+      </dl>
+
+      <h3 class="compact-heading">回答方式與查核方法</h3>
+      <div class="table-scroll"><table class="reading-table howcheck-table"><thead><tr><th>它在做什麼</th><th>例子</th><th>怎麼檢查</th></tr></thead><tbody>
+      <tr><td><b>生成</b>：用它記得的東西加上你給的材料接話，流暢但可能編</td><td>解釋概念、改寫句子、擬一封信</td><td>重要事實回原文核對；看摘要有沒有改變意思</td></tr>
+      <tr><td><b>搜尋</b>：透過搜尋工具取回網頁，再整理成回答</td><td>今年的官方公告、政策原文、最新數字</td><td>打開來源核對年份與適用地區；沒提供來源就請它補充，不把回答當已查證</td></tr>
+      <tr><td><b>計算</b>：需要精確數值時，請它用計算器、試算表或程式運算</td><td>加總預算、算距離截止日還有幾天</td><td>核對輸入、公式與單位，再自己抽算一筆；程式跑完也可能算錯</td></tr>
+      </tbody></table></div>
+      <p><strong>可以這樣問：</strong>「請上網找這個活動今年的官方公告，附連結；找不到今年的資料就說找不到，不要拿去年的當今年的。」附了連結也要打開看，連結不代表逐句支持回答。</p>
+
+    </section>
+
+    <!-- 04 Prompt 組裝器 -->
+    <section class="section" id="prompt">
+      <h2><span class="num">04</span>提問與任務說明</h2>
+      <p class="section-note">先說目標、給相關材料，就能開始。下面兩套積木幫你找缺少的資訊：先試簡短版本，看回答哪裡不合用，再補一塊重試。不必填滿，也不用背順序。</p>
+      <div class="formula-tabs" id="formulaTabs"></div>
+      <p class="formula-hint" id="formulaHint"></p>
+      <div class="builder">
+        <div class="builder-blocks" id="builderBlocks"></div>
+        <div class="builder-output">
+          <div class="builder-output-head">
+            <span>編輯後複製 prompt</span>
+            <button class="copy-btn" id="builderCopy" type="button">複製 prompt</button>
+          </div>
+          <div id="builderResult"></div>
+        </div>
+      </div>
+
+      <p><strong>還說不清楚也能開始：</strong>「我想做到［目標］，目前卡在［困難］。請先問我一個問題，幫我釐清下一步。」</p>
+      <h3 class="compact-heading">追問與修正</h3>
+      <div class="table-scroll"><table class="reading-table"><thead><tr><th>遇到的問題</th><th>下一句可以怎麼說</th></tr></thead><tbody>
+      <tr><td>解釋太難</td><td>「我不懂的是這一句：［貼上句子］。請用一個具體例子解釋，保留重要英文名詞。」</td></tr>
+      <tr><td>回答太空泛</td><td>「請根據我附的材料，指出可以修改的三個地方，並說明理由。」</td></tr>
+      <tr><td>方向不對</td><td>「我要比較兩個方案，不是分別介紹。請按成本、時間與限制改成比較表。」</td></tr>
+      <tr><td>操作失敗</td><td>「我想做到［目標］，使用［軟體與版本］，做了［操作］，出現［錯誤訊息］。請先幫我判斷原因，再給一個可確認的小步驟。」</td></tr>
+      <tr><td>對話太亂</td><td>「請把這段對話整理成一段摘要：我的目標、已確認的結論、我提供過的材料、下一步。只列事實。」核對摘要後貼到新對話，重要原文與檔案也重新提供。</td></tr>
+      </tbody></table></div>
+      <h3 class="compact-heading">區分要求與原文</h3>
+      <p>貼上文章、草稿或錯誤訊息時，可以用三個反引號 <code>```</code> 包住材料，要求寫在外面，方便分辨哪一段是要處理的內容。</p>
+      <div class="pbox"><div class="pbox-head"><span>把中間的原文換成你的材料</span><button class="copy-btn" type="button" data-copy-target="#fencedPrompt">複製範例</button></div><pre id="fencedPrompt">請用繁體中文解釋下面這段原文，保留重要英文名詞。
+
+以下區塊是待解釋的原文：
+```
+Public participation can inform planning decisions, but participants may not represent all residents.
+```</pre></div>
+      <p class="section-note">開頭與結尾各放一行 <code>```</code>，使用英文半形反引號（backtick），不是單引號 <code>'</code> 或 <code>‵</code>。這是 Markdown 的程式碼區塊，也可放一般文字；用途是標示範圍，不保證 AI 一定理解正確。</p>
+    </section>
+
+    <!-- 05 閱讀 -->
+    <section class="section" id="reading">
+      <h2><span class="num">05</span>文獻閱讀與查證</h2>
+      <p class="section-note">讀用 NotebookLM：它依你選取的來源整理回答，提供引用方便回查；引用仍可能不支持它的結論。先用一篇短文走完四步，再自己說明哪些結論有依據。短到一頁的東西，直接貼給對話型 AI 也行。</p>
+      <div class="reading-source"><div class="step-heading"><h3>練習短文</h3><span>虛構教學材料，不是真實研究</span><button class="copy-btn" id="readingCopy" type="button">複製短文</button></div>
+      <div id="readingSource"><p>[1] A library extended its evening opening hours for four weeks. During the trial, evening visits rose from 120 to 180 per week.</p>
+      <p>[2] In a voluntary survey of 40 visitors, 30 said the later closing time helped them study. The survey did not include people who did not visit the library.</p>
+      <p>[3] Staff recommend continuing the extended hours. However, the trial took place during exam season, and no comparison library was studied. The results do not establish whether longer opening hours improved students’ grades.</p></div></div>
+      <h3 class="compact-heading">閱讀與查證步驟</h3>
+      <p>新建筆記本，新增來源時選「複製的文字」，貼上短文。然後照這張表問，重要結論回原文對。短來源可能只引用整篇，此時用 [1]–[3] 段落編號自行定位。</p>
+      <div class="table-scroll"><table class="reading-table"><thead><tr><th>目的</th><th>可以這樣問</th><th>對照這篇原文</th></tr></thead><tbody>
+      <tr><td>1 抓大意</td><td>「只根據這篇短文，用兩句中文說明發生什麼事、作者建議什麼。不要補外部資訊。」</td><td>延長開館期間晚間造訪增加；工作人員建議繼續。這還不是成效的因果證明。</td></tr>
+      <tr><td>2 解釋卡住的地方</td><td>「voluntary survey 是什麼？為什麼沒有訪問未到館的人會影響解讀？」</td><td>自願填答者可能與未填答者不同；結果不能直接代表所有學生。</td></tr>
+      <tr><td>3 分開主張與證據</td><td>「列出作者的建議、支持它的數據、研究限制，各附段落編號。」</td><td>建議在 [3]；造訪數在 [1]；問卷在 [2]；考試季與缺乏比較對象在 [3]。</td></tr>
+      <tr><td>4 回原文查證</td><td>「文中有證明延長開館讓成績進步嗎？請指出原文，不要推測。」</td><td>[3] 明確說不能建立這個結論。看到「使」「讓」「導致」「證明」這類字，回原文。若它說「成績改善」，回覆：「第 3 段說沒有建立這個結論，請修正摘要，分清觀察到的變化與尚未證明的原因。」</td></tr>
+      </tbody></table></div>
+
+      <h3 class="compact-heading">證據判讀練習</h3>
+      <p>下面兩段動畫沿用上方短文。展開後先自己判斷，再播放；看完試著解釋理由，最後展開文字解說核對。不看影片也可以直接讀文字。</p>
+      <div class="learning-examples">
+        <details class="learning-lesson" id="lesson-sample">
+          <summary>樣本與推論範圍<span class="lesson-topic">百分比代表哪些人</span></summary>
+          <div class="lesson-content">
+            <p class="lesson-question"><strong>先判斷：</strong>40 位自願填答的訪客中，30 位認為延後閉館有助讀書。可以寫成「75% 的學生支持延長開館」嗎？</p>
+            <div class="lesson-grid">
+              <figure class="clip"><video src="media/learn-sample.mp4" poster="media/learn-sample.png" controls muted playsinline preload="none" aria-label="樣本與推論範圍動畫" aria-describedby="sample-caption">可改讀文字解說，或<a href="media/learn-sample.mp4">開啟動畫檔案</a>。</video><figcaption id="sample-caption">虛構教學材料。無聲動畫，手動播放，可暫停或全螢幕觀看。</figcaption></figure>
+              <div class="lesson-reflection">
+                <p><strong>用自己的話說明：</strong>75% 的分母是誰？如果想了解全校學生的意見，還缺什麼資料？</p>
+                <details class="lesson-answer"><summary>文字解說與參考答案</summary>
+                  <ol class="lesson-transcript"><li>40 個圓代表這次自願填答的訪客；其中 30 個上色，表示認為延後閉館有助讀書。其餘 10 位的具體回應，原文未說明。</li><li>30 ÷ 40 = 75%。這個比例描述本次填答者，不能直接代表未填答的訪客與未到訪的學生。</li><li>可改寫成：「受訪的 40 位訪客中，30 位認為延後閉館有助讀書。」要了解全校學生，需要涵蓋不同群體、較有代表性的調查。</li></ol>
+                  <p><strong>實際使用：</strong>請 AI 列出資料的調查對象、樣本如何選出、沒有涵蓋哪些人，再回原文核對。</p>
+                </details>
+              </div>
+            </div>
+          </div>
+        </details>
+        <details class="learning-lesson" id="lesson-evidence">
+          <summary>引用與主張的對應<span class="lesson-topic">原文支持到什麼程度</span></summary>
+          <div class="lesson-content">
+            <p class="lesson-question"><strong>先判斷：</strong>原文 [1] 記錄每週到訪次數由 120 增至 180。摘要寫「延長開館提升了學業成績。[1]」這個引用能支持整句話嗎？</p>
+            <div class="lesson-grid">
+              <figure class="clip"><video src="media/learn-evidence.mp4" poster="media/learn-evidence.png" controls muted playsinline preload="none" aria-label="引用與主張的對應動畫" aria-describedby="evidence-caption">可改讀文字解說，或<a href="media/learn-evidence.mp4">開啟動畫檔案</a>。</video><figcaption id="evidence-caption">虛構教學材料。無聲動畫，手動播放，可暫停或全螢幕觀看。</figcaption></figure>
+              <div class="lesson-reflection">
+                <p><strong>用自己的話說明：</strong>原文觀察的是什麼？哪些推論還需要證據？請保留有依據的部分，重寫摘要。</p>
+                <details class="lesson-answer"><summary>文字解說與參考答案</summary>
+                  <ol class="lesson-transcript"><li>原文 [1] 的到訪次數，可以支持「試行期間到訪增加」；它不是學業成績的測量。</li><li>原文 [3] 說明結果未建立成績改善的結論。引用雖然存在，仍不支持摘要的主張。</li><li>試行發生在考試季，且沒有比較圖書館。即使到訪增加，也不能只靠前後差異確定是延長開館造成的；動畫虛線表示尚待查證的可能影響。</li></ol>
+                  <p><strong>參考改寫：</strong>「四週試行期間，每週晚間到訪次數由 120 增至 180；這些結果不能確立延長開館對學業成績的影響。」</p>
+                  <p><strong>實際使用：</strong>請 AI 把每項主張與支持它的原文並排，標示觀察指標、適用對象和限制，再逐項核對。</p>
+                </details>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+      <h4 class="learning-synthesis">綜合判讀</h4>
+      <p>先不看上表的答案，也先不問 AI：有人說「75% 的學生支持延長開館，而且延長開館提升了成績」。這句話哪裡超出證據？請用自己的話改寫，指出還需要什麼資料。</p>
+      <details id="readingCheck"><summary>回答後，再展開核對</summary><p>30 ÷ 40 是這次自願填答的到館者比例，不能代表全體學生；原文也沒有證明成績改善。可以改成：「受訪的 40 位到館者中，30 位認為較晚閉館有助讀書。」若要討論全體學生，需要更有代表性的調查；若要討論成績影響，需要成績資料與能處理考試季等因素的比較設計。</p><p>再找一段自己的材料，用同樣方式分開「觀察到什麼」和「還不能說什麼」。最後請 AI 挑戰你的解讀，回原文決定要不要修改。</p></details>
+
+      <h3 class="compact-heading">文獻筆記本的建立</h3>
+      <ol class="step-list">
+        <li><strong>一個用途一本</strong><span>一門課一本，放大綱、每週講義、指定閱讀；一份作業一本，只放相關文獻。不要全塞一本。</span></li>
+        <li><strong>放來源</strong><span>先放與問題相關、且允許上傳的 PDF、文件或文字。錄音先確認可錄製及上傳；不必為了建筆記本把所有材料一次找齊。</span></li>
+        <li><strong>先看它抓到什麼</strong><span>確認來源名稱，再抽看重要段落、表格與掃描頁是否讀對。只看摘要，不能保證沒有漏頁。</span></li>
+        <li><strong>三種問法</strong><span>解釋這一段；比較幾篇對同一問題的說法；尋找某概念的相關段落，必要時再用原文搜尋補查。比較文獻與尋找段落的範例在提示詞庫。</span></li>
+        <li><strong>抽查引用</strong><span>優先核對你要採用的主張、關鍵數字與意外結論。看原文是否支持整句話，以及有沒有被省略的條件。</span></li>
+      </ol>
+
+      <details id="citation-format"><summary>參考文獻與引用格式</summary><p>書目資料回原論文或出版頁取得，再請 AI 協助檢查課程要求的引用格式；不要讓它猜缺少的作者、年份或篇名。NotebookLM 的引用方便回查，正式參考文獻仍需完整書目資料。</p></details>
+
+      <h3 class="compact-heading">輸出形式與用途</h3>
+      <p>需要時再選一種輸出試用，不必一次學完。有自訂欄位時，補充受眾、重點、程度、長度或格式；生成後仍核對重要內容。</p>
+      <div class="table-scroll"><table class="reading-table"><thead><tr><th>輸出</th><th>什麼時候用</th><th>自訂時最要講清楚的</th></tr></thead><tbody>
+      <tr><td><b>語音導覽</b></td><td>通勤或走路時複習一批講義</td><td>只談哪個部分，不要重述背景</td></tr>
+      <tr><td><b>心智圖</b></td><td>看一批文獻的主題長什麼樣、自己的題目落在哪</td><td>沒有欄位；只勾選相關來源來縮小範圍</td></tr>
+      <tr><td><b>資訊圖表</b></td><td>報告或海報要一頁總覽</td><td>受眾是誰；只用來源裡有的數字</td></tr>
+      <tr><td><b>簡報</b></td><td>seminar 報告的初稿骨架</td><td>頁數上限；每頁一個重點</td></tr>
+      <tr><td><b>報告</b></td><td>seminar 前補背景、考前整理</td><td>要哪種：學習指南、簡報文件、常見問題</td></tr>
+      </tbody></table></div>
+      <p>語音導覽、資訊圖表與簡報的可編輯範例，集中在第九章「提示詞範例」。</p>
+      <p class="source-note"><a href="https://notebooklm.google.com/" target="_blank" rel="noopener">開啟 NotebookLM</a></p>
+    </section>
+
+    <!-- 06 Agent -->
+    <section class="section" id="agent">
+      <h2><span class="num">06</span>Agent 任務執行</h2>
+      <p class="section-note">Agent 會在你的資料夾裡動手做事。你不用會寫程式，但要會講範圍、會驗收。先看一個示意，再真的交辦一次。</p>
+      <div class="agent-grid">
+        <div class="agent-col plain">
+    <p><strong>示意情境：</strong>手上有三份課程 PDF，作業要求散在不同頁，你想要一份依日期排序、附來源頁碼的表格。下方示意 AI 如何整理，你可以按「下一步」查看過程。</p>
+          <h3>方法諮詢</h3>
+          <p>問：「我可以怎麼整理作業截止日？」</p>
+          <p>得到欄位與整理方法，再由你開文件、抄資料、排序和存檔。</p>
+    <p><strong>它沒停下來等你？</strong>先按停止，再請它列出已做的改動；核對原檔與輸出後，決定保留、修正或用備份重來。<strong>它說「已完成」？</strong>打開實際檔案核對，不只看那三個字。</p>
+          <h3 class="compact-heading">工具選擇</h3>
+      <div class="tool-switch" role="radiogroup" aria-label="這個月用的 Agent 工具">
+        <span class="tool-switch-label">我這個月用的是</span>
+        <button type="button" class="tool-option" data-tool="codex" role="radio" aria-checked="false">Codex</button>
+        <button type="button" class="tool-option" data-tool="claude" role="radio" aria-checked="false">Claude Code</button>
+        <span class="tool-switch-status" id="toolStatus">先選一個，下面只顯示那一套步驟。換訂閱時再回來改。</span>
+      </div>
+        </div>
+        <div class="agent-col flow">
+          <h3>任務執行流程</h3>
+          <p>以下為虛構流程示意，按鈕不會真的讀檔或連接 AI。</p>
+          <div class="agent-steps" id="agentSteps"></div>
+          <div class="agent-controls">
+            <button class="btn primary" id="agentNext" type="button">下一步</button>
+            <button class="btn ghost" id="agentReset" type="button">重來</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-panel" data-tool-panel="codex" hidden>
+        <h4>Codex 操作步驟</h4>
+        <ol class="step-list">
+          <li><strong>安裝與登入</strong><span><a href="https://openai.com/codex/" target="_blank" rel="noopener">到 OpenAI 官方頁面</a>下載 Codex app，用 ChatGPT 帳號登入。登入後確認帳號可用的功能與用量。</span></li>
+          <li><strong>開啟練習資料夾</strong><span>新建練習資料夾，放入三份下載材料，在 Codex 加成專案。真實任務先在工作範圍外保留原檔備份。</span></li>
+          <li><strong>確認權限與工作範圍</strong><span>先看權限說明，確認哪些檔案可讀、可改，哪些操作會詢問。不要假設預設每次都會問。這次用練習副本，先要求只讀取並回報。</span></li>
+          <li><strong>貼上任務</strong><span>貼下面的交辦內容。它回報欄位、筆數、缺值後，先核對再說「繼續」。</span></li>
+          <li><strong>看變更與輸出檔</strong><span>在變更檢視看它動了哪些檔案，再打開 output 資料夾的地圖與圖表。</span></li>
+          <li><strong>修正或重來</strong><span>先確認改了哪些檔案。只錯在輸出，就修正或重做 output；原檔若被改動，用事先備份還原，別只相信「已還原」的回覆。</span></li>
+        </ol>
+
+      </div>
+      <div class="tool-panel" data-tool-panel="claude" hidden>
+        <h4>Claude Code 操作步驟</h4>
+        <ol class="step-list">
+          <li><strong>安裝與登入</strong><span><a href="https://claude.com/download" target="_blank" rel="noopener">到 Anthropic 官方頁面</a>下載 Claude Desktop，用 Claude 帳號登入。Code 分頁需要 Pro 以上。</span></li>
+          <li><strong>開啟練習資料夾</strong><span>新建練習資料夾，放入三份下載材料，在 Code 分頁選這個資料夾。真實任務先在工作範圍外保留原檔備份。</span></li>
+          <li><strong>確認權限與工作範圍</strong><span>查看目前的權限模式；想逐次確認編輯與命令，可選 Manual（手動確認）。模式可能沿用先前設定。這次先要求只讀取並回報。</span></li>
+          <li><strong>貼上任務</strong><span>貼下面的交辦內容。它回報欄位、筆數、缺值後，先核對再允許執行。</span></li>
+          <li><strong>看變更與輸出檔</strong><span>打開差異（diff）面板看它動了哪些檔案，再打開 output 資料夾的地圖與圖表。</span></li>
+          <li><strong>修正或重來</strong><span>先確認改了哪些檔案。只錯在輸出，就修正或重做 output；原檔若被改動，用事先備份還原，別只相信「已還原」的回覆。</span></li>
+        </ol>
+
+      </div>
+      <details><summary>換家的時候，看這張對照表</summary>
+        <div class="table-scroll"><table class="reading-table"><thead><tr><th>同一件事</th><th>Codex</th><th>Claude Code</th></tr></thead><tbody>
+        <tr><td>工作範圍</td><td>專案（Project）</td><td>資料夾</td></tr>
+        <tr><td>執行前確認</td><td>審核模式設定</td><td>權限模式</td></tr>
+        <tr><td>看它改了什麼</td><td>變更檢視</td><td>Diff 面板</td></tr>
+        <tr><td>復原</td><td>核對變更；輸出重做，原檔由備份復原</td><td>同左</td></tr>
+        <tr><td>長期說明檔（進階，初學不需要）</td><td>AGENTS.md</td><td>CLAUDE.md</td></tr>
+        </tbody></table></div>
+      </details>
+
+      <div class="rent-task" id="rent-task">
+      <h3 class="compact-heading">請 AI 把租金資料做成比較圖</h3>
+      <p><strong>你想比較六個區域的租金，但手上只有表格。</strong>這個示範會讓 Codex 或 Claude Code 讀取資料、統一租金單位，再製作圖表。你負責說明需求、確認結果，不需要自己寫程式。</p>
+      <p class="task-outcome"><strong>完成後會得到：</strong>一份整理好的租金表、一張比較高低的長條圖，以及一張用顏色表示租金的示意地圖。材料與區域都是虛構的。</p>
+
+      <h4>準備材料</h4>
+      <p>在電腦建立一個練習資料夾，把下面三個檔案下載到裡面，再用 Codex 或 Claude Code 開啟這個資料夾。檔案已準備好，不需要先學會製作這些格式。</p>
+      <p class="material-links"><a href="materials/districts.csv" download>下載租金表（districts.csv）</a><a href="materials/districts.geojson" download>下載區域形狀（districts.geojson）</a><a href="materials/data-dictionary.txt" download>下載資料說明（data-dictionary.txt）</a></p>
+
+      <h4>把任務交給 AI</h4>
+      <p>展開下方文字，按「複製」，貼進剛才開啟的 Codex 或 Claude Code 對話。它會先查看資料並回報，等你確認後才開始製作。</p>
+      <details class="task-disclosure"><summary>展開可複製的任務說明</summary>
+<div class="pbox"><div class="pbox-head"><span>交辦內容 · 貼進 Codex 或 Claude Code</span><button class="copy-btn" type="button" data-copy-target="#delegatePrompt">複製</button></div><pre id="delegatePrompt"># 目標
+把 districts.csv 的租金統一成每月單位，做成一張依月租金上色的地圖和一張長條圖，讓我在瀏覽器打開就能看。
+
+# 材料與範圍
+只處理這個資料夾裡的 districts.csv 和 districts.geojson。座標是抽象格網，不需要底圖。
+
+# 可以改什麼、不能改什麼
+不要修改原始檔。所有輸出放到 output 資料夾。缺值保持缺值，不要推測補值。
+
+# 先做多小的一步
+先只讀取檔案，回報欄位、筆數、單位、缺值，以及 CSV 和邊界檔的 district_id 是否對得上。
+
+# 什麼時候停下來問我
+回報之後停下來，等我確認處理方式再動手。
+
+# 驗收條件
+輸入輸出都是 6 筆；每週租金 × 52 ÷ 12 換成每月，保留兩位小數；新增 rent_monthly_gbp 欄位，原欄位保留；地圖上無資料的區要標示；完成後列出你做過的每個轉換。</pre></div>
+      </details>
+      <p>它應該讀到六個區域：有的租金按週、有的按月，D4 沒有租金資料。確認它會統一成月租、保留缺值與原始檔後，回覆「請繼續製作」。若回報不符，先請它重新確認資料。</p>
+
+      <h4>打開成果看看</h4>
+      <p>完成後，請它告訴你怎麼開啟 <code>output</code> 資料夾裡的圖表。看各區租金是否能比較、沒有資料的區域是否清楚標示；需要對數字時，再展開下方參考結果。</p>
+      <details class="task-disclosure"><summary>展開參考結果，核對圖表與數字</summary>
+      <div class="table-scroll"><table class="reading-table acceptance-table"><caption>這份範例的預期結果</caption><thead><tr><th>檢查項目</th><th>預期結果</th></tr></thead><tbody>
+      <tr><td>輸入／輸出筆數</td><td>6／6，沒有默默刪除資料</td></tr>
+      <tr><td>D2 每週 280 英鎊</td><td>280 × 52 ÷ 12 ≈ 1213.33 英鎊／月</td></tr>
+      <tr><td>D5 每週 210 英鎊</td><td>210 × 52 ÷ 12 = 910.00 英鎊／月</td></tr>
+      <tr><td>D4 缺值</td><td>兩個租金欄位都保持缺值；地圖標示無資料</td></tr>
+      <tr><td>原始欄位</td><td>全部保留，新增 rent_monthly_gbp</td></tr>
+      <tr><td>地圖顏色順序</td><td>D6 &gt; D2 &gt; D1 &gt; D3 &gt; D5，D4 無資料</td></tr>
+      <tr><td>原始檔</td><td>未被修改，輸出在 output 資料夾</td></tr>
+      </tbody></table></div>
+      </details>
+      </div>
+      <h3 class="compact-heading">資料解讀與推論限制</h3>
+      <p>下面兩段動畫使用同一份租金資料與抽象格網。先判斷處理方式，再看數字與地圖如何改變，最後說明你會怎麼驗收 AI 的輸出。</p>
+      <div class="learning-examples">
+        <details class="learning-lesson" id="lesson-units">
+          <summary>資料單位與比較結果<span class="lesson-topic">先統一比較基準</span></summary>
+          <div class="lesson-content">
+            <p class="lesson-question"><strong>先判斷：</strong>舊城區 D2 是 £280／週，河岸區 D1 是 £1,200／月。哪一區比較便宜？你打算怎麼比較？</p>
+            <div class="lesson-grid">
+              <figure class="clip"><video src="media/learn-units.mp4" poster="media/learn-units.png" controls muted playsinline preload="none" aria-label="資料單位與比較結果動畫" aria-describedby="units-caption">可改讀文字解說，或<a href="media/learn-units.mp4">開啟動畫檔案</a>。</video><figcaption id="units-caption">虛構教學資料。長條使用相同比例尺，從零起算；換算採本練習規則。</figcaption></figure>
+              <div class="lesson-reflection">
+                <p><strong>用自己的話說明：</strong>為什麼 280 不能直接和 1,200 比較？交給 AI 整理時，要先確認哪個欄位與計算規則？</p>
+                <details class="lesson-answer"><summary>文字解說與參考答案</summary>
+                  <ol class="lesson-transcript"><li>兩筆資料的單位不同：D2 是每週，D1 是每月。</li><li>本練習用每週租金 × 52 ÷ 12 換算平均月租：280 × 52 ÷ 12 ≈ 1213.33。這是將全年租金平均分到 12 個月，不是每月固定四週。</li><li>統一後，D2 約 £1,213.33／月，略高於 D1 的 £1,200／月，差額約 £13.33。長條圖保留共同的零基準，不放大這個小差異。</li></ol>
+                  <p><strong>實際使用：</strong>請 AI 先回報 rent_unit 的不同單位與轉換公式，保留原始欄位，新增月租欄位，完成後自己抽算一筆。</p>
+                </details>
+              </div>
+            </div>
+          </div>
+        </details>
+        <details class="learning-lesson" id="lesson-missing">
+          <summary>缺失資料與地圖呈現<span class="lesson-topic">區分未知與零</span></summary>
+          <div class="lesson-content">
+            <p class="lesson-question"><strong>先判斷：</strong>D4 的租金欄位是空白。若 AI 把它填成 0，再依租金上色，地圖會讓人產生什麼誤解？</p>
+            <div class="lesson-grid">
+              <figure class="clip"><video src="media/learn-missing.mp4" poster="media/learn-missing.png" controls muted playsinline preload="none" aria-label="缺失資料與地圖呈現動畫" aria-describedby="missing-caption">可改讀文字解說，或<a href="media/learn-missing.mp4">開啟動畫檔案</a>。</video><figcaption id="missing-caption">虛構教學資料，使用原始 GeoJSON 的抽象格網。圖內租金均已換算為每月。</figcaption></figure>
+              <div class="lesson-reflection">
+                <p><strong>用自己的話說明：</strong>現在能不能說 D4 最便宜？「沒有資料」與「租金為零」在圖例和排序上應如何區分？</p>
+                <details class="lesson-answer"><summary>文字解說與參考答案</summary>
+                  <ol class="lesson-transcript"><li>每筆租金依 district_id 對到地圖區域，D4 的租金缺失。連續色階由淺至深表示租金由低至高，數值也直接標在圖內。</li><li>動畫中的錯誤示範把空白改成 0，讓 D4 顯示成租金最低的區域，造成它很便宜的錯覺。</li><li>正確處理保留缺值，以灰色和「無資料」文字標示 D4，並在圖例獨立說明；D4 不參與租金高低的排序。</li></ol>
+                  <p><strong>實際使用：</strong>要求 AI 保留六筆資料，不推測補值，分開呈現缺值與零；驗收時核對區域 ID、數值、圖例和缺值數量。</p>
+                </details>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+      <h4 class="learning-synthesis">綜合判讀</h4>
+      <p>先自己回答：「租金最低的區，最適合學生居住嗎？」說出這份資料能回答什麼，以及你還想知道的兩件事，再請 AI 檢查有沒有漏掉重要條件。</p>
+      <details id="agentCheck"><summary>回答後，再展開核對</summary><p>這份虛構資料只能比較統一單位後的刊登租金。適不適合居住還要看通勤、住宅面積與品質、個人需求等；沒有收入資料，也不能直接判斷住宅負擔。D4 的缺值表示不知道，不能當成零或排成最便宜。</p><p>下一次換自己的小任務：自己寫目標、材料、可改範圍和驗收方式，先讓 Agent 回報理解，再決定是否執行。驗收標準要由你依用途確認。</p></details>
+      <p class="section-note">沒有 Agent 訂閱的月份：先在家人的電腦上看一次完整流程，再把六筆資料貼給對話型 AI 練習描述處理規則與驗收條件。</p>
+    </section>
+
+    <!-- 07 圖表 -->
+    <section class="section" id="diagrams">
+      <h2><span class="num">07</span>圖表選擇與製作</h2>
+      <p class="section-note">需要做圖時再查這一段，先選一種練習即可。選圖前只問一句：<strong>我想表達的是哪種關係？</strong>六種圖各對應一種，分頁上寫著它們各自表達的關係。</p>
+
+      <div class="diagram-viewer">
+        <div class="diagram-tabs" id="diagramTabs" role="tablist" aria-label="圖表類型"></div>
+        <div id="diagramPanel" role="tabpanel" tabindex="0" aria-labelledby="diagram-tab-flow">
+        <div class="diagram-stage"><img id="diagramImg" src="diagrams/flow.svg" alt="流程圖範例" /></div>
+        <div class="diagram-meta"><p class="diagram-caption" id="diagramCaption"></p><button class="btn ghost" id="diagramZoomOpen" type="button" aria-haspopup="dialog">放大圖表</button></div>
+        <div class="diagram-cols">
+          <div class="pbox"><div class="pbox-head"><span>用白話說明需求</span><button class="copy-btn" type="button" data-copy-target="#diagramSay">複製</button></div><pre id="diagramSay"></pre><p class="pbox-note" id="diagramTweak"></p></div>
+          <div class="pbox code"><div class="pbox-head"><span>AI 會給你像這樣的 code</span><button class="copy-btn" type="button" data-copy-target="#diagramCode">複製 code</button></div><pre id="diagramCode"></pre></div>
+        </div>
+        <p class="source-note">示意圖由 Mermaid 官方引擎預先繪製，內容虛構。</p>
+        </div>
+      </div>
+
+      <h3 class="compact-heading">圖表製作步驟</h3>
+      <div class="mermaid-steps">
+        <div class="mstep"><div class="step-heading"><span class="mstep-no">1</span><strong>用白話講內容</strong></div><span>一句一個步驟或部分，有回頭就說「如果……就回到……」</span></div>
+        <div class="mstep"><div class="step-heading"><span class="mstep-no">2</span><strong>AI 翻成 Mermaid code</strong></div><span>把上面的需求貼給對話型 AI</span></div>
+        <div class="mstep"><div class="step-heading"><span class="mstep-no">3</span><strong>貼上，出圖</strong></div><span>貼到線上編輯器，匯出 PNG 或 SVG 放進報告</span></div>
+      </div>
+      <div class="mermaid-actions">
+        <a class="btn primary" href="https://mermaid.live/edit" target="_blank" rel="noopener">Mermaid Live Editor</a>
+        <a class="btn ghost" href="https://mermaid.ai/live/edit" target="_blank" rel="noopener">mermaid.ai 編輯器</a>
+      </div>
+      <p>要改就用白話說：改成橫向、字縮短、加一條回頭的箭頭。<strong>貼上去報錯？</strong>把錯誤訊息原封不動丟回給 AI，請它修正後重給完整 code。</p>
+
+<div class="side-by-side split-wide-left">
+<div>
+      <h3 class="compact-heading">圖表類型的選擇</h3>
+      <p>先講目的和讀者，讓它建議圖種並說理由，你同意了再要 code。時序圖、狀態圖等其他圖種也用這招。</p>
+      <div class="pbox"><div class="pbox-head"><span>貼給對話型 AI</span><button class="copy-btn" type="button" data-copy-target="#choosePrompt">複製</button></div><pre id="choosePrompt">我想在報告裡說明「［一件事，例如制度層級與在地條件怎麼影響住宅負擔］」，讀者是［誰，例如 seminar 同學］，他們要一眼看懂的是［什麼］。
+請先建議最適合的圖表類型，說明為什麼，也說一個不建議的類型和原因。
+我確認後，再給 Mermaid code：節點用中文、保留英文術語，只回傳 code。</pre></div>
+</div>
+<div>
+      <h3 class="compact-heading">其他圖表工具的用途</h3>
+      <div class="table-scroll"><table class="reading-table notmermaid-table"><thead><tr><th>要做的東西</th><th>找誰</th></tr></thead><tbody>
+      <tr><td>地圖、空間資料</td><td>GIS 軟體，或交給 Agent 用資料畫</td></tr>
+      <tr><td>精確的數據圖表，例如長條圖、折線圖</td><td>試算表，或交給 Agent。先核對數據、單位和刻度，再決定呈現方式。</td></tr>
+      <tr><td>示意插圖、海報</td><td>NotebookLM 的資訊圖表，或簡報軟體</td></tr>
+      </tbody></table></div>
+</div>
+</div>
+    </section>
+
+    <!-- 08 規則 -->
+    <section class="section" id="rules">
+      <h2><span class="num">08</span>AI 使用規範</h2>
+      <p class="section-note">先看當年度學校政策，再看這份作業的要求；允許的用途、申報方式和可上傳的資料都要分別確認。不用背條文，把官方入口存好。</p>
+<div class="side-by-side">
+<div>
+      <ul class="checklist" id="rulesChecklist">
+        <li><label><input type="checkbox" data-rule="r1" /><span>找到學校的 generative AI 政策頁。搜尋「[學校名] generative AI policy students」，存下網址。</span></label></li>
+        <li><label><input type="checkbox" data-rule="r2" /><span>每份作業找 AI 使用段落，連同學校政策一起看。仍不明確的用途，問老師。</span></label></li>
+        <li><label><input type="checkbox" data-rule="r3" /><span>不確定就問授課老師。請對話型 AI 幫你擬出具體問題。</span></label></li>
+        <li><label><input type="checkbox" data-rule="r4" /><span>依課程要求保留紀錄，說明用了哪些協助、自己如何判斷與修改。</span></label></li>
+        <li><label><input type="checkbox" data-rule="r5" /><span>確認材料可否上傳；涉及研究參與者、個資或未公開內容，先查授權與校方指定工具。</span></label></li>
+      </ul>
+      <p class="source-note">勾選會保存在這個瀏覽器；換作業仍要重新確認。Leeds 已公布 2026/27 新政策，舊版說明可能不適用。<a href="https://secretariat.leeds.ac.uk/home/academic-regulations-and-taught-student-policies-and-procedures/academic-integrity-and-assistance-policy/" target="_blank" rel="noopener">看 Leeds 當年度政策範例</a>（核對 2026-09-16；仍以自己的學校為準）</p>
+</div>
+<div>
+      <h3 class="compact-heading">AI 使用申報</h3>
+      <blockquote class="quote">本作業中我使用［工具名稱］協助［實際用途與範圍］。我對輸出進行［核對、修改或未採納的部分］。［依課程要求附提示詞、對話紀錄或其他說明］。</blockquote>
+      <p><strong>依實際用途填寫：</strong>以學校及作業規定為準，不填沒有做過的核對。自己能解釋提交內容與判斷過程；申報不能取代事先確認允許範圍。</p>
+      <h3 class="compact-heading">材料上傳與授權</h3>
+      <ul class="plain-list">
+        <li>訪談逐字稿、田野筆記、未發表數據：確認研究同意、倫理要求與校方核准的處理方式。</li>
+        <li>同學作業、老師講義與錄音：取得適當許可，確認授權允許上傳到所選工具。</li>
+        <li>個資：身分證件、地址、成績單不放進練習；只提供任務必要且獲准使用的內容。</li>
+        <li>學校禁止上傳的內容不要提供。桌面版 Agent 能讀資料夾，也不代表資料只留在你的電腦。</li>
+      </ul>
+</div>
+</div>
+    </section>
+
+
+    <!-- 09 提示詞庫 -->
+    <section class="section" id="cards">
+      <h2><span class="num">09</span>提示詞範例</h2>
+      <p class="section-note">NotebookLM 六項、其他實用範例三項。依需要展開，改成自己的材料後再複製，不必逐項學完。</p>
+      <div class="card-lib" id="cardLib"></div>
+    </section>
+
+    <footer class="site-footer">研究所 AI 手冊 · 2026 年 9 月版</footer>
+  </main>
+
+
+  <dialog class="diagram-zoom" id="diagramZoom" aria-labelledby="diagramZoomTitle" aria-describedby="diagramZoomHint">
+    <div class="diagram-zoom-head"><h2 id="diagramZoomTitle">圖表範例</h2><button class="btn ghost" id="diagramZoomClose" type="button" autofocus>關閉</button></div>
+    <p id="diagramZoomHint">可左右或上下捲動查看完整圖表。</p>
+    <div class="diagram-zoom-area" tabindex="0" role="region" aria-label="放大圖表，可捲動"><img id="diagramZoomImg" alt="" /></div>
+  </dialog>
+  <div class="toast" id="toast" role="status">已複製！</div>
+  <script src="./diagrams.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

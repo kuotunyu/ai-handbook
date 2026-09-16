@@ -1,0 +1,7 @@
+district_id,district_name,rent_gbp,rent_unit,population,note
+D1,河岸區,1200,month,42000,
+D2,舊城區,280,week,38500,
+D3,大學區,950,month,51000,
+D4,工業轉型區,,month,27000,刊登樣本不足
+D5,郊區新鎮,210,week,33000,
+D6,車站周邊,1450,month,45500,

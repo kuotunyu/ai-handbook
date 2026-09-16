@@ -1,0 +1,9 @@
+{"type":"FeatureCollection","name":"fictional-districts","note":"教學用虛構邊界，座標為抽象格網，不是真實地理座標。不需要底圖。",
+"features":[
+{"type":"Feature","properties":{"district_id":"D1","district_name":"河岸區"},"geometry":{"type":"Polygon","coordinates":[[[0,0],[1,0],[1,1],[0,1],[0,0]]]}},
+{"type":"Feature","properties":{"district_id":"D2","district_name":"舊城區"},"geometry":{"type":"Polygon","coordinates":[[[1,0],[2,0],[2,1],[1,1],[1,0]]]}},
+{"type":"Feature","properties":{"district_id":"D3","district_name":"大學區"},"geometry":{"type":"Polygon","coordinates":[[[2,0],[3,0],[3,1],[2,1],[2,0]]]}},
+{"type":"Feature","properties":{"district_id":"D4","district_name":"工業轉型區"},"geometry":{"type":"Polygon","coordinates":[[[0,1],[1,1],[1,2],[0,2],[0,1]]]}},
+{"type":"Feature","properties":{"district_id":"D5","district_name":"郊區新鎮"},"geometry":{"type":"Polygon","coordinates":[[[1,1],[2,1],[2,2],[1,2],[1,1]]]}},
+{"type":"Feature","properties":{"district_id":"D6","district_name":"車站周邊"},"geometry":{"type":"Polygon","coordinates":[[[2,1],[3,1],[3,2],[2,2],[2,1]]]}}
+]}
