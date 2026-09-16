@@ -1,66 +1,66 @@
-/* 研究檔案版 — 跟著使用者自己做的「智慧台中論壇 2026」那套系統：
-   深青綠頂列與首屏、暖色紙面、白色紙張卡片配柔影、赭紅大編號、深色提示面板。
+/* 研究檔案版・馬卡龍柔和配色 — 骨架跟著使用者自己做的「智慧台中論壇 2026」：
+   深靛紫頂列與首屏、奶油紙面、白色紙張卡片配柔影、草莓珊瑚大編號、深色提示面板。
    離線、系統字型、無外部依賴。桌面版為主；1000px 以下的手機／平板規則在檔案尾端。 */
 
 :root {
   color-scheme: light;
   /* 紙面與紙張 */
-  --bg-page: #F5F1E9;
-  --bg-white: #FFFEFB;
-  --bg-tint: #F9F6F0;
-  --bg-subtle: #ECE6DA;
-  --bg-inverse: #1D2A30;
-  --bg-bar: #102f3a;
-  --bg-hero: #173d4d;
+  --bg-page: #FBF6F1;
+  --bg-white: #FFFFFF;
+  --bg-tint: #FDF9F5;
+  --bg-subtle: #F4EBE3;
+  --bg-inverse: #35315A;
+  --bg-bar: #3B3766;
+  --bg-hero: #4B4680;
   /* 墨色 */
-  --ink-primary: #1D2A30;
-  --ink-body: #2F3A3F;
-  --ink-muted: #4A5458;
-  --ink-light: #6B747A;
+  --ink-primary: #2B2A3D;
+  --ink-body: #3D3C50;
+  --ink-muted: #5B5A6E;
+  --ink-light: #757488;
   /* 反相面板上的字與線 */
-  --on-dark: #F7F1E7;
-  --on-dark-muted: rgba(247, 241, 231, 0.72);
-  --on-dark-dim: #d8e2df;
-  --on-dark-mist: #c9d8d6;
-  --on-dark-line: rgba(247, 241, 231, 0.35);
-  --on-dark-line-soft: rgba(247, 241, 231, 0.18);
+  --on-dark: #FBF6F1;
+  --on-dark-muted: rgba(251, 246, 241, 0.76);
+  --on-dark-dim: #E2E0EC;
+  --on-dark-mist: #CFCDDD;
+  --on-dark-line: rgba(251, 246, 241, 0.35);
+  --on-dark-line-soft: rgba(251, 246, 241, 0.18);
   --on-dark-fill: rgba(255, 255, 255, 0.08);
   --on-dark-fill-strong: rgba(255, 255, 255, 0.15);
-  --on-dark-veil: rgba(7, 32, 41, 0.28);
-  --on-dark-tint: rgba(247, 241, 231, 0.075);
-  --on-dark-clay: #E7B993;
-  --on-dark-gold: #e3b55f;
-  --on-dark-accent: #d88767;
-  --on-dark-teal: #b8d4c3;
-  --on-dark-sky: #A7C7D6;
-  --on-dark-indigo: #a4c1e0;
-  /* 語意色：藍給按鈕與對話型 AI、翠綠給 NotebookLM、赭紅給 Agent 與編號 */
-  --brand: #2D5977;
-  --brand-dark: #24465C;
-  --brand-wash: #DFE9EF;
-  --brand-border: #B7CBD7;
-  --terracotta: #7B4230;
-  --terracotta-wash: #F1DDD2;
-  --terracotta-border: #D9B7A8;
-  --emerald: #355855;
-  --emerald-wash: #DCE4DD;
-  --emerald-border: #B8CCC9;
-  --gold: #8A6A1F;
-  --olive: #605236;
-  --plum: #644B5A;
+  --on-dark-veil: rgba(28, 25, 60, 0.28);
+  --on-dark-tint: rgba(251, 246, 241, 0.075);
+  --on-dark-clay: #F4C6A5;
+  --on-dark-gold: #F0DC92;
+  --on-dark-accent: #F3B4C1;
+  --on-dark-teal: #BEE6DA;
+  --on-dark-sky: #B9D3EE;
+  --on-dark-indigo: #CDBDEE;
+  /* 語意色（馬卡龍柔和版）：薰衣草紫給按鈕與對話型 AI、薄荷綠給 NotebookLM、草莓珊瑚給 Agent 與編號 */
+  --brand: #6A5FB5;
+  --brand-dark: #574CA0;
+  --brand-wash: #ECE8F8;
+  --brand-border: #CFC6EC;
+  --terracotta: #D0656E;
+  --terracotta-wash: #FBE2E5;
+  --terracotta-border: #F1BFC5;
+  --emerald: #37836F;
+  --emerald-wash: #DDF0EA;
+  --emerald-border: #B4DDD0;
+  --gold: #A3852E;
+  --olive: #5F8A52;
+  --plum: #8E6BB0;
   --gemini: var(--brand);
   --nlm: var(--emerald);
   --agent: var(--terracotta);
-  --viz-1: #3E5769; --viz-2: #71483A; --viz-3: #3D5955; --viz-4: #605236; --viz-5: #644B5A;
+  --viz-1: #6A5FB5; --viz-2: #D0656E; --viz-3: #37836F; --viz-4: #A3852E; --viz-5: #8E6BB0;
   /* 線與角 */
-  --border-subtle: #D7D0C6;
-  --border-medium: #B8AEA1;
-  --border-strong: #887F74;
+  --border-subtle: #EADFD7;
+  --border-medium: #D4C5BC;
+  --border-strong: #A08F88;
   --radius-xs: 3px;
   --radius-sm: 6px;
   --radius-md: 10px;
-  --shadow-soft: 0 6px 20px rgba(0, 0, 0, 0.06);
-  --shadow-lift: 0 10px 28px rgba(15, 23, 42, 0.12);
+  --shadow-soft: 0 6px 20px rgba(80, 60, 90, 0.08);
+  --shadow-lift: 0 10px 28px rgba(80, 60, 90, 0.16);
   /* 字階 */
   --fs-meta: 18px;
   --fs-sm: 19px;
@@ -97,7 +97,7 @@ a { color: var(--brand); text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: 4px; }
 b, strong { font-weight: 700; color: var(--ink-primary); }
 code { font-family: var(--mono); font-size: .92em; background: var(--bg-subtle); padding: 1px 6px; border-radius: var(--radius-xs); }
-:focus-visible { outline: 3px solid #457993; outline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
 ::selection { background: var(--brand-wash); }
 
 .i { display: inline-block; width: 14px; height: 14px; flex: none; background-color: currentColor;
@@ -131,7 +131,7 @@ code { font-family: var(--mono); font-size: .92em; background: var(--bg-subtle);
 .hero .lead strong { display: block; color: var(--on-dark); font-weight: 700; margin-bottom: 8px; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
 .hero .btn.primary { background: var(--on-dark-clay); border-color: var(--on-dark-clay); color: var(--bg-bar); }
-.hero .btn.primary:hover { background: #f0cba8; }
+.hero .btn.primary:hover { background: #F8D5BA; }
 .hero .btn.ghost { border-color: var(--on-dark-line); color: var(--on-dark); background: transparent; }
 .hero .btn.ghost:hover { background: var(--on-dark-fill); }
 .hero-panel { border: 1px solid var(--on-dark-line); border-radius: var(--radius-sm); background: var(--on-dark-veil); padding: 16px 18px 18px; }
@@ -215,7 +215,7 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 .clip video { display: block; width: 100%; aspect-ratio: 16 / 9; background: var(--bg-white); }
 .clip figcaption { padding: 8px 14px 9px; font-size: var(--fs-meta); color: var(--ink-muted); line-height: 1.45; border-top: 1px solid var(--border-subtle); }
 .clip.needs-tap { cursor: pointer; }
-.clip.needs-tap::after { content: "點一下播放"; position: absolute; left: 50%; top: 32%; transform: translate(-50%, -50%); padding: 9px 16px 9px 36px; border-radius: var(--radius-xs); background: rgba(29, 42, 48, .9); color: var(--on-dark); font-size: var(--fs-sm); font-weight: 700; pointer-events: none; }
+.clip.needs-tap::after { content: "點一下播放"; position: absolute; left: 50%; top: 32%; transform: translate(-50%, -50%); padding: 9px 16px 9px 36px; border-radius: var(--radius-xs); background: rgba(43, 42, 61, .9); color: var(--on-dark); font-size: var(--fs-sm); font-weight: 700; pointer-events: none; }
 .clip.needs-tap::before { content: ""; position: absolute; left: calc(50% - 50px); top: 32%; transform: translateY(-50%); width: 14px; height: 14px; background: var(--on-dark); -webkit-mask: var(--i-play) center / contain no-repeat; mask: var(--i-play) center / contain no-repeat; z-index: 1; pointer-events: none; }
 
 /* ============ 01 關鍵字：四張核心卡、五列延伸詞 ============ */
@@ -280,7 +280,7 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 
 /* ============ 按鈕 ============ */
 .btn, .copy-btn, .tool-option, .formula-tab, .menu-btn { font: inherit; font-size: var(--fs-sm); font-weight: 700; line-height: 1.2; min-height: 40px; padding: 8px 14px; border-radius: var(--radius-xs); border: 1px solid var(--brand-border); background: var(--brand-wash); color: var(--brand); cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: background .12s, border-color .12s, color .12s; }
-.btn:hover, .copy-btn:hover, .tool-option:hover, .formula-tab:hover { background: #d0dfe8; text-decoration: none; }
+.btn:hover, .copy-btn:hover, .tool-option:hover, .formula-tab:hover { background: var(--brand-border); text-decoration: none; }
 .btn.primary { background: var(--brand); border-color: var(--brand-dark); color: #fff; }
 .btn.primary:hover { background: var(--brand-dark); }
 .btn.ghost { background: transparent; border-color: var(--border-medium); color: var(--ink-primary); }
@@ -301,12 +301,12 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 .block-btn::before { content: ""; width: 22px; height: 22px; margin-top: 3px; border: 2px solid var(--border-strong); border-radius: var(--radius-xs); background: var(--bg-white); grid-row: 1 / span 2; transition: background .12s, border-color .12s; }
 .block-name { grid-column: 2; display: block; font-weight: 800; font-size: var(--fs-lg); color: var(--ink-primary); }
 .block-desc { grid-column: 2; display: block; font-size: var(--fs-meta); color: var(--ink-light); margin-top: 2px; }
-.builder [data-i="0"] { --block-ink: #2D5977; --block-wash: #DFE9EF; }
-.builder [data-i="1"] { --block-ink: #355855; --block-wash: #DCE4DD; }
-.builder [data-i="2"] { --block-ink: #644B5A; --block-wash: #EAE0E6; }
-.builder [data-i="3"] { --block-ink: #7B4230; --block-wash: #F1DDD2; }
-.builder [data-i="4"] { --block-ink: #605236; --block-wash: #ECE4D2; }
-.builder [data-i="5"] { --block-ink: #3E5769; --block-wash: #E1E7EC; }
+.builder [data-i="0"] { --block-ink: #6A5FB5; --block-wash: #ECE8F8; }
+.builder [data-i="1"] { --block-ink: #37836F; --block-wash: #DDF0EA; }
+.builder [data-i="2"] { --block-ink: #8E6BB0; --block-wash: #EFE6F6; }
+.builder [data-i="3"] { --block-ink: #D0656E; --block-wash: #FBE2E5; }
+.builder [data-i="4"] { --block-ink: #A3852E; --block-wash: #F6EEDB; }
+.builder [data-i="5"] { --block-ink: #4F7FB0; --block-wash: #E3EDF8; }
 .builder .block-btn:hover { border-color: var(--block-ink); }
 .builder .block-btn.on { background: var(--block-wash); border-color: var(--block-ink); }
 .builder .block-btn .block-name { color: var(--block-ink); }
@@ -402,7 +402,7 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 .tool-panel h4 { margin: 16px 0 2px; }
 .material-links { font-size: var(--fs-sm); display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 0 0 10px; }
 .material-links a { display: inline-flex; align-items: center; min-height: 36px; padding: 5px 12px; background: var(--brand-wash); border: 1px solid var(--brand-border); border-radius: var(--radius-xs); font-weight: 700; }
-.material-links a:hover { text-decoration: none; background: #d0dfe8; }
+.material-links a:hover { text-decoration: none; background: var(--brand-border); }
 .rent-task { margin: 22px 0 14px; padding: 16px 24px 14px; background: var(--bg-white); border-radius: var(--radius-sm); box-shadow: var(--shadow-soft); border-top: 4px solid var(--terracotta); counter-reset: rt; }
 .rent-task > h3 { margin: 0 0 8px; }
 .rent-task > p { max-width: 80ch; }
@@ -442,8 +442,8 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 .mstep .mstep-no, .step-heading > .mstep-no { position: absolute; left: 0; top: 0; font-size: var(--fs-num); font-weight: 800; color: var(--terracotta); line-height: 1; font-variant-numeric: tabular-nums; }
 .mstep-arrow { display: none; }
 .mermaid-actions { display: flex; gap: 10px; margin: 6px 0 10px; flex-wrap: wrap; }
-.diagram-zoom { width: min(1400px, calc(100vw - 40px)); max-width: none; padding: 20px 24px; background: var(--bg-white); color: var(--ink-body); border: 0; border-radius: var(--radius-md); box-shadow: 0 18px 64px rgba(16, 47, 58, .25); }
-.diagram-zoom::backdrop { background: rgba(16, 47, 58, .72); }
+.diagram-zoom { width: min(1400px, calc(100vw - 40px)); max-width: none; padding: 20px 24px; background: var(--bg-white); color: var(--ink-body); border: 0; border-radius: var(--radius-md); box-shadow: 0 18px 64px rgba(28, 25, 60, .3); }
+.diagram-zoom::backdrop { background: rgba(28, 25, 60, .72); }
 .diagram-zoom-head { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .diagram-zoom-head h2 { font-size: var(--fs-h3); margin: 0; }
 #diagramZoomHint { color: var(--ink-muted); font-size: var(--fs-sm); margin: 8px 0 14px; }
