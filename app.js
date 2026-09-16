@@ -60,6 +60,35 @@ function autoGrow(editor) {
   editor.style.height = editor.scrollHeight + 2 + "px";
 }
 
+/* 把正文裡的填空位置 ［像這樣］ 標成不同顏色；只包文字節點，複製出來的內容不變 */
+function highlightPlaceholders(root = $("main")) {
+  if (!root) return;
+  const probe = /［[^］]*］/;
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode: node => {
+      const parent = node.parentElement;
+      if (!parent || parent.closest("textarea, input, script, style, mark, .pbox.code")) return NodeFilter.FILTER_REJECT;
+      return probe.test(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+    }
+  });
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(node => {
+    const text = node.nodeValue, frag = document.createDocumentFragment(), re = /［[^］]*］/g;
+    let last = 0, m;
+    while ((m = re.exec(text))) {
+      frag.append(text.slice(last, m.index));
+      const mark = document.createElement("mark");
+      mark.className = "placeholder";
+      mark.textContent = m[0];
+      frag.append(mark);
+      last = m.index + m[0].length;
+    }
+    frag.append(text.slice(last));
+    node.replaceWith(frag);
+  });
+}
+
 /* 任何 data-copy-target="#id" 的按鈕都能複製對應元素的文字 */
 function setupCopyTargets() {
   document.addEventListener("click", e => {
@@ -523,6 +552,7 @@ setupToolSwitch();
 renderDiagrams();
 setupChecklist();
 renderCards();
+highlightPlaceholders();
 setupNav();
 setupManifest();
 setupMobileMenu();
