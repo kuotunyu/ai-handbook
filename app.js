@@ -54,6 +54,12 @@ function copyText(text, btn) {
   } else fallback();
 }
 
+/* 文字框跟著內容長高，不要在小框裡捲動 */
+function autoGrow(editor) {
+  editor.style.height = "auto";
+  editor.style.height = editor.scrollHeight + 2 + "px";
+}
+
 /* 任何 data-copy-target="#id" 的按鈕都能複製對應元素的文字 */
 function setupCopyTargets() {
   document.addEventListener("click", e => {
@@ -104,7 +110,9 @@ function renderBuilder() {
   const box = $("#builderBlocks");
   const result = $("#builderResult");
   let cur = 0;
-  const drafts = FORMULAS.map(f => f.blocks.map(b => b.text.replace(/^# [^\n]+\n/, "")));
+  const stripHeading = text => text.replace(/^# [^\n]+\n/, "");
+  const defaults = FORMULAS.map(f => f.blocks.map(b => b.on));
+  const drafts = FORMULAS.map(f => f.blocks.map(b => stripHeading(b.text)));
   function copyContent() {
     const f = FORMULAS[cur];
     return f.blocks.flatMap((b, i) => {
@@ -114,10 +122,7 @@ function renderBuilder() {
       return [(heading ? heading[0] : "") + value];
     }).join(f.joiner);
   }
-  function fitEditor(editor) {
-    editor.style.height = "auto";
-    editor.style.height = editor.scrollHeight + 2 + "px";
-  }
+  const fitEditor = autoGrow;
   function compose() {
     const f = FORMULAS[cur];
     const lines = f.blocks.filter(b => b.on).map(b => b.text);
@@ -161,6 +166,12 @@ function renderBuilder() {
   if (builderEl) builderEl.dataset.formula = "0";
   box.addEventListener("click", e => { const btn = e.target.closest(".block-btn"); if (!btn) return; const b = FORMULAS[cur].blocks[+btn.dataset.i]; b.on = !b.on; btn.classList.toggle("on", b.on); btn.setAttribute("aria-pressed", String(b.on)); compose(); });
   $("#builderCopy").addEventListener("click", e => { const text = copyContent(); if (!text) { showToast("先選一塊積木並輸入內容。"); return; } copyText(text, e.currentTarget); });
+  $("#builderReset").addEventListener("click", () => {
+    FORMULAS[cur].blocks.forEach((b, i) => { b.on = defaults[cur][i]; });
+    drafts[cur] = FORMULAS[cur].blocks.map(b => stripHeading(b.text));
+    renderBlocks();
+    showToast("已還原成範例。");
+  });
   renderBlocks();
   new ResizeObserver(() => $$("textarea", result).forEach(fitEditor)).observe(result);
 }
@@ -247,11 +258,18 @@ function renderDiagrams() {
     show(buttons[next].dataset.diagram); buttons[next].focus({ preventScroll: true });
     buttons[next].scrollIntoView({ block: "nearest", inline: "nearest", behavior: "instant" });
   });
-  const dialog = $("#diagramZoom");
+  const dialog = $("#diagramZoom"), scaleBtn = $("#diagramZoomScale");
+  const setScale = actual => {
+    dialog.classList.toggle("actual", actual);
+    scaleBtn.setAttribute("aria-pressed", String(actual));
+    scaleBtn.textContent = actual ? "整張檢視" : "1:1 檢視";
+  };
+  scaleBtn.addEventListener("click", () => setScale(!dialog.classList.contains("actual")));
   $("#diagramZoomOpen").addEventListener("click", () => {
     const source = $("#diagramImg"), large = $("#diagramZoomImg");
     large.src = source.src; large.alt = source.alt;
     $("#diagramZoomTitle").textContent = source.alt;
+    setScale(false);
     dialog.showModal();
   });
   $("#diagramZoomClose").addEventListener("click", () => dialog.close());
@@ -269,6 +287,13 @@ function setupChecklist() {
   boxes.forEach(cb => {
     cb.checked = done.has(cb.dataset.rule);
     cb.addEventListener("change", () => { if (cb.checked) done.add(cb.dataset.rule); else done.delete(cb.dataset.rule); saveStore({ rules: [...done] }); });
+  });
+  const reset = $("#rulesReset");
+  if (reset) reset.addEventListener("click", () => {
+    boxes.forEach(cb => { cb.checked = false; });
+    done.clear();
+    saveStore({ rules: [] });
+    showToast("已清空勾選，換作業記得重新確認。");
   });
 }
 
@@ -362,10 +387,21 @@ function renderCards() {
       if (!editor.value.trim()) { showToast("請先輸入內容。"); return; }
       copyText(editor.value, copy);
     });
-    details.append(summary, label, editor, copy);
+    const reset = document.createElement("button");
+    reset.type = "button";
+    reset.className = "btn ghost";
+    reset.textContent = "還原範例";
+    reset.addEventListener("click", () => { editor.value = card.text; autoGrow(editor); showToast("已還原成範例。"); });
+    const actions = document.createElement("div");
+    actions.className = "card-actions";
+    actions.append(copy, reset);
+    editor.addEventListener("input", () => autoGrow(editor));
+    details.addEventListener("toggle", () => { if (details.open) autoGrow(editor); });
+    details.append(summary, label, editor, actions);
     section.append(details);
     });
   });
+  window.addEventListener("resize", () => $$(".prompt-example[open] textarea").forEach(autoGrow));
 }
 
 /* ====================================================================

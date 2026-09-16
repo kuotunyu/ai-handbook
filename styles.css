@@ -237,7 +237,7 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 .keyword-example { margin-top: 6px; }
 .keyword-core .keyword-example { margin-top: auto; padding-top: 6px; }
 /* Closed: four equal cards with 看例子 on one line. Once an example opens, only that card grows. */
-.keyword-core .keyword-list:has(details[open]) { align-items: start; }
+.keyword-core .keyword-list:has(details[open]) { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
 .keyword-example > summary { font-size: var(--fs-meta); min-height: 32px; padding: 3px 0; gap: 8px; }
 .keyword-example > summary::before { width: 18px; height: 18px; font-size: 16px; }
 .keyword-example > p { margin: 6px 0 4px; font-size: var(--fs-sm); line-height: 1.55; }
@@ -448,7 +448,8 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 .diagram-zoom-head h2 { font-size: var(--fs-h3); margin: 0; }
 #diagramZoomHint { color: var(--ink-muted); font-size: var(--fs-sm); margin: 8px 0 14px; }
 .diagram-zoom-area { overflow: auto; max-height: 68vh; padding: 20px; background: var(--bg-page); border-radius: var(--radius-sm); }
-.diagram-zoom-area img { display: block; width: 1200px; max-width: none; height: auto; }
+.diagram-zoom-area img { display: block; width: 100%; height: auto; max-height: 64vh; object-fit: contain; }
+.diagram-zoom.actual .diagram-zoom-area img { width: 1200px; max-width: none; max-height: none; }
 
 /* ============ 08 規範 ============ */
 .checklist { list-style: none; padding: 0; margin: 4px 0 10px; display: grid; gap: 8px; }
@@ -469,11 +470,23 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 .prompt-example-group:first-child h3 { color: var(--emerald); }
 .prompt-group-note { margin: 0 0 4px; color: var(--ink-muted); font-size: var(--fs-sm); }
 .prompt-example { min-width: 0; background: var(--bg-white); border-radius: var(--radius-sm); box-shadow: var(--shadow-soft); border-left: 3px solid transparent; padding: 6px 16px; margin: 0; }
-.prompt-example[open] { border-left-color: var(--brand); }
+.prompt-example[open] { border-left-color: var(--brand); grid-column: 1 / -1; }
 .prompt-example > summary { font-size: var(--fs-body); color: var(--ink-primary); }
 .prompt-example textarea { display: block; box-sizing: border-box; width: 100%; margin: 8px 0 10px; padding: 12px 14px; background: var(--bg-tint); color: var(--ink-primary); border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); font: inherit; font-size: var(--fs-table); line-height: 1.6; min-height: 170px; resize: vertical; }
 .prompt-example textarea:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
-.prompt-example .copy-btn { margin-bottom: 8px; }
+.prompt-example .card-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.head-actions { display: inline-flex; flex-wrap: wrap; gap: 8px; }
+.panel-note { margin: 0; padding: 8px 18px 0; font-size: var(--fs-meta); color: var(--on-dark-muted); }
+.mermaid-hint { font-size: var(--fs-sm); color: var(--ink-muted); margin: 0 0 10px; }
+.checklist-actions { margin: 2px 0 8px; }
+.quote-box { position: relative; }
+.quote-box .copy-btn { position: absolute; top: 8px; right: 12px; min-height: 30px; padding: 3px 10px; font-size: var(--fs-meta); background: var(--on-dark-fill); color: var(--on-dark); border-color: var(--on-dark-line); }
+.quote-box .copy-btn:hover { background: var(--on-dark-fill-strong); }
+.quote-box .copy-btn.copied { background: var(--on-dark-fill-strong); color: var(--on-dark-teal); border-color: var(--on-dark-teal); }
+.task-preview { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 6px 0 14px; }
+.task-preview img { display: block; width: 100%; height: auto; border-radius: var(--radius-sm); box-shadow: var(--shadow-soft); background: var(--bg-white); }
+.task-preview figcaption { grid-column: 1 / -1; font-size: var(--fs-meta); color: var(--ink-muted); }
+.step-heading .btn { align-self: center; }
 
 /* ============ 頁尾與提示 ============ */
 .site-footer { max-width: var(--max-width); margin: 40px auto 0; padding: 14px var(--gutter) 0; border-top: 1px solid var(--border-subtle); color: var(--ink-light); font-size: var(--fs-meta); }
@@ -546,7 +559,7 @@ details .table-scroll { margin: 10px 0 6px 32px; }
   .section:not(.hero) { padding: 40px var(--gutter) 8px; }
   .section > h2 { gap: 10px; }
   .section-note { margin-bottom: 14px; }
-  .keyword-list, .situation-list, .concept-details, .builder-blocks, .prompt-example-group { grid-template-columns: 1fr; }
+  .keyword-list, .keyword-core .keyword-list:has(details[open]), .situation-list, .concept-details, .builder-blocks, .prompt-example-group, .task-preview { grid-template-columns: 1fr; }
   .concept-details > div, .concept-details > div:nth-child(even) { padding: 0 0 10px; border-left: 0; }
   .keyword-core .keyword-entry { padding: 12px 16px 10px; }
   .keyword-group-heading { display: block; }

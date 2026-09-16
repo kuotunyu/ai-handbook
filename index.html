@@ -68,7 +68,7 @@
     <!-- 01 關鍵字 -->
     <section class="section" id="keywords">
       <h2><span class="num">01</span>關鍵字</h2>
-      <p class="section-note">以下依本課程的學習目標分為兩類：核心概念需要理解與應用；延伸詞彙先認識名稱與大意。九個詞都會介紹，不要求背誦定義。</p>
+      <p class="section-note">以下依本課程的學習目標分為兩類：核心概念需要理解與應用；延伸詞彙先認識名稱與大意。九個詞都會介紹，不要求背誦定義。先看核心四個，再到使用情境選一件事試。</p>
       <div class="keyword-group keyword-core"><div class="keyword-group-heading"><h3>核心概念</h3><p>需要理解，並在後續練習中實際運用。</p></div><div class="keyword-list"><article class="keyword-entry" id="keyword-prompt">
             <h4>Prompt<span class="keyword-alias">提示詞</span></h4>
             <p class="keyword-definition">你給 AI 的問題、任務說明與要求。</p>
@@ -79,13 +79,13 @@
             <h4>Context<span class="keyword-alias">上下文</span></h4>
             <p class="keyword-definition">模型這次回答時能參考的訊息與材料。</p>
             <p class="keyword-action"><strong>使用要點</strong>提供重要原文，確認工具讀到了哪些內容，不假設它已看過你的檔案。</p>
-            <details class="keyword-example"><summary>看例子<span class="sr-only">：Context</span></summary><p>你可能看到「上下文太長」。能容納的內容有限，長對話可能省略細節；換新對話時，核對帶過去的摘要，並重新提供重要原文與要求。</p><figure class="clip"><video src="media/clip-context.mp4" controls muted loop playsinline preload="none" aria-label="Context示意動畫"></video><figcaption>無聲示意動畫，點播放觀看；內容虛構。</figcaption></figure></details>
+            <details class="keyword-example"><summary>看例子<span class="sr-only">：Context</span></summary><p>你可能看到「上下文太長」。能容納的內容有限，長對話可能省略細節；換新對話時，核對帶過去的摘要，並重新提供重要原文與要求。</p><figure class="clip"><video src="media/clip-context.mp4" controls muted loop playsinline preload="none" poster="media/clip-context.png" aria-label="Context示意動畫"></video><figcaption>無聲示意動畫，點播放觀看；內容虛構。</figcaption></figure></details>
           </article>
 <article class="keyword-entry" id="keyword-hallucination">
             <h4>幻覺<span class="keyword-alias">Hallucination</span></h4>
             <p class="keyword-definition">AI 說得像真的，內容卻不正確或沒有根據。</p>
             <p class="keyword-action"><strong>使用要點</strong>將準備採用的主張與關鍵數字回原始來源核對。</p>
-            <details class="keyword-example"><summary>看例子<span class="sr-only">：幻覺</span></summary><p>例如編出不存在的論文、錯誤數字或假的連結。看到重要事實，回原始來源核對；有引用也要確認原文是否真的支持它的說法。</p><figure class="clip"><video src="media/clip-hallucination.mp4" controls muted loop playsinline preload="none" aria-label="幻覺示意動畫"></video><figcaption>無聲示意動畫，點播放觀看；內容虛構。</figcaption></figure></details>
+            <details class="keyword-example"><summary>看例子<span class="sr-only">：幻覺</span></summary><p>例如編出不存在的論文、錯誤數字或假的連結。看到重要事實，回原始來源核對；有引用也要確認原文是否真的支持它的說法。</p><figure class="clip"><video src="media/clip-hallucination.mp4" controls muted loop playsinline preload="none" poster="media/clip-hallucination.png" aria-label="幻覺示意動畫"></video><figcaption>無聲示意動畫，點播放觀看；內容虛構。</figcaption></figure></details>
           </article>
 <article class="keyword-entry" id="keyword-agent">
             <h4>Agent<span class="keyword-alias">代理式 AI</span></h4>
@@ -116,7 +116,7 @@
 <article class="keyword-entry" id="keyword-token">
             <h4>Token<span class="keyword-alias">詞元</span></h4>
             <p class="keyword-definition">模型處理內容的單位；文字會分成字、單字或片段。</p>
-            <details class="keyword-example"><summary>看例子<span class="sr-only">：Token</span></summary><p>你可能看到「token 上限」，通常是在說模型能處理的內容量限制。不必自己計算；遇到限制時看實際提示，檔案大小與方案用量也可能另有限制。</p><figure class="clip"><video src="media/clip-token.mp4" controls muted loop playsinline preload="none" aria-label="Token示意動畫"></video><figcaption>無聲示意動畫，點播放觀看；內容虛構。</figcaption></figure></details>
+            <details class="keyword-example"><summary>看例子<span class="sr-only">：Token</span></summary><p>你可能看到「token 上限」，通常是在說模型能處理的內容量限制。不必自己計算；遇到限制時看實際提示，檔案大小與方案用量也可能另有限制。</p><figure class="clip"><video src="media/clip-token.mp4" controls muted loop playsinline preload="none" poster="media/clip-token.png" aria-label="Token示意動畫"></video><figcaption>無聲示意動畫，點播放觀看；內容虛構。</figcaption></figure></details>
           </article></div></div>
     </section>
 
@@ -201,8 +201,9 @@
         <div class="builder-output">
           <div class="builder-output-head">
             <span>編輯後複製 prompt</span>
-            <button class="copy-btn" id="builderCopy" type="button">複製 prompt</button>
+            <span class="head-actions"><button class="copy-btn" id="builderReset" type="button">還原範例</button><button class="copy-btn" id="builderCopy" type="button">複製 prompt</button></span>
           </div>
+          <p class="panel-note">改動只留在這次瀏覽，重新整理會還原成範例；改好請先複製。</p>
           <div id="builderResult"></div>
         </div>
       </div>
@@ -231,7 +232,7 @@ Public participation can inform planning decisions, but participants may not rep
     <section class="section" id="reading">
       <h2><span class="num">05</span>文獻閱讀與查證</h2>
       <p class="section-note">讀用 NotebookLM：它依你選取的來源整理回答，提供引用方便回查；引用仍可能不支持它的結論。先用一篇短文走完四步，再自己說明哪些結論有依據。短到一頁的東西，直接貼給對話型 AI 也行。</p>
-      <div class="reading-source"><div class="step-heading"><h3>練習短文</h3><span>虛構教學材料，不是真實研究</span><button class="copy-btn" id="readingCopy" type="button">複製短文</button></div>
+      <div class="reading-source"><div class="step-heading"><h3>練習短文</h3><span>虛構教學材料，不是真實研究</span><button class="copy-btn" id="readingCopy" type="button">複製短文</button><a class="btn primary" href="https://notebooklm.google.com/" target="_blank" rel="noopener">開啟 NotebookLM</a></div>
       <div id="readingSource"><p>[1] A library extended its evening opening hours for four weeks. During the trial, evening visits rose from 120 to 180 per week.</p>
       <p>[2] In a voluntary survey of 40 visitors, 30 said the later closing time helped them study. The survey did not include people who did not visit the library.</p>
       <p>[3] Staff recommend continuing the extended hours. However, the trial took place during exam season, and no comparison library was studied. The results do not establish whether longer opening hours improved students’ grades.</p></div></div>
@@ -306,7 +307,6 @@ Public participation can inform planning decisions, but participants may not rep
       <tr><td><b>報告</b></td><td>seminar 前補背景、考前整理</td><td>要哪種：學習指南、簡報文件、常見問題</td></tr>
       </tbody></table></div>
       <p>語音導覽、資訊圖表與簡報的可編輯範例，集中在第九章「提示詞範例」。</p>
-      <p class="source-note"><a href="https://notebooklm.google.com/" target="_blank" rel="noopener">開啟 NotebookLM</a></p>
     </section>
 
     <!-- 06 Agent -->
@@ -378,9 +378,10 @@ Public participation can inform planning decisions, but participants may not rep
       <p><strong>你想比較六個區域的租金，但手上只有表格。</strong>這個示範會讓 Codex 或 Claude Code 讀取資料、統一租金單位，再製作圖表。你負責說明需求、確認結果，不需要自己寫程式。</p>
       <p class="task-outcome"><strong>完成後會得到：</strong>一份整理好的租金表、一張比較高低的長條圖，以及一張用顏色表示租金的示意地圖。材料與區域都是虛構的。</p>
 
+      <figure class="task-preview"><img src="media/preview-units.png" alt="完成後的長條圖示意：月租金比較" /><img src="media/preview-missing.png" alt="完成後的地圖示意：D4 標示無資料" /><figcaption>完成後大概長這樣：一張月租比較的長條圖、一張依租金上色的地圖，D4 標示無資料。示意取自本章動畫，實際輸出由 Agent 產生。</figcaption></figure>
       <h4>準備材料</h4>
-      <p>在電腦建立一個練習資料夾，把下面三個檔案下載到裡面，再用 Codex 或 Claude Code 開啟這個資料夾。檔案已準備好，不需要先學會製作這些格式。</p>
-      <p class="material-links"><a href="materials/districts.csv" download>下載租金表（districts.csv）</a><a href="materials/districts.geojson" download>下載區域形狀（districts.geojson）</a><a href="materials/data-dictionary.txt" download>下載資料說明（data-dictionary.txt）</a></p>
+      <p>在電腦建立一個練習資料夾，把下面三個檔案下載到裡面（整包下載會自動解壓成資料夾），再用 Codex 或 Claude Code 開啟這個資料夾。檔案已準備好，不需要先學會製作這些格式。</p>
+      <p class="material-links"><a href="materials/districts-task.zip" download>整包下載（三個檔案）</a><a href="materials/districts.csv" download>下載租金表（districts.csv）</a><a href="materials/districts.geojson" download>下載區域形狀（districts.geojson）</a><a href="materials/data-dictionary.txt" download>下載資料說明（data-dictionary.txt）</a></p>
 
       <h4>把任務交給 AI</h4>
       <p>展開下方文字，按「複製」，貼進剛才開啟的 Codex 或 Claude Code 對話。它會先查看資料並回報，等你確認後才開始製作。</p>
@@ -489,6 +490,7 @@ Public participation can inform planning decisions, but participants may not rep
         <a class="btn primary" href="https://mermaid.live/edit" target="_blank" rel="noopener">Mermaid Live Editor</a>
         <a class="btn ghost" href="https://mermaid.ai/live/edit" target="_blank" rel="noopener">mermaid.ai 編輯器</a>
       </div>
+      <p class="mermaid-hint">打開編輯器後，把左邊 Code 區原本的內容全選刪掉，貼上剛複製的 code，右邊就會出圖；確認沒問題再匯出 PNG 或 SVG。</p>
       <p>要改就用白話說：改成橫向、字縮短、加一條回頭的箭頭。<strong>貼上去報錯？</strong>把錯誤訊息原封不動丟回給 AI，請它修正後重給完整 code。</p>
 
 <div class="side-by-side split-wide-left">
@@ -523,11 +525,12 @@ Public participation can inform planning decisions, but participants may not rep
         <li><label><input type="checkbox" data-rule="r4" /><span>依課程要求保留紀錄，說明用了哪些協助、自己如何判斷與修改。</span></label></li>
         <li><label><input type="checkbox" data-rule="r5" /><span>確認材料可否上傳；涉及研究參與者、個資或未公開內容，先查授權與校方指定工具。</span></label></li>
       </ul>
+      <p class="checklist-actions"><button class="btn ghost" id="rulesReset" type="button">清空勾選，重新檢查這份作業</button></p>
       <p class="source-note">勾選會保存在這個瀏覽器；換作業仍要重新確認。Leeds 已公布 2026/27 新政策，舊版說明可能不適用。<a href="https://secretariat.leeds.ac.uk/home/academic-regulations-and-taught-student-policies-and-procedures/academic-integrity-and-assistance-policy/" target="_blank" rel="noopener">看 Leeds 當年度政策範例</a>（核對 2026-09-16；仍以自己的學校為準）</p>
 </div>
 <div>
       <h3 class="compact-heading">AI 使用申報</h3>
-      <blockquote class="quote">本作業中我使用［工具名稱］協助［實際用途與範圍］。我對輸出進行［核對、修改或未採納的部分］。［依課程要求附提示詞、對話紀錄或其他說明］。</blockquote>
+      <div class="quote-box"><blockquote class="quote" id="declarationTemplate">本作業中我使用［工具名稱］協助［實際用途與範圍］。我對輸出進行［核對、修改或未採納的部分］。［依課程要求附提示詞、對話紀錄或其他說明］。</blockquote><button class="copy-btn" type="button" data-copy-target="#declarationTemplate">複製</button></div>
       <p><strong>依實際用途填寫：</strong>以學校及作業規定為準，不填沒有做過的核對。自己能解釋提交內容與判斷過程；申報不能取代事先確認允許範圍。</p>
       <h3 class="compact-heading">材料上傳與授權</h3>
       <ul class="plain-list">
@@ -553,8 +556,8 @@ Public participation can inform planning decisions, but participants may not rep
 
 
   <dialog class="diagram-zoom" id="diagramZoom" aria-labelledby="diagramZoomTitle" aria-describedby="diagramZoomHint">
-    <div class="diagram-zoom-head"><h2 id="diagramZoomTitle">圖表範例</h2><button class="btn ghost" id="diagramZoomClose" type="button" autofocus>關閉</button></div>
-    <p id="diagramZoomHint">可左右或上下捲動查看完整圖表。</p>
+    <div class="diagram-zoom-head"><h2 id="diagramZoomTitle">圖表範例</h2><span class="head-actions"><button class="btn ghost" id="diagramZoomScale" type="button" aria-pressed="false">1:1 檢視</button><button class="btn ghost" id="diagramZoomClose" type="button" autofocus>關閉</button></span></div>
+    <p id="diagramZoomHint">先看整張；按「1:1 檢視」放大後可左右或上下捲動。</p>
     <div class="diagram-zoom-area" tabindex="0" role="region" aria-label="放大圖表，可捲動"><img id="diagramZoomImg" alt="" /></div>
   </dialog>
   <div class="toast" id="toast" role="status">已複製！</div>
