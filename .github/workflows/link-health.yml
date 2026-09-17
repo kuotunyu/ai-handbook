@@ -1,0 +1,37 @@
+name: External link health
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 2 * * 1"
+  push:
+    branches: [chatgpt/link-health]
+    paths:
+      - ".github/workflows/link-health.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install lychee 0.24.2
+        run: |
+          curl -fsSL -o /tmp/lychee.tar.gz https://github.com/lycheeverse/lychee/releases/download/lychee-v0.24.2/lychee-x86_64-unknown-linux-gnu.tar.gz
+          echo "1f4e0ef7f6554a6ed33dd7ac144fb2e1bbed98598e7af973042fc5cd43951c9a  /tmp/lychee.tar.gz" | sha256sum -c -
+          LYCHEE_BIN="$(tar -tzf /tmp/lychee.tar.gz | grep -E '(^|/)lychee$' | head -n 1)"
+          test -n "$LYCHEE_BIN"
+          tar -xzf /tmp/lychee.tar.gz -C /tmp
+          sudo install "/tmp/$LYCHEE_BIN" /usr/local/bin/lychee
+      - name: Check handbook links
+        run: |
+          lychee \
+            --no-progress \
+            --max-concurrency 8 \
+            --max-retries 2 \
+            --timeout 20 \
+            --accept '100..=103,200..=399,403,429' \
+            index.html
