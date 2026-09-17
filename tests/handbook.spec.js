@@ -79,6 +79,15 @@ test('mobile menu remains keyboard-usable', async ({ page }, testInfo) => {
   await expect(button).toHaveAttribute('aria-expanded', 'false');
 });
 
+test('inline explanations stay optional and expand in place', async ({ page }) => {
+  const explainers = page.locator('.inline-explain');
+  await expect(explainers).toHaveCount(2);
+  await expect(explainers.first()).not.toHaveAttribute('open', '');
+  await explainers.first().locator('summary').click();
+  await expect(explainers.first()).toHaveAttribute('open', '');
+  await expect(explainers.first().locator('p')).toContainText('Context');
+});
+
 test('has no critical axe accessibility violations', async ({ page }) => {
   const results = await new AxeBuilder({ page }).analyze();
   const critical = results.violations.filter(violation => violation.impact === 'critical');

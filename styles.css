@@ -215,6 +215,17 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 .plain-list { padding-left: 24px; margin: 4px 0 12px; color: var(--ink-body); font-size: var(--fs-table); }
 .plain-list li { margin: 3px 0; }
 
+/* ============ 原地解釋：借鑑 Nutshell 的 progressive disclosure，但用原生 details 避免額外 runtime ============ */
+.inline-explain-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: -8px 0 18px; color: var(--ink-muted); font-size: var(--fs-sm); }
+.inline-explain-label { font-weight: 600; }
+.inline-explain { flex: 0 1 auto; }
+.inline-explain[open] { flex-basis: 100%; }
+.inline-explain > summary { display: inline-flex; min-height: 30px; padding: 2px 2px; gap: 6px; font-size: var(--fs-sm); color: var(--brand); border-bottom: 1px dotted var(--brand-border); }
+.inline-explain > summary::before { width: 16px; height: 16px; font-size: 13px; color: var(--brand); background: transparent; border: 1px solid currentColor; border-radius: 50%; }
+.inline-explain > summary:hover::before { color: var(--terracotta); background: transparent; }
+.inline-explain > p { max-width: 52em; margin: 7px 0 0; padding: 9px 12px; border-left: 2px solid var(--brand-border); border-radius: 0 var(--radius-xs) var(--radius-xs) 0; background: var(--bg-white); box-shadow: var(--shadow-soft); color: var(--ink-body); font-size: var(--fs-sm); line-height: 1.55; }
+.inline-explain > p strong { color: var(--ink-primary); }
+
 /* ============ 短片 ============ */
 .clip { margin: 0; border-radius: var(--radius-sm); overflow: hidden; background: var(--bg-white); position: relative; box-shadow: var(--shadow-soft); }
 .clip video { display: block; width: 100%; aspect-ratio: 16 / 9; background: var(--bg-white); }
