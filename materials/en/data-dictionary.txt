@@ -1,0 +1,44 @@
+AI Handbook practice data | Fields, task and expected results
+
+These six records are entirely fictional. The district names and numbers do not
+describe a real city. The map compares these example rents only.
+
+FILES
+districts.csv: listed rents and populations for six fictional districts.
+districts.geojson: district boundaries on an abstract 3-by-2 grid, not real-world
+coordinates. No basemap is needed: draw and colour the six polygons directly.
+
+CSV FIELDS
+district_id: D1–D6. Joins to properties.district_id in GeoJSON. Retain this field.
+district_name: fictional district name.
+rent_gbp: median listed rent in pounds. Blank means missing, not zero. Do not impute.
+rent_unit: week or month.
+population: fictional population.
+note: D4 has too few listings.
+
+TASK
+1. Read and report columns, row counts, units, missing values and whether district_id
+   matches between files. Do not change the original files.
+2. After confirmation, add rent_monthly_gbp. Weekly × 52 ÷ 12, rounded to two decimal
+   places; monthly values stay unchanged. Produce a cleaned CSV, a browser-viewable
+   map coloured by monthly rent with missing data labelled, and a bar chart.
+   Save all outputs in an output folder.
+3. Check the results yourself against the reference below.
+
+EXPECTED RESULTS
+Input / output rows: 6 / 6.
+D2: £280/week × 52 ÷ 12 = approximately £1,213.33/month.
+D5: £210/week × 52 ÷ 12 = £910.00/month.
+D4: rent_gbp and rent_monthly_gbp remain missing; map shows No data.
+Retain every original column; add rent_monthly_gbp.
+Rent order, high to low: D6 (1450), D2 (1213.33), D1 (1200), D3 (950), D5 (910).
+D4 has no data and is not ranked.
+Original files remain unchanged; results are in output.
+
+LIMITS
+The data lacks income, housing size and quality. It cannot directly establish
+household housing affordability.
+
+Think first: is the cheapest district the best place for students? Name two other
+things you would need to know, such as commuting, housing conditions or personal
+needs. Missing means unknown; it must not be treated as zero.

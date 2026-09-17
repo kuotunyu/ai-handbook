@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1B4B52">
+  <meta name="robots" content="noindex">
+  <meta name="apple-mobile-web-app-title" content="AI Handbook">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+  <title>Graduate AI Handbook</title>
+  <link rel="stylesheet" href="./styles.css?v=202609172147">
+</head>
+<body>
+
+
+  <a class="skip-link" href="#keywords">Skip to content</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="logo" href="#hero" aria-label="Back to top"><b>2026</b>AI Handbook</a>
+      <div class="language-switch" aria-label="Language">
+        <a href="./index.html" data-language="zh-Hant" lang="zh-Hant" hreflang="zh-Hant">中文版</a>
+        <a href="./en.html" aria-current="page" data-language="en" lang="en" hreflang="en">English</a>
+      </div>
+      <span class="nav-now" id="navNow" aria-live="polite"></span>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="topnav">Menu</button>
+      <nav class="topnav" id="topnav" aria-label="Chapters">
+        <a href="#keywords" data-num="01" data-sub="Core concepts and further terms">Keywords</a>
+        <a href="#situations" data-num="02" data-sub="Choose a starting point">Situations</a>
+        <a href="#concepts" data-num="03" data-sub="Functions and checks">Tools</a>
+        <a href="#prompt" data-num="04" data-sub="Goals, material and follow-up">Prompting</a>
+        <a href="#reading" data-num="05" data-sub="Working with sources">Reading</a>
+        <a href="#agent" data-num="06" data-sub="AI Agent">Agents</a>
+        <a href="#diagrams" data-num="07" data-sub="Show relationships visually">Diagrams</a>
+        <a href="#rules" data-num="08" data-sub="Check permissions first">AI rules</a>
+        <a href="#cards" data-num="09" data-sub="Adaptable examples">Prompt library</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    
+    <section class="section hero" id="hero">
+      <div class="hero-inner">
+        <div class="hero-title">
+          <p class="hero-en">Graduate AI Handbook</p>
+          <h1>Graduate AI Handbook</h1>
+          <p class="lead"><strong>Chat and search with conversational AI. Read with Gemini Notebook. Work on files with an Agent.</strong> Start with your situation, and look up unfamiliar terms as you go.</p>
+          <div class="hero-actions"><a class="btn primary" href="#keywords">Start reading</a><a class="btn ghost" href="#cards">Find a prompt</a></div>
+        </div>
+        <div class="hero-panel">
+          <div class="hero-panel-head"><b>Choose by task</b><span>September 2026</span></div>
+          <div class="hero-grid">
+            <div class="hero-card gemini"><span class="hero-card-role">Chat &amp; search</span><strong>Conversational AI</strong><p class="hero-tool-options">Gemini／ChatGPT／Claude</p><p>Use one you know to understand concepts, write, discuss and find information.</p></div>
+            <div class="hero-card nlm"><span class="hero-card-role">Read</span><strong>Gemini Notebook</strong><p class="tool-former-name">Formerly NotebookLM</p><p>Ask about your readings and lectures, then follow citations back to the source.</p></div>
+            <div class="hero-card agent"><span class="hero-card-role">Act</span><strong>Agent</strong><p>Codex or Claude Code can work on tasks in your folder.</p></div>
+          </div>
+          <div class="hero-rule"><span class="hero-rule-label">Remember</span><span>Provide material</span><span>State your goal</span><span>Check the result</span></div>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="section" id="keywords">
+      <h2><span class="num">01</span>Keywords</h2>
+      <p class="section-note">No definitions to memorise. Start with the core concepts; look up the other terms when needed.</p>
+      <div class="keyword-group keyword-core"><div class="keyword-group-heading"><h3>Core concepts</h3><p>Understand these and use them in the activities that follow.</p></div><div class="keyword-list"><article class="keyword-entry" id="keyword-prompt">
+            <h4>Prompt<span class="keyword-alias">Your instructions</span></h4>
+            <p class="keyword-definition">The question, task and requirements you give to AI.</p>
+            <p class="keyword-action"><strong>In practice</strong> State your goal and provide relevant material. If the answer is not useful, explain what needs changing.</p>
+            <details class="keyword-example"><summary>See an example<span class="sr-only">：Prompt</span></summary><p>You may hear “adjust the prompt”. Instead of “read this for me”, try “I do not understand paragraph two; explain it with an example”. Add the missing information, rather than simply making the prompt longer.</p></details>
+          </article>
+<article class="keyword-entry" id="keyword-context">
+            <h4>Context<span class="keyword-alias">Available information</span></h4>
+            <p class="keyword-definition">The information and material the model can use for this response.</p>
+            <p class="keyword-action"><strong>In practice</strong> Provide important source passages and check what the tool actually read. Do not assume it has seen your files.</p>
+            <details class="keyword-example"><summary>See an example<span class="sr-only">：Context</span></summary><p>You may hear “the context is too long”. Capacity is limited, and long conversations may lose detail. When starting a new conversation, check the summary you carry over and provide important sources and requirements again.</p><figure class="clip"><video src="media/clip-context.mp4" controls muted loop playsinline preload="none" poster="media/clip-context.png" aria-label="Context illustration with Chinese labels"></video><figcaption>Silent illustration with Chinese on-screen labels. The explanation above covers the concept in English. Play manually; fictional content.</figcaption></figure></details>
+          </article>
+<article class="keyword-entry" id="keyword-hallucination">
+            <h4>Hallucination</h4>
+            <p class="keyword-definition">An answer that sounds convincing but is incorrect or unsupported.</p>
+            <p class="keyword-action"><strong>In practice</strong> Check the claims and key figures you intend to use against the original sources.</p>
+            <details class="keyword-example"><summary>See an example<span class="sr-only">: hallucination</span></summary><p>Examples include invented papers, incorrect numbers and fake links. Check important facts against the original source. A citation is useful only if the source actually supports the claim.</p><figure class="clip"><video src="media/clip-hallucination.mp4" controls muted loop playsinline preload="none" poster="media/clip-hallucination.png" aria-label="Hallucination illustration with Chinese labels"></video><figcaption>Silent illustration with Chinese on-screen labels. The explanation above covers the concept in English. Play manually; fictional content.</figcaption></figure></details>
+          </article>
+<article class="keyword-entry" id="keyword-agent">
+            <h4>Agent<span class="keyword-alias">AI that takes action</span></h4>
+            <p class="keyword-definition">AI that uses tools, carries out steps and continues based on the results.</p>
+            <p class="keyword-action"><strong>In practice</strong> Set the scope, keep the original files and check the output afterwards.</p>
+            <details class="keyword-example"><summary>See an example<span class="sr-only">：Agent</span></summary><p>An Agent might turn several course documents into an assignment list, save it and check it. Specify which files it may work on, then open the result and verify it.</p></details>
+          </article></div></div>
+      <details class="keyword-reference-disclosure" id="keyword-reference-disclosure">
+        <summary><span><strong>More terms</strong><small>AI / Generative AI / LLM / Training / Multimodal / Token</small></span></summary>
+        <div class="keyword-group keyword-reference"><div class="keyword-group-heading"><p>Look these up when you encounter them; no need to read them all now.</p></div><div class="keyword-list"><article class="keyword-entry" id="keyword-ai">
+            <h4>AI<span class="keyword-alias">Artificial intelligence</span></h4>
+            <p class="keyword-definition">An umbrella term for technologies that perform tasks such as recognition, prediction and generation.</p>
+            <details class="keyword-example"><summary>See an example<span class="sr-only">：AI</span></summary><p>“This software has AI” is a broad claim. Ask what it can actually help you do. Generative AI is one category within AI.</p></details>
+          </article>
+<article class="keyword-entry" id="keyword-generative">
+            <h4>Generative AI</h4>
+            <p class="keyword-definition">AI that produces content such as text, images and audio.</p>
+            <details class="keyword-example"><summary>See an example<span class="sr-only">: generative AI</span></summary><p>University policies may use the term “generative AI”. It can include both chat and image generation. Producing content does not mean that content is correct.</p></details>
+          </article>
+<article class="keyword-entry" id="keyword-llm">
+            <h4>LLM<span class="keyword-alias">Large language model</span></h4>
+            <p class="keyword-definition">A model that processes and generates language, at the core of many chat tools.</p>
+            <details class="keyword-example"><summary>See an example<span class="sr-only">：LLM</span></summary><p>LLM stands for Large Language Model. “Which LLM does this app use?” refers to its underlying model. The app may also provide tools for searching or reading files.</p></details>
+          </article>
+<article class="keyword-entry" id="keyword-training">
+            <h4>Training<span class="keyword-alias">Updating the model</span></h4>
+            <p class="keyword-definition">Using data to update the model itself and change its behaviour. Pasting background or documents into a chat supplies context; it is not training.</p>
+            <details class="keyword-example"><summary>See an example<span class="sr-only">：Training</span></summary><p>Telling Gemini “I am an urban planning postgraduate; explain GIS for a beginner” provides context for the current task. Training or fine-tuning involves actually updating the model itself using data.</p></details>
+          </article>
+<article class="keyword-entry" id="keyword-multimodal">
+            <h4>Multiple types of input<span class="keyword-alias">Multimodal</span></h4>
+            <p class="keyword-definition">The ability to work with more than one kind of material, such as text, images or audio.</p>
+            <details class="keyword-example"><summary>See an example<span class="sr-only">: multimodal</span></summary><p>“Multimodal support” might mean that AI can read a photo of your lecture notes or listen to a recording. Supported formats vary by tool; check that it interpreted your material correctly.</p></details>
+          </article>
+<article class="keyword-entry" id="keyword-token">
+            <h4>Token<span class="keyword-alias">Units of content</span></h4>
+            <p class="keyword-definition">A unit used to process content. Text is split into characters, words or fragments.</p>
+            <details class="keyword-example"><summary>See an example<span class="sr-only">：Token</span></summary><p>A “token limit” usually refers to the amount of content a model can handle. You do not need to count tokens yourself. Read the actual limit message: file size and subscription usage can have separate limits.</p><figure class="clip"><video src="media/clip-token.mp4" controls muted loop playsinline preload="none" poster="media/clip-token.png" aria-label="Token illustration with Chinese labels"></video><figcaption>Silent illustration with Chinese on-screen labels. The explanation above covers the concept in English. Play manually; fictional content.</figcaption></figure></details>
+          </article></div></div>
+      </details>
+    </section>
+
+    
+    <section class="section" id="situations">
+      <h2><span class="num">02</span>Situations</h2>
+      <p class="section-note">Find a situation close to yours and see how to get started.</p>
+      <div class="situation-list">
+        <details class="situation-entry">
+          <summary><span class="situation-name">Understand and find information</span><span class="situation-examples">Explain a passage, compare readings or find policy sources</span></summary>
+          <div class="situation-content">
+            <p>Start by giving a conversational AI the passage you are struggling with. Use Gemini Notebook for repeated work with the same readings, lecture notes or recordings. When searching, ask for original sources.</p>
+            <p class="situation-links"><a href="#reading">Reading and verification</a></p>
+          </div>
+        </details>
+        <details class="situation-entry">
+          <summary><span class="situation-name">Prepare assignments and communicate</span><span class="situation-examples">Plan an assignment, review a draft, practise a seminar or write an email</span></summary>
+          <div class="situation-content">
+            <p>Use a conversational AI you know. Provide the question or draft and explain where you are stuck.</p>
+            <p class="situation-links"><a href="#prompt">Prompting examples</a></p>
+          </div>
+        </details>
+        <details class="situation-entry">
+          <summary><span class="situation-name">Process data and create charts</span><span class="situation-examples">Clean tables, process files in batches, make charts or maps</span></summary>
+          <div class="situation-content">
+            <p>Use an available Agent when you need it to work directly on files. First ask it to inspect the material and explain its approach.</p>
+            <p class="situation-links"><a href="#agent">File task example</a><a href="#diagrams">Choosing a diagram</a></p>
+          </div>
+        </details>
+        <details class="situation-entry">
+          <summary><span class="situation-name">Resolve software problems</span><span class="situation-examples">Learn unfamiliar software, fix a failed step or understand an error</span></summary>
+          <div class="situation-content">
+            <p>Give a conversational AI the screenshot or exact error, the software name and version, and what you are trying to do.</p>
+            <p class="situation-links"><a href="#prompt">Follow-up questions</a></p>
+          </div>
+        </details>
+      </div>
+
+      <div class="decision-practice" id="decision-practice">
+        <h3 class="compact-heading">Think first, then expand</h3>
+        <p>Choose an answer in your head, then open the explanation. There is nothing to memorise.</p>
+        <div class="situation-list">
+          <details class="situation-entry">
+            <summary><span class="situation-name">Your lecturer assigns 15 papers to compare. Which tool would you start with?</span><span class="situation-examples">Conversational AI / Gemini Notebook / Agent</span></summary>
+            <div class="situation-content"><p><strong>Why: Gemini Notebook.</strong> The task centres on reading, comparing and checking a selected set of sources. You do not need an Agent to operate on files. Still open the original passages to check that they support your claims.</p></div>
+          </details>
+          <details class="situation-entry">
+            <summary><span class="situation-name">You paste your CV, background and assignment requirements into Gemini. Are you “training AI”?</span><span class="situation-examples">Training / Context</span></summary>
+            <div class="situation-content"><p><strong>Why: you are providing context.</strong> You are telling an existing model what to use for this task. This does not itself retrain the model.</p></div>
+          </details>
+          <details class="situation-entry">
+            <summary><span class="situation-name">AI gives you a paper citation and an impressive figure of 18%. What next?</span><span class="situation-examples">Cite it directly / Check the original / Ask another model</span></summary>
+            <div class="situation-content"><p><strong>Why: check the original source.</strong> A citation does not necessarily support the whole sentence. Check the authors, year, number, study population and meaning before using it.</p></div>
+          </details>
+          <details class="situation-entry">
+            <summary><span class="situation-name">You have CSV and GeoJSON files and want cleaned data, charts and new output files. Which mode fits?</span><span class="situation-examples">Chat / Gemini Notebook / Agent</span></summary>
+            <div class="situation-content"><p><strong>Why: an Agent.</strong> You need AI to work on files. Keep the raw data, define the scope, ask it to explain its method and check its output.</p></div>
+          </details>
+        </div>
+      </div>
+      <p class="situation-reference">When needed:<a href="#rules">AI rules and disclosure</a>、<a href="#citation-format">References and citation styles</a>、<a href="#cards">Prompt library</a>。</p>
+    </section>
+
+    
+    <section class="section" id="concepts">
+      <h2><span class="num">03</span>Tools and functions</h2>
+      <p class="section-note">Tool names change. Focus on whether AI is generating, searching, calculating or operating on files. Each calls for different checks.</p>
+      <h3 class="compact-heading">What is AI doing right now?</h3>
+      <div class="table-scroll"><table class="reading-table howcheck-table"><thead><tr><th>Type of work</th><th>Example</th><th>What to check</th></tr></thead><tbody>
+      <tr><td><span class="work-kind">Generate</span><span class="work-desc">Write from learned patterns and supplied material; fluent answers can still be invented</span></td><td>Explain a concept, rewrite a sentence or draft an email</td><td>Check important facts against the original; make sure summaries preserve the meaning</td></tr>
+      <tr><td><span class="work-kind">Search</span><span class="work-desc">Retrieve web pages with a search tool, then synthesise an answer</span></td><td>Current announcements, original policies or recent figures</td><td>Open sources to check dates and applicable regions. Ask for missing sources; do not treat the answer itself as verification</td></tr>
+      <tr><td><span class="work-kind">Calculate</span><span class="work-desc">Use a calculator, spreadsheet or code to compute values</span></td><td>Add up a budget, convert rents or calculate proportions</td><td>Check inputs, formulas and units; work through one example yourself. Code can run successfully and still calculate the wrong thing</td></tr>
+      <tr><td><span class="work-kind">Operate</span><span class="work-desc">Use tools to read and write files, run code and carry out multi-step tasks</span></td><td>Clean a CSV, generate charts or process files in batches</td><td>Define the scope, retain originals, inspect changes and verify the output</td></tr>
+      </tbody></table></div>
+
+    </section>
+
+    
+    <section class="section" id="prompt">
+      <h2><span class="num">04</span>Prompts and task instructions</h2>
+      <p class="section-note">Start with a goal and relevant material. These two builders help you identify missing information. Try a short version first, then add what the response needs. You do not have to fill every field or follow a fixed order.</p>
+      <div class="inline-explain-row" aria-label="Optional terminology">
+        <span class="inline-explain-label">When needed:</span>
+        <details class="inline-explain">
+          <summary>Context vs Training</summary>
+          <p><strong>Context</strong> is the background and material available for this task. Pasting a CV, assignment instructions or documents normally provides context.<strong>Training</strong> uses data to update the model itself.</p>
+        </details>
+      </div>
+      <div class="formula-tabs" id="formulaTabs"></div>
+      <p class="formula-hint" id="formulaHint"></p>
+      <div class="builder">
+        <div class="builder-left">
+          <div class="builder-blocks" id="builderBlocks"></div>
+          <p class="builder-tip"><strong>You can start even if your goal is unclear:</strong>“I want to [goal], but I am stuck on [difficulty]. Ask me one question to help clarify my next step.”</p>
+        </div>
+        <div class="builder-output">
+          <div class="builder-output-head">
+            <span>Edit and copy your prompt</span>
+            <span class="head-actions"><button class="copy-btn" id="builderReset" type="button">Reset example</button><button class="copy-btn" id="builderCopy" type="button">Copy prompt</button></span>
+          </div>
+          <p class="panel-note">Edits last for this visit; refreshing restores the examples. Copy your finished text before leaving.</p>
+          <div id="builderResult"></div>
+        </div>
+      </div>
+
+      <h3 class="compact-heading">Follow up and revise</h3>
+      <div class="table-scroll"><table class="reading-table"><thead><tr><th>Problem</th><th>What to say next</th></tr></thead><tbody>
+      <tr><td>Too difficult</td><td>“I do not understand this sentence: [paste sentence]. Explain it with one concrete example, keeping important technical terms.”</td></tr>
+      <tr><td>Too vague</td><td>“Based on my material, identify three specific things to improve and explain why.”</td></tr>
+      <tr><td>Wrong direction</td><td>“I need to compare two options, rather than describe each separately. Make a comparison table covering cost, time and constraints.”</td></tr>
+      <tr><td>A step failed</td><td>“I want to [goal], using [software and version]. I tried [steps] and got [exact error]. Help me identify the cause, then give me one small step I can verify.”</td></tr>
+      <tr><td>Conversation is cluttered</td><td>“Summarise this conversation: my goal, confirmed conclusions, material I supplied and the next step. Include facts only.” Check the summary before pasting it into a new chat, and provide important source passages and files again.</td></tr>
+      </tbody></table></div>
+      <details class="reference-disclosure" id="separate-instruction-source"><summary>Long material: separate instructions from the source</summary><p>Write what you want AI to do, then label the material clearly as “Source text” or “Data”. Special symbols are optional; a clear boundary between instructions and material is what matters.</p></details>
+    </section>
+
+    
+    <section class="section" id="reading">
+      <h2><span class="num">05</span>Reading and source verification</h2>
+      <p class="section-note">Use Gemini Notebook (formerly NotebookLM) to ask about lectures and readings. Try the four steps with this short passage, then explain which conclusions are supported. A one-page text can also be pasted directly into conversational AI.</p>
+      <p class="tool-name-note">Here, Gemini means general chat; Gemini Notebook means the notebook tool for working with selected sources.</p>
+      <div class="reading-source"><div class="step-heading"><h3>Practice passage</h3><span>Fictional teaching material, not a real study</span><button class="copy-btn" id="readingCopy" type="button">Copy passage</button><a class="btn primary" href="https://notebook.google/" target="_blank" rel="noopener">Open Gemini Notebook</a></div>
+      <div id="readingSource"><p>[1] A library extended its evening opening hours for four weeks. During the trial, evening visits rose from 120 to 180 per week.</p>
+      <p>[2] In a voluntary survey of 40 visitors, 30 said the later closing time helped them study. The survey did not include people who did not visit the library.</p>
+      <p>[3] Staff recommend continuing the extended hours. However, the trial took place during exam season, and no comparison library was studied. The results do not establish whether longer opening hours improved students’ grades.</p></div></div>
+      <h3 class="compact-heading">Read and verify</h3>
+      <p>Create a notebook and add the passage as a copied-text source. Try the questions below and check important conclusions against the original. A short source may be cited as a whole; use paragraph numbers [1]–[3] to locate the evidence yourself.</p>
+      <div class="table-scroll"><table class="reading-table"><thead><tr><th>Purpose</th><th>Try asking</th><th>Check against the passage</th></tr></thead><tbody>
+      <tr><td>1 Get the gist</td><td>“Using only this passage, explain what happened and what the authors recommend in two sentences. Do not add external information.”</td><td>Evening visits rose during extended hours; staff recommend continuing. This is not proof of a causal effect.</td></tr>
+      <tr><td>2 Explain a difficult point</td><td>“What is a voluntary survey? Why does excluding non-visitors affect interpretation?”</td><td>Volunteers may differ from non-respondents; the result cannot directly represent all students.</td></tr>
+      <tr><td>3 Separate claims and evidence</td><td>“List the recommendation, supporting data and limitations, with paragraph numbers for each.”</td><td>Recommendation: [3]; visits: [1]; survey: [2]; exam season and no comparison library: [3].</td></tr>
+      <tr><td>4 Check the original</td><td>“Does the passage prove that longer hours improved grades? Point to the text; do not speculate.”</td><td>[3] explicitly says this conclusion is not established. Check words such as “caused”, “improved” and “proved”. If AI says grades improved, reply: “Paragraph 3 says this was not established. Revise the summary and separate observed changes from unproven causes.”</td></tr>
+      </tbody></table></div>
+
+      <h3 class="compact-heading">Interpreting evidence</h3>
+      <p>First consider whom a percentage represents, then check a claim against the original PDF. Expand these exercises when useful; you need not do them all at once.</p>
+      <div class="learning-examples">
+        <details class="learning-lesson" id="lesson-sample">
+          <summary>Samples and generalisation<span class="lesson-topic">Whom does the percentage represent?</span></summary>
+          <div class="lesson-content">
+            <p class="lesson-question"><strong>Think first:</strong> Of 40 visitors who volunteered for a survey, 30 said later closing helped them study. Can you write “75% of students support longer opening hours”?</p>
+            <div class="lesson-grid">
+              <figure class="clip"><video src="media/learn-sample.mp4" poster="media/learn-sample.png" controls muted playsinline preload="none" aria-label="Sampling illustration with Chinese labels" aria-describedby="sample-caption">Read the English explanation below, or watch the illustration with Chinese labels:<a href="media/learn-sample.mp4">Open animation</a>。</video><figcaption id="sample-caption">Fictional teaching material. Silent animation with Chinese labels; play, pause or view full screen manually. An English explanation follows.</figcaption></figure>
+              <div class="lesson-reflection">
+                <p><strong>Explain in your own words:</strong> Who is the denominator in 75%? What else would you need to know about the views of all students?</p>
+                <details class="lesson-answer"><summary>Explanation and suggested answer</summary>
+                  <ol class="lesson-transcript"><li>The 40 circles represent the visitors who volunteered. The 30 coloured circles represent those who said later closing helped them study. The other ten responses are not specified in the passage.</li><li>30 ÷ 40 = 75%. This describes these respondents, not necessarily visitors who did not respond or students who did not visit.</li><li>Write: “Of 40 surveyed visitors, 30 said later closing helped them study.” To understand the whole student population, you would need a more representative survey covering different groups.</li></ol>
+                  <p><strong>In your own work:</strong> Ask AI to identify the study population, how the sample was selected and who was excluded. Then check the source.</p>
+                </details>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+      <details class="evidence-pdf-lab" id="pdfEvidenceLab">
+        <summary>Check a claim in the original PDF<span class="lesson-topic">A citation exists ≠ the claim is supported</span></summary>
+        <div class="evidence-pdf-content">
+          <div class="evidence-claim" aria-label="AI summary to verify">
+            <span>AI summary</span>
+            <p>“Longer library hours improved students’ academic performance.”</p>
+            <small>(Lin &amp; Carter, 2026, p. 2)</small>
+          </div>
+          <p><strong>Do not open the answer yet.</strong> Go to page 2 of the original source. Find what it observed and what it explicitly says cannot be concluded.</p>
+          <div class="evidence-pdf-toolbar" role="group" aria-label="Original PDF page">
+            <button type="button" class="plot-mode" data-evidence-page="1" aria-pressed="false">Page 1</button>
+            <button type="button" class="plot-mode" data-evidence-page="2" aria-pressed="true">Page 2</button>
+            <span class="evidence-pdf-status" id="evidencePdfStatus" aria-live="polite">Preparing the original PDF…</span>
+            <a class="btn ghost" href="materials/evidence-library-pilot.pdf" target="_blank" rel="noopener">Open PDF directly</a>
+          </div>
+          <div class="evidence-pdf-viewer" id="evidencePdfViewer" aria-busy="false">
+            <canvas id="evidencePdfCanvas" role="img" aria-label="Fictional teaching PDF, page 2"></canvas>
+            <p class="evidence-pdf-message" id="evidencePdfMessage">Expanding this loads page 2.</p>
+          </div>
+          <div class="evidence-bibliography">
+            <strong>Reference for this source</strong>
+            
+<div id="evidenceCitation" data-generated-by="Citation.js 0.8.2">
+<div class="csl-bib-body">
+  <div data-csl-entry-id="lin-carter-2026" class="csl-entry">Lin, M., &#38; Carter, J. (2026). <i>Evening Library Hours Pilot: A Teaching Brief</i>. Urban Learning Methods Lab.</div>
+</div>
+</div>
+
+            <small>Citation.js formats known metadata in APA style. A well-formatted reference does not mean the source supports your sentence.</small>
+          </div>
+          <details class="lesson-answer" id="evidencePdfAnswer">
+            <summary>Check your answer</summary>
+            <ol class="lesson-transcript">
+              <li>Page 2 supports an increase in evening visits during the four-week trial and reports surveyed visitors’ views on later closing.</li>
+              <li>It explicitly says that academic performance was not collected or analysed, and that there was no comparison library or control group.</li>
+              <li>The citation and page number can be real while “improved academic performance” goes beyond the evidence. Try: “Evening visits rose during the four-week trial; the study did not test effects on grades.”</li>
+            </ol>
+          </details>
+          <p class="source-note">This PDF was created for this site as fictional teaching material, not real research. Use it to practise checking whether a citation supports a claim.</p>
+        </div>
+      </details>
+      <h4 class="learning-synthesis">Put it together</h4>
+      <p>Without looking at the answers or asking AI first, consider: “75% of students support longer hours, and longer hours improved grades.” Where does this exceed the evidence? Rewrite it in your own words and say what further data is needed.</p>
+      <details id="readingCheck"><summary>Answer first, then check</summary><p>Combine the two exercises: 75% describes only 40 voluntary visitor respondents, and the source does not establish improved grades. Generalising requires a more representative survey; assessing grades requires performance data and a comparison design.</p><p>Try a passage from your own reading. Separate what was observed from what cannot yet be claimed. Ask AI to challenge your interpretation, then use the source to decide whether to revise it.</p></details>
+
+      <h3 class="compact-heading">Organising a literature notebook</h3>
+      <ol class="step-list">
+        <li><strong>One purpose per notebook</strong><span>Use one notebook for a course syllabus, lectures and assigned reading; another for an assignment’s relevant literature. Avoid putting everything in one notebook.</span></li>
+        <li><strong>Add sources</strong><span>Start with relevant PDFs, documents or text you are permitted to upload. Check permission to record and upload audio. You do not need to gather everything before starting.</span></li>
+        <li><strong>Check what it read</strong><span>Confirm source names and spot-check important passages, tables and scanned pages. A summary alone cannot tell you whether pages were missed.</span></li>
+        <li><strong>Three useful questions</strong><span>Explain this passage; compare sources on the same question; find passages related to a concept. Search the original text as needed. The prompt library includes comparison and passage-finding examples.</span></li>
+        <li><strong>Spot-check citations</strong><span>Prioritise claims you will use, key numbers and surprising conclusions. Check whether the source supports the entire sentence and whether conditions were omitted.</span></li>
+      </ol>
+
+      <details id="citation-format"><summary>References and citation styles</summary><p>Get bibliographic details from the original paper or publisher, then ask AI to help check the required citation style. Do not let it invent missing authors, dates or titles. Gemini Notebook citations help you navigate sources; formal references still need full bibliographic details.</p></details>
+
+      <details class="reference-disclosure" id="notebooklm-output"><summary>Other Gemini Notebook outputs, when needed</summary><p>Audio overviews, mind maps, infographics, slides and reports can support revision or presentation. Features change; choose one that helps, then check important content against the sources.</p><p>Chapter 09 includes editable examples for customising audio overviews, infographics and slides.</p></details>
+    </section>
+
+    
+    <section class="section" id="agent">
+      <h2><span class="num">06</span>Agent tasks</h2>
+      <p class="section-note">An Agent can work inside your folder. You do not need to code, but you do need to define the scope and check the result. Watch the walkthrough, then try a task.</p>
+      <div class="inline-explain-row" aria-label="Optional terminology">
+        <span class="inline-explain-label">When needed:</span>
+        <details class="inline-explain">
+          <summary>What is an Agent?</summary>
+          <p>It can read files, use tools, execute steps and continue based on results. Define the scope, preserve original files and verify the output.</p>
+        </details>
+      </div>
+      <div class="agent-grid">
+        <div class="agent-col plain">
+    <p><strong>Example scenario:</strong> You have three course PDFs with assignment requirements on different pages. You want a date-sorted table with source page numbers. Select “Next step” to see how AI might prepare it.</p>
+          <h3>Ask for advice</h3>
+          <p>“How could I organise assignment deadlines?”</p>
+          <p>You get suggested columns and a method, then open the files, copy the information, sort it and save it yourself.</p>
+    <p><strong>It did not wait for you?</strong> Stop it first, then ask for a list of changes already made. Check originals and outputs before deciding what to keep, fix or restore from backup.<strong>It says “Done”?</strong> Open the actual files and check them.</p>
+          <h3 class="compact-heading">Choose a tool</h3>
+          <p>Codex or Claude Code can work here. Use whichever is available; you do not need to learn both interfaces at once.</p>
+        </div>
+        <div class="agent-col flow">
+          <h3>Task walkthrough</h3>
+          <p>A fictional demonstration: these buttons do not read files or connect to AI.</p>
+          <div class="agent-steps" id="agentSteps"></div>
+          <div class="agent-controls">
+            <button class="btn primary" id="agentNext" type="button">Next step</button>
+            <button class="btn ghost" id="agentReset" type="button">Start again</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="agent-tool-guide">
+        <p class="phone-note">On your phone, you can review the workflow, edit instructions and copy them. For the folder exercise below, use Codex or Claude Code on your Mac.</p>
+        <h3 class="compact-heading">Three steps for any Agent</h3>
+        <ol class="step-list">
+          <li><strong>Set the working scope</strong><span>Start with a practice folder. For real tasks, keep a backup of originals outside the working scope.</span></li>
+          <li><strong>Check permissions and the first step</strong><span>Specify which files it may read or change. Initially, request inspection and a report only.</span></li>
+          <li><strong>Review changes and outputs</strong><span>Inspect changed files, open the output folder and check key figures. Trust the actual files, not just “Done”.</span></li>
+        </ol>
+        <p class="source-note">Interface names change; the method remains. Official installation links:<a href="https://openai.com/codex/" target="_blank" rel="noopener">Codex</a>、<a href="https://claude.com/download" target="_blank" rel="noopener">Claude Code</a>。</p>
+      </div>
+
+      <div class="rent-task" id="rent-task">
+      <h3 class="compact-heading">Ask AI to visualise rent data</h3>
+      <p><strong>You want to compare rents across six districts, but only have a table.</strong> In this example, Codex or Claude Code reads the data, standardises rent units and creates charts. You explain the requirements and check the result.</p>
+      <p class="task-outcome"><strong>You will get:</strong> A cleaned rent table, a comparison bar chart and a schematic map coloured by rent. The data and districts are fictional.</p>
+
+      <figure class="task-preview"><img src="media/preview-units-en.svg" alt="Example bar chart of monthly rents"><img src="media/preview-missing-en.svg" alt="Example map with D4 marked No data"><figcaption>Illustration based on this exercise. Your Agent generates the actual output; D4 should be marked “No data”.</figcaption></figure>
+      <h4>Prepare the material</h4>
+      <p>Create a practice folder on your computer and download the three files below into it. Extract the bundle if needed, then open the folder in Codex or Claude Code. The files are ready; you do not need to learn these formats first.</p>
+      <p class="material-links"><a href="materials/en/districts-task.zip" download>Download all three files</a><a href="materials/en/districts.csv" download>Download rent table (districts.csv)</a><a href="materials/en/districts.geojson" download>Download district shapes (districts.geojson)</a><a href="materials/en/data-dictionary.txt" download>Download data guide (data-dictionary.txt)</a></p>
+
+      <h4>Give AI the task</h4>
+      <p>Expand and copy the instructions below into the Codex or Claude Code conversation. Ask it to inspect the material and report first, then wait for your confirmation before creating the output.</p>
+      <details class="task-disclosure"><summary>Show task instructions</summary>
+<div class="pbox"><div class="pbox-head"><span>Task instructions · paste into Codex or Claude Code</span><button class="copy-btn" type="button" data-copy-target="#delegatePrompt">Copy</button></div><pre id="delegatePrompt"># Goal
+Standardise the rents in districts.csv to monthly amounts. Create a map coloured by monthly rent and a bar chart that I can open in a browser.
+
+# Material and scope
+Work only with districts.csv and districts.geojson in this folder. The coordinates form an abstract grid; no basemap is needed.
+
+# What may change
+Do not modify the original files. Put all output in an output folder. Preserve missing values; do not guess replacements.
+
+# First step
+Only read the files and report columns, row counts, units, missing values, and whether district_id matches between the CSV and boundary file.
+
+# When to wait
+Stop after reporting. Wait for me to confirm the approach before proceeding.
+
+# Acceptance criteria
+Input and output must both have 6 rows. Convert weekly rent × 52 ÷ 12 to monthly rent, rounded to two decimals. Add rent_monthly_gbp and retain original columns. Mark missing data on the map. List every transformation when finished.</pre></div>
+      </details>
+      <p>It should find six districts, a mix of weekly and monthly rents, and missing rent for D4. Confirm it will use monthly rents, retain missing values and preserve originals, then reply “Please proceed”. If its report differs, ask it to recheck the data first.</p>
+
+      <h4>Open the results</h4>
+      <p>When finished, ask how to open the charts in the <code>output</code> folder. Check that rents are comparable and missing data is clearly marked. Expand the reference results below when you need to check the numbers.</p>
+      <details class="task-disclosure"><summary>Show reference results</summary>
+      <div class="table-scroll"><table class="reading-table acceptance-table"><caption>Expected results for this example</caption><thead><tr><th>Check</th><th>Expected result</th></tr></thead><tbody>
+      <tr><td>Input / output rows</td><td>6 / 6; no silently deleted rows</td></tr>
+      <tr><td>D2: £280 per week</td><td>280 × 52 ÷ 12 ≈ £1,213.33 per month</td></tr>
+      <tr><td>D5: £210 per week</td><td>210 × 52 ÷ 12 = £910.00 per month</td></tr>
+      <tr><td>D4: missing</td><td>Both rent fields remain missing; map shows “No data”</td></tr>
+      <tr><td>Original columns</td><td>All retained; rent_monthly_gbp added</td></tr>
+      <tr><td>Map colour order</td><td>D6 &gt; D2 &gt; D1 &gt; D3 &gt; D5; D4 has no data</td></tr>
+      <tr><td>Original files</td><td>Unchanged; results in the output folder</td></tr>
+      </tbody></table></div>
+      </details>
+      </div>
+      <h3 class="compact-heading">Data interpretation and limits</h3>
+      <p>These two exercises use the same rents and abstract grid. Predict the effect of a processing choice, inspect the chart, then explain how you would check AI’s output.</p>
+      <div class="learning-examples">
+        <details class="learning-lesson" id="lesson-units">
+          <summary>Units and comparisons<span class="lesson-topic">Use the same basis for comparison</span></summary>
+          <div class="lesson-content">
+            <p class="lesson-question"><strong>Think first:</strong> Old Town D2 is £280 per week; Riverside D1 is £1,200 per month. Which is cheaper?</p>
+            <div class="plot-lab" id="unitsPlotLab">
+              <div class="plot-lab-head"><strong>Try it</strong><span>The same two records; only the unit conversion changes.</span></div>
+              <div class="plot-lab-controls" role="group" aria-label="Rent comparison method">
+                <button type="button" class="plot-mode" data-unit-mode="raw" aria-pressed="true">Compare 280 with 1,200 directly (wrong)</button>
+                <button type="button" class="plot-mode" data-unit-mode="monthly" aria-pressed="false">Convert to monthly rent</button>
+              </div>
+              <div class="plot-lab-chart" id="unitsPlot" aria-live="polite"><p class="plot-loading">Loading interactive chart…</p></div>
+              <p class="plot-lab-takeaway" id="unitsPlotTakeaway"><strong>Not directly comparable.</strong> 280 is weekly; 1,200 is monthly. Different numbers do not mean D2 is cheaper.</p>
+            </div>
+            <details class="lesson-answer"><summary>Check the conversion</summary><p>Here, weekly rent × 52 ÷ 12 gives average monthly rent: £280 per week is about £1,213.33 per month. Check the original units, formula and retained columns, then calculate one record yourself.</p></details>
+          </div>
+        </details>
+        <details class="learning-lesson" id="lesson-missing">
+          <summary>Missing data on maps<span class="lesson-topic">Unknown is different from zero</span></summary>
+          <div class="lesson-content">
+            <p class="lesson-question"><strong>Think first:</strong> D4’s rent is blank. If AI fills it with 0 and colours the map by rent, what misleading impression could that create?</p>
+            <div class="lesson-grid">
+              <figure class="clip"><video src="media/learn-missing.mp4" poster="media/learn-missing.png" controls muted playsinline preload="none" aria-label="Missing-data map illustration with Chinese labels" aria-describedby="missing-caption">Read the English explanation below, or watch the illustration with Chinese labels:<a href="media/learn-missing.mp4">Open animation</a>。</video><figcaption id="missing-caption">Fictional data on the original GeoJSON’s abstract grid. All rents are monthly. The animation uses Chinese labels; an English explanation follows.</figcaption></figure>
+              <div class="lesson-reflection">
+                <p><strong>Explain in your own words:</strong> Can we say D4 is cheapest? How should the legend and ranking distinguish missing data from zero rent?</p>
+                <details class="lesson-answer"><summary>Explanation and suggested answer</summary>
+                  <ol class="lesson-transcript"><li>Each rent joins to a district using district_id. D4 has no rent value. A light-to-dark scale represents lower-to-higher rents, with values also labelled on the map.</li><li>The incorrect example replaces the blank with 0, making D4 appear to have the lowest rent.</li><li>Keep the missing value. Show D4 in grey with “No data”, explain it separately in the legend and exclude it from the rent ranking.</li></ol>
+                  <p><strong>In your own work:</strong> Ask AI to retain all six rows, avoid guessing values and distinguish missing from zero. Check district IDs, values, the legend and the missing-value count.</p>
+                </details>
+                <div class="plot-lab" id="missingPlotLab">
+                  <div class="plot-lab-head"><strong>Try it</strong><span>The same data; only the treatment of D4 changes.</span></div>
+                  <div class="plot-lab-controls" role="group" aria-label="Treatment of D4&#x27;s missing value">
+                    <button type="button" class="plot-mode" data-missing-mode="missing" aria-pressed="true">Keep “No data”</button>
+                    <button type="button" class="plot-mode" data-missing-mode="zero" aria-pressed="false">Replace blank with 0 (wrong)</button>
+                  </div>
+                  <div class="plot-lab-chart" id="missingPlot" aria-live="polite"><p class="plot-loading">Loading interactive chart…</p></div>
+                  <p class="plot-lab-takeaway" id="missingPlotTakeaway"><strong>No data ≠ 0。</strong>“No data” means unknown; 0 is a known value.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+      <h4 class="learning-synthesis">Put it together</h4>
+      <p>Answer first: “Is the cheapest district the best place for students?” Say what this data can tell you and two other things you need to know. Then ask AI whether you missed any important conditions.</p>
+      <details id="agentCheck"><summary>Answer first, then check</summary><p>This fictional data only compares listed rents after unit conversion. Suitability also depends on commuting, housing size and quality, and personal needs. Without income data, it cannot establish affordability. D4 is unknown, not zero or cheapest.</p><p>Next, try your own small task. Write the goal, materials, permitted changes and checks. Ask the Agent to report its understanding before deciding to proceed. Choose acceptance criteria that fit your purpose.</p></details>
+      <p class="section-note">Without an Agent subscription, watch a complete demonstration on a family member’s computer, then paste the six records into conversational AI to practise describing processing rules and checks.</p>
+    </section>
+
+    
+    <section class="section" id="diagrams">
+      <h2><span class="num">07</span>Choosing and making diagrams</h2>
+      <p class="section-note">Use this section when you need a diagram. Start with one type and ask:<strong>What relationship am I trying to show?</strong> Each of the six tabs names a relationship it can represent.</p>
+
+      <div class="diagram-viewer">
+        <div class="diagram-tabs" id="diagramTabs" role="tablist" aria-label="Diagram types"></div>
+        <div id="diagramPanel" role="tabpanel" tabindex="0" aria-labelledby="diagram-tab-flow">
+        <div class="diagram-stage"><img id="diagramImg" src="diagrams/en/flow.svg" alt="Flowchart example"></div>
+        <div class="diagram-meta"><p class="diagram-caption" id="diagramCaption"></p><button class="btn ghost" id="diagramZoomOpen" type="button" aria-haspopup="dialog">Enlarge diagram</button></div>
+        <div class="diagram-cols">
+          <div class="pbox"><div class="pbox-head"><span>Describe your needs in plain language</span><button class="copy-btn" type="button" data-copy-target="#diagramSay">Copy</button></div><pre id="diagramSay"></pre><p class="pbox-note" id="diagramTweak"></p></div>
+          <div class="pbox code"><div class="pbox-head"><span>Example code AI might give you</span><button class="copy-btn" type="button" data-copy-target="#diagramCode">Copy code</button></div><pre id="diagramCode"></pre></div>
+        </div>
+        <p class="source-note">Fictional examples, pre-rendered with Mermaid.</p>
+        </div>
+      </div>
+
+      <h3 class="compact-heading">Create a diagram</h3>
+      <div class="mermaid-steps">
+        <div class="mstep"><div class="step-heading"><span class="mstep-no">1</span><strong>Describe the content</strong></div><span>One step or component per sentence. Describe loops as “if …, return to …”.</span></div>
+        <div class="mstep"><div class="step-heading"><span class="mstep-no">2</span><strong>Ask AI for Mermaid code</strong></div><span>Paste the instructions above into conversational AI.</span></div>
+        <div class="mstep"><div class="step-heading"><span class="mstep-no">3</span><strong>Paste and render</strong></div><span>Use an online editor, then export PNG or SVG for your report.</span></div>
+      </div>
+      <div class="mermaid-actions">
+        <a class="btn primary" href="https://mermaid.live/edit" target="_blank" rel="noopener">Mermaid Live Editor</a>
+      </div>
+      <p class="mermaid-hint">Paste the code into the editor to preview it. Send requested changes or exact errors back to AI, then check the entire diagram.</p>
+
+<h3 class="compact-heading">Choose a diagram type</h3>
+      <p>Describe the purpose and audience. Ask AI to recommend a type and explain why. Confirm the relationships before requesting code.</p>
+      <div class="pbox"><div class="pbox-head"><span>Paste into conversational AI</span><button class="copy-btn" type="button" data-copy-target="#choosePrompt">Copy</button></div><pre id="choosePrompt">I want my report to explain [topic, e.g. how policy levels and local conditions affect housing affordability]. My readers are [audience, e.g. seminar classmates], and they should quickly understand [key message].
+Recommend the best diagram type and explain why. Also name one unsuitable type and explain why.
+After I confirm, provide only Mermaid code with English labels.</pre></div>
+      <p class="source-note">For numerical charts, check values, units and scales. For spatial data, use GIS or an Agent workflow.</p>
+    </section>
+
+    
+    <section class="section" id="rules">
+      <h2><span class="num">08</span>Rules for using AI</h2>
+      <p class="section-note">Read the current university policy and the assignment’s requirements. Check permitted uses, disclosure and upload permissions separately. Save the official links; no need to memorise the rules.</p>
+<div class="side-by-side">
+<div>
+      <ul class="checklist" id="rulesChecklist">
+        <li><label><input type="checkbox" data-rule="r1"><span>Find your university’s generative AI policy. Search “[university] generative AI policy students” and save the URL.</span></label></li>
+        <li><label><input type="checkbox" data-rule="r2"><span>Check each assignment’s AI instructions alongside the university policy.</span></label></li>
+        <li><label><input type="checkbox" data-rule="r3"><span>Ask your lecturer if anything is unclear. AI can help draft a specific question.</span></label></li>
+        <li><label><input type="checkbox" data-rule="r4"><span>Keep the records your course requires. Explain the assistance used and your own judgement and revisions.</span></label></li>
+        <li><label><input type="checkbox" data-rule="r5"><span>Check upload permissions. For participant data, personal information or unpublished work, check consent and university-approved tools first.</span></label></li>
+      </ul>
+      <p class="checklist-actions"><button class="btn ghost" id="rulesReset" type="button">Clear checks for a new assignment</button></p>
+      <p class="source-note">Checks are saved in this browser; check again for each assignment. Leeds has published a 2026/27 policy, so older guidance may no longer apply.<a href="https://secretariat.leeds.ac.uk/home/academic-regulations-and-taught-student-policies-and-procedures/academic-integrity-and-assistance-policy/" target="_blank" rel="noopener">Leeds policy example</a>(Checked 16 September 2026; follow your own university’s rules.)</p>
+</div>
+<div>
+      <h3 class="compact-heading">Disclosing AI use</h3>
+      <div class="quote-box"><blockquote class="quote" id="declarationTemplate">For this assignment, I used [tool] to assist with [actual purpose and scope]. I [checks performed, revisions made or output rejected]. [Attach prompts, conversation records or other details as required by the course.]</blockquote><button class="copy-btn" type="button" data-copy-target="#declarationTemplate">Copy</button></div>
+      <p><strong>Describe what you actually did:</strong> Follow university and assignment requirements. Do not claim checks you never made. Be able to explain your submission and judgement; disclosure does not replace checking permission first.</p>
+      <h3 class="compact-heading">Upload permissions</h3>
+      <ul class="plain-list">
+        <li>Interview transcripts, field notes and unpublished data: check research consent, ethics requirements and approved handling methods.</li>
+        <li>Other students’ work, lecture notes and recordings: obtain appropriate permission and confirm uploads to your chosen tool are allowed.</li>
+        <li>Personal information: do not use identity documents, addresses or transcripts as practice material. Provide only necessary, permitted content.</li>
+        <li>Do not upload prohibited material. A desktop Agent’s access to a folder does not mean the data stays only on your computer.</li>
+      </ul>
+</div>
+</div>
+    </section>
+
+
+    
+    <section class="section" id="cards">
+      <h2><span class="num">09</span>Prompt examples</h2>
+      <p class="section-note">Expand what you need, adapt it to your material and copy. Refreshing restores the examples.</p>
+      <div class="card-lib" id="cardLib"></div>
+    </section>
+
+    <footer class="site-footer">Graduate AI Handbook · September 2026</footer>
+  </main>
+
+
+  <dialog class="diagram-zoom" id="diagramZoom" aria-labelledby="diagramZoomTitle" aria-describedby="diagramZoomHint">
+    <div class="diagram-zoom-head"><h2 id="diagramZoomTitle">Diagram example</h2><span class="head-actions"><button class="btn ghost" id="diagramZoomScale" type="button" aria-pressed="false">Actual size</button><button class="btn ghost" id="diagramZoomClose" type="button" autofocus>Close</button></span></div>
+    <p id="diagramZoomHint">Start with the full diagram. Use “Actual size” to enlarge it, then scroll to explore.</p>
+    <div class="diagram-zoom-area" tabindex="0" role="region" aria-label="Enlarged diagram; scroll to explore"><img id="diagramZoomImg" alt=""></div>
+  </dialog>
+  <div class="toast" id="toast" role="status">Copied!</div>
+  <script src="./diagrams.en.js?v=202609172147"></script>
+  <script src="./app.en.js?v=202609172147"></script>
+  <script src="./language.js?v=202609172147"></script>
+</body>
+</html>

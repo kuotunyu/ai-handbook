@@ -9,13 +9,13 @@
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" />
   <title>研究所 AI 手冊</title>
-  <link rel="stylesheet" href="./styles.css?v=202609172011" />
+  <link rel="stylesheet" href="./styles.css?v=202609172147" />
 </head>
 <body>
 <!--
   DIRECTION CONTRACT (pinned by the user: their own 智慧台中論壇 2026 site is the visual world)
   THESIS: A research dossier, not a docs page, in a soft macaron palette on a deep teal opening (the user rejected the indigo opening the same night and chose teal over navy and matcha): cream paper, a deep teal bar and opening panel, coral numerals that make every list feel authored, white sheets with a soft shadow, dark panels for anything she pastes into an AI. It refuses the grey sidebar reading desk and the flat documentation look.
-  OWN-WORLD (map macaron, chosen 2026-09-17 over two Morandi sets): pastels borrowed from planning maps. #F6F2E9 map paper, white sheets, #1B4B52 bar, #215A62 to #1B4B52 hero, #1C2A2C ink, #1C3A40 inverse panels. Text inks: water #1B5E73 for buttons and chat tools, park #27694A for NotebookLM, brick #9E3F2E for the Agent and numerals, sand #7A6012, rose #8F3F61. Mid tones (#6FB3CB, #7CC08F, #E8957C, #E2C45C, #DE8FAE) and washes are for rules and card fills only, never text. No purple anywhere.
+  OWN-WORLD (map macaron, chosen 2026-09-17 over two Morandi sets): pastels borrowed from planning maps. #F6F2E9 map paper, white sheets, #1B4B52 bar, #215A62 to #1B4B52 hero, #1C2A2C ink, #1C3A40 inverse panels. Text inks: water #1B5E73 for buttons and chat tools, park #27694A for Gemini Notebook, brick #9E3F2E for the Agent and numerals, sand #7A6012, rose #8F3F61. Mid tones (#6FB3CB, #7CC08F, #E8957C, #E2C45C, #DE8FAE) and washes are for rules and card fills only, never text. No purple anywhere.
   STORY: She opens on a dark panel that names the three tools and the three things to remember, reads numbered sheets exactly like the report she already trusts, and copies prompts out of dark boxes.
   FIRST VIEWPORT: Dark bar with nine numbered chapters; dark hero, left an English kicker, the title and the one-line rule, right a bordered panel with three tool cards under coloured top rules and a three-cell row; below, on paper, chapter 01 under a 2px rule with four white concept cards.
   FORM: The user's reference system executed at its own craft level; desktop first, phone rules kept working but not yet designed.
@@ -26,6 +26,10 @@
   <header class="topbar">
     <div class="topbar-inner">
       <a class="logo" href="#hero" aria-label="回到最上面"><b>2026</b>AI 手冊</a>
+      <div class="language-switch" aria-label="Language">
+        <a href="./index.html" data-language="zh-Hant" lang="zh-Hant" hreflang="zh-Hant" aria-current="page">中文版</a>
+        <a href="./en.html" data-language="en" lang="en" hreflang="en">English</a>
+      </div>
       <span class="nav-now" id="navNow" aria-live="polite"></span>
       <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="topnav">目錄</button>
       <nav class="topnav" id="topnav" aria-label="章節">
@@ -50,14 +54,14 @@
         <div class="hero-title">
           <p class="hero-en">Graduate AI Handbook</p>
           <h1>研究所 AI 手冊</h1>
-          <p class="lead"><strong>聊和查用對話型 AI、讀用 NotebookLM、動手用 Agent。</strong>遇到事情查使用情境，陌生名詞再回來看。</p>
+          <p class="lead"><strong>聊和查用對話型 AI、讀用 Gemini Notebook、動手用 Agent。</strong>遇到事情查使用情境，陌生名詞再回來看。</p>
           <div class="hero-actions"><a class="btn primary" href="#keywords">開始閱讀</a><a class="btn ghost" href="#cards">查找提示詞</a></div>
         </div>
         <div class="hero-panel">
           <div class="hero-panel-head"><b>依任務選擇工具</b><span>2026 年 9 月版</span></div>
           <div class="hero-grid">
             <div class="hero-card gemini"><span class="hero-card-role">聊和查</span><strong>對話型 AI</strong><p class="hero-tool-options">Gemini／ChatGPT／Claude</p><p>用你習慣的一個，理解概念、寫作、討論與查找資料。</p></div>
-            <div class="hero-card nlm"><span class="hero-card-role">讀</span><strong>NotebookLM</strong><p>圍繞講義與文獻提問，沿著引用回原文核對</p></div>
+            <div class="hero-card nlm"><span class="hero-card-role">讀</span><strong>Gemini Notebook</strong><p class="tool-former-name">原名 NotebookLM</p><p>圍繞講義與文獻提問，沿著引用回原文核對</p></div>
             <div class="hero-card agent"><span class="hero-card-role">動手</span><strong>Agent</strong><p>Codex 或 Claude Code，在你的資料夾裡把任務做完</p></div>
           </div>
           <div class="hero-rule"><span class="hero-rule-label">先記住</span><span>給材料</span><span>說目標</span><span>檢查結果</span></div>
@@ -136,7 +140,7 @@
         <details class="situation-entry">
           <summary><span class="situation-name">理解與查找資料</span><span class="situation-examples">讀不懂一段內容、比較文獻、找政策資料</span></summary>
           <div class="situation-content">
-            <p>先把卡住的內容貼給對話型 AI；要反覆閱讀同一批文獻、講義或錄音，再用 NotebookLM。查找資料時，請它附上原始來源。</p>
+            <p>先把卡住的內容貼給對話型 AI；要反覆閱讀同一批文獻、講義或錄音，再用 Gemini Notebook。查找資料時，請它附上原始來源。</p>
             <p class="situation-links"><a href="#reading">查看閱讀與查證方法</a></p>
           </div>
         </details>
@@ -168,8 +172,8 @@
         <p>不用背答案。先在心裡選一個，再打開看判斷依據。</p>
         <div class="situation-list">
           <details class="situation-entry">
-            <summary><span class="situation-name">教授給你 15 篇指定 paper，要比較作者觀點。第一個用什麼？</span><span class="situation-examples">對話型 AI / NotebookLM / Agent</span></summary>
-            <div class="situation-content"><p><strong>判斷依據：NotebookLM。</strong>核心工作是圍繞一批指定來源閱讀、比較與回查，不是讓 Agent 操作檔案。最後仍要打開原文確認引用真的支持你的說法。</p></div>
+            <summary><span class="situation-name">教授給你 15 篇指定 paper，要比較作者觀點。第一個用什麼？</span><span class="situation-examples">對話型 AI / Gemini Notebook / Agent</span></summary>
+            <div class="situation-content"><p><strong>判斷依據：Gemini Notebook。</strong>核心工作是圍繞一批指定來源閱讀、比較與回查，不是讓 Agent 操作檔案。最後仍要打開原文確認引用真的支持你的說法。</p></div>
           </details>
           <details class="situation-entry">
             <summary><span class="situation-name">把履歷、背景和作業要求貼給 Gemini，這是在「訓練 AI」嗎？</span><span class="situation-examples">Training / Context</span></summary>
@@ -180,7 +184,7 @@
             <div class="situation-content"><p><strong>判斷依據：回原始來源核對。</strong>有 citation 不等於 citation 支持整句話；先確認作者、年份、數字、研究對象與原文語意，再決定能不能使用。</p></div>
           </details>
           <details class="situation-entry">
-            <summary><span class="situation-name">你有 CSV 和 GeoJSON，要整理資料、做圖並輸出新檔。用哪種工作模式？</span><span class="situation-examples">聊天 / NotebookLM / Agent</span></summary>
+            <summary><span class="situation-name">你有 CSV 和 GeoJSON，要整理資料、做圖並輸出新檔。用哪種工作模式？</span><span class="situation-examples">聊天 / Gemini Notebook / Agent</span></summary>
             <div class="situation-content"><p><strong>判斷依據：Agent。</strong>這已經不是只要答案，而是要 AI 實際處理檔案。先保留 raw data、限定工作範圍，讓它說明方法，再核對輸出。</p></div>
           </details>
         </div>
@@ -244,8 +248,9 @@
     <!-- 05 閱讀 -->
     <section class="section" id="reading">
       <h2><span class="num">05</span>文獻閱讀與查證</h2>
-      <p class="section-note">讀用 NotebookLM。先用一篇短文走完四步，再自己說明哪些結論有依據。短到一頁的東西，直接貼給對話型 AI 也行。</p>
-      <div class="reading-source"><div class="step-heading"><h3>練習短文</h3><span>虛構教學材料，不是真實研究</span><button class="copy-btn" id="readingCopy" type="button">複製短文</button><a class="btn primary" href="https://notebooklm.google.com/" target="_blank" rel="noopener">開啟 NotebookLM</a></div>
+      <p class="section-note">使用 Gemini Notebook (原 NotebookLM)，圍繞講義與文獻提問。先用一篇短文走完四步，再自己說明哪些結論有依據。短到一頁的東西，直接貼給對話型 AI 也行。</p>
+      <p class="tool-name-note">本文的 Gemini 指一般對話；Gemini Notebook 指圍繞指定來源工作的筆記本工具。</p>
+      <div class="reading-source"><div class="step-heading"><h3>練習短文</h3><span>虛構教學材料，不是真實研究</span><button class="copy-btn" id="readingCopy" type="button">複製短文</button><a class="btn primary" href="https://notebook.google/" target="_blank" rel="noopener">開啟 Gemini Notebook</a></div>
       <div id="readingSource"><p>[1] A library extended its evening opening hours for four weeks. During the trial, evening visits rose from 120 to 180 per week.</p>
       <p>[2] In a voluntary survey of 40 visitors, 30 said the later closing time helped them study. The survey did not include people who did not visit the library.</p>
       <p>[3] Staff recommend continuing the extended hours. However, the trial took place during exam season, and no comparison library was studied. The results do not establish whether longer opening hours improved students’ grades.</p></div></div>
@@ -332,9 +337,9 @@
         <li><strong>抽查引用</strong><span>優先核對你要採用的主張、關鍵數字與意外結論。看原文是否支持整句話，以及有沒有被省略的條件。</span></li>
       </ol>
 
-      <details id="citation-format"><summary>參考文獻與引用格式</summary><p>書目資料回原論文或出版頁取得，再請 AI 協助檢查課程要求的引用格式；不要讓它猜缺少的作者、年份或篇名。NotebookLM 的引用方便回查，正式參考文獻仍需完整書目資料。</p></details>
+      <details id="citation-format"><summary>參考文獻與引用格式</summary><p>書目資料回原論文或出版頁取得，再請 AI 協助檢查課程要求的引用格式；不要讓它猜缺少的作者、年份或篇名。Gemini Notebook 的引用方便回查，正式參考文獻仍需完整書目資料。</p></details>
 
-      <details class="reference-disclosure" id="notebooklm-output"><summary>NotebookLM 其他輸出形式(需要時再看)</summary><p>語音導覽、心智圖、資訊圖表、簡報與報告可以當作複習或表達的輔助。功能與介面會變；使用時只選真正有幫助的一種，生成後仍回來源核對重要內容。</p><p>自訂語音導覽、資訊圖表或簡報時要填什麼，第 09 章「提示詞範例」有可以直接改的範例。</p></details>
+      <details class="reference-disclosure" id="notebooklm-output"><summary>Gemini Notebook 其他輸出形式(需要時再看)</summary><p>語音導覽、心智圖、資訊圖表、簡報與報告可以當作複習或表達的輔助。功能與介面會變；使用時只選真正有幫助的一種，生成後仍回來源核對重要內容。</p><p>自訂語音導覽、資訊圖表或簡報時要填什麼，第 09 章「提示詞範例」有可以直接改的範例。</p></details>
     </section>
 
     <!-- 06 Agent -->
@@ -370,6 +375,7 @@
       </div>
 
       <div class="agent-tool-guide">
+        <p class="phone-note">手機上可以先看流程、修改與複製任務說明；下方需要讀寫資料夾的練習，請回到 Mac 使用 Codex 或 Claude Code 完成。</p>
         <h3 class="compact-heading">用哪個 Agent 都先做這三件事</h3>
         <ol class="step-list">
           <li><strong>開工作範圍</strong><span>用練習資料夾開始，真實任務先在工作範圍外保留原檔備份。</span></li>
@@ -563,7 +569,8 @@
     <div class="diagram-zoom-area" tabindex="0" role="region" aria-label="放大圖表，可捲動"><img id="diagramZoomImg" alt="" /></div>
   </dialog>
   <div class="toast" id="toast" role="status">已複製！</div>
-  <script src="./diagrams.js?v=202609172011"></script>
-  <script src="./app.js?v=202609172011"></script>
+  <script src="./diagrams.js?v=202609172147"></script>
+  <script src="./app.js?v=202609172147"></script>
+  <script src="./language.js?v=202609172147"></script>
 </body>
 </html>

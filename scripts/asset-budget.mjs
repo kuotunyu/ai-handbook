@@ -12,7 +12,11 @@ const exactBudgets = new Map([
   ['index.html', 100 * KiB],
   ['app.js', 70 * KiB],
   ['styles.css', 120 * KiB],
-  ['diagrams.js', 15 * KiB]
+  ['diagrams.js', 15 * KiB],
+  ['en.html', 100 * KiB],
+  ['app.en.js', 70 * KiB],
+  ['diagrams.en.js', 15 * KiB],
+  ['language.js', 8 * KiB]
 ]);
 
 const extensionBudgets = new Map([

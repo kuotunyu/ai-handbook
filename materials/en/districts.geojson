@@ -1,0 +1,9 @@
+{"type":"FeatureCollection","name":"fictional-districts","note":"Fictional teaching boundaries on an abstract grid, not real coordinates. No basemap needed.",
+"features":[
+{"type":"Feature","properties":{"district_id":"D1","district_name":"Riverside"},"geometry":{"type":"Polygon","coordinates":[[[0,0],[1,0],[1,1],[0,1],[0,0]]]}},
+{"type":"Feature","properties":{"district_id":"D2","district_name":"Old Town"},"geometry":{"type":"Polygon","coordinates":[[[1,0],[2,0],[2,1],[1,1],[1,0]]]}},
+{"type":"Feature","properties":{"district_id":"D3","district_name":"University"},"geometry":{"type":"Polygon","coordinates":[[[2,0],[3,0],[3,1],[2,1],[2,0]]]}},
+{"type":"Feature","properties":{"district_id":"D4","district_name":"Industrial"},"geometry":{"type":"Polygon","coordinates":[[[0,1],[1,1],[1,2],[0,2],[0,1]]]}},
+{"type":"Feature","properties":{"district_id":"D5","district_name":"New Town"},"geometry":{"type":"Polygon","coordinates":[[[1,1],[2,1],[2,2],[1,2],[1,1]]]}},
+{"type":"Feature","properties":{"district_id":"D6","district_name":"Station"},"geometry":{"type":"Polygon","coordinates":[[[2,1],[3,1],[3,2],[2,2],[2,1]]]}}
+]}

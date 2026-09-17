@@ -1,0 +1,7 @@
+district_id,district_name,rent_gbp,rent_unit,population,note
+D1,Riverside,1200,month,42000,
+D2,Old Town,280,week,38500,
+D3,University,950,month,51000,
+D4,Industrial,,month,27000,Too few listings
+D5,New Town,210,week,33000,
+D6,Station,1450,month,45500,
