@@ -1,5 +1,6 @@
 name: Apply PDF evidence lab
 
+# One-time branch helper; remove after the generated assets land.
 on:
   push:
     branches: [chatgpt/pdf-citation-evidence]
