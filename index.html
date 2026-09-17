@@ -480,6 +480,15 @@ Public participation can inform planning decisions, but participants may not rep
                   <ol class="lesson-transcript"><li>兩筆資料的單位不同：D2 是每週，D1 是每月。</li><li>本練習用每週租金 × 52 ÷ 12 換算平均月租：280 × 52 ÷ 12 ≈ 1213.33。這是將全年租金平均分到 12 個月，不是每月固定四週。</li><li>統一後，D2 約 £1,213.33／月，略高於 D1 的 £1,200／月，差額約 £13.33。長條圖保留共同的零基準，不放大這個小差異。</li></ol>
                   <p><strong>實際使用：</strong>請 AI 先回報 rent_unit 的不同單位與轉換公式，保留原始欄位，新增月租欄位，完成後自己抽算一筆。</p>
                 </details>
+                <div class="plot-lab" id="unitsPlotLab">
+                  <div class="plot-lab-head"><strong>互動試試</strong><span>同兩筆資料，只改「有沒有先統一單位」。</span></div>
+                  <div class="plot-lab-controls" role="group" aria-label="租金比較方式">
+                    <button type="button" class="plot-mode" data-unit-mode="raw" aria-pressed="true">直接比 280 和 1,200（錯誤）</button>
+                    <button type="button" class="plot-mode" data-unit-mode="monthly" aria-pressed="false">先換成月租</button>
+                  </div>
+                  <div class="plot-lab-chart" id="unitsPlot" aria-live="polite"><p class="plot-loading">載入互動圖…</p></div>
+                  <p class="plot-lab-takeaway" id="unitsPlotTakeaway"><strong>不能直接比。</strong>280 是每週，1,200 是每月；數字看起來差很多，不代表 D2 比較便宜。</p>
+                </div>
               </div>
             </div>
           </div>

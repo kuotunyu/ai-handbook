@@ -88,6 +88,17 @@ test('inline explanations stay optional and expand in place', async ({ page }) =
   await expect(explainers.first().locator('p')).toContainText('Context');
 });
 
+test('unit Plot lab shows why weekly and monthly values must be normalized', async ({ page }) => {
+  const lesson = page.locator('#lesson-units');
+  await lesson.locator(':scope > summary').click();
+  await expect(page.locator('#unitsPlotLab')).toBeVisible();
+  await expect(page.locator('#unitsPlot svg')).toBeVisible({ timeout: 5000 });
+  await expect(page.locator('#unitsPlotTakeaway')).toContainText('不能直接比');
+  await page.locator('[data-unit-mode="monthly"]').click();
+  await expect(page.locator('#unitsPlotTakeaway')).toContainText('1,213.33');
+  await expect(page.locator('[data-unit-mode="monthly"]')).toHaveAttribute('aria-pressed', 'true');
+});
+
 test('missing-value Plot lab lazy-loads and changes the interpretation', async ({ page }) => {
   const lesson = page.locator('#lesson-missing');
   await lesson.locator(':scope > summary').click();

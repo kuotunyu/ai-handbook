@@ -259,6 +259,117 @@ function setupToolSwitch() {
 }
 
 /* ====================================================================
+   06 延伸：Observable Plot 小實驗。只在使用者展開相應練習時載入本地 vendor。
+==================================================================== */
+let observablePlotLoading = null;
+
+function loadVendorScript(src, marker) {
+  return new Promise((resolve, reject) => {
+    const existing = document.querySelector('script[' + marker + ']');
+    if (existing) {
+      if (existing.dataset.loaded === "true") resolve();
+      else {
+        existing.addEventListener("load", () => resolve(), { once: true });
+        existing.addEventListener("error", () => reject(new Error(src + " failed to load")), { once: true });
+      }
+      return;
+    }
+    const script = document.createElement("script");
+    script.src = src;
+    script.setAttribute(marker, "true");
+    script.onload = () => { script.dataset.loaded = "true"; resolve(); };
+    script.onerror = () => reject(new Error(src + " failed to load"));
+    document.head.append(script);
+  });
+}
+
+function loadObservablePlot() {
+  if (window.Plot && window.d3) return Promise.resolve(window.Plot);
+  if (observablePlotLoading) return observablePlotLoading;
+  observablePlotLoading = (async () => {
+    if (!window.d3) await loadVendorScript("./vendor/d3.min.js", "data-d3-vendor");
+    if (!window.Plot) await loadVendorScript("./vendor/observable-plot.umd.min.js", "data-observable-plot");
+    if (!window.Plot) throw new Error("Plot global missing");
+    return window.Plot;
+  })();
+  return observablePlotLoading;
+}
+
+function setupUnitConversionPlot() {
+  const lesson = $("#lesson-units");
+  const chart = $("#unitsPlot");
+  const takeaway = $("#unitsPlotTakeaway");
+  const buttons = Array.from(document.querySelectorAll("#unitsPlotLab [data-unit-mode]"));
+  if (!lesson || !chart || !takeaway || !buttons.length) return;
+
+  const data = [
+    { id: "D1", name: "D1 河岸區", raw: 1200, unit: "月", monthly: 1200 },
+    { id: "D2", name: "D2 舊城區", raw: 280, unit: "週", monthly: 1213.33 }
+  ];
+  let mode = "raw";
+  let plotApi = null;
+
+  function money(value) {
+    return value.toLocaleString("en-GB", { minimumFractionDigits: Number.isInteger(value) ? 0 : 2, maximumFractionDigits: 2 });
+  }
+
+  function render() {
+    if (!plotApi) return;
+    const styles = getComputedStyle(document.documentElement);
+    const brand = styles.getPropertyValue("--brand").trim() || "#2C7A8C";
+    const warning = styles.getPropertyValue("--terracotta").trim() || "#D0656E";
+    const rows = data.map(d => ({
+      ...d,
+      value: mode === "monthly" ? d.monthly : d.raw,
+      label: mode === "monthly" ? "£" + money(d.monthly) + "／月" : "£" + money(d.raw) + "／" + d.unit
+    }));
+
+    if (mode === "raw") {
+      takeaway.innerHTML = "<strong>不能直接比。</strong>280 是每週，1,200 是每月；長條差很多只是單位不同造成的假象。";
+    } else {
+      takeaway.innerHTML = "<strong>同一單位後再比。</strong>D2 約 £1,213.33／月，比 D1 的 £1,200／月高約 £13.33。";
+    }
+
+    const plot = plotApi.plot({
+      width: Math.max(320, Math.min(720, chart.clientWidth || 640)),
+      height: 230,
+      marginLeft: 108,
+      marginRight: 22,
+      x: { domain: [0, 1300], grid: true, label: mode === "raw" ? "原始數字（單位不同，不能直接比較）" : "月租（GBP）" },
+      y: { domain: data.map(d => d.name), label: null },
+      style: { fontFamily: "inherit", fontSize: "13px" },
+      marks: [
+        plotApi.ruleX([0]),
+        plotApi.barX(rows, { x: "value", y: "name", fill: d => mode === "raw" && d.id === "D2" ? warning : brand, title: d => d.name + ": " + d.label }),
+        plotApi.text(rows, { x: "value", y: "name", text: "label", textAnchor: "end", dx: -8, fill: "white", fontWeight: 700 })
+      ]
+    });
+    plot.setAttribute("role", "img");
+    plot.setAttribute("aria-label", mode === "raw" ? "錯誤示範。D1 的每月 1200 與 D2 的每週 280 被直接放在同一尺度，因此無法判斷哪個較便宜。" : "統一單位後的租金比較。D1 是每月 1200，D2 約每月 1213.33。" );
+    chart.replaceChildren(plot);
+  }
+
+  async function ensurePlot() {
+    if (plotApi) { render(); return; }
+    chart.innerHTML = '<p class="plot-loading">載入互動圖…</p>';
+    try {
+      plotApi = await loadObservablePlot();
+      render();
+    } catch (error) {
+      chart.innerHTML = '<p class="plot-loading"><strong>互動圖未載入。</strong>文字重點不受影響：不同時間單位不能直接比較，先換成同一基準。</p>';
+    }
+  }
+
+  lesson.addEventListener("toggle", () => { if (lesson.open) ensurePlot(); });
+  buttons.forEach(btn => btn.addEventListener("click", () => {
+    mode = btn.dataset.unitMode;
+    buttons.forEach(other => other.setAttribute("aria-pressed", String(other === btn)));
+    ensurePlot();
+  }));
+  if (lesson.open) ensurePlot();
+}
+
+/* ====================================================================
    06 延伸：缺值互動圖。Observable Plot 僅在使用者展開本題時從本地 vendor 載入。
 ==================================================================== */
 function setupMissingValuePlot() {
@@ -278,39 +389,6 @@ function setupMissingValuePlot() {
   ];
   let mode = "missing";
   let plotApi = null;
-  let loading = null;
-
-  function loadScript(src, marker) {
-    return new Promise((resolve, reject) => {
-      const existing = document.querySelector('script[' + marker + ']');
-      if (existing) {
-        if (existing.dataset.loaded === "true") resolve();
-        else {
-          existing.addEventListener("load", () => resolve(), { once: true });
-          existing.addEventListener("error", () => reject(new Error(src + " failed to load")), { once: true });
-        }
-        return;
-      }
-      const script = document.createElement("script");
-      script.src = src;
-      script.setAttribute(marker, "true");
-      script.onload = () => { script.dataset.loaded = "true"; resolve(); };
-      script.onerror = () => reject(new Error(src + " failed to load"));
-      document.head.append(script);
-    });
-  }
-
-  function loadPlot() {
-    if (window.Plot && window.d3) return Promise.resolve(window.Plot);
-    if (loading) return loading;
-    loading = (async () => {
-      if (!window.d3) await loadScript("./vendor/d3.min.js", "data-d3-vendor");
-      if (!window.Plot) await loadScript("./vendor/observable-plot.umd.min.js", "data-observable-plot");
-      if (!window.Plot) throw new Error("Plot global missing");
-      return window.Plot;
-    })();
-    return loading;
-  }
 
   function render() {
     if (!plotApi) return;
@@ -353,7 +431,7 @@ function setupMissingValuePlot() {
     if (plotApi) { render(); return; }
     chart.innerHTML = '<p class="plot-loading">載入互動圖…</p>';
     try {
-      plotApi = await loadPlot();
+      plotApi = await loadObservablePlot();
       render();
     } catch (error) {
       chart.innerHTML = '<p class="plot-loading"><strong>互動圖未載入。</strong>文字重點不受影響：D4 的空白代表未知，不應改成 £0。</p>';
@@ -660,6 +738,7 @@ setupCopyTargets();
 renderBuilder();
 renderAgent();
 setupToolSwitch();
+setupUnitConversionPlot();
 setupMissingValuePlot();
 renderDiagrams();
 setupChecklist();
