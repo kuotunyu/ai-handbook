@@ -397,7 +397,7 @@ function setupUnitConversionPlot() {
       height: 230,
       marginLeft: 108,
       marginRight: 22,
-      x: { domain: [0, 1300], grid: true, label: mode === "raw" ? "原始數字（單位不同，不能直接比較）" : "月租（GBP）" },
+      x: { domain: [0, 1300], grid: true, label: mode === "raw" ? "原始數字(單位不同，不能直接比較)" : "月租(GBP)" },
       y: { domain: data.map(d => d.name), label: null },
       style: { fontFamily: "inherit", fontSize: "13px" },
       marks: [
@@ -470,7 +470,7 @@ function setupMissingValuePlot() {
       takeaway.innerHTML = "<strong>No data ≠ 0。</strong>D4 沒有觀測值，所以不能把它排成最便宜的區域。";
     } else {
       marks.push(plotApi.dot([{ name: d4.name, value: 0 }], { x: "value", y: "name", r: 5, fill: warning }));
-      marks.push(plotApi.text([{ name: d4.name, value: 0, label: "£0（錯誤補值）" }], { x: "value", y: "name", text: "label", textAnchor: "start", dx: 9, fill: warning, fontWeight: 700 }));
+      marks.push(plotApi.text([{ name: d4.name, value: 0, label: "£0(錯誤補值)" }], { x: "value", y: "name", text: "label", textAnchor: "start", dx: 9, fill: warning, fontWeight: 700 }));
       takeaway.innerHTML = "<strong>錯誤示範：</strong>把空白改成 0，會讓 D4 看起來像有一筆 £0 的租金資料，進而被誤認為最便宜。";
     }
 
@@ -479,7 +479,7 @@ function setupMissingValuePlot() {
       height: 290,
       marginLeft: 104,
       marginRight: 22,
-      x: { domain: [0, 1550], grid: true, label: "月租（GBP）" },
+      x: { domain: [0, 1550], grid: true, label: "月租(GBP)" },
       y: { domain: data.map(d => d.name), label: null },
       style: { fontFamily: "inherit", fontSize: "13px" },
       marks

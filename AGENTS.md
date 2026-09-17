@@ -43,6 +43,8 @@ Assume the learner:
 
 Write in natural Traditional Chinese. Keep necessary English terms next to the Chinese term when that helps future searching.
 
+Use half-width brackets `[]` and parentheses `()` everywhere on the site, including inside Chinese sentences, button labels, chart labels, diagram code and text rendered into media. Never use full-width `［］` or `（）`. `npm run check:static` fails if they appear in `index.html`, `app.js` or `diagrams.js`.
+
 ## Learning design rules
 
 - One screen/interaction should teach one main idea.

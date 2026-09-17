@@ -36,9 +36,16 @@ for (const id of requiredSections) {
   if (!ids.has(id)) missing.push(`Missing required section: #${id}`);
 }
 
+// The site owner wants half-width brackets and parentheses everywhere, including inside Chinese text.
+for (const file of ['index.html', 'app.js', 'diagrams.js']) {
+  const text = fs.readFileSync(path.join(root, file), 'utf8');
+  const found = text.match(/[（）［］]/g);
+  if (found) missing.push(`Full-width brackets or parentheses in ${file}: ${found.length}; use [] and () instead`);
+}
+
 if (missing.length) {
   console.error('Static checks failed:\n' + missing.map(item => `- ${item}`).join('\n'));
   process.exit(1);
 }
 
-console.log(`Static checks passed: ${ids.size} ids inspected, local references exist, core sections present.`);
+console.log(`Static checks passed: ${ids.size} ids inspected, local references exist, core sections present, half-width brackets only.`);
