@@ -9,7 +9,7 @@
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" />
   <title>研究所 AI 手冊</title>
-  <link rel="stylesheet" href="./styles.css?v=202609170500" />
+  <link rel="stylesheet" href="./styles.css?v=202609171330" />
 </head>
 <body>
 <!--
@@ -68,7 +68,7 @@
     <!-- 01 關鍵字 -->
     <section class="section" id="keywords">
       <h2><span class="num">01</span>關鍵字</h2>
-      <p class="section-note">以下依本課程的學習目標分為兩類：核心概念需要理解與應用；延伸詞彙先認識名稱與大意。九個詞都會介紹，不要求背誦定義。先看核心四個，再到使用情境選一件事試。</p>
+      <p class="section-note">九個詞，不用背定義。先看核心四個，再到使用情境選一件事試。</p>
       <div class="keyword-group keyword-core"><div class="keyword-group-heading"><h3>核心概念</h3><p>需要理解，並在後續練習中實際運用。</p></div><div class="keyword-list"><article class="keyword-entry" id="keyword-prompt">
             <h4>Prompt<span class="keyword-alias">提示詞</span></h4>
             <p class="keyword-definition">你給 AI 的問題、任務說明與要求。</p>
@@ -164,9 +164,9 @@
     <!-- 03 工具與觀念 -->
     <section class="section" id="concepts">
       <h2><span class="num">03</span>工具與功能</h2>
-      <p class="section-note">本文的「對話型 AI」指 Gemini、ChatGPT 或 Claude。一般提問與練習可用你習慣的一個，不必全部訂閱；換工具時沿用說明任務與核對結果的方法。特定功能的名稱與可用範圍，以所用工具及方案為準。</p>
+      <p class="section-note">本文的「對話型 AI」指 Gemini、ChatGPT 或 Claude。一般提問與練習可用你習慣的一個，不必全部訂閱；換工具時沿用說明任務與核對結果的方法。</p>
       <div class="table-scroll"><table class="reading-table tool-table"><thead><tr><th>你的任務</th><th>用什麼</th><th>為什麼</th></tr></thead><tbody>
-      <tr><td>想搞懂一個概念、改寫自己的句子、練習發言、規劃作業</td><td class="t-gemini"><div class="chat-tool-links"><span class="tool-name">Gemini</span><span class="tool-name">ChatGPT</span><span class="tool-name">Claude</span></div></td><td>提供材料與目標，請它解釋、修改或一起討論。需要最新資訊時，確認這次有使用搜尋，並回原始來源核對。</td></tr>
+      <tr><td>想搞懂一個概念、改寫自己的句子、練習發言、規劃作業</td><td class="t-gemini"><div class="chat-tool-links"><span class="tool-name">Gemini</span><span class="tool-name">ChatGPT</span><span class="tool-name">Claude</span></div></td><td>提供材料與目標，請它解釋、修改或一起討論。</td></tr>
       <tr><td>讀講義、讀指定文獻、把幾篇放在一起比較</td><td class="t-nlm"><span class="tool-name">NotebookLM</span></td><td>依你選取的來源整理回答，提供引用方便回查；引用仍可能不支持它的結論。</td></tr>
       <tr><td>整理表格、畫圖或地圖、批次處理檔案</td><td class="t-agent">Agent（Codex 或 Claude Code）</td><td>它會在你指定的資料夾裡動手做事，所以要先講範圍，做完再驗收。</td></tr>
       <tr><td>找最新消息、官方數字、政策原文</td><td class="t-search">Gemini、ChatGPT、Claude 的網路搜尋；也可直接搜尋或到官方網站。</td><td>請它上網查找並附原始來源；確認這次有使用搜尋，再開啟重要來源核對日期、數字與適用地區。</td></tr>
@@ -186,7 +186,7 @@
       <tr><td><b>搜尋</b>：透過搜尋工具取回網頁，再整理成回答</td><td>今年的官方公告、政策原文、最新數字</td><td>打開來源核對年份與適用地區；沒提供來源就請它補充，不把回答當已查證</td></tr>
       <tr><td><b>計算</b>：需要精確數值時，請它用計算器、試算表或程式運算</td><td>加總預算、算距離截止日還有幾天</td><td>核對輸入、公式與單位，再自己抽算一筆；程式跑完也可能算錯</td></tr>
       </tbody></table></div>
-      <p><strong>可以這樣問：</strong>「請上網找這個活動今年的官方公告，附連結；找不到今年的資料就說找不到，不要拿去年的當今年的。」附了連結也要打開看，連結不代表逐句支持回答。</p>
+      <p><strong>可以這樣問：</strong>「請上網找這個活動今年的官方公告，附連結；找不到今年的資料就說找不到，不要拿去年的當今年的。」</p>
 
     </section>
 
@@ -225,13 +225,13 @@
 ```
 Public participation can inform planning decisions, but participants may not represent all residents.
 ```</pre></div>
-      <p class="section-note">開頭與結尾各放一行 <code>```</code>，使用英文半形反引號（backtick），不是單引號 <code>'</code> 或 <code>‵</code>。這是 Markdown 的程式碼區塊，也可放一般文字；用途是標示範圍，不保證 AI 一定理解正確。</p>
+      <p class="section-note">開頭與結尾各放一行 <code>```</code>，使用英文半形反引號（backtick），不是單引號 <code>'</code> 或 <code>‵</code>。</p>
     </section>
 
     <!-- 05 閱讀 -->
     <section class="section" id="reading">
       <h2><span class="num">05</span>文獻閱讀與查證</h2>
-      <p class="section-note">讀用 NotebookLM：它依你選取的來源整理回答，提供引用方便回查；引用仍可能不支持它的結論。先用一篇短文走完四步，再自己說明哪些結論有依據。短到一頁的東西，直接貼給對話型 AI 也行。</p>
+      <p class="section-note">讀用 NotebookLM。先用一篇短文走完四步，再自己說明哪些結論有依據。短到一頁的東西，直接貼給對話型 AI 也行。</p>
       <div class="reading-source"><div class="step-heading"><h3>練習短文</h3><span>虛構教學材料，不是真實研究</span><button class="copy-btn" id="readingCopy" type="button">複製短文</button><a class="btn primary" href="https://notebooklm.google.com/" target="_blank" rel="noopener">開啟 NotebookLM</a></div>
       <div id="readingSource"><p>[1] A library extended its evening opening hours for four weeks. During the trial, evening visits rose from 120 to 180 per week.</p>
       <p>[2] In a voluntary survey of 40 visitors, 30 said the later closing time helped them study. The survey did not include people who did not visit the library.</p>
@@ -284,7 +284,7 @@ Public participation can inform planning decisions, but participants may not rep
       </div>
       <h4 class="learning-synthesis">綜合判讀</h4>
       <p>先不看上表的答案，也先不問 AI：有人說「75% 的學生支持延長開館，而且延長開館提升了成績」。這句話哪裡超出證據？請用自己的話改寫，指出還需要什麼資料。</p>
-      <details id="readingCheck"><summary>回答後，再展開核對</summary><p>30 ÷ 40 是這次自願填答的到館者比例，不能代表全體學生；原文也沒有證明成績改善。可以改成：「受訪的 40 位到館者中，30 位認為較晚閉館有助讀書。」若要討論全體學生，需要更有代表性的調查；若要討論成績影響，需要成績資料與能處理考試季等因素的比較設計。</p><p>再找一段自己的材料，用同樣方式分開「觀察到什麼」和「還不能說什麼」。最後請 AI 挑戰你的解讀，回原文決定要不要修改。</p></details>
+      <details id="readingCheck"><summary>回答後，再展開核對</summary><p>就是上面兩段練習的結論合在一起：75% 只描述 40 位自願填答的到館者；原文沒有證明成績改善。要談全體學生，需要更有代表性的調查；要談成績，需要成績資料與比較設計。</p><p>再找一段自己的材料，用同樣方式分開「觀察到什麼」和「還不能說什麼」。最後請 AI 挑戰你的解讀，回原文決定要不要修改。</p></details>
 
       <h3 class="compact-heading">文獻筆記本的建立</h3>
       <ol class="step-list">
@@ -298,7 +298,7 @@ Public participation can inform planning decisions, but participants may not rep
       <details id="citation-format"><summary>參考文獻與引用格式</summary><p>書目資料回原論文或出版頁取得，再請 AI 協助檢查課程要求的引用格式；不要讓它猜缺少的作者、年份或篇名。NotebookLM 的引用方便回查，正式參考文獻仍需完整書目資料。</p></details>
 
       <h3 class="compact-heading">輸出形式與用途</h3>
-      <p>需要時再選一種輸出試用，不必一次學完。有自訂欄位時，補充受眾、重點、程度、長度或格式；生成後仍核對重要內容。</p>
+      <p>需要時再選一種輸出試用。有自訂欄位時，補充受眾、重點、程度、長度或格式；生成後仍核對重要內容。</p>
       <div class="table-scroll"><table class="reading-table"><thead><tr><th>輸出</th><th>什麼時候用</th><th>自訂時最要講清楚的</th></tr></thead><tbody>
       <tr><td><b>語音導覽</b></td><td>通勤或走路時複習一批講義</td><td>只談哪個部分，不要重述背景</td></tr>
       <tr><td><b>心智圖</b></td><td>看一批文獻的主題長什麼樣、自己的題目落在哪</td><td>沒有欄位；只勾選相關來源來縮小範圍</td></tr>
@@ -375,10 +375,10 @@ Public participation can inform planning decisions, but participants may not rep
 
       <div class="rent-task" id="rent-task">
       <h3 class="compact-heading">請 AI 把租金資料做成比較圖</h3>
-      <p><strong>你想比較六個區域的租金，但手上只有表格。</strong>這個示範會讓 Codex 或 Claude Code 讀取資料、統一租金單位，再製作圖表。你負責說明需求、確認結果，不需要自己寫程式。</p>
+      <p><strong>你想比較六個區域的租金，但手上只有表格。</strong>這個示範會讓 Codex 或 Claude Code 讀取資料、統一租金單位，再製作圖表。你負責說明需求、確認結果。</p>
       <p class="task-outcome"><strong>完成後會得到：</strong>一份整理好的租金表、一張比較高低的長條圖，以及一張用顏色表示租金的示意地圖。材料與區域都是虛構的。</p>
 
-      <figure class="task-preview"><img src="media/preview-units.png" alt="完成後的長條圖示意：月租金比較" /><img src="media/preview-missing.png" alt="完成後的地圖示意：D4 標示無資料" /><figcaption>完成後大概長這樣：一張月租比較的長條圖、一張依租金上色的地圖，D4 標示無資料。示意取自本章動畫，實際輸出由 Agent 產生。</figcaption></figure>
+      <figure class="task-preview"><img src="media/preview-units.png" alt="完成後的長條圖示意：月租金比較" /><img src="media/preview-missing.png" alt="完成後的地圖示意：D4 標示無資料" /><figcaption>示意取自本章動畫；實際輸出由 Agent 產生，D4 會標示無資料。</figcaption></figure>
       <h4>準備材料</h4>
       <p>在電腦建立一個練習資料夾，把下面三個檔案下載到裡面（整包下載會自動解壓成資料夾），再用 Codex 或 Claude Code 開啟這個資料夾。檔案已準備好，不需要先學會製作這些格式。</p>
       <p class="material-links"><a href="materials/districts-task.zip" download>整包下載（三個檔案）</a><a href="materials/districts.csv" download>下載租金表（districts.csv）</a><a href="materials/districts.geojson" download>下載區域形狀（districts.geojson）</a><a href="materials/data-dictionary.txt" download>下載資料說明（data-dictionary.txt）</a></p>
@@ -465,7 +465,7 @@ Public participation can inform planning decisions, but participants may not rep
     <!-- 07 圖表 -->
     <section class="section" id="diagrams">
       <h2><span class="num">07</span>圖表選擇與製作</h2>
-      <p class="section-note">需要做圖時再查這一段，先選一種練習即可。選圖前只問一句：<strong>我想表達的是哪種關係？</strong>六種圖各對應一種，分頁上寫著它們各自表達的關係。</p>
+      <p class="section-note">需要做圖時再查這一段，先選一種練習即可。選圖前只問一句：<strong>我想表達的是哪種關係？</strong>六種圖各對應一種，寫在分頁上。</p>
 
       <div class="diagram-viewer">
         <div class="diagram-tabs" id="diagramTabs" role="tablist" aria-label="圖表類型"></div>
@@ -490,7 +490,7 @@ Public participation can inform planning decisions, but participants may not rep
         <a class="btn primary" href="https://mermaid.live/edit" target="_blank" rel="noopener">Mermaid Live Editor</a>
         <a class="btn ghost" href="https://mermaid.ai/live/edit" target="_blank" rel="noopener">mermaid.ai 編輯器</a>
       </div>
-      <p class="mermaid-hint">打開編輯器後，把左邊 Code 區原本的內容全選刪掉，貼上剛複製的 code，右邊就會出圖；確認沒問題再匯出 PNG 或 SVG。</p>
+      <p class="mermaid-hint">打開編輯器後，把左邊 Code 區原本的內容全選刪掉，貼上剛複製的 code，右邊就會出圖。</p>
       <p>要改就用白話說：改成橫向、字縮短、加一條回頭的箭頭。<strong>貼上去報錯？</strong>把錯誤訊息原封不動丟回給 AI，請它修正後重給完整 code。</p>
 
 <div class="side-by-side split-wide-left">
@@ -520,7 +520,7 @@ Public participation can inform planning decisions, but participants may not rep
 <div>
       <ul class="checklist" id="rulesChecklist">
         <li><label><input type="checkbox" data-rule="r1" /><span>找到學校的 generative AI 政策頁。搜尋「[學校名] generative AI policy students」，存下網址。</span></label></li>
-        <li><label><input type="checkbox" data-rule="r2" /><span>每份作業找 AI 使用段落，連同學校政策一起看。仍不明確的用途，問老師。</span></label></li>
+        <li><label><input type="checkbox" data-rule="r2" /><span>每份作業找 AI 使用段落，連同學校政策一起看。</span></label></li>
         <li><label><input type="checkbox" data-rule="r3" /><span>不確定就問授課老師。請對話型 AI 幫你擬出具體問題。</span></label></li>
         <li><label><input type="checkbox" data-rule="r4" /><span>依課程要求保留紀錄，說明用了哪些協助、自己如何判斷與修改。</span></label></li>
         <li><label><input type="checkbox" data-rule="r5" /><span>確認材料可否上傳；涉及研究參與者、個資或未公開內容，先查授權與校方指定工具。</span></label></li>
@@ -547,7 +547,7 @@ Public participation can inform planning decisions, but participants may not rep
     <!-- 09 提示詞庫 -->
     <section class="section" id="cards">
       <h2><span class="num">09</span>提示詞範例</h2>
-      <p class="section-note">NotebookLM 六項、其他實用範例三項。依需要展開，改成自己的材料後再複製，不必逐項學完。</p>
+      <p class="section-note">依需要展開，改成自己的材料後再複製；重新整理會還原成範例。</p>
       <div class="card-lib" id="cardLib"></div>
     </section>
 
@@ -561,7 +561,7 @@ Public participation can inform planning decisions, but participants may not rep
     <div class="diagram-zoom-area" tabindex="0" role="region" aria-label="放大圖表，可捲動"><img id="diagramZoomImg" alt="" /></div>
   </dialog>
   <div class="toast" id="toast" role="status">已複製！</div>
-  <script src="./diagrams.js?v=202609170500"></script>
-  <script src="./app.js?v=202609170500"></script>
+  <script src="./diagrams.js?v=202609171330"></script>
+  <script src="./app.js?v=202609171330"></script>
 </body>
 </html>
