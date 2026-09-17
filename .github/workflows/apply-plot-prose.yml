@@ -1,5 +1,6 @@
 name: Apply Plot prototype
 
+# One-time branch builder; remove after generated files are committed.
 on:
   push:
     branches: [chatgpt/plot-prose-quality]
