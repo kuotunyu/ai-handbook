@@ -43,6 +43,8 @@ Assume the learner:
 
 Write in natural Traditional Chinese. Keep necessary English terms next to the Chinese term when that helps future searching.
 
+Keep text dark enough to read comfortably: the learner found light grey and light accent text painful. Grey text tokens stay at 6.5:1 or more on the paper and white backgrounds, accent colours used for text at 5.2:1 or more; `npm run check:static` enforces this. Do not introduce new light text colours outside the tokens.
+
 Use half-width brackets `[]` and parentheses `()` everywhere on the site, including inside Chinese sentences, button labels, chart labels, diagram code and text rendered into media. Never use full-width `［］` or `（）`. `npm run check:static` fails if they appear in `index.html`, `app.js` or `diagrams.js`.
 
 ## Learning design rules

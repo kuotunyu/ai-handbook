@@ -378,8 +378,8 @@ function setupUnitConversionPlot() {
   function render() {
     if (!plotApi) return;
     const styles = getComputedStyle(document.documentElement);
-    const brand = styles.getPropertyValue("--brand").trim() || "#2C7A8C";
-    const warning = styles.getPropertyValue("--terracotta").trim() || "#D0656E";
+    const brand = styles.getPropertyValue("--brand").trim() || "#1D5F70";
+    const warning = styles.getPropertyValue("--terracotta").trim() || "#A23F49";
     const rows = data.map(d => ({
       ...d,
       value: mode === "monthly" ? d.monthly : d.raw,
@@ -468,8 +468,8 @@ function setupMissingValuePlot() {
   function render() {
     if (!plotApi) return;
     const styles = getComputedStyle(document.documentElement);
-    const brand = styles.getPropertyValue("--brand").trim() || "#2C7A8C";
-    const warning = styles.getPropertyValue("--terracotta").trim() || "#D0656E";
+    const brand = styles.getPropertyValue("--brand").trim() || "#1D5F70";
+    const warning = styles.getPropertyValue("--terracotta").trim() || "#A23F49";
     const rows = data.map(d => ({ ...d, value: d.rent == null && mode === "zero" ? 0 : d.rent }));
     const numeric = rows.filter(d => Number.isFinite(d.value));
     const d4 = rows.find(d => d.id === "D4");

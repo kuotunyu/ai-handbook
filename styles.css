@@ -11,47 +11,47 @@
   --bg-subtle: #ECE7DE;
   --bg-inverse: #1F3A3D;
   --bg-bar: #1E4A4C;
-  --bg-hero: #2A6260;
+  --bg-hero: #215250;
   /* 墨色 */
   --ink-primary: #1E2B2C;
   --ink-body: #33403F;
-  --ink-muted: #536261;
-  --ink-light: #6E7C7B;
+  --ink-muted: #3E4B4A;
+  --ink-light: #4A5857;
   /* 反相面板上的字與線 */
   --on-dark: #F5F1E9;
-  --on-dark-muted: rgba(245, 241, 233, 0.76);
-  --on-dark-dim: #DCE5E2;
-  --on-dark-mist: #C6D3D0;
+  --on-dark-muted: rgba(245, 241, 233, 0.92);
+  --on-dark-dim: #E8EEEC;
+  --on-dark-mist: #DCE6E3;
   --on-dark-line: rgba(245, 241, 233, 0.35);
   --on-dark-line-soft: rgba(245, 241, 233, 0.18);
   --on-dark-fill: rgba(255, 255, 255, 0.08);
   --on-dark-fill-strong: rgba(255, 255, 255, 0.15);
   --on-dark-veil: rgba(10, 40, 42, 0.28);
   --on-dark-tint: rgba(245, 241, 233, 0.075);
-  --on-dark-clay: #F4C6A5;
+  --on-dark-clay: #F8D6BD;
   --on-dark-gold: #F0DC92;
   --on-dark-accent: #F3B4C1;
   --on-dark-teal: #BEE6DA;
-  --on-dark-sky: #B9D3EE;
+  --on-dark-sky: #CFE2F5;
   --on-dark-indigo: #CDBDEE;
   /* 語意色(青綠開場・馬卡龍語意色)：青藍給按鈕與對話型 AI、薄荷綠給 NotebookLM、草莓珊瑚給 Agent 與編號 */
-  --brand: #2C7A8C;
-  --brand-dark: #226676;
+  --brand: #1D5F70;
+  --brand-dark: #164D5B;
   --brand-wash: #DDEEF1;
   --brand-border: #B3D6DC;
-  --terracotta: #D0656E;
+  --terracotta: #A23F49;
   --terracotta-wash: #FBE2E5;
   --terracotta-border: #F1BFC5;
-  --emerald: #338060;
+  --emerald: #276B4F;
   --emerald-wash: #DDF0E7;
   --emerald-border: #B2DCC9;
-  --gold: #A3852E;
-  --olive: #5F8A52;
-  --plum: #B25A7D;
+  --gold: #7A6012;
+  --olive: #456A3A;
+  --plum: #8F3F61;
   --gemini: var(--brand);
   --nlm: var(--emerald);
   --agent: var(--terracotta);
-  --viz-1: #2C7A8C; --viz-2: #D0656E; --viz-3: #338060; --viz-4: #A3852E; --viz-5: #B25A7D;
+  --viz-1: #1D5F70; --viz-2: #A23F49; --viz-3: #276B4F; --viz-4: #7A6012; --viz-5: #8F3F61;
   /* 線與角 */
   --border-subtle: #E3DDD3;
   --border-medium: #CBC2B6;
@@ -131,7 +131,7 @@ code { font-family: var(--mono); font-size: .92em; background: var(--bg-subtle);
 .hero .lead strong { display: block; color: var(--on-dark); font-weight: 700; margin-bottom: 8px; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
 .hero .btn.primary { background: var(--on-dark-clay); border-color: var(--on-dark-clay); color: var(--bg-bar); }
-.hero .btn.primary:hover { background: #F8D5BA; }
+.hero .btn.primary:hover { background: #FBE3D1; }
 .hero .btn.ghost { border-color: var(--on-dark-line); color: var(--on-dark); background: transparent; }
 .hero .btn.ghost:hover { background: var(--on-dark-fill); }
 .hero-panel { border: 1px solid var(--on-dark-line); border-radius: var(--radius-sm); background: var(--on-dark-veil); padding: 16px 18px 18px; }
@@ -198,7 +198,7 @@ h4 { font-size: var(--fs-lg); font-weight: 800; margin: 20px 0 6px; }
 .tool-table td.t-search { color: var(--ink-muted); }
 
 /* ============ 填空位置：[像這樣] 只換字色，不上底(使用者不要螢光筆)；深色面板上用淡金 ============ */
-mark.placeholder { background: transparent; color: #7A6320; font-weight: 700; padding: 0; }
+mark.placeholder { background: transparent; color: #654F12; font-weight: 700; padding: 0; }
 .pbox mark.placeholder, .quote mark.placeholder, .builder-output mark.placeholder { background: transparent; color: var(--on-dark-gold); }
 
 /* ============ 展開：藍色方塊加號 ============ */
@@ -369,12 +369,12 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 .block-btn::before { content: ""; width: 22px; height: 22px; margin-top: 3px; border: 2px solid var(--border-strong); border-radius: var(--radius-xs); background: var(--bg-white); grid-row: 1 / span 2; transition: background .12s, border-color .12s; }
 .block-name { grid-column: 2; display: block; font-weight: 800; font-size: var(--fs-lg); color: var(--ink-primary); }
 .block-desc { grid-column: 2; display: block; font-size: var(--fs-meta); color: var(--ink-light); margin-top: 2px; }
-.builder [data-i="0"] { --block-ink: #2C7A8C; --block-wash: #DDEEF1; }
-.builder [data-i="1"] { --block-ink: #338060; --block-wash: #DDF0E7; }
-.builder [data-i="2"] { --block-ink: #B25A7D; --block-wash: #F5E1EA; }
-.builder [data-i="3"] { --block-ink: #D0656E; --block-wash: #FBE2E5; }
-.builder [data-i="4"] { --block-ink: #A3852E; --block-wash: #F6EEDB; }
-.builder [data-i="5"] { --block-ink: #4F6D86; --block-wash: #E2E9EE; }
+.builder [data-i="0"] { --block-ink: #1D5F70; --block-wash: #DDEEF1; }
+.builder [data-i="1"] { --block-ink: #276B4F; --block-wash: #DDF0E7; }
+.builder [data-i="2"] { --block-ink: #8F3F61; --block-wash: #F5E1EA; }
+.builder [data-i="3"] { --block-ink: #A23F49; --block-wash: #FBE2E5; }
+.builder [data-i="4"] { --block-ink: #7A6012; --block-wash: #F6EEDB; }
+.builder [data-i="5"] { --block-ink: #3F5A70; --block-wash: #E2E9EE; }
 .builder .block-btn:hover { border-color: var(--block-ink); }
 .builder .block-btn.on { background: var(--block-wash); border-color: var(--block-ink); }
 .builder .block-btn .block-name { color: var(--block-ink); }
