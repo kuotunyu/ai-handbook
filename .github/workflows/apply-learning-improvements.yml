@@ -1,0 +1,31 @@
+name: Apply learning improvements
+
+on:
+  push:
+    branches: [chatgpt/learning-foundation]
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/learning-foundation
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/apply-learning-improvements.mjs
+      - name: Commit front-end changes
+        run: |
+          if git diff --quiet; then
+            echo "No front-end changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "feat: add low-cognitive-load learning checks"
+          git push origin HEAD:chatgpt/learning-foundation
