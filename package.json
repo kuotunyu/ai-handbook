@@ -3,8 +3,9 @@
   "private": true,
   "scripts": {
     "test": "playwright test",
-    "check": "npm run check:generated && npm run check:static && npm test",
+    "check": "npm run check:generated && npm run check:assets && npm run check:static && npm test",
     "check:static": "node scripts/static-check.mjs",
+    "check:assets": "node scripts/asset-budget.mjs",
     "check:autocorrect": "autocorrect --lint index.html AGENTS.md LEARNING-AUDIT.md",
     "vendor:plot": "node scripts/vendor-plot.mjs",
     "vendor:research": "node scripts/vendor-research-tools.mjs",
