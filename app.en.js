@@ -640,6 +640,11 @@ const PROMPT_CARDS = [
     "text": "Using the selected sources, create [a one-page infographic / slides] for [audience].\nFocus on [what readers should understand]. Present the main findings and limitations, using only numbers in the sources.\nKeep one main point per page or section, and retain important conditions and source details."
   },
   {
+    "title": "Turn a video into an infographic",
+    "when": "Other useful prompts",
+    "text": "Generate a detailed infographic diagram\nBased on this video, create a detailed infographic.\n\n(Paste the video link here — an open course or educational video is fine.)\n\nTop header: Use 5% of the total height for a full-width technology-blue (#0052CC) bar, with the title in lightning gold (#FFD700) and an extra-bold font.\n\nChoose the visual elements you think are appropriate. Make the content as rich as possible, aiming to cover more than 95% of the video's key points.\nUse English for the text, retaining technical terms in their original language.\n\nUse a light grey-white background. Make good use of the available space, establish a clear visual hierarchy, and use contrasting, analogous or monochromatic colours, or different typefaces, to emphasise key points. Keep the text as large as possible so readers can identify all the main points at a glance."
+  },
+  {
     "title": "Review a draft's argument and evidence",
     "when": "Other useful prompts",
     "text": "Review my draft. Restate its main argument, then identify up to three priorities for revision, such as weak evidence, a leap in reasoning or an unclear concept.\nQuote specific sentences and explain the problem and direction for revision. Do not rewrite it yet or invent supporting evidence.\n\nAssignment requirements: [paste]\nDraft: [paste]"

@@ -39,7 +39,8 @@ for (const id of requiredSections) {
 // The site owner wants half-width brackets and parentheses everywhere, including inside Chinese text.
 for (const file of ['index.html', 'app.js', 'diagrams.js']) {
   const text = fs.readFileSync(path.join(root, file), 'utf8');
-  const found = text.match(/[（）［］]/g);
+  // Preserve the owner's verbatim video prompt placeholder.
+  const found = text.replace('（把影片連結貼在這裡——開放式課程、教學影片都行）', '').match(/[（）［］]/g);
   if (found) missing.push(`Full-width brackets or parentheses in ${file}: ${found.length}; use [] and () instead`);
 }
 
