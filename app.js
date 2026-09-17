@@ -170,7 +170,7 @@ function renderBuilder() {
       body.className = "prompt-text";
       body.id = `prompt-edit-${cur}-${i}`;
       label.htmlFor = body.id;
-      body.rows = 2;
+      body.rows = 1;
       body.value = drafts[cur][i];
       body.placeholder = "在這裡輸入你的內容";
       body.addEventListener("input", () => {
