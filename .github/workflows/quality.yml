@@ -21,6 +21,12 @@ jobs:
           echo "96997d19a4ca6981673b0d4c5ca7f3ede4a9f97964a96edc29fba9e28a328336  /tmp/vale.tar.gz" | sha256sum -c -
           tar -xzf /tmp/vale.tar.gz -C /tmp
           sudo install /tmp/vale /usr/local/bin/vale
+      - name: Install AutoCorrect 2.16.3
+        run: |
+          curl -fsSL -o /tmp/autocorrect.tar.gz https://github.com/huacnlee/autocorrect/releases/download/v2.16.3/autocorrect-linux-amd64.tar.gz
+          echo "9bef6fef5f30d6cfa2e5399ffc990672621ee8ea699d4feea75830264ed7a32e  /tmp/autocorrect.tar.gz" | sha256sum -c -
+          tar -xzf /tmp/autocorrect.tar.gz -C /tmp
+          sudo install /tmp/autocorrect /usr/local/bin/autocorrect
       - name: Check handbook terminology with Vale
         run: vale index.html AGENTS.md LEARNING-AUDIT.md
       - name: Check CJK-English spacing with AutoCorrect
