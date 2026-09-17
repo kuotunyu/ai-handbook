@@ -19,6 +19,4 @@ copyFirst([
   'node_modules/pdfjs-dist/build/pdf.worker.mjs'
 ], 'vendor/pdfjs/pdf.worker.min.mjs');
 copyFirst(['node_modules/pdfjs-dist/LICENSE'], 'vendor/pdfjs/LICENSE');
-copyFirst(['node_modules/citation-js/build/citation.min.js'], 'vendor/citation.min.js');
-copyFirst(['node_modules/citation-js/LICENSE.md'], 'vendor/citation.LICENSE.md');
-console.log('Vendored PDF.js 6.3.289 and Citation.js 0.8.2.');
+console.log('Vendored PDF.js 6.3.289 for the source-verification lab. Citation.js stays build-time only.');
