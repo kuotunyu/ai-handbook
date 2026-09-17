@@ -301,7 +301,13 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 .keyword-reference .keyword-example > summary { min-height: 30px; padding: 2px 0; }
 
 /* ============ 02 使用情境：四張編號卡 ============ */
-.situation-list { margin: 6px 0 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; counter-reset: situ; }
+.situation-list { margin: 6px 0 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; counter-reset: situ; }
+/* 同列兩張卡等高、選項那行齊底(題目一行和兩行並排時才不會高低不齊)。展開某張時只有那一列回到各自高度，其他列不動。 */
+.situation-entry:not([open]) > summary { height: 100%; grid-template-rows: auto 1fr; }
+.situation-entry:not([open]) .situation-examples { align-self: end; }
+.situation-list > .situation-entry[open],
+.situation-list > .situation-entry:nth-child(odd):has(+ .situation-entry[open]),
+.situation-list > .situation-entry[open]:nth-child(odd) + .situation-entry { align-self: start; }
 .situation-entry { counter-increment: situ; background: var(--bg-white); border-radius: var(--radius-sm); box-shadow: var(--shadow-soft); border-top: 4px solid var(--brand-mid); padding: 14px 20px 14px; }
 /* 四張一組輪流水域藍、綠地綠、沙黃、磚橘 */
 .situation-list .situation-entry:nth-child(4n+2) { border-top-color: var(--emerald-mid); }
