@@ -1,0 +1,10 @@
+extends: substitution
+message: "Use '%s' instead of '%s'."
+level: error
+ignorecase: false
+swap:
+  'Notebook LM': 'NotebookLM'
+  'ClaudeCode': 'Claude Code'
+  'Chat GPT': 'ChatGPT'
+  'Geojson|geoJSON': 'GeoJSON'
+  'fine tuning|finetuning': 'fine-tuning'

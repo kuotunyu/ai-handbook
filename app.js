@@ -259,6 +259,117 @@ function setupToolSwitch() {
 }
 
 /* ====================================================================
+   06 延伸：缺值互動圖。Observable Plot 僅在使用者展開本題時從本地 vendor 載入。
+==================================================================== */
+function setupMissingValuePlot() {
+  const lesson = $("#lesson-missing");
+  const chart = $("#missingPlot");
+  const takeaway = $("#missingPlotTakeaway");
+  const buttons = Array.from(document.querySelectorAll("#missingPlotLab [data-missing-mode]"));
+  if (!lesson || !chart || !takeaway || !buttons.length) return;
+
+  const data = [
+    { id: "D1", name: "河岸區", rent: 1200 },
+    { id: "D2", name: "舊城區", rent: 1213.33 },
+    { id: "D3", name: "大學區", rent: 950 },
+    { id: "D4", name: "工業轉型區", rent: null },
+    { id: "D5", name: "郊區新鎮", rent: 910 },
+    { id: "D6", name: "車站周邊", rent: 1450 }
+  ];
+  let mode = "missing";
+  let plotApi = null;
+  let loading = null;
+
+  function loadScript(src, marker) {
+    return new Promise((resolve, reject) => {
+      const existing = document.querySelector('script[' + marker + ']');
+      if (existing) {
+        if (existing.dataset.loaded === "true") resolve();
+        else {
+          existing.addEventListener("load", () => resolve(), { once: true });
+          existing.addEventListener("error", () => reject(new Error(src + " failed to load")), { once: true });
+        }
+        return;
+      }
+      const script = document.createElement("script");
+      script.src = src;
+      script.setAttribute(marker, "true");
+      script.onload = () => { script.dataset.loaded = "true"; resolve(); };
+      script.onerror = () => reject(new Error(src + " failed to load"));
+      document.head.append(script);
+    });
+  }
+
+  function loadPlot() {
+    if (window.Plot && window.d3) return Promise.resolve(window.Plot);
+    if (loading) return loading;
+    loading = (async () => {
+      if (!window.d3) await loadScript("./vendor/d3.min.js", "data-d3-vendor");
+      if (!window.Plot) await loadScript("./vendor/observable-plot.umd.min.js", "data-observable-plot");
+      if (!window.Plot) throw new Error("Plot global missing");
+      return window.Plot;
+    })();
+    return loading;
+  }
+
+  function render() {
+    if (!plotApi) return;
+    const styles = getComputedStyle(document.documentElement);
+    const brand = styles.getPropertyValue("--brand").trim() || "#2C7A8C";
+    const warning = styles.getPropertyValue("--terracotta").trim() || "#D0656E";
+    const rows = data.map(d => ({ ...d, value: d.rent == null && mode === "zero" ? 0 : d.rent }));
+    const numeric = rows.filter(d => Number.isFinite(d.value));
+    const d4 = rows.find(d => d.id === "D4");
+    const marks = [
+      plotApi.ruleX([0]),
+      plotApi.barX(numeric, { x: "value", y: "name", fill: d => d.id === "D4" ? warning : brand, title: d => d.value == null ? "No data" : d.id + " " + d.name + ": £" + d.value.toLocaleString("en-GB", { maximumFractionDigits: 2 }) + "/月" })
+    ];
+
+    if (mode === "missing") {
+      marks.push(plotApi.text([{ name: d4.name, value: 0, label: "No data" }], { x: "value", y: "name", text: "label", textAnchor: "start", dx: 7, fill: warning, fontWeight: 700 }));
+      takeaway.innerHTML = "<strong>No data ≠ 0。</strong>D4 沒有觀測值，所以不能把它排成最便宜的區域。";
+    } else {
+      marks.push(plotApi.dot([{ name: d4.name, value: 0 }], { x: "value", y: "name", r: 5, fill: warning }));
+      marks.push(plotApi.text([{ name: d4.name, value: 0, label: "£0（錯誤補值）" }], { x: "value", y: "name", text: "label", textAnchor: "start", dx: 9, fill: warning, fontWeight: 700 }));
+      takeaway.innerHTML = "<strong>錯誤示範：</strong>把空白改成 0，會讓 D4 看起來像有一筆 £0 的租金資料，進而被誤認為最便宜。";
+    }
+
+    const plot = plotApi.plot({
+      width: Math.max(320, Math.min(720, chart.clientWidth || 640)),
+      height: 290,
+      marginLeft: 104,
+      marginRight: 22,
+      x: { domain: [0, 1550], grid: true, label: "月租（GBP）" },
+      y: { domain: data.map(d => d.name), label: null },
+      style: { fontFamily: "inherit", fontSize: "13px" },
+      marks
+    });
+    plot.setAttribute("role", "img");
+    plot.setAttribute("aria-label", mode === "missing" ? "租金比較圖。D4 顯示 No data，不參與租金排序。" : "錯誤示範租金比較圖。D4 的缺值被錯誤改成零。" );
+    chart.replaceChildren(plot);
+  }
+
+  async function ensurePlot() {
+    if (plotApi) { render(); return; }
+    chart.innerHTML = '<p class="plot-loading">載入互動圖…</p>';
+    try {
+      plotApi = await loadPlot();
+      render();
+    } catch (error) {
+      chart.innerHTML = '<p class="plot-loading"><strong>互動圖未載入。</strong>文字重點不受影響：D4 的空白代表未知，不應改成 £0。</p>';
+    }
+  }
+
+  lesson.addEventListener("toggle", () => { if (lesson.open) ensurePlot(); });
+  buttons.forEach(btn => btn.addEventListener("click", () => {
+    mode = btn.dataset.missingMode;
+    buttons.forEach(other => other.setAttribute("aria-pressed", String(other === btn)));
+    ensurePlot();
+  }));
+  if (lesson.open) ensurePlot();
+}
+
+/* ====================================================================
    07 圖表：分頁即決策表，一次看一張
 ==================================================================== */
 function renderDiagrams() {
@@ -549,6 +660,7 @@ setupCopyTargets();
 renderBuilder();
 renderAgent();
 setupToolSwitch();
+setupMissingValuePlot();
 renderDiagrams();
 setupChecklist();
 renderCards();

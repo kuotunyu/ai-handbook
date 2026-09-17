@@ -88,6 +88,16 @@ test('inline explanations stay optional and expand in place', async ({ page }) =
   await expect(explainers.first().locator('p')).toContainText('Context');
 });
 
+test('missing-value Plot lab lazy-loads and changes the interpretation', async ({ page }) => {
+  const lesson = page.locator('#lesson-missing');
+  await lesson.locator(':scope > summary').click();
+  await expect(page.locator('#missingPlotLab')).toBeVisible();
+  await expect(page.locator('#missingPlot svg')).toBeVisible({ timeout: 5000 });
+  await page.locator('[data-missing-mode="zero"]').click();
+  await expect(page.locator('#missingPlotTakeaway')).toContainText('錯誤示範');
+  await expect(page.locator('[data-missing-mode="zero"]')).toHaveAttribute('aria-pressed', 'true');
+});
+
 test('has no critical axe accessibility violations', async ({ page }) => {
   const results = await new AxeBuilder({ page }).analyze();
   const critical = results.violations.filter(violation => violation.impact === 'critical');

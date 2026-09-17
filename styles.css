@@ -286,6 +286,20 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 .situation-reference { font-size: var(--fs-sm); color: var(--ink-muted); }
 #citation-format { scroll-margin-top: calc(var(--bar-h) + 24px); margin: 16px 0; }
 
+/* ============ Observable Plot 小實驗：只在既有缺值教材內出現 ============ */
+.plot-lab { margin: 16px 0 0; padding: 13px 14px 14px; border: 1px solid var(--brand-border); border-radius: var(--radius-sm); background: var(--brand-wash); }
+.plot-lab-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; color: var(--ink-body); font-size: var(--fs-sm); }
+.plot-lab-head strong { color: var(--ink-primary); font-size: var(--fs-body); }
+.plot-lab-controls { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+.plot-mode { appearance: none; border: 1px solid var(--brand-border); border-radius: var(--radius-xs); background: var(--bg-white); color: var(--brand); padding: 7px 10px; font: inherit; font-size: var(--fs-sm); font-weight: 700; cursor: pointer; }
+.plot-mode:hover { border-color: var(--terracotta); color: var(--terracotta); }
+.plot-mode[aria-pressed="true"] { background: var(--bg-bar); border-color: var(--bg-bar); color: #fff; }
+.plot-mode:focus-visible { outline: 3px solid color-mix(in srgb, var(--brand) 35%, transparent); outline-offset: 2px; }
+.plot-lab-chart { min-height: 290px; display: grid; place-items: center; overflow-x: auto; padding: 8px; background: var(--bg-white); border-radius: var(--radius-xs); box-shadow: var(--shadow-soft); }
+.plot-lab-chart svg { display: block; max-width: 100%; height: auto; }
+.plot-loading { margin: 0 !important; padding: 18px; color: var(--ink-muted); text-align: center; font-size: var(--fs-sm) !important; }
+.plot-lab-takeaway { margin: 9px 0 0 !important; font-size: var(--fs-sm) !important; line-height: 1.55; }
+
 /* ============ 03 工具原則：四欄髮絲線、赭紅編號 ============ */
 .concept-details { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin: 6px 0 10px; padding-top: 12px; border-top: 1px solid var(--border-subtle); counter-reset: rule; }
 .concept-details > div { counter-increment: rule; min-width: 0; padding: 0 20px 4px 0; }
