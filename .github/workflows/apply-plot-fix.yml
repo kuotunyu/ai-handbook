@@ -1,5 +1,6 @@
 name: Apply Plot selector fix
 
+# One-time branch helper; remove after the selector fix lands.
 on:
   push:
     branches: [chatgpt/plot-prose-quality]
