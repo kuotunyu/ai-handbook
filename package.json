@@ -1,0 +1,13 @@
+{
+  "name": "ai-handbook-quality-harness",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "check": "npm run check:static && npm test",
+    "check:static": "node scripts/static-check.mjs"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.55.0"
+  }
+}

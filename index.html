@@ -68,7 +68,7 @@
     <!-- 01 關鍵字 -->
     <section class="section" id="keywords">
       <h2><span class="num">01</span>關鍵字</h2>
-      <p class="section-note">九個詞，不用背定義。先看核心四個，再到使用情境選一件事試。</p>
+      <p class="section-note">不用背定義。先看核心概念；延伸詞彙遇到時再查。</p>
       <div class="keyword-group keyword-core"><div class="keyword-group-heading"><h3>核心概念</h3><p>需要理解，並在後續練習中實際運用。</p></div><div class="keyword-list"><article class="keyword-entry" id="keyword-prompt">
             <h4>Prompt<span class="keyword-alias">提示詞</span></h4>
             <p class="keyword-definition">你給 AI 的問題、任務說明與要求。</p>
@@ -80,6 +80,12 @@
             <p class="keyword-definition">模型這次回答時能參考的訊息與材料。</p>
             <p class="keyword-action"><strong>使用要點</strong>提供重要原文，確認工具讀到了哪些內容，不假設它已看過你的檔案。</p>
             <details class="keyword-example"><summary>看例子<span class="sr-only">：Context</span></summary><p>你可能看到「上下文太長」。能容納的內容有限，長對話可能省略細節；換新對話時，核對帶過去的摘要，並重新提供重要原文與要求。</p><figure class="clip"><video src="media/clip-context.mp4" controls muted loop playsinline preload="none" poster="media/clip-context.png" aria-label="Context示意動畫"></video><figcaption>無聲示意動畫，點播放觀看；內容虛構。</figcaption></figure></details>
+          </article>
+<article class="keyword-entry" id="keyword-training">
+            <h4>Training<span class="keyword-alias">訓練</span></h4>
+            <p class="keyword-definition">用資料更新模型本身的參數，讓模型的行為改變。</p>
+            <p class="keyword-action"><strong>使用要點</strong>把履歷、背景、文件貼進聊天，通常是在提供 Context，不是在訓練模型。</p>
+            <details class="keyword-example"><summary>看例子<span class="sr-only">：Training</span></summary><p>例如告訴 Gemini「我是都市計畫研究生，請用初學者能懂的方式解釋 GIS」，這是在提供這次工作的 Context。只有真的用資料去更新模型本身時，才是在談 training 或 fine-tuning。</p></details>
           </article>
 <article class="keyword-entry" id="keyword-hallucination">
             <h4>幻覺<span class="keyword-alias">Hallucination</span></h4>
@@ -157,6 +163,29 @@
             <p class="situation-links"><a href="#prompt">查看追問與修正方法</a></p>
           </div>
         </details>
+      </div>
+
+      <div class="decision-practice" id="decision-practice">
+        <h3 class="compact-heading">先判斷，再展開</h3>
+        <p>不用背答案。先在心裡選一個，再打開看判斷依據。</p>
+        <div class="situation-list">
+          <details class="situation-entry">
+            <summary><span class="situation-name">教授給你 15 篇指定 paper，要比較作者觀點。第一個用什麼？</span><span class="situation-examples">對話型 AI / NotebookLM / Agent</span></summary>
+            <div class="situation-content"><p><strong>判斷依據：NotebookLM。</strong>核心工作是圍繞一批指定來源閱讀、比較與回查，不是讓 Agent 操作檔案。最後仍要打開原文確認引用真的支持你的說法。</p></div>
+          </details>
+          <details class="situation-entry">
+            <summary><span class="situation-name">把履歷、背景和作業要求貼給 Gemini，這是在「訓練 AI」嗎？</span><span class="situation-examples">Training / Context</span></summary>
+            <div class="situation-content"><p><strong>判斷依據：這是在提供 Context。</strong>你是在告訴既有模型這次工作要參考什麼；模型本身沒有因此被重新訓練。</p></div>
+          </details>
+          <details class="situation-entry">
+            <summary><span class="situation-name">AI 給你一篇論文引用和一個漂亮的 18% 數字，下一步？</span><span class="situation-examples">直接引用 / 回原文核對 / 換一個模型再問</span></summary>
+            <div class="situation-content"><p><strong>判斷依據：回原始來源核對。</strong>有 citation 不等於 citation 支持整句話；先確認作者、年份、數字、研究對象與原文語意，再決定能不能使用。</p></div>
+          </details>
+          <details class="situation-entry">
+            <summary><span class="situation-name">你有 CSV 和 GeoJSON，要整理資料、做圖並輸出新檔。用哪種工作模式？</span><span class="situation-examples">聊天 / NotebookLM / Agent</span></summary>
+            <div class="situation-content"><p><strong>判斷依據：Agent。</strong>這已經不是只要答案，而是要 AI 實際處理檔案。先保留 raw data、限定工作範圍，讓它說明方法，再核對輸出。</p></div>
+          </details>
+        </div>
       </div>
       <p class="situation-reference">需要時再查：<a href="#rules">AI 使用規範與申報</a>、<a href="#citation-format">參考文獻與引用格式</a>、<a href="#cards">提示詞範例</a>。</p>
     </section>
