@@ -1,0 +1,33 @@
+name: Apply unit Plot lab
+
+on:
+  push:
+    branches: [chatgpt/plot-units-lab]
+    paths:
+      - ".github/workflows/apply-units-plot-lab.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/plot-units-lab
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/apply-units-plot-lab.mjs
+      - name: Commit generated unit Plot lab
+        run: |
+          if git diff --quiet; then
+            echo "No generated changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html app.js tests/handbook.spec.js
+          git commit -m "feat: add unit normalization Plot lab"
+          git push origin HEAD:chatgpt/plot-units-lab
