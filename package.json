@@ -4,10 +4,14 @@
   "scripts": {
     "test": "playwright test",
     "check": "npm run check:static && npm test",
-    "check:static": "node scripts/static-check.mjs"
+    "check:static": "node scripts/static-check.mjs",
+    "check:autocorrect": "autocorrect --lint index.html AGENTS.md LEARNING-AUDIT.md",
+    "vendor:plot": "node scripts/vendor-plot.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.2",
-    "@playwright/test": "^1.55.0"
+    "@observablehq/plot": "0.6.17",
+    "@playwright/test": "^1.55.0",
+    "autocorrect-node": "2.16.3"
   }
 }
