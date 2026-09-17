@@ -99,7 +99,9 @@
             <p class="keyword-action"><strong>使用要點</strong>先限定可處理的範圍，保留原始檔案，完成後核對輸出。</p>
             <details class="keyword-example"><summary>看例子<span class="sr-only">：Agent</span></summary><p>例如把幾份課程文件整理成作業清單，存成檔案再檢查。交辦前要說清可處理的範圍，完成後打開成果核對。</p></details>
           </article></div></div>
-      <div class="keyword-group keyword-reference"><div class="keyword-group-heading"><h3>延伸詞彙</h3><p>先認識名稱與大意，遇到時再查閱細節。</p></div><div class="keyword-list"><article class="keyword-entry" id="keyword-ai">
+      <details class="keyword-reference-disclosure" id="keyword-reference-disclosure">
+        <summary><span><strong>延伸詞彙</strong><small>AI / Generative AI / LLM / Multimodal / Token</small></span></summary>
+        <div class="keyword-group keyword-reference"><div class="keyword-group-heading"><p>遇到時再查，不必先讀完。</p></div><div class="keyword-list"><article class="keyword-entry" id="keyword-ai">
             <h4>AI<span class="keyword-alias">人工智慧</span></h4>
             <p class="keyword-definition">讓機器執行辨識、預測、生成等任務的技術統稱。</p>
             <details class="keyword-example"><summary>看例子<span class="sr-only">：AI</span></summary><p>你可能看到「這個軟體有 AI 功能」。這是大範圍的說法，還要看它實際能幫你做什麼。生成式 AI 是其中一類。</p></details>
@@ -124,6 +126,7 @@
             <p class="keyword-definition">模型處理內容的單位；文字會分成字、單字或片段。</p>
             <details class="keyword-example"><summary>看例子<span class="sr-only">：Token</span></summary><p>你可能看到「token 上限」，通常是在說模型能處理的內容量限制。不必自己計算；遇到限制時看實際提示，檔案大小與方案用量也可能另有限制。</p><figure class="clip"><video src="media/clip-token.mp4" controls muted loop playsinline preload="none" poster="media/clip-token.png" aria-label="Token示意動畫"></video><figcaption>無聲示意動畫，點播放觀看；內容虛構。</figcaption></figure></details>
           </article></div></div>
+      </details>
     </section>
 
     <!-- 02 情境 -->
@@ -135,7 +138,6 @@
           <summary><span class="situation-name">理解與查找資料</span><span class="situation-examples">讀不懂一段內容、比較文獻、找政策資料</span></summary>
           <div class="situation-content">
             <p>先把卡住的內容貼給對話型 AI；要反覆閱讀同一批文獻、講義或錄音，再用 NotebookLM。查找資料時，請它附上原始來源。</p>
-            <blockquote>「我想了解[問題]。這是手上的材料，請先解釋重點；還缺的資料，幫我找原始來源。」</blockquote>
             <p class="situation-links"><a href="#reading">查看閱讀與查證方法</a></p>
           </div>
         </details>
@@ -143,7 +145,6 @@
           <summary><span class="situation-name">準備作業與表達</span><span class="situation-examples">規劃作業、修改初稿、練習 seminar、寫信</span></summary>
           <div class="situation-content">
             <p>先用你熟悉的對話型 AI，提供題目或草稿，說明你卡在哪裡。</p>
-            <blockquote>「這是我的作業題目。我不確定要回答哪些問題，請先幫我釐清要求，再一起決定第一步。」</blockquote>
             <p class="situation-links"><a href="#prompt">查看提問範例</a></p>
           </div>
         </details>
@@ -151,7 +152,6 @@
           <summary><span class="situation-name">處理資料與製作圖表</span><span class="situation-examples">整理表格、批次處理檔案、製作圖表或地圖</span></summary>
           <div class="situation-content">
             <p>需要直接處理檔案時，用手上可用的 Agent；先讓它看材料、提出處理方式。</p>
-            <blockquote>「我想把這些表格整理成[成果]。請先讀取並說明處理方式，不要修改原始檔案。」</blockquote>
             <p class="situation-links"><a href="#agent">查看檔案處理示範</a><a href="#diagrams">查看圖表選擇</a></p>
           </div>
         </details>
@@ -159,7 +159,6 @@
           <summary><span class="situation-name">處理操作問題</span><span class="situation-examples">軟體不會用、操作失敗、看不懂錯誤訊息</span></summary>
           <div class="situation-content">
             <p>把畫面或錯誤訊息提供給對話型 AI，補上軟體名稱、版本和你想做的事。</p>
-            <blockquote>「我用[軟體與版本]做[事情]，到這一步出現[錯誤訊息]。請先幫我判斷原因，再給一個可以試的步驟。」</blockquote>
             <p class="situation-links"><a href="#prompt">查看追問與修正方法</a></p>
           </div>
         </details>
@@ -193,29 +192,14 @@
     <!-- 03 工具與觀念 -->
     <section class="section" id="concepts">
       <h2><span class="num">03</span>工具與功能</h2>
-      <p class="section-note">本文的「對話型 AI」指 Gemini、ChatGPT 或 Claude。一般提問與練習可用你習慣的一個，不必全部訂閱；換工具時沿用說明任務與核對結果的方法。</p>
-      <div class="table-scroll"><table class="reading-table tool-table"><thead><tr><th>你的任務</th><th>用什麼</th><th>為什麼</th></tr></thead><tbody>
-      <tr><td>想搞懂一個概念、改寫自己的句子、練習發言、規劃作業</td><td class="t-gemini"><div class="chat-tool-links"><span class="tool-name">Gemini</span><span class="tool-name">ChatGPT</span><span class="tool-name">Claude</span></div></td><td>提供材料與目標，請它解釋、修改或一起討論。</td></tr>
-      <tr><td>讀講義、讀指定文獻、把幾篇放在一起比較</td><td class="t-nlm"><span class="tool-name">NotebookLM</span></td><td>依你選取的來源整理回答，提供引用方便回查；引用仍可能不支持它的結論。</td></tr>
-      <tr><td>整理表格、畫圖或地圖、批次處理檔案</td><td class="t-agent">Agent(Codex 或 Claude Code)</td><td>它會在你指定的資料夾裡動手做事，所以要先講範圍，做完再驗收。</td></tr>
-      <tr><td>找最新消息、官方數字、政策原文</td><td class="t-search">Gemini、ChatGPT、Claude 的網路搜尋；也可直接搜尋或到官方網站。</td><td>請它上網查找並附原始來源；確認這次有使用搜尋，再開啟重要來源核對日期、數字與適用地區。</td></tr>
-      </tbody></table></div>
-
-      <h3 class="compact-heading">工具使用原則</h3>
-      <dl class="concept-details">
-        <div><dt>確認功能</dt><dd>需要最新資訊或精確計算時，確認它有使用搜尋或計算工具。</dd></div>
-        <div><dt>確認材料</dt><dd>上傳檔案或貼上網址後，確認它有讀到需要的內容。</dd></div>
-        <div><dt>核對來源</dt><dd>打開重要引用，確認原文支持它的說法。</dd></div>
-        <div><dt>限定檔案範圍</dt><dd>讓 Agent 動手前限定範圍、保留原檔，完成後打開成果檢查。</dd></div>
-      </dl>
-
-      <h3 class="compact-heading">回答方式與查核方法</h3>
+      <p class="section-note">工具名稱會變。這章只分辨 AI 現在是在生成、搜尋、計算，還是操作檔案；不同工作要用不同方式檢查。</p>
+      <h3 class="compact-heading">AI 現在是在做哪種工作？</h3>
       <div class="table-scroll"><table class="reading-table howcheck-table"><thead><tr><th>它在做什麼</th><th>例子</th><th>怎麼檢查</th></tr></thead><tbody>
       <tr><td><b>生成</b>：用它記得的東西加上你給的材料接話，流暢但可能編</td><td>解釋概念、改寫句子、擬一封信</td><td>重要事實回原文核對；看摘要有沒有改變意思</td></tr>
       <tr><td><b>搜尋</b>：透過搜尋工具取回網頁，再整理成回答</td><td>今年的官方公告、政策原文、最新數字</td><td>打開來源核對年份與適用地區；沒提供來源就請它補充，不把回答當已查證</td></tr>
-      <tr><td><b>計算</b>：需要精確數值時，請它用計算器、試算表或程式運算</td><td>加總預算、算距離截止日還有幾天</td><td>核對輸入、公式與單位，再自己抽算一筆；程式跑完也可能算錯</td></tr>
+      <tr><td><b>計算</b>：需要精確數值時，請它用計算器、試算表或程式運算</td><td>加總預算、換算租金、計算比例</td><td>核對輸入、公式與單位，再自己抽算一筆；程式跑完也可能算錯</td></tr>
+      <tr><td><b>操作</b>：使用工具讀寫檔案、執行程式或完成多步任務</td><td>整理 CSV、產生圖表、批次處理檔案</td><td>限定工作範圍、保留原檔，完成後看變更並驗收輸出</td></tr>
       </tbody></table></div>
-      <p><strong>可以這樣問：</strong>「請上網找這個活動今年的官方公告，附連結；找不到今年的資料就說找不到，不要拿去年的當今年的。」</p>
 
     </section>
 
@@ -255,15 +239,7 @@
       <tr><td>操作失敗</td><td>「我想做到[目標]，使用[軟體與版本]，做了[操作]，出現[錯誤訊息]。請先幫我判斷原因，再給一個可確認的小步驟。」</td></tr>
       <tr><td>對話太亂</td><td>「請把這段對話整理成一段摘要：我的目標、已確認的結論、我提供過的材料、下一步。只列事實。」核對摘要後貼到新對話，重要原文與檔案也重新提供。</td></tr>
       </tbody></table></div>
-      <h3 class="compact-heading">區分要求與原文</h3>
-      <p>貼上文章、草稿或錯誤訊息時，可以用三個反引號 <code>```</code> 包住材料，要求寫在外面，方便分辨哪一段是要處理的內容。</p>
-      <div class="pbox"><div class="pbox-head"><span>把中間的原文換成你的材料</span><button class="copy-btn" type="button" data-copy-target="#fencedPrompt">複製範例</button></div><pre id="fencedPrompt">請用繁體中文解釋下面這段原文，保留重要英文名詞。
-
-以下區塊是待解釋的原文：
-```
-Public participation can inform planning decisions, but participants may not represent all residents.
-```</pre></div>
-      <p class="section-note">開頭與結尾各放一行 <code>```</code>，使用英文半形反引號(backtick)，不是單引號 <code>'</code> 或 <code>‵</code>。</p>
+      <details class="reference-disclosure" id="separate-instruction-source"><summary>材料很長時：把要求和原文分開</summary><p>先寫你要 AI 做什麼，再清楚標示「以下是原文／資料」。不必背特殊符號；重點是讓要求與待處理材料有明確邊界。</p></details>
     </section>
 
     <!-- 05 閱讀 -->
@@ -284,7 +260,7 @@ Public participation can inform planning decisions, but participants may not rep
       </tbody></table></div>
 
       <h3 class="compact-heading">證據判讀練習</h3>
-      <p>下面兩段動畫沿用上方短文。展開後先自己判斷，再播放；看完試著解釋理由，最後展開文字解說核對。不看影片也可以直接讀文字。</p>
+      <p>先用一個樣本判讀練習確認「百分比代表誰」，再用下方原始 PDF 練習查證主張。需要時才展開，不必一次做完。</p>
       <div class="learning-examples">
         <details class="learning-lesson" id="lesson-sample">
           <summary>樣本與推論範圍<span class="lesson-topic">百分比代表哪些人</span></summary>
@@ -297,23 +273,6 @@ Public participation can inform planning decisions, but participants may not rep
                 <details class="lesson-answer"><summary>文字解說與參考答案</summary>
                   <ol class="lesson-transcript"><li>40 個圓代表這次自願填答的訪客；其中 30 個上色，表示認為延後閉館有助讀書。其餘 10 位的具體回應，原文未說明。</li><li>30 ÷ 40 = 75%。這個比例描述本次填答者，不能直接代表未填答的訪客與未到訪的學生。</li><li>可改寫成：「受訪的 40 位訪客中，30 位認為延後閉館有助讀書。」要了解全校學生，需要涵蓋不同群體、較有代表性的調查。</li></ol>
                   <p><strong>實際使用：</strong>請 AI 列出資料的調查對象、樣本如何選出、沒有涵蓋哪些人，再回原文核對。</p>
-                </details>
-              </div>
-            </div>
-          </div>
-        </details>
-        <details class="learning-lesson" id="lesson-evidence">
-          <summary>引用與主張的對應<span class="lesson-topic">原文支持到什麼程度</span></summary>
-          <div class="lesson-content">
-            <p class="lesson-question"><strong>先判斷：</strong>原文 [1] 記錄每週到訪次數由 120 增至 180。摘要寫「延長開館提升了學業成績。[1]」這個引用能支持整句話嗎？</p>
-            <div class="lesson-grid">
-              <figure class="clip"><video src="media/learn-evidence.mp4" poster="media/learn-evidence.png" controls muted playsinline preload="none" aria-label="引用與主張的對應動畫" aria-describedby="evidence-caption">可改讀文字解說，或<a href="media/learn-evidence.mp4">開啟動畫檔案</a>。</video><figcaption id="evidence-caption">虛構教學材料。無聲動畫，手動播放，可暫停或全螢幕觀看。</figcaption></figure>
-              <div class="lesson-reflection">
-                <p><strong>用自己的話說明：</strong>原文觀察的是什麼？哪些推論還需要證據？請保留有依據的部分，重寫摘要。</p>
-                <details class="lesson-answer"><summary>文字解說與參考答案</summary>
-                  <ol class="lesson-transcript"><li>原文 [1] 的到訪次數，可以支持「試行期間到訪增加」；它不是學業成績的測量。</li><li>原文 [3] 說明結果未建立成績改善的結論。引用雖然存在，仍不支持摘要的主張。</li><li>試行發生在考試季，且沒有比較圖書館。即使到訪增加，也不能只靠前後差異確定是延長開館造成的；動畫虛線表示尚待查證的可能影響。</li></ol>
-                  <p><strong>參考改寫：</strong>「四週試行期間，每週晚間到訪次數由 120 增至 180；這些結果不能確立延長開館對學業成績的影響。」</p>
-                  <p><strong>實際使用：</strong>請 AI 把每項主張與支持它的原文並排，標示觀察指標、適用對象和限制，再逐項核對。</p>
                 </details>
               </div>
             </div>
@@ -376,16 +335,7 @@ Public participation can inform planning decisions, but participants may not rep
 
       <details id="citation-format"><summary>參考文獻與引用格式</summary><p>書目資料回原論文或出版頁取得，再請 AI 協助檢查課程要求的引用格式；不要讓它猜缺少的作者、年份或篇名。NotebookLM 的引用方便回查，正式參考文獻仍需完整書目資料。</p></details>
 
-      <h3 class="compact-heading">輸出形式與用途</h3>
-      <p>需要時再選一種輸出試用。有自訂欄位時，補充受眾、重點、程度、長度或格式；生成後仍核對重要內容。</p>
-      <div class="table-scroll"><table class="reading-table"><thead><tr><th>輸出</th><th>什麼時候用</th><th>自訂時最要講清楚的</th></tr></thead><tbody>
-      <tr><td><b>語音導覽</b></td><td>通勤或走路時複習一批講義</td><td>只談哪個部分，不要重述背景</td></tr>
-      <tr><td><b>心智圖</b></td><td>看一批文獻的主題長什麼樣、自己的題目落在哪</td><td>沒有欄位；只勾選相關來源來縮小範圍</td></tr>
-      <tr><td><b>資訊圖表</b></td><td>報告或海報要一頁總覽</td><td>受眾是誰；只用來源裡有的數字</td></tr>
-      <tr><td><b>簡報</b></td><td>seminar 報告的初稿骨架</td><td>頁數上限；每頁一個重點</td></tr>
-      <tr><td><b>報告</b></td><td>seminar 前補背景、考前整理</td><td>要哪種：學習指南、簡報文件、常見問題</td></tr>
-      </tbody></table></div>
-      <p>語音導覽、資訊圖表與簡報的可編輯範例，集中在第九章「提示詞範例」。</p>
+      <details class="reference-disclosure" id="notebooklm-output"><summary>NotebookLM 其他輸出形式（需要時再看）</summary><p>語音導覽、心智圖、資訊圖表、簡報與報告可以當作複習或表達的輔助。功能與介面會變；使用時只選真正有幫助的一種，生成後仍回來源核對重要內容。</p></details>
     </section>
 
     <!-- 06 Agent -->
@@ -407,12 +357,7 @@ Public participation can inform planning decisions, but participants may not rep
           <p>得到欄位與整理方法，再由你開文件、抄資料、排序和存檔。</p>
     <p><strong>它沒停下來等你？</strong>先按停止，再請它列出已做的改動；核對原檔與輸出後，決定保留、修正或用備份重來。<strong>它說「已完成」？</strong>打開實際檔案核對，不只看那三個字。</p>
           <h3 class="compact-heading">工具選擇</h3>
-      <div class="tool-switch" role="radiogroup" aria-label="這個月用的 Agent 工具">
-        <span class="tool-switch-label">我這個月用的是</span>
-        <button type="button" class="tool-option" data-tool="codex" role="radio" aria-checked="false">Codex</button>
-        <button type="button" class="tool-option" data-tool="claude" role="radio" aria-checked="false">Claude Code</button>
-        <span class="tool-switch-status" id="toolStatus">先選一個，下面只顯示那一套步驟。換訂閱時再回來改。</span>
-      </div>
+          <p>Codex 或 Claude Code 都可以；用你目前可用的一個，不必同時學兩套介面。</p>
         </div>
         <div class="agent-col flow">
           <h3>任務執行流程</h3>
@@ -425,46 +370,22 @@ Public participation can inform planning decisions, but participants may not rep
         </div>
       </div>
 
-      <div class="tool-panel" data-tool-panel="codex" hidden>
-        <h4>Codex 操作步驟</h4>
+      <div class="agent-tool-guide">
+        <h3 class="compact-heading">用哪個 Agent 都先做這三件事</h3>
         <ol class="step-list">
-          <li><strong>安裝與登入</strong><span><a href="https://openai.com/codex/" target="_blank" rel="noopener">到 OpenAI 官方頁面</a>下載 Codex app，用 ChatGPT 帳號登入。登入後確認帳號可用的功能與用量。</span></li>
-          <li><strong>開啟練習資料夾</strong><span>新建練習資料夾，放入三份下載材料，在 Codex 加成專案。真實任務先在工作範圍外保留原檔備份。</span></li>
-          <li><strong>確認權限與工作範圍</strong><span>先看權限說明，確認哪些檔案可讀、可改，哪些操作會詢問。不要假設預設每次都會問。這次用練習副本，先要求只讀取並回報。</span></li>
-          <li><strong>貼上任務</strong><span>貼下面的交辦內容。它回報欄位、筆數、缺值後，先核對再說「繼續」。</span></li>
-          <li><strong>看變更與輸出檔</strong><span>在變更檢視看它動了哪些檔案，再打開 output 資料夾的地圖與圖表。</span></li>
-          <li><strong>修正或重來</strong><span>先確認改了哪些檔案。只錯在輸出，就修正或重做 output；原檔若被改動，用事先備份還原，別只相信「已還原」的回覆。</span></li>
+          <li><strong>開工作範圍</strong><span>用練習資料夾開始，真實任務先在工作範圍外保留原檔備份。</span></li>
+          <li><strong>確認權限與第一步</strong><span>先確認哪些檔案可讀、可改；第一次要求只讀取並回報，不要立刻修改。</span></li>
+          <li><strong>看變更並驗收</strong><span>執行後看它改了哪些檔案，再打開 output 與關鍵數字核對；只相信實際檔案，不只相信「已完成」。</span></li>
         </ol>
-
+        <p class="source-note">介面名稱會變，方法不變。需要安裝時回官方入口：<a href="https://openai.com/codex/" target="_blank" rel="noopener">Codex</a>、<a href="https://claude.com/download" target="_blank" rel="noopener">Claude Code</a>。</p>
       </div>
-      <div class="tool-panel" data-tool-panel="claude" hidden>
-        <h4>Claude Code 操作步驟</h4>
-        <ol class="step-list">
-          <li><strong>安裝與登入</strong><span><a href="https://claude.com/download" target="_blank" rel="noopener">到 Anthropic 官方頁面</a>下載 Claude Desktop，用 Claude 帳號登入。Code 分頁需要 Pro 以上。</span></li>
-          <li><strong>開啟練習資料夾</strong><span>新建練習資料夾，放入三份下載材料，在 Code 分頁選這個資料夾。真實任務先在工作範圍外保留原檔備份。</span></li>
-          <li><strong>確認權限與工作範圍</strong><span>查看目前的權限模式；想逐次確認編輯與命令，可選 Manual(手動確認)。模式可能沿用先前設定。這次先要求只讀取並回報。</span></li>
-          <li><strong>貼上任務</strong><span>貼下面的交辦內容。它回報欄位、筆數、缺值後，先核對再允許執行。</span></li>
-          <li><strong>看變更與輸出檔</strong><span>打開差異(diff)面板看它動了哪些檔案，再打開 output 資料夾的地圖與圖表。</span></li>
-          <li><strong>修正或重來</strong><span>先確認改了哪些檔案。只錯在輸出，就修正或重做 output；原檔若被改動，用事先備份還原，別只相信「已還原」的回覆。</span></li>
-        </ol>
-
-      </div>
-      <details><summary>換家的時候，看這張對照表</summary>
-        <div class="table-scroll"><table class="reading-table"><thead><tr><th>同一件事</th><th>Codex</th><th>Claude Code</th></tr></thead><tbody>
-        <tr><td>工作範圍</td><td>專案(Project)</td><td>資料夾</td></tr>
-        <tr><td>執行前確認</td><td>審核模式設定</td><td>權限模式</td></tr>
-        <tr><td>看它改了什麼</td><td>變更檢視</td><td>Diff 面板</td></tr>
-        <tr><td>復原</td><td>核對變更；輸出重做，原檔由備份復原</td><td>同左</td></tr>
-        <tr><td>長期說明檔(進階，初學不需要)</td><td>AGENTS.md</td><td>CLAUDE.md</td></tr>
-        </tbody></table></div>
-      </details>
 
       <div class="rent-task" id="rent-task">
       <h3 class="compact-heading">請 AI 把租金資料做成比較圖</h3>
       <p><strong>你想比較六個區域的租金，但手上只有表格。</strong>這個示範會讓 Codex 或 Claude Code 讀取資料、統一租金單位，再製作圖表。你負責說明需求、確認結果。</p>
       <p class="task-outcome"><strong>完成後會得到：</strong>一份整理好的租金表、一張比較高低的長條圖，以及一張用顏色表示租金的示意地圖。材料與區域都是虛構的。</p>
 
-      <figure class="task-preview"><img src="media/preview-units.png" alt="完成後的長條圖示意：月租金比較" /><img src="media/preview-missing.png" alt="完成後的地圖示意：D4 標示無資料" /><figcaption>示意取自本章動畫；實際輸出由 Agent 產生，D4 會標示無資料。</figcaption></figure>
+      <figure class="task-preview"><img src="media/preview-units.png" alt="完成後的長條圖示意：月租金比較" /><img src="media/preview-missing.png" alt="完成後的地圖示意：D4 標示無資料" /><figcaption>示意取自本章練習；實際輸出由 Agent 產生，D4 會標示無資料。</figcaption></figure>
       <h4>準備材料</h4>
       <p>在電腦建立一個練習資料夾，把下面三個檔案下載到裡面(整包下載會自動解壓成資料夾)，再用 Codex 或 Claude Code 開啟這個資料夾。檔案已準備好，不需要先學會製作這些格式。</p>
       <p class="material-links"><a href="materials/districts-task.zip" download>整包下載(三個檔案)</a><a href="materials/districts.csv" download>下載租金表(districts.csv)</a><a href="materials/districts.geojson" download>下載區域形狀(districts.geojson)</a><a href="materials/data-dictionary.txt" download>下載資料說明(data-dictionary.txt)</a></p>
@@ -507,31 +428,22 @@ Public participation can inform planning decisions, but participants may not rep
       </details>
       </div>
       <h3 class="compact-heading">資料解讀與推論限制</h3>
-      <p>下面兩段動畫使用同一份租金資料與抽象格網。先判斷處理方式，再看數字與地圖如何改變，最後說明你會怎麼驗收 AI 的輸出。</p>
+      <p>下面兩個練習使用同一份租金資料與抽象格網。先判斷處理方式，再看數字與地圖如何改變，最後說明你會怎麼驗收 AI 的輸出。</p>
       <div class="learning-examples">
         <details class="learning-lesson" id="lesson-units">
           <summary>資料單位與比較結果<span class="lesson-topic">先統一比較基準</span></summary>
           <div class="lesson-content">
-            <p class="lesson-question"><strong>先判斷：</strong>舊城區 D2 是 £280／週，河岸區 D1 是 £1,200／月。哪一區比較便宜？你打算怎麼比較？</p>
-            <div class="lesson-grid">
-              <figure class="clip"><video src="media/learn-units.mp4" poster="media/learn-units.png" controls muted playsinline preload="none" aria-label="資料單位與比較結果動畫" aria-describedby="units-caption">可改讀文字解說，或<a href="media/learn-units.mp4">開啟動畫檔案</a>。</video><figcaption id="units-caption">虛構教學資料。長條使用相同比例尺，從零起算；換算採本練習規則。</figcaption></figure>
-              <div class="lesson-reflection">
-                <p><strong>用自己的話說明：</strong>為什麼 280 不能直接和 1,200 比較？交給 AI 整理時，要先確認哪個欄位與計算規則？</p>
-                <details class="lesson-answer"><summary>文字解說與參考答案</summary>
-                  <ol class="lesson-transcript"><li>兩筆資料的單位不同：D2 是每週，D1 是每月。</li><li>本練習用每週租金 × 52 ÷ 12 換算平均月租：280 × 52 ÷ 12 ≈ 1213.33。這是將全年租金平均分到 12 個月，不是每月固定四週。</li><li>統一後，D2 約 £1,213.33／月，略高於 D1 的 £1,200／月，差額約 £13.33。長條圖保留共同的零基準，不放大這個小差異。</li></ol>
-                  <p><strong>實際使用：</strong>請 AI 先回報 rent_unit 的不同單位與轉換公式，保留原始欄位，新增月租欄位，完成後自己抽算一筆。</p>
-                </details>
-                <div class="plot-lab" id="unitsPlotLab">
-                  <div class="plot-lab-head"><strong>互動試試</strong><span>同兩筆資料，只改「有沒有先統一單位」。</span></div>
-                  <div class="plot-lab-controls" role="group" aria-label="租金比較方式">
-                    <button type="button" class="plot-mode" data-unit-mode="raw" aria-pressed="true">直接比 280 和 1,200（錯誤）</button>
-                    <button type="button" class="plot-mode" data-unit-mode="monthly" aria-pressed="false">先換成月租</button>
-                  </div>
-                  <div class="plot-lab-chart" id="unitsPlot" aria-live="polite"><p class="plot-loading">載入互動圖…</p></div>
-                  <p class="plot-lab-takeaway" id="unitsPlotTakeaway"><strong>不能直接比。</strong>280 是每週，1,200 是每月；數字看起來差很多，不代表 D2 比較便宜。</p>
-                </div>
+            <p class="lesson-question"><strong>先判斷：</strong>舊城區 D2 是 £280／週，河岸區 D1 是 £1,200／月。哪一區比較便宜？</p>
+            <div class="plot-lab" id="unitsPlotLab">
+              <div class="plot-lab-head"><strong>互動試試</strong><span>同兩筆資料，只改「有沒有先統一單位」。</span></div>
+              <div class="plot-lab-controls" role="group" aria-label="租金比較方式">
+                <button type="button" class="plot-mode" data-unit-mode="raw" aria-pressed="true">直接比 280 和 1,200（錯誤）</button>
+                <button type="button" class="plot-mode" data-unit-mode="monthly" aria-pressed="false">先換成月租</button>
               </div>
+              <div class="plot-lab-chart" id="unitsPlot" aria-live="polite"><p class="plot-loading">載入互動圖…</p></div>
+              <p class="plot-lab-takeaway" id="unitsPlotTakeaway"><strong>不能直接比。</strong>280 是每週，1,200 是每月；數字看起來差很多，不代表 D2 比較便宜。</p>
             </div>
+            <details class="lesson-answer"><summary>核對換算方式</summary><p>本練習用每週租金 × 52 ÷ 12 換算平均月租：£280／週約為 £1,213.33／月。交給 AI 時，先確認原始單位、轉換公式與原欄位都有保留，再自己抽算一筆。</p></details>
           </div>
         </details>
         <details class="learning-lesson" id="lesson-missing">
@@ -592,28 +504,15 @@ Public participation can inform planning decisions, but participants may not rep
       </div>
       <div class="mermaid-actions">
         <a class="btn primary" href="https://mermaid.live/edit" target="_blank" rel="noopener">Mermaid Live Editor</a>
-        <a class="btn ghost" href="https://mermaid.ai/live/edit" target="_blank" rel="noopener">mermaid.ai 編輯器</a>
       </div>
-      <p class="mermaid-hint">打開編輯器後，把左邊 Code 區原本的內容全選刪掉，貼上剛複製的 code，右邊就會出圖。</p>
-      <p>要改就用白話說：改成橫向、字縮短、加一條回頭的箭頭。<strong>貼上去報錯？</strong>把錯誤訊息原封不動丟回給 AI，請它修正後重給完整 code。</p>
+      <p class="mermaid-hint">把 AI 給的 code 貼進編輯器即可預覽。要修改或遇到錯誤時，把需求或錯誤訊息原樣交回 AI，再核對完整圖。</p>
 
-<div class="side-by-side split-wide-left">
-<div>
-      <h3 class="compact-heading">圖表類型的選擇</h3>
-      <p>先講目的和讀者，讓它建議圖種並說理由，你同意了再要 code。時序圖、狀態圖等其他圖種也用這招。</p>
+<h3 class="compact-heading">圖表類型的選擇</h3>
+      <p>先講目的和讀者，讓 AI 建議圖種並說理由；你確認關係表達正確後，再請它產生 code。</p>
       <div class="pbox"><div class="pbox-head"><span>貼給對話型 AI</span><button class="copy-btn" type="button" data-copy-target="#choosePrompt">複製</button></div><pre id="choosePrompt">我想在報告裡說明「[一件事，例如制度層級與在地條件怎麼影響住宅負擔]」，讀者是[誰，例如 seminar 同學]，他們要一眼看懂的是[什麼]。
 請先建議最適合的圖表類型，說明為什麼，也說一個不建議的類型和原因。
 我確認後，再給 Mermaid code：節點用中文、保留英文術語，只回傳 code。</pre></div>
-</div>
-<div>
-      <h3 class="compact-heading">其他圖表工具的用途</h3>
-      <div class="table-scroll"><table class="reading-table notmermaid-table"><thead><tr><th>要做的東西</th><th>找誰</th></tr></thead><tbody>
-      <tr><td>地圖、空間資料</td><td>GIS 軟體，或交給 Agent 用資料畫</td></tr>
-      <tr><td>精確的數據圖表，例如長條圖、折線圖</td><td>試算表，或交給 Agent。先核對數據、單位和刻度，再決定呈現方式。</td></tr>
-      <tr><td>示意插圖、海報</td><td>NotebookLM 的資訊圖表，或簡報軟體</td></tr>
-      </tbody></table></div>
-</div>
-</div>
+      <p class="source-note">精確數據圖先核對數值、單位與刻度；空間資料則回到 GIS 或 Agent 工作流程。</p>
     </section>
 
     <!-- 08 規則 -->

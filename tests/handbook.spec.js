@@ -24,6 +24,18 @@ test('core chapter navigation targets exist', async ({ page }) => {
   }
 });
 
+test('secondary reference material stays off the first-read path', async ({ page }) => {
+  const glossary = page.locator('#keyword-reference-disclosure');
+  const outputs = page.locator('#notebooklm-output');
+  await expect(glossary).not.toHaveAttribute('open', '');
+  await expect(outputs).not.toHaveAttribute('open', '');
+  await glossary.locator(':scope > summary').click();
+  await expect(glossary).toHaveAttribute('open', '');
+  await expect(page.locator('#keyword-token')).toBeVisible();
+  await expect(page.locator('#situations blockquote')).toHaveCount(0);
+  await expect(page.locator('#concepts .tool-table')).toHaveCount(0);
+});
+
 test('heavy teaching libraries stay lazy on the first page load', async ({ page }) => {
   const resources = await page.evaluate(() => performance.getEntriesByType('resource').map(entry => entry.name));
   const heavy = resources.filter(name => /\/vendor\/(?:pdfjs\/|observable-plot|d3\.min|citation)/.test(name));
@@ -56,21 +68,6 @@ test('agent walkthrough advances and resets', async ({ page }) => {
 
   await page.locator('#agentReset').click();
   await expect(steps.nth(0)).toHaveClass(/now/);
-});
-
-test('tool switch shows only the selected agent instructions', async ({ page }) => {
-  const codex = page.locator('[data-tool="codex"]');
-  const claude = page.locator('[data-tool="claude"]');
-
-  await codex.click();
-  await expect(codex).toHaveAttribute('aria-checked', 'true');
-  await expect(page.locator('[data-tool-panel="codex"]')).toBeVisible();
-  await expect(page.locator('[data-tool-panel="claude"]')).toBeHidden();
-
-  await claude.click();
-  await expect(claude).toHaveAttribute('aria-checked', 'true');
-  await expect(page.locator('[data-tool-panel="claude"]')).toBeVisible();
-  await expect(page.locator('[data-tool-panel="codex"]')).toBeHidden();
 });
 
 test('mobile menu remains keyboard-usable', async ({ page }, testInfo) => {
