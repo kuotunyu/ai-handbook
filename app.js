@@ -280,17 +280,35 @@ function setupMissingValuePlot() {
   let plotApi = null;
   let loading = null;
 
-  function loadPlot() {
-    if (window.Plot) return Promise.resolve(window.Plot);
-    if (loading) return loading;
-    loading = new Promise((resolve, reject) => {
+  function loadScript(src, marker) {
+    return new Promise((resolve, reject) => {
+      const existing = document.querySelector('script[' + marker + ']');
+      if (existing) {
+        if (existing.dataset.loaded === "true") resolve();
+        else {
+          existing.addEventListener("load", () => resolve(), { once: true });
+          existing.addEventListener("error", () => reject(new Error(src + " failed to load")), { once: true });
+        }
+        return;
+      }
       const script = document.createElement("script");
-      script.src = "./vendor/observable-plot.umd.min.js";
-      script.dataset.observablePlot = "0.6.17";
-      script.onload = () => window.Plot ? resolve(window.Plot) : reject(new Error("Plot global missing"));
-      script.onerror = () => reject(new Error("Observable Plot failed to load"));
+      script.src = src;
+      script.setAttribute(marker, "true");
+      script.onload = () => { script.dataset.loaded = "true"; resolve(); };
+      script.onerror = () => reject(new Error(src + " failed to load"));
       document.head.append(script);
     });
+  }
+
+  function loadPlot() {
+    if (window.Plot && window.d3) return Promise.resolve(window.Plot);
+    if (loading) return loading;
+    loading = (async () => {
+      if (!window.d3) await loadScript("./vendor/d3.min.js", "data-d3-vendor");
+      if (!window.Plot) await loadScript("./vendor/observable-plot.umd.min.js", "data-observable-plot");
+      if (!window.Plot) throw new Error("Plot global missing");
+      return window.Plot;
+    })();
     return loading;
   }
 
