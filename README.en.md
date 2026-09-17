@@ -23,15 +23,15 @@ The site is plain HTML, CSS and JavaScript. Open `en.html` and it works offline;
 |---|---|
 | ![Prompt builder](docs/assets/prompt-builder-en.png) | ![PDF evidence exercise](docs/assets/pdf-evidence-lab-en.png) |
 
-| Diagram chooser: six relationships, plain request and Mermaid code from one definition | Missing-value lab: the wrong way, filling a blank with 0 |
-|---|---|
-| ![Diagram chooser](docs/assets/diagram-viewer-en.png) | ![Missing-value lab](docs/assets/missing-value-lab-en.png) |
+**Diagram chooser: one tab per relationship; the plain request, the Mermaid code and the figure come from one definition**
+
+![Diagram chooser](docs/assets/diagram-viewer-en.png)
 
 <div align="center">
 
-| Phone (390px) |
-|:---:|
-| <img src="docs/assets/mobile-hero-en.png" width="300" alt="Phone layout"> |
+| Missing-value lab: the wrong way, filling a blank with 0 | Phone (390px) |
+|:---:|:---:|
+| <img src="docs/assets/missing-value-lab-en.png" width="360" alt="Missing-value lab"> | <img src="docs/assets/mobile-hero-en.png" width="260" alt="Phone layout"> |
 
 </div>
 

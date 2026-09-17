@@ -23,15 +23,15 @@
 |---|---|
 | ![提問組裝器](docs/assets/prompt-builder.png) | ![PDF 查證練習](docs/assets/pdf-evidence-lab.png) |
 
-| 圖表選擇：六種關係、白話需求與 Mermaid code 同源 | 缺值互動圖：把空白當 0 的錯誤示範 |
-|---|---|
-| ![圖表選擇與製作](docs/assets/diagram-viewer.png) | ![缺值互動圖](docs/assets/missing-value-lab.png) |
+**圖表選擇：六種關係各一個分頁，白話需求、Mermaid code 與圖出自同一份定義**
+
+![圖表選擇與製作](docs/assets/diagram-viewer.png)
 
 <div align="center">
 
-| 手機首頁(390px) | 手機目錄 |
-|:---:|:---:|
-| <img src="docs/assets/mobile-hero.png" width="300" alt="手機版首頁"> | <img src="docs/assets/mobile-menu.png" width="300" alt="手機版目錄"> |
+| 缺值互動圖：把空白當 0 的錯誤示範 | 手機首頁(390px) | 手機目錄 |
+|:---:|:---:|:---:|
+| <img src="docs/assets/missing-value-lab.png" width="330" alt="缺值互動圖"> | <img src="docs/assets/mobile-hero.png" width="230" alt="手機版首頁"> | <img src="docs/assets/mobile-menu.png" width="230" alt="手機版目錄"> |
 
 </div>
 
