@@ -221,11 +221,11 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 .plain-list li { margin: 3px 0; }
 
 /* ============ 原地解釋：借鑑 Nutshell 的 progressive disclosure，但用原生 details 避免額外 runtime ============ */
-.inline-explain-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: -8px 0 18px; color: var(--ink-muted); font-size: var(--fs-sm); }
-.inline-explain-label { font-weight: 600; }
-.inline-explain { flex: 0 1 auto; }
-.inline-explain[open] { flex-basis: 100%; }
-.inline-explain > summary { display: inline-flex; min-height: 30px; padding: 2px 2px; gap: 6px; font-size: var(--fs-sm); color: var(--brand); border-bottom: 1px dotted var(--brand-border); }
+/* 左欄「需要時再看：」、右欄可展開項目；展開內容只在右欄往下長，標題不位移 */
+.inline-explain-row { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; column-gap: 10px; margin: -8px 0 18px; color: var(--ink-muted); font-size: var(--fs-sm); }
+.inline-explain-label { display: flex; align-items: center; min-height: 34px; font-weight: 600; }
+.inline-explain { min-width: 0; justify-self: start; }
+.inline-explain > summary { display: inline-flex; min-height: 34px; padding: 2px 2px; gap: 6px; font-size: var(--fs-sm); color: var(--brand); border-bottom: 1px dotted var(--brand-border); }
 .inline-explain > summary::before { width: 16px; height: 16px; font-size: 13px; color: var(--brand); background: transparent; border: 1px solid currentColor; border-radius: 50%; }
 .inline-explain > summary:hover::before { color: var(--terracotta); background: transparent; }
 .inline-explain > p { max-width: 52em; margin: 7px 0 0; padding: 9px 12px; border-left: 2px solid var(--brand-border); border-radius: 0 var(--radius-xs) var(--radius-xs) 0; background: var(--bg-white); box-shadow: var(--shadow-soft); color: var(--ink-body); font-size: var(--fs-sm); line-height: 1.55; }
@@ -615,6 +615,7 @@ details .table-scroll { margin: 10px 0 6px 32px; }
   .mstep + .mstep .mstep-no { left: 0; }
 }
 @media (max-width: 700px) {
+  .inline-explain-row { grid-template-columns: 1fr; row-gap: 2px; }
   :root { --gutter: 20px; --fs-body: 17px; --fs-sm: 16px; --fs-meta: 14px; --fs-lg: 20px; --fs-h3: 22px; --fs-h2: 28px; --fs-h1: 34px; --fs-table: 16px; --fs-num: 24px; --fs-num-sm: 20px; --bar-h: 60px; }
   .topbar-inner { min-height: 60px; padding: 8px 16px; gap: 10px; }
   .logo { font-size: 18px; gap: 6px; }
