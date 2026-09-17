@@ -392,18 +392,31 @@ function setupUnitConversionPlot() {
       takeaway.innerHTML = "<strong>同一單位後再比。</strong>D2 約 £1,213.33／月，比 D1 的 £1,200／月高約 £13.33。";
     }
 
+    // 寬度跟著實際版面；窄螢幕縮小邊界與字級，軸說明改短句。
+    const width = Math.max(260, Math.min(860, (chart.clientWidth || 656) - 16));
+    const narrow = width < 560;
+    const phone = window.innerWidth <= 700;
+    const fontPx = phone ? 14 : 16;
+    const marginLeft = phone ? 92 : 118, marginRight = 24;
+    const plotWidth = width - marginLeft - marginRight;
+    // 長條太短放不下金額時，金額改放在長條右邊，避免壓到區名。
+    const fitsInside = d => d.value / 1300 * plotWidth > d.label.length * fontPx * 0.62 + 16;
+    const ink = styles.getPropertyValue("--ink-primary").trim() || "#1E2B2C";
+    const axisLabel = mode === "raw" ? (narrow ? "原始數字(不能直接比)" : "原始數字(單位不同，不能直接比較)") : "月租(GBP)";
     const plot = plotApi.plot({
-      width: Math.max(320, Math.min(720, chart.clientWidth || 640)),
-      height: 230,
-      marginLeft: 108,
-      marginRight: 22,
-      x: { domain: [0, 1300], grid: true, label: mode === "raw" ? "原始數字(單位不同，不能直接比較)" : "月租(GBP)" },
+      width,
+      height: 262,
+      marginLeft,
+      marginRight,
+      marginBottom: 64,
+      x: { domain: [0, 1300], grid: true, label: axisLabel, labelAnchor: "center", labelArrow: "none", labelOffset: 52 },
       y: { domain: data.map(d => d.name), label: null },
-      style: { fontFamily: "inherit", fontSize: "13px" },
+      style: { fontFamily: "inherit", fontSize: fontPx + "px" },
       marks: [
         plotApi.ruleX([0]),
         plotApi.barX(rows, { x: "value", y: "name", fill: d => mode === "raw" && d.id === "D2" ? warning : brand, title: d => d.name + ": " + d.label }),
-        plotApi.text(rows, { x: "value", y: "name", text: "label", textAnchor: "end", dx: -8, fill: "white", fontWeight: 700 })
+        plotApi.text(rows.filter(fitsInside), { x: "value", y: "name", text: "label", textAnchor: "end", dx: -8, fill: "white", fontWeight: 700 }),
+        plotApi.text(rows.filter(d => !fitsInside(d)), { x: "value", y: "name", text: "label", textAnchor: "start", dx: 8, fill: ink, fontWeight: 700 })
       ]
     });
     plot.setAttribute("role", "img");
@@ -474,14 +487,17 @@ function setupMissingValuePlot() {
       takeaway.innerHTML = "<strong>錯誤示範：</strong>把空白改成 0，會讓 D4 看起來像有一筆 £0 的租金資料，進而被誤認為最便宜。";
     }
 
+    const width = Math.max(260, Math.min(860, (chart.clientWidth || 656) - 16));
+    const phone = window.innerWidth <= 700;
     const plot = plotApi.plot({
-      width: Math.max(320, Math.min(720, chart.clientWidth || 640)),
-      height: 290,
-      marginLeft: 104,
-      marginRight: 22,
-      x: { domain: [0, 1550], grid: true, label: "月租(GBP)" },
+      width,
+      height: 316,
+      marginLeft: phone ? 92 : 118,
+      marginRight: 24,
+      marginBottom: 64,
+      x: { domain: [0, 1550], grid: true, label: "月租(GBP)", labelAnchor: "center", labelArrow: "none", labelOffset: 52 },
       y: { domain: data.map(d => d.name), label: null },
-      style: { fontFamily: "inherit", fontSize: "13px" },
+      style: { fontFamily: "inherit", fontSize: (phone ? 14 : 16) + "px" },
       marks
     });
     plot.setAttribute("role", "img");
