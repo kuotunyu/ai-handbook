@@ -9,7 +9,7 @@
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" />
   <title>研究所 AI 手冊</title>
-  <link rel="stylesheet" href="./styles.css?v=202609171853" />
+  <link rel="stylesheet" href="./styles.css?v=202609171904" />
 </head>
 <body>
 <!--
@@ -81,12 +81,6 @@
             <p class="keyword-action"><strong>使用要點</strong>提供重要原文，確認工具讀到了哪些內容，不假設它已看過你的檔案。</p>
             <details class="keyword-example"><summary>看例子<span class="sr-only">：Context</span></summary><p>你可能看到「上下文太長」。能容納的內容有限，長對話可能省略細節；換新對話時，核對帶過去的摘要，並重新提供重要原文與要求。</p><figure class="clip"><video src="media/clip-context.mp4" controls muted loop playsinline preload="none" poster="media/clip-context.png" aria-label="Context示意動畫"></video><figcaption>無聲示意動畫，點播放觀看；內容虛構。</figcaption></figure></details>
           </article>
-<article class="keyword-entry" id="keyword-training">
-            <h4>Training<span class="keyword-alias">訓練</span></h4>
-            <p class="keyword-definition">用資料更新模型本身的參數，讓模型的行為改變。</p>
-            <p class="keyword-action"><strong>使用要點</strong>把履歷、背景、文件貼進聊天，通常是在提供 Context，不是在訓練模型。</p>
-            <details class="keyword-example"><summary>看例子<span class="sr-only">：Training</span></summary><p>例如告訴 Gemini「我是都市計畫研究生，請用初學者能懂的方式解釋 GIS」，這是在提供這次工作的 Context。只有真的用資料去更新模型本身時，才是在談 training 或 fine-tuning。</p></details>
-          </article>
 <article class="keyword-entry" id="keyword-hallucination">
             <h4>幻覺<span class="keyword-alias">Hallucination</span></h4>
             <p class="keyword-definition">AI 說得像真的，內容卻不正確或沒有根據。</p>
@@ -100,7 +94,7 @@
             <details class="keyword-example"><summary>看例子<span class="sr-only">：Agent</span></summary><p>例如把幾份課程文件整理成作業清單，存成檔案再檢查。交辦前要說清可處理的範圍，完成後打開成果核對。</p></details>
           </article></div></div>
       <details class="keyword-reference-disclosure" id="keyword-reference-disclosure">
-        <summary><span><strong>延伸詞彙</strong><small>AI / Generative AI / LLM / Multimodal / Token</small></span></summary>
+        <summary><span><strong>延伸詞彙</strong><small>AI / Generative AI / LLM / Training / Multimodal / Token</small></span></summary>
         <div class="keyword-group keyword-reference"><div class="keyword-group-heading"><p>遇到時再查，不必先讀完。</p></div><div class="keyword-list"><article class="keyword-entry" id="keyword-ai">
             <h4>AI<span class="keyword-alias">人工智慧</span></h4>
             <p class="keyword-definition">讓機器執行辨識、預測、生成等任務的技術統稱。</p>
@@ -115,6 +109,11 @@
             <h4>LLM<span class="keyword-alias">大型語言模型</span></h4>
             <p class="keyword-definition">處理與生成語言的模型，是許多聊天工具背後的核心。</p>
             <details class="keyword-example"><summary>看例子<span class="sr-only">：LLM</span></summary><p>LLM 是 Large Language Model 的縮寫。看到「這個 App 使用哪個 LLM？」是在問背後的模型；App 還可能另外提供搜尋、讀檔等工具。</p></details>
+          </article>
+<article class="keyword-entry" id="keyword-training">
+            <h4>Training<span class="keyword-alias">訓練</span></h4>
+            <p class="keyword-definition">用資料更新模型本身，讓模型的行為改變；把背景或文件貼進聊天是提供 Context，不是訓練。</p>
+            <details class="keyword-example"><summary>看例子<span class="sr-only">：Training</span></summary><p>例如告訴 Gemini「我是都市計畫研究生，請用初學者能懂的方式解釋 GIS」，這是在提供這次工作的 Context。只有真的用資料去更新模型本身時，才是在談 training 或 fine-tuning。</p></details>
           </article>
 <article class="keyword-entry" id="keyword-multimodal">
             <h4>多模態<span class="keyword-alias">Multimodal</span></h4>
@@ -564,7 +563,7 @@
     <div class="diagram-zoom-area" tabindex="0" role="region" aria-label="放大圖表，可捲動"><img id="diagramZoomImg" alt="" /></div>
   </dialog>
   <div class="toast" id="toast" role="status">已複製！</div>
-  <script src="./diagrams.js?v=202609171853"></script>
-  <script src="./app.js?v=202609171853"></script>
+  <script src="./diagrams.js?v=202609171904"></script>
+  <script src="./app.js?v=202609171904"></script>
 </body>
 </html>

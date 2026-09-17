@@ -123,7 +123,7 @@ After editing:
 
 The first front-end learning pass intentionally uses native disclosure rather than a quiz framework:
 
-- `Training` sits next to `Context` so learners can distinguish model change from task context;
+- `Training` lives in the extended vocabulary, right after LLM (the site owner moved it out of the core cards on 2026-09-17; do not move it back). Context ≠ Training is still taught by its definition, the chapter 02 check and the chapter 03 inline note;
 - the end of the situation section contains four short “先判斷，再展開” prompts;
 - there is no score or game layer; the learner makes a quick mental choice and then opens the reasoning;
 - future additions should avoid duplicating these same checks unless a new scenario teaches a genuinely different judgment.

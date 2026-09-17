@@ -277,6 +277,7 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 .keyword-reference .keyword-entry:nth-child(3)::before { color: var(--olive); }
 .keyword-reference .keyword-entry:nth-child(4)::before { color: var(--brand); }
 .keyword-reference .keyword-entry:nth-child(5)::before { color: var(--plum); }
+.keyword-reference .keyword-entry:nth-child(6)::before { color: var(--emerald); }
 .keyword-reference .keyword-entry h4 { grid-column: 2; grid-row: 1 / span 3; margin: 0; align-self: stretch; padding-right: 16px; border-right: 1px solid var(--border-subtle); }
 .keyword-reference .keyword-definition { grid-column: 3; font-size: var(--fs-table); }
 .keyword-reference .keyword-example { grid-column: 3; margin-top: 0; }
