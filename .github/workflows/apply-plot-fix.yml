@@ -1,0 +1,33 @@
+name: Apply Plot selector fix
+
+on:
+  push:
+    branches: [chatgpt/plot-prose-quality]
+    paths:
+      - ".github/workflows/apply-plot-fix.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/plot-prose-quality
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/fix-plot-lab.mjs
+      - name: Commit fix
+        run: |
+          if git diff --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app.js
+          git commit -m "fix: initialize both Plot controls"
+          git push origin HEAD:chatgpt/plot-prose-quality
