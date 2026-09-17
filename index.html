@@ -9,7 +9,7 @@
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" />
   <title>研究所 AI 手冊</title>
-  <link rel="stylesheet" href="./styles.css?v=202609171338" />
+  <link rel="stylesheet" href="./styles.css?v=202609171342" />
 </head>
 <body>
 <!--
@@ -129,7 +129,7 @@
           <summary><span class="situation-name">理解與查找資料</span><span class="situation-examples">讀不懂一段內容、比較文獻、找政策資料</span></summary>
           <div class="situation-content">
             <p>先把卡住的內容貼給對話型 AI；要反覆閱讀同一批文獻、講義或錄音，再用 NotebookLM。查找資料時，請它附上原始來源。</p>
-            <blockquote>「我想了解［問題］。這是手上的材料，請先解釋重點；還缺的資料，幫我找原始來源。」</blockquote>
+            <blockquote>「我想了解[問題]。這是手上的材料，請先解釋重點；還缺的資料，幫我找原始來源。」</blockquote>
             <p class="situation-links"><a href="#reading">查看閱讀與查證方法</a></p>
           </div>
         </details>
@@ -145,7 +145,7 @@
           <summary><span class="situation-name">處理資料與製作圖表</span><span class="situation-examples">整理表格、批次處理檔案、製作圖表或地圖</span></summary>
           <div class="situation-content">
             <p>需要直接處理檔案時，用手上可用的 Agent；先讓它看材料、提出處理方式。</p>
-            <blockquote>「我想把這些表格整理成［成果］。請先讀取並說明處理方式，不要修改原始檔案。」</blockquote>
+            <blockquote>「我想把這些表格整理成[成果]。請先讀取並說明處理方式，不要修改原始檔案。」</blockquote>
             <p class="situation-links"><a href="#agent">查看檔案處理示範</a><a href="#diagrams">查看圖表選擇</a></p>
           </div>
         </details>
@@ -153,7 +153,7 @@
           <summary><span class="situation-name">處理操作問題</span><span class="situation-examples">軟體不會用、操作失敗、看不懂錯誤訊息</span></summary>
           <div class="situation-content">
             <p>把畫面或錯誤訊息提供給對話型 AI，補上軟體名稱、版本和你想做的事。</p>
-            <blockquote>「我用［軟體與版本］做［事情］，到這一步出現［錯誤訊息］。請先幫我判斷原因，再給一個可以試的步驟。」</blockquote>
+            <blockquote>「我用[軟體與版本]做[事情]，到這一步出現[錯誤訊息]。請先幫我判斷原因，再給一個可以試的步驟。」</blockquote>
             <p class="situation-links"><a href="#prompt">查看追問與修正方法</a></p>
           </div>
         </details>
@@ -199,7 +199,7 @@
       <div class="builder">
         <div class="builder-left">
           <div class="builder-blocks" id="builderBlocks"></div>
-          <p class="builder-tip"><strong>還說不清楚也能開始：</strong>「我想做到［目標］，目前卡在［困難］。請先問我一個問題，幫我釐清下一步。」</p>
+          <p class="builder-tip"><strong>還說不清楚也能開始：</strong>「我想做到[目標]，目前卡在[困難]。請先問我一個問題，幫我釐清下一步。」</p>
         </div>
         <div class="builder-output">
           <div class="builder-output-head">
@@ -213,10 +213,10 @@
 
       <h3 class="compact-heading">追問與修正</h3>
       <div class="table-scroll"><table class="reading-table"><thead><tr><th>遇到的問題</th><th>下一句可以怎麼說</th></tr></thead><tbody>
-      <tr><td>解釋太難</td><td>「我不懂的是這一句：［貼上句子］。請用一個具體例子解釋，保留重要英文名詞。」</td></tr>
+      <tr><td>解釋太難</td><td>「我不懂的是這一句：[貼上句子]。請用一個具體例子解釋，保留重要英文名詞。」</td></tr>
       <tr><td>回答太空泛</td><td>「請根據我附的材料，指出可以修改的三個地方，並說明理由。」</td></tr>
       <tr><td>方向不對</td><td>「我要比較兩個方案，不是分別介紹。請按成本、時間與限制改成比較表。」</td></tr>
-      <tr><td>操作失敗</td><td>「我想做到［目標］，使用［軟體與版本］，做了［操作］，出現［錯誤訊息］。請先幫我判斷原因，再給一個可確認的小步驟。」</td></tr>
+      <tr><td>操作失敗</td><td>「我想做到[目標]，使用[軟體與版本]，做了[操作]，出現[錯誤訊息]。請先幫我判斷原因，再給一個可確認的小步驟。」</td></tr>
       <tr><td>對話太亂</td><td>「請把這段對話整理成一段摘要：我的目標、已確認的結論、我提供過的材料、下一步。只列事實。」核對摘要後貼到新對話，重要原文與檔案也重新提供。</td></tr>
       </tbody></table></div>
       <h3 class="compact-heading">區分要求與原文</h3>
@@ -499,7 +499,7 @@ Public participation can inform planning decisions, but participants may not rep
 <div>
       <h3 class="compact-heading">圖表類型的選擇</h3>
       <p>先講目的和讀者，讓它建議圖種並說理由，你同意了再要 code。時序圖、狀態圖等其他圖種也用這招。</p>
-      <div class="pbox"><div class="pbox-head"><span>貼給對話型 AI</span><button class="copy-btn" type="button" data-copy-target="#choosePrompt">複製</button></div><pre id="choosePrompt">我想在報告裡說明「［一件事，例如制度層級與在地條件怎麼影響住宅負擔］」，讀者是［誰，例如 seminar 同學］，他們要一眼看懂的是［什麼］。
+      <div class="pbox"><div class="pbox-head"><span>貼給對話型 AI</span><button class="copy-btn" type="button" data-copy-target="#choosePrompt">複製</button></div><pre id="choosePrompt">我想在報告裡說明「[一件事，例如制度層級與在地條件怎麼影響住宅負擔]」，讀者是[誰，例如 seminar 同學]，他們要一眼看懂的是[什麼]。
 請先建議最適合的圖表類型，說明為什麼，也說一個不建議的類型和原因。
 我確認後，再給 Mermaid code：節點用中文、保留英文術語，只回傳 code。</pre></div>
 </div>
@@ -532,7 +532,7 @@ Public participation can inform planning decisions, but participants may not rep
 </div>
 <div>
       <h3 class="compact-heading">AI 使用申報</h3>
-      <div class="quote-box"><blockquote class="quote" id="declarationTemplate">本作業中我使用［工具名稱］協助［實際用途與範圍］。我對輸出進行［核對、修改或未採納的部分］。［依課程要求附提示詞、對話紀錄或其他說明］。</blockquote><button class="copy-btn" type="button" data-copy-target="#declarationTemplate">複製</button></div>
+      <div class="quote-box"><blockquote class="quote" id="declarationTemplate">本作業中我使用[工具名稱]協助[實際用途與範圍]。我對輸出進行[核對、修改或未採納的部分]。[依課程要求附提示詞、對話紀錄或其他說明]。</blockquote><button class="copy-btn" type="button" data-copy-target="#declarationTemplate">複製</button></div>
       <p><strong>依實際用途填寫：</strong>以學校及作業規定為準，不填沒有做過的核對。自己能解釋提交內容與判斷過程；申報不能取代事先確認允許範圍。</p>
       <h3 class="compact-heading">材料上傳與授權</h3>
       <ul class="plain-list">
@@ -563,7 +563,7 @@ Public participation can inform planning decisions, but participants may not rep
     <div class="diagram-zoom-area" tabindex="0" role="region" aria-label="放大圖表，可捲動"><img id="diagramZoomImg" alt="" /></div>
   </dialog>
   <div class="toast" id="toast" role="status">已複製！</div>
-  <script src="./diagrams.js?v=202609171338"></script>
-  <script src="./app.js?v=202609171338"></script>
+  <script src="./diagrams.js?v=202609171342"></script>
+  <script src="./app.js?v=202609171342"></script>
 </body>
 </html>
