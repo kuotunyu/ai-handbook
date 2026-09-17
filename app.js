@@ -259,6 +259,111 @@ function setupToolSwitch() {
 }
 
 /* ====================================================================
+   05 延伸：PDF.js + Citation.js 原始來源查證。只在展開時按需載入。
+==================================================================== */
+function setupEvidencePdfLab() {
+  const lab = $("#pdfEvidenceLab");
+  const viewer = $("#evidencePdfViewer");
+  const canvas = $("#evidencePdfCanvas");
+  const message = $("#evidencePdfMessage");
+  const status = $("#evidencePdfStatus");
+  const citation = $("#evidenceCitation");
+  const pageButtons = Array.from(document.querySelectorAll("#pdfEvidenceLab [data-evidence-page]"));
+  if (!lab || !viewer || !canvas || !message || !status || !citation || !pageButtons.length) return;
+
+  const source = {
+    id: "lin-carter-2026",
+    type: "report",
+    title: "Evening Library Hours Pilot: A Teaching Brief",
+    author: [
+      { given: "Mei", family: "Lin" },
+      { given: "James", family: "Carter" }
+    ],
+    issued: { "date-parts": [[2026]] },
+    publisher: "Urban Learning Methods Lab"
+  };
+  let pdfDoc = null;
+  let pdfJs = null;
+  let currentPage = 2;
+  let renderToken = 0;
+  let citationLoaded = false;
+  let loadingPdf = null;
+
+  async function formatCitation() {
+    if (citationLoaded) return;
+    citationLoaded = true;
+    try {
+      await loadVendorScript("./vendor/citation.min.js", "data-citation-vendor");
+      if (typeof window.require !== "function") throw new Error("Citation.js require missing");
+      const citationModule = window.require("citation-js");
+      const Cite = citationModule?.default || citationModule?.Cite || citationModule;
+      const cite = new Cite([source]);
+      citation.innerHTML = cite.format("bibliography", { format: "html", template: "apa", lang: "en-US" });
+    } catch (error) {
+      citation.innerHTML = 'Lin, M., &amp; Carter, J. (2026). <em>Evening Library Hours Pilot: A Teaching Brief</em>. Urban Learning Methods Lab.';
+    }
+  }
+
+  async function ensurePdf() {
+    if (pdfDoc) return pdfDoc;
+    if (loadingPdf) return loadingPdf;
+    loadingPdf = (async () => {
+      pdfJs = await import("./vendor/pdfjs/pdf.min.mjs");
+      pdfJs.GlobalWorkerOptions.workerSrc = new URL("./vendor/pdfjs/pdf.worker.min.mjs", document.baseURI).href;
+      const task = pdfJs.getDocument({ url: "./materials/evidence-library-pilot.pdf" });
+      pdfDoc = await task.promise;
+      return pdfDoc;
+    })();
+    return loadingPdf;
+  }
+
+  async function renderPage(pageNumber) {
+    currentPage = pageNumber;
+    pageButtons.forEach(btn => btn.setAttribute("aria-pressed", String(Number(btn.dataset.evidencePage) === pageNumber)));
+    viewer.setAttribute("aria-busy", "true");
+    message.hidden = false;
+    message.textContent = "載入原始 PDF…";
+    const token = ++renderToken;
+    try {
+      const doc = await ensurePdf();
+      const page = await doc.getPage(pageNumber);
+      if (token !== renderToken) return;
+      const baseViewport = page.getViewport({ scale: 1 });
+      const available = Math.max(520, Math.min(720, (viewer.clientWidth || 680) - 24));
+      const scale = available / baseViewport.width;
+      const viewport = page.getViewport({ scale });
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.floor(viewport.width * dpr);
+      canvas.height = Math.floor(viewport.height * dpr);
+      canvas.style.width = viewport.width + "px";
+      canvas.style.height = viewport.height + "px";
+      const context = canvas.getContext("2d", { alpha: false });
+      await page.render({ canvasContext: context, viewport, transform: dpr === 1 ? null : [dpr, 0, 0, dpr, 0, 0] }).promise;
+      if (token !== renderToken) return;
+      canvas.setAttribute("aria-label", "虛構教學 PDF 第 " + pageNumber + " 頁，共 " + doc.numPages + " 頁");
+      status.textContent = "原始 PDF：第 " + pageNumber + " 頁 / " + doc.numPages;
+      message.hidden = true;
+    } catch (error) {
+      canvas.width = 0;
+      canvas.height = 0;
+      status.textContent = "互動 PDF 未載入";
+      message.hidden = false;
+      message.innerHTML = 'PDF.js 未能在這個開啟方式載入；可用上方「直接開啟 PDF」回原文。';
+    } finally {
+      viewer.setAttribute("aria-busy", "false");
+    }
+  }
+
+  lab.addEventListener("toggle", () => {
+    if (!lab.open) return;
+    formatCitation();
+    renderPage(currentPage);
+  });
+  pageButtons.forEach(btn => btn.addEventListener("click", () => renderPage(Number(btn.dataset.evidencePage))));
+  window.addEventListener("resize", () => { if (lab.open && pdfDoc) renderPage(currentPage); });
+}
+
+/* ====================================================================
    06 延伸：Observable Plot 小實驗。只在使用者展開相應練習時載入本地 vendor。
 ==================================================================== */
 let observablePlotLoading = null;
@@ -738,6 +843,7 @@ setupCopyTargets();
 renderBuilder();
 renderAgent();
 setupToolSwitch();
+setupEvidencePdfLab();
 setupUnitConversionPlot();
 setupMissingValuePlot();
 renderDiagrams();

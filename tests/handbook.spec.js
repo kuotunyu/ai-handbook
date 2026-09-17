@@ -88,6 +88,17 @@ test('inline explanations stay optional and expand in place', async ({ page }) =
   await expect(explainers.first().locator('p')).toContainText('Context');
 });
 
+test('PDF evidence lab returns to the original source and formats the bibliography', async ({ page }) => {
+  const lab = page.locator('#pdfEvidenceLab');
+  await lab.locator(':scope > summary').click();
+  await expect(page.locator('#evidencePdfStatus')).toContainText('第 2 頁 / 2', { timeout: 10000 });
+  await expect(page.locator('#evidenceCitation')).toContainText('Evening Library Hours Pilot', { timeout: 10000 });
+  await expect(page.locator('#evidencePdfCanvas')).toBeVisible();
+  await page.locator('[data-evidence-page="1"]').click();
+  await expect(page.locator('#evidencePdfStatus')).toContainText('第 1 頁 / 2', { timeout: 10000 });
+  await expect(page.locator('[data-evidence-page="1"]')).toHaveAttribute('aria-pressed', 'true');
+});
+
 test('unit Plot lab shows why weekly and monthly values must be normalized', async ({ page }) => {
   const lesson = page.locator('#lesson-units');
   await lesson.locator(':scope > summary').click();

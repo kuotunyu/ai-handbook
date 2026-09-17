@@ -320,6 +320,41 @@ Public participation can inform planning decisions, but participants may not rep
           </div>
         </details>
       </div>
+      <details class="evidence-pdf-lab" id="pdfEvidenceLab">
+        <summary>實際回到原始 PDF 查一次<span class="lesson-topic">citation 存在 ≠ 主張被支持</span></summary>
+        <div class="evidence-pdf-content">
+          <div class="evidence-claim" aria-label="待查證的 AI 摘要">
+            <span>AI 摘要</span>
+            <p>「延長開館提升了學生的學業成績。」</p>
+            <small>(Lin &amp; Carter, 2026, p. 2)</small>
+          </div>
+          <p><strong>先不要看答案。</strong>直接回到原始來源第 2 頁，找它真正觀察了什麼、又明確說不能證明什麼。</p>
+          <div class="evidence-pdf-toolbar" role="group" aria-label="原始 PDF 頁面">
+            <button type="button" class="plot-mode" data-evidence-page="1" aria-pressed="false">第 1 頁</button>
+            <button type="button" class="plot-mode" data-evidence-page="2" aria-pressed="true">第 2 頁</button>
+            <span class="evidence-pdf-status" id="evidencePdfStatus" aria-live="polite">準備載入原始 PDF…</span>
+            <a class="btn ghost" href="materials/evidence-library-pilot.pdf" target="_blank" rel="noopener">直接開啟 PDF</a>
+          </div>
+          <div class="evidence-pdf-viewer" id="evidencePdfViewer" aria-busy="false">
+            <canvas id="evidencePdfCanvas" role="img" aria-label="虛構教學 PDF 第 2 頁"></canvas>
+            <p class="evidence-pdf-message" id="evidencePdfMessage">展開後會載入第 2 頁。</p>
+          </div>
+          <div class="evidence-bibliography">
+            <strong>這筆來源的參考文獻</strong>
+            <div id="evidenceCitation">Lin, M., &amp; Carter, J. (2026). <em>Evening Library Hours Pilot: A Teaching Brief</em>. Urban Learning Methods Lab.</div>
+            <small>Citation.js 只把已知 metadata 排成 APA；格式漂亮不代表來源真的支持你的句子。</small>
+          </div>
+          <details class="lesson-answer" id="evidencePdfAnswer">
+            <summary>核對答案</summary>
+            <ol class="lesson-transcript">
+              <li>第 2 頁支持的是「四週試行期間晚間到訪增加」，以及受訪訪客對延後閉館的回應。</li>
+              <li>同一頁明確寫著沒有蒐集或分析學業成績，也沒有比較圖書館或控制組。</li>
+              <li>所以 citation 和頁碼都可以是真的，但「提升學業成績」仍然超出來源。可改成：「四週試行期間晚間到訪增加；研究沒有檢驗成績效果。」</li>
+            </ol>
+          </details>
+          <p class="source-note">這份 PDF 是本站自製的虛構教學材料，不是真實研究；用途是練習「回原文判斷 citation 是否真的支持主張」。</p>
+        </div>
+      </details>
       <h4 class="learning-synthesis">綜合判讀</h4>
       <p>先不看上表的答案，也先不問 AI：有人說「75% 的學生支持延長開館，而且延長開館提升了成績」。這句話哪裡超出證據？請用自己的話改寫，指出還需要什麼資料。</p>
       <details id="readingCheck"><summary>回答後，再展開核對</summary><p>就是上面兩段練習的結論合在一起：75% 只描述 40 位自願填答的到館者；原文沒有證明成績改善。要談全體學生，需要更有代表性的調查；要談成績，需要成績資料與比較設計。</p><p>再找一段自己的材料，用同樣方式分開「觀察到什麼」和「還不能說什麼」。最後請 AI 挑戰你的解讀，回原文決定要不要修改。</p></details>
