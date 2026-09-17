@@ -21,7 +21,7 @@ Prioritise durable concepts over product trivia:
 
 - choose tools by task, not by brand;
 - conversational AI is for thinking, explaining and discussing;
-- NotebookLM is for working around a selected body of sources;
+- Gemini Notebook (renamed from NotebookLM on 2026-07-16) is for working around a selected body of sources;
 - an Agent can operate on files/tools and therefore needs scope, reversibility and verification;
 - Prompt means the instruction/question given to the AI;
 - Context means information available for the current task;
@@ -36,7 +36,7 @@ Assume the learner:
 
 - is not a software engineer;
 - is comfortable using Gemini but may not know technical AI vocabulary;
-- may use NotebookLM, Codex or Claude Code when useful;
+- may use Gemini Notebook, Codex or Claude Code when useful;
 - should not have to memorise information that is easy to look up;
 - benefits from examples drawn from graduate study, policy reading, data, GIS and urban planning;
 - may read the site on a phone.
@@ -46,6 +46,12 @@ Write in natural Traditional Chinese. Keep necessary English terms next to the C
 Keep text dark enough to read comfortably: the learner found light grey and light accent text painful. Grey text tokens stay at 6.5:1 or more on the paper and white backgrounds, accent colours used for text at 5.2:1 or more; `npm run check:static` enforces this. Do not introduce new light text colours outside the tokens.
 
 Use half-width brackets `[]` and parentheses `()` everywhere on the site, including inside Chinese sentences, button labels, chart labels, diagram code and text rendered into media. Never use full-width `［］` or `（）`. `npm run check:static` fails if they appear in `index.html`, `app.js` or `diagrams.js`.
+
+## Bilingual edition
+
+- `index.html`, `app.js` and `diagrams.js` are the source. `en.html` and `app.en.js` are generated from them plus a translation catalogue maintained outside this repository; do not hand-edit the generated files, because the next generation overwrites them.
+- `diagrams.en.js`, `diagrams/en/`, `materials/en/` and `media/en/` are the English counterparts. Every video and poster in `index.html` has an English render with the same file name under `media/en/`; keep them paired when media changes.
+- The English edition uses English punctuation. `npm run check:static` fails on Chinese characters or punctuation left in `en.html` or `app.en.js`.
 
 ## Learning design rules
 
@@ -131,7 +137,7 @@ The first front-end learning pass intentionally uses native disclosure rather th
 - future additions should avoid duplicating these same checks unless a new scenario teaches a genuinely different judgment.
 - PDF.js is used at runtime for one source-verification exercise; do not turn the handbook into a general PDF reader. Citation.js formats the known bibliography at authoring/build time only, so the browser does not download its large bundle. Citation formatting is not evidence validation.
 - Keep chapter roles distinct: chapter 02 chooses a starting work mode; chapter 03 explains generation/search/calculation/operation and verification; chapter 04 teaches task handoff. Do not reintroduce full prompt examples into chapter 02 or a second task-to-tool routing table into chapter 03.
-- Keep the six NotebookLM prompt examples in chapter 09, including 整理課堂錄音, 製作語音導覽 and 製作資訊圖表或簡報. The learner already uploads PDFs and recordings but does not know what to write when customising NotebookLM outputs; these three examples are the direct answer, so do not trim them as duplicates.
+- Keep the six Gemini Notebook prompt examples in chapter 09, including 整理課堂錄音, 製作語音導覽 and 製作資訊圖表或簡報. The learner already uploads PDFs and recordings but does not know what to write when customising Gemini Notebook outputs; these three examples are the direct answer, so do not trim them as duplicates.
 - Agent guidance should teach scope, permissions, reversibility and verification once. Product-specific UI steps may be brief references, not parallel long walkthroughs.
 
 ## Default decision rule

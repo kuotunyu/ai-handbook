@@ -1,5 +1,7 @@
 # 研究所 AI 手冊：Learning Experience Audit
 
+> 稽核日期 2026-09-17。文中的 NotebookLM 即 2026-07-16 改名後的 Gemini Notebook。
+
 ## 目的
 
 這份手冊的成功標準不是「內容很多」或「互動很多」，而是使用者在真正遇到研究所問題時，能自行判斷：

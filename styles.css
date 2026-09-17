@@ -626,7 +626,7 @@ details .table-scroll { margin: 10px 0 6px 32px; }
   .menu-btn::before { content: ''; width: 16px; height: 16px; background: currentColor; mask: var(--i-menu) center / contain no-repeat; -webkit-mask: var(--i-menu) center / contain no-repeat; }
   .topnav { display: none; }
   body.menu-open { overflow: hidden; }
-  body.menu-open .topnav { display: grid; position: fixed; inset: var(--bar-h, 68px) 0 0; margin: 0; z-index: 60; padding: 20px 24px 32px; overflow-y: auto; align-content: start; background: var(--bg-bar); gap: 6px; }
+  body.menu-open .topnav { display: grid; position: fixed; inset: var(--bar-h, 68px) 0 0; margin: 0; z-index: 60; padding: 20px 24px 32px; overflow-y: auto; align-content: start; justify-content: stretch; background: var(--bg-bar); gap: 6px; }
   body.menu-open .topnav a { display: grid; grid-template-columns: 32px 1fr; padding: 14px 18px; margin: 0; min-height: 0; font-size: 18px; border: 0; border-radius: var(--radius-xs); }
   body.menu-open .topnav a::before { display: block; grid-row: 1 / span 2; font-size: 14px; }
   body.menu-open .topnav a::after { content: attr(data-sub); grid-column: 2; font-size: 13px; font-weight: 400; opacity: .8; }
