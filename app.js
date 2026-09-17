@@ -232,31 +232,6 @@ function renderAgent() {
   update();
 }
 
-const TOOL_LABELS = { codex: "Codex", claude: "Claude Code" };
-function setupToolSwitch() {
-  const buttons = $$("[data-tool]");
-  if (!buttons.length) return;
-  const status = $("#toolStatus");
-  function apply(tool) {
-    buttons.forEach((b, i) => {
-      const selected = b.dataset.tool === tool;
-      b.setAttribute("aria-checked", String(selected));
-      b.tabIndex = selected || (!tool && i === 0) ? 0 : -1;
-    });
-    $$("[data-tool-panel]").forEach(p => { p.hidden = p.dataset.toolPanel !== tool; });
-    if (status) status.textContent = tool ? `目前顯示 ${TOOL_LABELS[tool]} 的步驟。換訂閱時再回來改。` : "先選一個，下面只顯示那一套步驟。換訂閱時再回來改。";
-  }
-  buttons.forEach(b => b.addEventListener("click", () => { saveStore({ agentTool: b.dataset.tool }); apply(b.dataset.tool); }));
-  $(".tool-switch").addEventListener("keydown", e => {
-    const index = buttons.indexOf(document.activeElement);
-    if (index < 0 || !["ArrowRight", "ArrowLeft", "ArrowDown", "ArrowUp", "Home", "End"].includes(e.key)) return;
-    e.preventDefault();
-    const next = e.key === "Home" ? 0 : e.key === "End" ? buttons.length - 1 : (index + (["ArrowRight", "ArrowDown"].includes(e.key) ? 1 : -1) + buttons.length) % buttons.length;
-    buttons[next].click(); buttons[next].focus();
-  });
-  const saved = loadStore().agentTool;
-  apply(TOOL_LABELS[saved] ? saved : null);
-}
 
 /* ====================================================================
    05 延伸：PDF.js + Citation.js 原始來源查證。只在展開時按需載入。
@@ -622,21 +597,6 @@ const PROMPT_CARDS = [
     "text": "請找出來源中與「[概念或問題]」相關的段落，逐項附上引用，並簡短說明關聯。\n保留各篇來源的差異，不要合併成一個結論。找不到就說明；我會再用原文關鍵字搜尋補查。"
   },
   {
-    "title": "整理課堂錄音",
-    "when": "NotebookLM",
-    "text": "這份錄音已確認可錄製及上傳。請只根據錄音整理主要主題，以及老師明確提到的作業要求，各附引用方便回聽。\n聽不清楚的姓名、術語、數字或日期請標示不確定，不要補猜。"
-  },
-  {
-    "title": "製作語音導覽",
-    "when": "NotebookLM",
-    "text": "受眾：第一次接觸這個主題的研究所學生。\n重點：聚焦[想理解的問題]，比較來源中的主要觀點與限制。\n程度：保留重要英文名詞，第一次出現時用白話解釋。\n長度：簡短，避免重複背景；不要加入來源沒有的事實。"
-  },
-  {
-    "title": "製作資訊圖表或簡報",
-    "when": "NotebookLM",
-    "text": "請根據選取的來源製作[一頁資訊圖表／簡報]，給[受眾]閱讀。\n重點是[希望讀者理解的問題]，呈現主要發現與限制，只用來源中的數字。\n每頁或每區只表達一個重點，保留重要條件與來源資訊。"
-  },
-  {
     "title": "檢查草稿的論點與證據",
     "when": "其他實用範例",
     "text": "請檢查我的草稿，先重述主要論點，再指出最多三個最值得修改的地方，例如證據不足、推論跳躍或概念不清。\n引用草稿中的具體句子，說明原因與修改方向，先不要替我重寫，也不要編造支持證據。\n\n作業要求：[貼上]\n草稿：[貼上]"
@@ -824,7 +784,6 @@ function migrateOldRoutes() {
 setupCopyTargets();
 renderBuilder();
 renderAgent();
-setupToolSwitch();
 setupEvidencePdfLab();
 setupUnitConversionPlot();
 setupMissingValuePlot();

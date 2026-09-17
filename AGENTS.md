@@ -126,6 +126,8 @@ The first front-end learning pass intentionally uses native disclosure rather th
 - there is no score or game layer; the learner makes a quick mental choice and then opens the reasoning;
 - future additions should avoid duplicating these same checks unless a new scenario teaches a genuinely different judgment.
 - PDF.js is used at runtime for one source-verification exercise; do not turn the handbook into a general PDF reader. Citation.js formats the known bibliography at authoring/build time only, so the browser does not download its large bundle. Citation formatting is not evidence validation.
+- Keep chapter roles distinct: chapter 02 chooses a starting work mode; chapter 03 explains generation/search/calculation/operation and verification; chapter 04 teaches task handoff. Do not reintroduce full prompt examples into chapter 02 or a second task-to-tool routing table into chapter 03.
+- Agent guidance should teach scope, permissions, reversibility and verification once. Product-specific UI steps may be brief references, not parallel long walkthroughs.
 
 ## Default decision rule
 
