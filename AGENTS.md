@@ -120,7 +120,7 @@ After editing:
 
 The first front-end learning pass intentionally uses native disclosure rather than a quiz framework:
 
-- `Training` is introduced next to `Context` so learners can distinguish model change from task context;
+- `Training` sits next to `Context` so learners can distinguish model change from task context;
 - the end of the situation section contains four short “先判斷，再展開” prompts;
 - there is no score or game layer; the learner makes a quick mental choice and then opens the reasoning;
 - future additions should avoid duplicating these same checks unless a new scenario teaches a genuinely different judgment.
