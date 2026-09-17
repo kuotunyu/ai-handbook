@@ -15,5 +15,16 @@ jobs:
         with:
           node-version: 22
       - run: npm install
+      - name: Install Vale 3.21.0
+        run: |
+          curl -fsSL -o /tmp/vale.tar.gz https://github.com/vale-cli/vale/releases/download/v3.21.0/vale_3.21.0_Linux_64-bit.tar.gz
+          echo "96997d19a4ca6981673b0d4c5ca7f3ede4a9f97964a96edc29fba9e28a328336  /tmp/vale.tar.gz" | sha256sum -c -
+          tar -xzf /tmp/vale.tar.gz -C /tmp
+          sudo install /tmp/vale /usr/local/bin/vale
+      - name: Check handbook terminology with Vale
+        run: vale index.html AGENTS.md LEARNING-AUDIT.md
+      - name: Check CJK-English spacing with AutoCorrect
+        continue-on-error: true
+        run: npm run check:autocorrect
       - run: npx playwright install --with-deps chromium
       - run: npm run check
