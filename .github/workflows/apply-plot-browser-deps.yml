@@ -1,0 +1,35 @@
+name: Apply Plot browser dependency fix
+
+on:
+  push:
+    branches: [chatgpt/plot-prose-quality]
+    paths:
+      - ".github/workflows/apply-plot-browser-deps.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/plot-prose-quality
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+      - run: npm run vendor:plot
+      - run: node scripts/fix-plot-browser-deps.mjs
+      - name: Commit browser dependency fix
+        run: |
+          if git diff --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app.js vendor
+          git commit -m "fix: load Plot browser dependency D3"
+          git push origin HEAD:chatgpt/plot-prose-quality
