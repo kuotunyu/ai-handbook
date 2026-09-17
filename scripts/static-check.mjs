@@ -44,6 +44,17 @@ for (const file of ['index.html', 'app.js', 'diagrams.js']) {
   if (found) missing.push(`Full-width brackets or parentheses in ${file}: ${found.length}; use [] and () instead`);
 }
 
+// The English edition uses English punctuation; Chinese marks left between links read as mistakes.
+{
+  const page = fs.readFileSync(path.join(root, 'en.html'), 'utf8')
+    .replace(/<!--[\s\S]*?-->/g, '').replace(/<div class="language-switch"[\s\S]*?<\/div>/, '');
+  const app = fs.readFileSync(path.join(root, 'app.en.js'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/[^\n]*/g, '');
+  for (const [file, text] of [['en.html', page], ['app.en.js', app]]) {
+    const found = text.match(/[　-〿！-？㐀-鿿]/g);
+    if (found) missing.push(`Chinese characters or punctuation in ${file}: ${[...new Set(found)].join(' ')}`);
+  }
+}
+
 // The learner found light text painful: text colour tokens keep a contrast floor on paper and white.
 {
   const css = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');

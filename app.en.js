@@ -395,7 +395,7 @@ function setupUnitConversionPlot() {
     const rows = data.map(d => ({
       ...d,
       value: mode === "monthly" ? d.monthly : d.raw,
-      label: mode === "monthly" ? "£" + money(d.monthly) + "/month" : "£" + money(d.raw) + "／" + d.unit
+      label: mode === "monthly" ? "£" + money(d.monthly) + "/month" : "£" + money(d.raw) + "/" + d.unit
     }));
 
     if (mode === "raw") {
