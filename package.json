@@ -6,11 +6,15 @@
     "check": "npm run check:static && npm test",
     "check:static": "node scripts/static-check.mjs",
     "check:autocorrect": "autocorrect --lint index.html AGENTS.md LEARNING-AUDIT.md",
-    "vendor:plot": "node scripts/vendor-plot.mjs"
+    "vendor:plot": "node scripts/vendor-plot.mjs",
+    "vendor:research": "node scripts/vendor-research-tools.mjs",
+    "build:evidence-pdf": "node scripts/generate-evidence-pdf.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.2",
     "@observablehq/plot": "0.6.17",
-    "@playwright/test": "^1.55.0"
+    "@playwright/test": "^1.55.0",
+    "citation-js": "0.8.2",
+    "pdfjs-dist": "6.3.289"
   }
 }
