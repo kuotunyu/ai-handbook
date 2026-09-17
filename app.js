@@ -378,8 +378,8 @@ function setupUnitConversionPlot() {
   function render() {
     if (!plotApi) return;
     const styles = getComputedStyle(document.documentElement);
-    const brand = styles.getPropertyValue("--brand").trim() || "#1D5F70";
-    const warning = styles.getPropertyValue("--terracotta").trim() || "#A23F49";
+    const brand = styles.getPropertyValue("--brand").trim() || "#1B5E73";
+    const warning = styles.getPropertyValue("--terracotta").trim() || "#9E3F2E";
     const rows = data.map(d => ({
       ...d,
       value: mode === "monthly" ? d.monthly : d.raw,
@@ -401,7 +401,7 @@ function setupUnitConversionPlot() {
     const plotWidth = width - marginLeft - marginRight;
     // 長條太短放不下金額時，金額改放在長條右邊，避免壓到區名。
     const fitsInside = d => d.value / 1300 * plotWidth > d.label.length * fontPx * 0.62 + 16;
-    const ink = styles.getPropertyValue("--ink-primary").trim() || "#1E2B2C";
+    const ink = styles.getPropertyValue("--ink-primary").trim() || "#1C2A2C";
     const axisLabel = mode === "raw" ? (narrow ? "原始數字(不能直接比)" : "原始數字(單位不同，不能直接比較)") : "月租(GBP)";
     const plot = plotApi.plot({
       width,
@@ -468,8 +468,8 @@ function setupMissingValuePlot() {
   function render() {
     if (!plotApi) return;
     const styles = getComputedStyle(document.documentElement);
-    const brand = styles.getPropertyValue("--brand").trim() || "#1D5F70";
-    const warning = styles.getPropertyValue("--terracotta").trim() || "#A23F49";
+    const brand = styles.getPropertyValue("--brand").trim() || "#1B5E73";
+    const warning = styles.getPropertyValue("--terracotta").trim() || "#9E3F2E";
     const rows = data.map(d => ({ ...d, value: d.rent == null && mode === "zero" ? 0 : d.rent }));
     const numeric = rows.filter(d => Number.isFinite(d.value));
     const d4 = rows.find(d => d.id === "D4");
