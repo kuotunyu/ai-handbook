@@ -5,6 +5,24 @@
   const prefix = 'ai-handbook-language-';
   const links = [...document.querySelectorAll('[data-language]')];
   const details = [...document.querySelectorAll('main details')];
+  const validChapter = hash => document.getElementById(hash.slice(1))?.matches('main > section[id]');
+  // Retain explicit reading/editing intent when focusing the sticky header
+  // scrolls the viewport. Actual reader scrolling resumes geometric tracking.
+  let intendedChapter = validChapter(location.hash) ? location.hash : null;
+  document.addEventListener('focusin', event => {
+    const section = event.target.closest('main > section[id]');
+    if (section) intendedChapter = '#' + section.id;
+  });
+  document.querySelector('#topnav').addEventListener('click', event => {
+    const link = event.target.closest('a');
+    if (link && validChapter(link.hash)) intendedChapter = link.hash;
+  });
+  const resumeScrollTracking = () => { intendedChapter = null; };
+  window.addEventListener('wheel', resumeScrollTracking, { passive: true });
+  window.addEventListener('touchmove', resumeScrollTracking, { passive: true });
+  document.addEventListener('keydown', event => {
+    if (!event.target.matches('textarea, input') && ['PageDown', 'PageUp', 'Home', 'End', 'ArrowDown', 'ArrowUp', ' '].includes(event.key)) resumeScrollTracking();
+  });
   const read = key => { try { return JSON.parse(sessionStorage.getItem(prefix + key)); } catch { return null; } };
   const write = (key, value) => { try { sessionStorage.setItem(prefix + key, JSON.stringify(value)); } catch { /* switching still works */ } };
   const pending = read('pending');
@@ -30,6 +48,7 @@
     });
   }
   const sectionHash = () => {
+    if (intendedChapter) return intendedChapter;
     const threshold = document.querySelector('.topbar').getBoundingClientRect().height + 32;
     // Focusing a sticky-header control can scroll the page. If the explicitly
     // selected chapter is still on screen, keep that chapter during the switch.
