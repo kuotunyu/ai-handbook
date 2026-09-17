@@ -88,7 +88,8 @@ For educational animation:
 - do not autoplay;
 - text explanations must remain sufficient without the video;
 - keep simultaneous on-screen text low;
-- avoid decorative transitions.
+- avoid decorative transitions;
+- run `npm run check:assets` before shipping new media; optimise an unexpectedly large asset instead of raising a budget just to make CI pass.
 
 ## Agent behaviour while modifying the repository
 
