@@ -496,6 +496,15 @@ Public participation can inform planning decisions, but participants may not rep
                   <ol class="lesson-transcript"><li>每筆租金依 district_id 對到地圖區域，D4 的租金缺失。連續色階由淺至深表示租金由低至高，數值也直接標在圖內。</li><li>動畫中的錯誤示範把空白改成 0，讓 D4 顯示成租金最低的區域，造成它很便宜的錯覺。</li><li>正確處理保留缺值，以灰色和「無資料」文字標示 D4，並在圖例獨立說明；D4 不參與租金高低的排序。</li></ol>
                   <p><strong>實際使用：</strong>要求 AI 保留六筆資料，不推測補值，分開呈現缺值與零；驗收時核對區域 ID、數值、圖例和缺值數量。</p>
                 </details>
+                <div class="plot-lab" id="missingPlotLab">
+                  <div class="plot-lab-head"><strong>互動試試</strong><span>同一組資料，只改 D4 的缺值處理。</span></div>
+                  <div class="plot-lab-controls" role="group" aria-label="D4 缺值處理方式">
+                    <button type="button" class="plot-mode" data-missing-mode="missing" aria-pressed="true">保留 No data</button>
+                    <button type="button" class="plot-mode" data-missing-mode="zero" aria-pressed="false">把空白當 0（錯誤示範）</button>
+                  </div>
+                  <div class="plot-lab-chart" id="missingPlot" aria-live="polite"><p class="plot-loading">載入互動圖…</p></div>
+                  <p class="plot-lab-takeaway" id="missingPlotTakeaway"><strong>No data ≠ 0。</strong>「沒有資料」代表不知道；0 是一個已知數值。</p>
+                </div>
               </div>
             </div>
           </div>
