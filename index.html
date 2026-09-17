@@ -9,7 +9,7 @@
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" />
   <title>研究所 AI 手冊</title>
-  <link rel="stylesheet" href="./styles.css?v=202609171342" />
+  <link rel="stylesheet" href="./styles.css?v=202609171348" />
 </head>
 <body>
 <!--
@@ -168,7 +168,7 @@
       <div class="table-scroll"><table class="reading-table tool-table"><thead><tr><th>你的任務</th><th>用什麼</th><th>為什麼</th></tr></thead><tbody>
       <tr><td>想搞懂一個概念、改寫自己的句子、練習發言、規劃作業</td><td class="t-gemini"><div class="chat-tool-links"><span class="tool-name">Gemini</span><span class="tool-name">ChatGPT</span><span class="tool-name">Claude</span></div></td><td>提供材料與目標，請它解釋、修改或一起討論。</td></tr>
       <tr><td>讀講義、讀指定文獻、把幾篇放在一起比較</td><td class="t-nlm"><span class="tool-name">NotebookLM</span></td><td>依你選取的來源整理回答，提供引用方便回查；引用仍可能不支持它的結論。</td></tr>
-      <tr><td>整理表格、畫圖或地圖、批次處理檔案</td><td class="t-agent">Agent（Codex 或 Claude Code）</td><td>它會在你指定的資料夾裡動手做事，所以要先講範圍，做完再驗收。</td></tr>
+      <tr><td>整理表格、畫圖或地圖、批次處理檔案</td><td class="t-agent">Agent(Codex 或 Claude Code)</td><td>它會在你指定的資料夾裡動手做事，所以要先講範圍，做完再驗收。</td></tr>
       <tr><td>找最新消息、官方數字、政策原文</td><td class="t-search">Gemini、ChatGPT、Claude 的網路搜尋；也可直接搜尋或到官方網站。</td><td>請它上網查找並附原始來源；確認這次有使用搜尋，再開啟重要來源核對日期、數字與適用地區。</td></tr>
       </tbody></table></div>
 
@@ -227,7 +227,7 @@
 ```
 Public participation can inform planning decisions, but participants may not represent all residents.
 ```</pre></div>
-      <p class="section-note">開頭與結尾各放一行 <code>```</code>，使用英文半形反引號（backtick），不是單引號 <code>'</code> 或 <code>‵</code>。</p>
+      <p class="section-note">開頭與結尾各放一行 <code>```</code>，使用英文半形反引號(backtick)，不是單引號 <code>'</code> 或 <code>‵</code>。</p>
     </section>
 
     <!-- 05 閱讀 -->
@@ -358,20 +358,20 @@ Public participation can inform planning decisions, but participants may not rep
         <ol class="step-list">
           <li><strong>安裝與登入</strong><span><a href="https://claude.com/download" target="_blank" rel="noopener">到 Anthropic 官方頁面</a>下載 Claude Desktop，用 Claude 帳號登入。Code 分頁需要 Pro 以上。</span></li>
           <li><strong>開啟練習資料夾</strong><span>新建練習資料夾，放入三份下載材料，在 Code 分頁選這個資料夾。真實任務先在工作範圍外保留原檔備份。</span></li>
-          <li><strong>確認權限與工作範圍</strong><span>查看目前的權限模式；想逐次確認編輯與命令，可選 Manual（手動確認）。模式可能沿用先前設定。這次先要求只讀取並回報。</span></li>
+          <li><strong>確認權限與工作範圍</strong><span>查看目前的權限模式；想逐次確認編輯與命令，可選 Manual(手動確認)。模式可能沿用先前設定。這次先要求只讀取並回報。</span></li>
           <li><strong>貼上任務</strong><span>貼下面的交辦內容。它回報欄位、筆數、缺值後，先核對再允許執行。</span></li>
-          <li><strong>看變更與輸出檔</strong><span>打開差異（diff）面板看它動了哪些檔案，再打開 output 資料夾的地圖與圖表。</span></li>
+          <li><strong>看變更與輸出檔</strong><span>打開差異(diff)面板看它動了哪些檔案，再打開 output 資料夾的地圖與圖表。</span></li>
           <li><strong>修正或重來</strong><span>先確認改了哪些檔案。只錯在輸出，就修正或重做 output；原檔若被改動，用事先備份還原，別只相信「已還原」的回覆。</span></li>
         </ol>
 
       </div>
       <details><summary>換家的時候，看這張對照表</summary>
         <div class="table-scroll"><table class="reading-table"><thead><tr><th>同一件事</th><th>Codex</th><th>Claude Code</th></tr></thead><tbody>
-        <tr><td>工作範圍</td><td>專案（Project）</td><td>資料夾</td></tr>
+        <tr><td>工作範圍</td><td>專案(Project)</td><td>資料夾</td></tr>
         <tr><td>執行前確認</td><td>審核模式設定</td><td>權限模式</td></tr>
         <tr><td>看它改了什麼</td><td>變更檢視</td><td>Diff 面板</td></tr>
         <tr><td>復原</td><td>核對變更；輸出重做，原檔由備份復原</td><td>同左</td></tr>
-        <tr><td>長期說明檔（進階，初學不需要）</td><td>AGENTS.md</td><td>CLAUDE.md</td></tr>
+        <tr><td>長期說明檔(進階，初學不需要)</td><td>AGENTS.md</td><td>CLAUDE.md</td></tr>
         </tbody></table></div>
       </details>
 
@@ -382,8 +382,8 @@ Public participation can inform planning decisions, but participants may not rep
 
       <figure class="task-preview"><img src="media/preview-units.png" alt="完成後的長條圖示意：月租金比較" /><img src="media/preview-missing.png" alt="完成後的地圖示意：D4 標示無資料" /><figcaption>示意取自本章動畫；實際輸出由 Agent 產生，D4 會標示無資料。</figcaption></figure>
       <h4>準備材料</h4>
-      <p>在電腦建立一個練習資料夾，把下面三個檔案下載到裡面（整包下載會自動解壓成資料夾），再用 Codex 或 Claude Code 開啟這個資料夾。檔案已準備好，不需要先學會製作這些格式。</p>
-      <p class="material-links"><a href="materials/districts-task.zip" download>整包下載（三個檔案）</a><a href="materials/districts.csv" download>下載租金表（districts.csv）</a><a href="materials/districts.geojson" download>下載區域形狀（districts.geojson）</a><a href="materials/data-dictionary.txt" download>下載資料說明（data-dictionary.txt）</a></p>
+      <p>在電腦建立一個練習資料夾，把下面三個檔案下載到裡面(整包下載會自動解壓成資料夾)，再用 Codex 或 Claude Code 開啟這個資料夾。檔案已準備好，不需要先學會製作這些格式。</p>
+      <p class="material-links"><a href="materials/districts-task.zip" download>整包下載(三個檔案)</a><a href="materials/districts.csv" download>下載租金表(districts.csv)</a><a href="materials/districts.geojson" download>下載區域形狀(districts.geojson)</a><a href="materials/data-dictionary.txt" download>下載資料說明(data-dictionary.txt)</a></p>
 
       <h4>把任務交給 AI</h4>
       <p>展開下方文字，按「複製」，貼進剛才開啟的 Codex 或 Claude Code 對話。它會先查看資料並回報，等你確認後才開始製作。</p>
@@ -528,7 +528,7 @@ Public participation can inform planning decisions, but participants may not rep
         <li><label><input type="checkbox" data-rule="r5" /><span>確認材料可否上傳；涉及研究參與者、個資或未公開內容，先查授權與校方指定工具。</span></label></li>
       </ul>
       <p class="checklist-actions"><button class="btn ghost" id="rulesReset" type="button">清空勾選，重新檢查這份作業</button></p>
-      <p class="source-note">勾選會保存在這個瀏覽器；換作業仍要重新確認。Leeds 已公布 2026/27 新政策，舊版說明可能不適用。<a href="https://secretariat.leeds.ac.uk/home/academic-regulations-and-taught-student-policies-and-procedures/academic-integrity-and-assistance-policy/" target="_blank" rel="noopener">看 Leeds 當年度政策範例</a>（核對 2026-09-16；仍以自己的學校為準）</p>
+      <p class="source-note">勾選會保存在這個瀏覽器；換作業仍要重新確認。Leeds 已公布 2026/27 新政策，舊版說明可能不適用。<a href="https://secretariat.leeds.ac.uk/home/academic-regulations-and-taught-student-policies-and-procedures/academic-integrity-and-assistance-policy/" target="_blank" rel="noopener">看 Leeds 當年度政策範例</a>(核對 2026-09-16；仍以自己的學校為準)</p>
 </div>
 <div>
       <h3 class="compact-heading">AI 使用申報</h3>
@@ -563,7 +563,7 @@ Public participation can inform planning decisions, but participants may not rep
     <div class="diagram-zoom-area" tabindex="0" role="region" aria-label="放大圖表，可捲動"><img id="diagramZoomImg" alt="" /></div>
   </dialog>
   <div class="toast" id="toast" role="status">已複製！</div>
-  <script src="./diagrams.js?v=202609171342"></script>
-  <script src="./app.js?v=202609171342"></script>
+  <script src="./diagrams.js?v=202609171348"></script>
+  <script src="./app.js?v=202609171348"></script>
 </body>
 </html>

@@ -34,7 +34,7 @@
   --on-dark-teal: #BEE6DA;
   --on-dark-sky: #B9D3EE;
   --on-dark-indigo: #CDBDEE;
-  /* 語意色（青綠開場・馬卡龍語意色）：青藍給按鈕與對話型 AI、薄荷綠給 NotebookLM、草莓珊瑚給 Agent 與編號 */
+  /* 語意色(青綠開場・馬卡龍語意色)：青藍給按鈕與對話型 AI、薄荷綠給 NotebookLM、草莓珊瑚給 Agent 與編號 */
   --brand: #2C7A8C;
   --brand-dark: #226676;
   --brand-wash: #DDEEF1;
@@ -197,7 +197,7 @@ h4 { font-size: var(--fs-lg); font-weight: 800; margin: 20px 0 6px; }
 .t-agent, .tool-table td.t-agent { color: var(--agent); }
 .tool-table td.t-search { color: var(--ink-muted); }
 
-/* ============ 填空位置：［像這樣］ 只換字色，不上底（使用者不要螢光筆）；深色面板上用淡金 ============ */
+/* ============ 填空位置：[像這樣] 只換字色，不上底(使用者不要螢光筆)；深色面板上用淡金 ============ */
 mark.placeholder { background: transparent; color: #7A6320; font-weight: 700; padding: 0; }
 .pbox mark.placeholder, .quote mark.placeholder, .builder-output mark.placeholder { background: transparent; color: var(--on-dark-gold); }
 

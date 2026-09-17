@@ -4,18 +4,18 @@ window.DIAGRAMS = [
    say:'把我的研究流程畫成流程圖：先確定研究問題，然後讀文獻，接著收集資料、分析、寫討論。如果分析時資料不夠就回頭收集；如果讀文獻後發現問題太大就回頭修改研究問題。請用 Mermaid code 畫，節點用中文、保留英文術語，只回傳 code。',
    tweak:'改成直向；把每個節點的字縮到六個字以內；把回頭的箭頭標成紅色。',
    code:'flowchart LR\n    A[確定研究問題] --> B[讀文獻]\n    B --> C{問題太大？}\n    C -- 是，回頭修改 --> A\n    C -- 否 --> D[收集資料]\n    D --> E[分析]\n    E --> F{資料夠嗎？}\n    F -- 不夠，回頭收集 --> D\n    F -- 夠 --> G[寫討論]'},
-  {id:'framework', name:'架構圖／概念框架', en:'Framework diagram', when:'有哪些部分、怎麼分層、什麼影響什麼', example:'論文的概念框架、治理層級（中央、區域、地方）、資料來源架構',
+  {id:'framework', name:'架構圖／概念框架', en:'Framework diagram', when:'有哪些部分、怎麼分層、什麼影響什麼', example:'論文的概念框架、治理層級(中央、區域、地方)、資料來源架構',
    say:'幫我畫概念框架圖：左邊是影響因素，分成「政策層級」和「在地條件」兩組框起來；中間是我要解釋的「可負擔住宅供給」；右邊是結果「居住負擔」。用箭頭表示影響方向。請用 Mermaid code 畫，節點用中文、保留英文術語，只回傳 code。',
    tweak:'同一組的因素框在一起；箭頭只留主要的三條；把結果放在最右邊。',
    code:'flowchart LR\n    subgraph P[政策層級]\n        C[中央住宅政策] --> L[地方住宅計畫]\n    end\n    subgraph S[在地條件]\n        T[交通可及性]\n        J[就業機會]\n    end\n    L --> O[可負擔住宅供給]\n    T --> O\n    J --> O\n    O --> W[居住負擔]'},
   {id:'gantt', name:'甘特圖', en:'Gantt chart', when:'什麼時候做到哪、哪件事要等前一件做完', example:'論文時程表、研究計畫書的期程、小組專案分工',
    say:'幫我畫論文時程的甘特圖：從一月開始，分準備、執行、寫作三段。文獻回顧兩個月，研究設計一個月，資料收集兩個月，分析一個月，初稿一個月，修改與提交一個月。每一項都要等前一項做完。請用 Mermaid code 畫，節點用中文、保留英文術語，只回傳 code。',
    tweak:'把月份改成實際年月；加一條「倫理審查」平行進行；用週為單位。',
-   code:'gantt\n    title 論文時程（示意）\n    dateFormat YYYY-MM\n    axisFormat %m月\n    section 準備\n    文獻回顧 :a1, 2027-01, 2M\n    研究設計 :a2, after a1, 1M\n    section 執行\n    資料收集 :b1, after a2, 2M\n    分析 :b2, after b1, 1M\n    section 寫作\n    初稿 :c1, after b2, 1M\n    修改與提交 :c2, after c1, 1M'},
+   code:'gantt\n    title 論文時程(示意)\n    dateFormat YYYY-MM\n    axisFormat %m月\n    section 準備\n    文獻回顧 :a1, 2027-01, 2M\n    研究設計 :a2, after a1, 1M\n    section 執行\n    資料收集 :b1, after a2, 2M\n    分析 :b2, after b1, 1M\n    section 寫作\n    初稿 :c1, after b2, 1M\n    修改與提交 :c2, after c1, 1M'},
   {id:'timeline', name:'時間軸', en:'Timeline', when:'一件事怎麼一段一段演變', example:'一個地區的發展階段、一項制度的變化、一個政策議題怎麼浮現',
    say:'幫我畫時間軸：一個舊工業區分四個階段，工業期、衰退期、再生期、今日，每個階段列兩個重點。請用 Mermaid code 畫，節點用中文、保留英文術語，只回傳 code。',
    tweak:'每個階段只留一個重點；改成直向；加上大約的年代。',
-   code:'timeline\n    title 一個舊工業區的轉型階段（示意）\n    工業期 : 工廠與倉庫 : 鐵路貨運\n    衰退期 : 工廠外移 : 空置與閒置土地\n    再生期 : 都市再生計畫 : 住宅與文創進駐\n    今日 : 租金上升 : 原居民的負擔問題'},
+   code:'timeline\n    title 一個舊工業區的轉型階段(示意)\n    工業期 : 工廠與倉庫 : 鐵路貨運\n    衰退期 : 工廠外移 : 空置與閒置土地\n    再生期 : 都市再生計畫 : 住宅與文創進駐\n    今日 : 租金上升 : 原居民的負擔問題'},
   {id:'mindmap', name:'心智圖', en:'Mind map', when:'一個主題怎麼展開成幾個面向', example:'文獻回顧的主題地圖、一個議題的拆解、seminar 前整理想法',
    say:'幫我把「可負擔住宅」的文獻分成供給面、需求面、政策工具、測量方式四個面向，展開成心智圖，每個面向兩到三個子題。請用 Mermaid code 畫，節點用中文、保留英文術語，只回傳 code。',
    tweak:'只留三個面向；把子題換成我列的這幾篇文獻；加一層「我的研究缺口」。',
@@ -23,5 +23,5 @@ window.DIAGRAMS = [
   {id:'quadrant', name:'象限圖', en:'Quadrant chart', when:'用兩個標準把一群東西排位置', example:'利害關係人的影響力與關切度矩陣、方案的影響與可行性',
    say:'幫我畫利害關係人矩陣：橫軸是關切度、縱軸是影響力。地方政府規劃部門影響力高關切高，開發商兩者都偏高，社區團體關切高影響低，一般居民兩者偏低，大學研究單位兩者中低。四個象限分別標密切合作、維持滿意、觀察即可、持續告知。請用 Mermaid code 畫，節點用中文、保留英文術語，只回傳 code。',
    tweak:'換成方案的影響與可行性；加兩個角色；把象限名稱改成我們課堂用的說法。',
-   code:'quadrantChart\n    title 利害關係人矩陣（示意）\n    x-axis 關切度低 --> 關切度高\n    y-axis 影響力低 --> 影響力高\n    quadrant-1 密切合作\n    quadrant-2 維持滿意\n    quadrant-3 觀察即可\n    quadrant-4 持續告知\n    地方政府規劃部門: [0.8, 0.9]\n    開發商: [0.7, 0.75]\n    社區團體: [0.85, 0.4]\n    一般居民: [0.5, 0.2]\n    大學研究單位: [0.3, 0.35]'}
+   code:'quadrantChart\n    title 利害關係人矩陣(示意)\n    x-axis 關切度低 --> 關切度高\n    y-axis 影響力低 --> 影響力高\n    quadrant-1 密切合作\n    quadrant-2 維持滿意\n    quadrant-3 觀察即可\n    quadrant-4 持續告知\n    地方政府規劃部門: [0.8, 0.9]\n    開發商: [0.7, 0.75]\n    社區團體: [0.85, 0.4]\n    一般居民: [0.5, 0.2]\n    大學研究單位: [0.3, 0.35]'}
 ];
