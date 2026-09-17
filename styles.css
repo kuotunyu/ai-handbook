@@ -252,7 +252,7 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 .keyword-group-heading h3 { margin: 0; font-size: var(--fs-h3); }
 .keyword-group-heading p { margin: 0; color: var(--ink-muted); font-size: var(--fs-sm); }
 .keyword-core .keyword-group-heading { margin-top: 4px; }
-.keyword-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+.keyword-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
 .keyword-core .keyword-entry { min-width: 0; display: flex; flex-direction: column; background: var(--bg-white); border-radius: var(--radius-sm); box-shadow: var(--shadow-soft); border-top: 4px solid var(--brand); padding: 14px 18px 12px; }
 .keyword-core .keyword-entry:nth-child(2) { border-top-color: var(--emerald); }
 .keyword-core .keyword-entry:nth-child(3) { border-top-color: var(--plum); }
@@ -264,8 +264,8 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 .keyword-action strong { display: block; color: var(--terracotta); font-size: var(--fs-meta); font-weight: 800; margin-bottom: 2px; }
 .keyword-example { margin-top: 6px; }
 .keyword-core .keyword-example { margin-top: auto; padding-top: 6px; }
-/* Closed: four equal cards with 看例子 on one line. Once an example opens, only that card grows. */
-.keyword-core .keyword-list:has(details[open]) { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+/* 核心四卡一開始就是 2x2(1x4 展開後跳成 2x2 會讓人錯亂)。收合時同列等高、「看例子」齊底；有一張展開時只有那張長高。 */
+.keyword-core .keyword-list:has(details[open]) { align-items: start; }
 .keyword-example > summary { font-size: var(--fs-meta); min-height: 32px; padding: 3px 0; gap: 8px; }
 .keyword-example > summary::before { width: 18px; height: 18px; font-size: 16px; }
 .keyword-example > p { margin: 6px 0 4px; font-size: var(--fs-sm); line-height: 1.55; }
