@@ -265,7 +265,7 @@ function setupMissingValuePlot() {
   const lesson = $("#lesson-missing");
   const chart = $("#missingPlot");
   const takeaway = $("#missingPlotTakeaway");
-  const buttons = $("[data-missing-mode]", $("#missingPlotLab"));
+  const buttons = Array.from(document.querySelectorAll("#missingPlotLab [data-missing-mode]"));
   if (!lesson || !chart || !takeaway || !buttons.length) return;
 
   const data = [
