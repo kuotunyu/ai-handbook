@@ -267,9 +267,8 @@ function setupEvidencePdfLab() {
   const canvas = $("#evidencePdfCanvas");
   const message = $("#evidencePdfMessage");
   const status = $("#evidencePdfStatus");
-  const citation = $("#evidenceCitation");
   const pageButtons = Array.from(document.querySelectorAll("#pdfEvidenceLab [data-evidence-page]"));
-  if (!lab || !viewer || !canvas || !message || !status || !citation || !pageButtons.length) return;
+  if (!lab || !viewer || !canvas || !message || !status || !pageButtons.length) return;
 
   const source = {
     id: "lin-carter-2026",
@@ -286,23 +285,7 @@ function setupEvidencePdfLab() {
   let pdfJs = null;
   let currentPage = 2;
   let renderToken = 0;
-  let citationLoaded = false;
   let loadingPdf = null;
-
-  async function formatCitation() {
-    if (citationLoaded) return;
-    citationLoaded = true;
-    try {
-      await loadVendorScript("./vendor/citation.min.js", "data-citation-vendor");
-      if (typeof window.require !== "function") throw new Error("Citation.js require missing");
-      const citationModule = window.require("citation-js");
-      const Cite = citationModule?.default || citationModule?.Cite || citationModule;
-      const cite = new Cite([source]);
-      citation.innerHTML = cite.format("bibliography", { format: "html", template: "apa", lang: "en-US" });
-    } catch (error) {
-      citation.innerHTML = 'Lin, M., &amp; Carter, J. (2026). <em>Evening Library Hours Pilot: A Teaching Brief</em>. Urban Learning Methods Lab.';
-    }
-  }
 
   async function ensurePdf() {
     if (pdfDoc) return pdfDoc;
@@ -356,7 +339,6 @@ function setupEvidencePdfLab() {
 
   lab.addEventListener("toggle", () => {
     if (!lab.open) return;
-    formatCitation();
     renderPage(currentPage);
   });
   pageButtons.forEach(btn => btn.addEventListener("click", () => renderPage(Number(btn.dataset.evidencePage))));

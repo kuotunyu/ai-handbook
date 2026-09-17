@@ -124,7 +124,7 @@ The first front-end learning pass intentionally uses native disclosure rather th
 - the end of the situation section contains four short “先判斷，再展開” prompts;
 - there is no score or game layer; the learner makes a quick mental choice and then opens the reasoning;
 - future additions should avoid duplicating these same checks unless a new scenario teaches a genuinely different judgment.
-- PDF.js + Citation.js are used for one source-verification exercise; do not turn the handbook into a general PDF reader. Citation formatting is not evidence validation.
+- PDF.js is used at runtime for one source-verification exercise; do not turn the handbook into a general PDF reader. Citation.js formats the known bibliography at authoring/build time only, so the browser does not download its large bundle. Citation formatting is not evidence validation.
 
 ## Default decision rule
 
