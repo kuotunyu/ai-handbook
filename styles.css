@@ -815,6 +815,8 @@ html[lang="en"] .hero h1 { font-size: clamp(36px, 3.5vw, 56px); line-height: 1.1
 html[lang="en"] .hero-rule { flex-wrap: wrap; }
 html[lang="en"] .block-name { font-size: 21px; }
 html[lang="en"] .block-desc { font-size: 18px; }
+html[lang="en"] .quote::before { content: "Template"; }
+html[lang="en"] .clip.needs-tap::after { content: "Tap to play"; }
 @media (max-width: 1000px) {
   .topbar-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; padding-block: 8px; gap: 0 10px; }
   .logo { grid-column: 1; grid-row: 1; }
