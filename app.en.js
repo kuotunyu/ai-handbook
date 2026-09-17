@@ -724,7 +724,7 @@ function setupMobileMenu() {
   const btn = $("#menuBtn"), nav = $("#topnav"), main = $("main"), now = $("#navNow");
   if (!btn || !nav) return;
   if (now && !now.textContent) now.textContent = "Graduate AI Handbook";
-  const compact = window.matchMedia("(max-width: 1000px)");
+  const compact = window.matchMedia("(max-width: 1260px)");
   const setBarHeight = () => document.documentElement.style.setProperty("--bar-h", $(".topbar").offsetHeight + "px");
   const open = (on, returnFocus = false) => {
     document.body.classList.toggle("menu-open", on);

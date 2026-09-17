@@ -615,7 +615,7 @@ details .table-scroll { margin: 10px 0 6px 32px; }
   .diagram-tab span { display: none; }
   .prompt-example-group { grid-template-columns: 1fr 1fr; }
 }
-@media (max-width: 1000px) {
+@media (max-width: 1260px) {
   :root { --bar-h: 68px; }
   html { scroll-padding-top: 92px; }
   .topbar { padding-top: env(safe-area-inset-top); }
@@ -783,7 +783,7 @@ details .table-scroll { margin: 10px 0 6px 32px; }
   .toast { bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
 }
 /* Safe areas also apply when an iPhone is held sideways. */
-@media (max-width: 1000px) {
+@media (max-width: 1260px) {
   .topbar { padding-top: env(safe-area-inset-top, 0px); }
   .topbar-inner { padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
   .section:not(.hero), .hero-inner { padding-left: max(var(--gutter), env(safe-area-inset-left, 0px)); padding-right: max(var(--gutter), env(safe-area-inset-right, 0px)); }
@@ -804,25 +804,28 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 }
 /* Language controls share the existing header, with no automatic redirection. */
 html { scroll-padding-top: calc(var(--bar-h) + 16px); }
-.topbar-inner { flex-wrap: wrap; min-height: 0; gap: 0 20px; padding-top: 8px; }
-.language-switch { display: flex; margin-left: auto; gap: 2px; align-items: center; }
+.topbar-inner { flex-wrap: nowrap; min-height: 68px; gap: 16px; padding-block: 0; }
+.language-switch { display: flex; order: 3; margin-left: 0; flex: none; align-items: center; }
 .language-switch a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 4px 12px; color: var(--on-dark); font-size: 16px; font-weight: 600; border-radius: 5px; text-decoration: none; }
-.language-switch a[aria-current="page"] { background: var(--on-dark-fill-strong); box-shadow: inset 0 -2px var(--on-dark-clay); }
+.language-switch a[aria-current="page"] { display: none; }
+.language-switch a { border: 1px solid var(--on-dark-line); }
 .language-switch a:hover { background: var(--on-dark-fill-strong); }
-.topnav { flex-basis: 100%; margin: 0; justify-content: space-between; }
-.topnav a { min-height: 46px; }
+.topnav { flex: 1; order: 2; margin: 0; justify-content: flex-end; }
+.topnav a { min-height: 68px; font-size: 18px; padding-inline: 8px; }
+.topnav a::before { display: none; }
 html[lang="en"] .hero h1 { font-size: clamp(36px, 3.5vw, 56px); line-height: 1.12; }
 html[lang="en"] .hero-rule { flex-wrap: wrap; }
 html[lang="en"] .block-name { font-size: 21px; }
 html[lang="en"] .block-desc { font-size: 18px; }
 html[lang="en"] .quote::before { content: "Template"; }
 html[lang="en"] .clip.needs-tap::after { content: "Tap to play"; }
-@media (max-width: 1000px) {
-  .topbar-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; padding-block: 8px; gap: 0 10px; }
-  .logo { grid-column: 1; grid-row: 1; }
-  .topbar .menu-btn { grid-column: 2; grid-row: 1; min-height: 44px; justify-self: end; }
-  .nav-now { grid-column: 1; grid-row: 2; margin: 0; font-size: 14px; }
-  .language-switch { grid-column: 2; grid-row: 2; }
+@media (max-width: 1260px) {
+  .topbar-inner { display: flex; min-height: 60px; padding-block: 6px; gap: 8px; }
+  .logo { margin-right: auto; font-size: 18px; }
+  .logo b { display: none; }
+  .topbar .menu-btn { order: 4; min-height: 44px; padding-inline: 10px; font-size: 16px; }
+  .nav-now { display: none; }
+  .language-switch { order: 3; }
   .language-switch a { padding-inline: 8px; }
   html[lang="en"] .hero h1 { font-size: 36px; }
 }
