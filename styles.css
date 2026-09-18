@@ -894,3 +894,24 @@ html[lang="en"] .clip.needs-tap::after { content: "Tap to play"; }
   .forms-table td::before { font-size: 14px; }
   .form-shot figcaption { font-size: 16px; }
 }
+
+/* ============ 手機版細修(2026-09-18，依 iPhone 17 的 402px 驗證) ============ */
+/* 06 章示意圖可點開放大 */
+.form-shot img { cursor: zoom-in; }
+.form-shot img:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+.diagram-zoom.shot .diagram-zoom-area img { max-width: 880px; margin: 0 auto; }
+.diagram-zoom.shot.actual .diagram-zoom-area img { width: 880px; }
+/* 延伸詞彙的「+」對齊標題那一行，不對齊兩行的中間 */
+.keyword-reference-disclosure > summary { align-items: flex-start; }
+.keyword-reference-disclosure > summary::before { margin-top: 6px; }
+/* 目錄按鈕模式：捲進章節後，頂欄的「AI 手冊」換成目前章節 */
+@media (max-width: 1000px) {
+  body.in-chapter .topbar .logo { display: none; }
+  body.in-chapter .nav-now { display: block; order: 0; margin-right: auto; min-width: 0; font-size: 17px; font-weight: 700; color: var(--on-dark); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+}
+/* 手機：獨立的小連結與「看例子」至少 44px 高的可點範圍，外觀不變 */
+@media (max-width: 700px) {
+  .keyword-example > summary, .keyword-reference .keyword-example > summary { min-height: 44px; }
+  .situation-links a { display: inline-flex; align-items: center; min-height: 44px; }
+  .situation-reference a, .layer-eg a, .source-note a { padding-block: 10px; }
+}

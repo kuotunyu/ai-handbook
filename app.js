@@ -572,12 +572,21 @@ function renderDiagrams() {
     scaleBtn.textContent = actual ? "整張檢視" : "1:1 檢視";
   };
   scaleBtn.addEventListener("click", () => setScale(!dialog.classList.contains("actual")));
-  $("#diagramZoomOpen").addEventListener("click", () => {
-    const source = $("#diagramImg"), large = $("#diagramZoomImg");
-    large.src = source.src; large.alt = source.alt;
+  const openZoom = source => {
+    const large = $("#diagramZoomImg");
+    large.src = source.currentSrc || source.src; large.alt = source.alt;
     $("#diagramZoomTitle").textContent = source.alt;
+    dialog.classList.toggle("shot", Boolean(source.closest(".form-shot")));
     setScale(false);
     dialog.showModal();
+  };
+  $("#diagramZoomOpen").addEventListener("click", () => openZoom($("#diagramImg")));
+  // 06 章五種形態的示意圖在手機上很小：點圖(或按 Enter)用同一個檢視窗放大
+  $$(".form-shot img").forEach(img => {
+    img.tabIndex = 0;
+    img.setAttribute("role", "button");
+    img.addEventListener("click", () => openZoom(img));
+    img.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openZoom(img); } });
   });
   $("#diagramZoomClose").addEventListener("click", () => dialog.close());
   dialog.addEventListener("click", e => { if (e.target === dialog) dialog.close(); });
@@ -805,6 +814,8 @@ function setupNav() {
       else link.removeAttribute("aria-current");
     });
     if (now) now.textContent = current < 0 ? "研究所 AI 手冊" : links[current].dataset.num + " " + links[current].textContent;
+    // 手機頂欄：捲進章節後顯示目前章節，回到開場再顯示「AI 手冊」
+    document.body.classList.toggle("in-chapter", current >= 0);
   };
   const schedule = () => { if (!pending) { pending = true; requestAnimationFrame(update); } };
   window.addEventListener("scroll", schedule, { passive: true });
