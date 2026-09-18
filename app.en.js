@@ -801,7 +801,8 @@ function setupMobileMenu() {
 
 function labelTables() {
   $$("table.reading-table").forEach(t => {
-    const heads = $$("thead th", t).map(th => th.textContent.trim());
+    // 手機上每格上方的小標只用中文名稱(06 章表頭第二行的英文在上方的說明卡裡有)
+    const heads = $$("thead th", t).map(th => (th.querySelector(".form-name") || th).textContent.trim());
     $$("tbody tr", t).forEach(tr => [...tr.children].forEach((td, i) => { if (heads[i]) td.dataset.label = heads[i]; }));
   });
 }

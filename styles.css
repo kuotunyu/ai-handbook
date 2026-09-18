@@ -897,7 +897,13 @@ html[lang="en"] .clip.needs-tap::after { content: "Tap to play"; }
 .forms-legend li { display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; background: var(--bg-white); border-radius: var(--radius-sm); box-shadow: var(--shadow-soft); border-top: 4px solid var(--border-medium); }
 .forms-legend li.use { background: color-mix(in srgb, var(--emerald-wash) 70%, var(--bg-white)); border-top-color: var(--emerald-mid); }
 .forms-legend strong { font-size: var(--fs-body); color: var(--ink-primary); }
-.forms-legend span { font-size: var(--fs-sm); color: var(--ink-body); line-height: 1.5; }
+.forms-legend li > span { font-size: var(--fs-sm); color: var(--ink-body); line-height: 1.5; }
+/* 06 章五種形態：中文名稱在上，英文原名或縮寫的意思在下(你在工具和英國課堂會看到的字) */
+.form-name, .form-term { display: block; }
+.forms-legend .form-term { font-size: var(--fs-meta); font-weight: 600; color: var(--brand); }
+.forms-table th { vertical-align: top; }
+html[lang="en"] .forms-table th .form-name { text-wrap-style: auto; } /* "Desktop app / (Agent)"，不要平均拆成 "Desktop / app (Agent)" */
+.forms-table th .form-term { margin-top: 2px; font-size: var(--fs-meta); font-weight: 500; color: var(--on-dark-muted); }
 /* 圖片欄優先：系列與模型兩欄收窄，四個介面欄各占 20% */
 .forms-table { min-width: 980px; table-layout: fixed; }
 .forms-table th:nth-child(1) { width: 8%; }
