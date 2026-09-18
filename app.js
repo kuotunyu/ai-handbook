@@ -718,7 +718,6 @@ function renderCards() {
     reset.textContent = "還原範例";
     reset.addEventListener("click", () => { editor.value = card.text; autoGrow(editor); showToast("已還原成範例。"); });
     editor.addEventListener("input", () => autoGrow(editor));
-    details.addEventListener("toggle", () => { if (details.open) autoGrow(editor); });
     // 提示詞放在深色框裡(全站可複製的提示詞都是深色框)，框頂寫明「提示詞」，複製按鈕貼著它
     const label = Object.assign(document.createElement("label"), { htmlFor: editor.id, className: "prompt-box-label", textContent: "提示詞" });
     const hasSlots = /\[[^\[\]\n]*[\u3400-\u9fff][^\[\]\n]*\]/.test(card.text);
@@ -736,6 +735,17 @@ function renderCards() {
       where.append(Object.assign(document.createElement("strong"), { textContent: "怎麼用" }), Object.assign(document.createElement("p"), { textContent: card.where }));
     }
     details.append(summary, ...(where ? [where] : []), box);
+    // 手機上點開靠近畫面底部的卡片時，提示詞和複製鈕會落在畫面外：捲到卡片標題，讓整個提示詞框看得到。
+    // 只在讀者自己點開時捲動；切換語言還原展開狀態時不動。
+    let tapped = false;
+    summary.addEventListener("click", () => { tapped = !details.open; });
+    details.addEventListener("toggle", () => {
+      if (!details.open) return;
+      autoGrow(editor);
+      if (!tapped) return;
+      tapped = false;
+      if (matchMedia("(max-width: 700px)").matches && head.getBoundingClientRect().bottom > innerHeight) summary.scrollIntoView({ block: "start" });
+    });
     section.append(details);
     });
   });

@@ -233,8 +233,11 @@ details > summary { list-style: none; cursor: pointer; display: flex; align-item
 details > summary::-webkit-details-marker { display: none; }
 details > summary::before { content: "+"; width: 22px; height: 22px; flex: none; display: grid; place-items: center; background: var(--brand); color: #fff; border-radius: var(--radius-xs); font-size: 19px; font-weight: 800; line-height: 1; }
 details[open] > summary::before { content: "−"; }
-details > summary:hover { color: var(--terracotta); }
-details > summary:hover::before { background: var(--terracotta); }
+/* 只在滑鼠裝置變色：手機點過的標題不會一直停在陶土色 */
+@media (hover: hover) {
+  details > summary:hover { color: var(--terracotta); }
+  details > summary:hover::before { background: var(--terracotta); }
+}
 details p { color: var(--ink-body); font-size: var(--fs-table); margin: 8px 0 0 32px; }
 details .plain-list { margin: 8px 0 0 32px; }
 details .table-scroll { margin: 10px 0 6px 32px; }
@@ -248,7 +251,7 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 .inline-explain { min-width: 0; justify-self: start; }
 .inline-explain > summary { display: inline-flex; min-height: 34px; padding: 2px 2px; gap: 6px; font-size: var(--fs-sm); color: var(--brand); border-bottom: 1px dotted var(--brand-border); }
 .inline-explain > summary::before { width: 16px; height: 16px; font-size: 13px; color: var(--brand); background: transparent; border: 1px solid currentColor; border-radius: 50%; }
-.inline-explain > summary:hover::before { color: var(--terracotta); background: transparent; }
+@media (hover: hover) { .inline-explain > summary:hover::before { color: var(--terracotta); background: transparent; } }
 .inline-explain > p { max-width: 52em; margin: 7px 0 0; padding: 9px 12px; border-left: 2px solid var(--brand-border); border-radius: 0 var(--radius-xs) var(--radius-xs) 0; background: var(--bg-white); box-shadow: var(--shadow-soft); color: var(--ink-body); font-size: var(--fs-sm); line-height: 1.55; }
 .inline-explain > p strong { color: var(--ink-primary); }
 
@@ -329,7 +332,7 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 .situation-name { font-size: var(--fs-lg); font-weight: 800; }
 .situation-name::before { content: counter(situ, decimal-leading-zero); color: var(--terracotta); font-size: var(--fs-num-sm); font-weight: 800; margin-right: 12px; font-variant-numeric: tabular-nums; }
 .situation-examples { grid-column: 2; font-size: var(--fs-sm); font-weight: 400; color: var(--ink-muted); }
-.situation-entry > summary:hover .situation-name { color: var(--terracotta); }
+@media (hover: hover) { .situation-entry > summary:hover .situation-name { color: var(--terracotta); } }
 .situation-content { margin: 12px 0 0 34px; }
 .situation-content p { margin: 0 0 10px; font-size: var(--fs-table); }
 .situation-content blockquote { margin: 0 0 10px; padding: 10px 14px; border-left: 3px solid var(--brand); background: var(--brand-wash); color: var(--ink-primary); font-size: var(--fs-table); border-radius: 0 var(--radius-xs) var(--radius-xs) 0; }
@@ -340,7 +343,7 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 /* ============ 05 文獻：原始 PDF 查證小實驗 ============ */
 .evidence-pdf-lab { margin: 14px 0 18px; background: var(--bg-white); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); box-shadow: var(--shadow-soft); padding: 10px 18px 14px; }
 .evidence-pdf-lab > summary { flex-wrap: wrap; gap: 4px 12px; color: var(--ink-primary); font-size: var(--fs-lg); }
-.evidence-pdf-lab > summary:hover { color: var(--terracotta); }
+@media (hover: hover) { .evidence-pdf-lab > summary:hover { color: var(--terracotta); } }
 .evidence-pdf-content { margin-top: 12px; }
 .evidence-claim { margin: 0 0 12px; padding: 12px 14px; border-left: 4px solid var(--terracotta); border-radius: 0 var(--radius-xs) var(--radius-xs) 0; background: color-mix(in srgb, var(--terracotta) 9%, var(--bg-white)); }
 .evidence-claim > span { display: block; color: var(--terracotta); font-size: var(--fs-meta); font-weight: 800; margin-bottom: 3px; }
@@ -456,7 +459,7 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 .learning-examples { margin: 6px 0 12px; display: grid; gap: 12px; }
 .learning-lesson { background: var(--bg-white); border-radius: var(--radius-sm); box-shadow: var(--shadow-soft); border-left: 4px solid var(--brand-mid); padding: 10px 20px 12px; }
 .learning-lesson > summary { flex-wrap: wrap; gap: 4px 12px; font-size: var(--fs-lg); color: var(--ink-primary); }
-.learning-lesson > summary:hover { color: var(--terracotta); }
+@media (hover: hover) { .learning-lesson > summary:hover { color: var(--terracotta); } }
 .lesson-topic { color: var(--ink-muted); font-size: var(--fs-sm); font-weight: 400; }
 .lesson-content { padding: 8px 0 0 32px; }
 .lesson-content p { margin: 0 0 10px; font-size: var(--fs-table); }
@@ -741,7 +744,9 @@ details .table-scroll { margin: 10px 0 6px 32px; }
   .prompt-box-head { padding: 12px; }
   .prompt-box-actions { display: grid; grid-template-columns: auto 1fr; width: 100%; margin-left: 0; }
   .prompt-box-actions .copy-btn { justify-content: center; white-space: nowrap; }
-  .prompt-box textarea { width: calc(100% - 20px); margin: 10px; min-height: 170px; font-size: 19px; padding: 12px; }
+  /* 手機：文字框填滿深色框的寬度，少一層內框，每行多放兩三個字 */
+  .prompt-box textarea { width: 100%; margin: 0; border: 0; border-radius: 0; min-height: 170px; font-size: 19px; padding: 14px 14px 16px; }
+  .prompt-box textarea:focus-visible { outline-offset: -3px; }
   details .table-scroll, details p, details .plain-list { margin-left: 0; }
   .toast { max-width: calc(100vw - 32px); width: max-content; font-size: 16px; bottom: 20px; }
 
