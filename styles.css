@@ -914,4 +914,7 @@ html[lang="en"] .clip.needs-tap::after { content: "Tap to play"; }
   .keyword-example > summary, .keyword-reference .keyword-example > summary { min-height: 44px; }
   .situation-links a { display: inline-flex; align-items: center; min-height: 44px; }
   .situation-reference a, .layer-eg a, .source-note a { padding-block: 10px; }
+  /* 判讀練習與 PDF 查證的標題：「+」固定在左欄，長標題(英文版)換行時不會把「+」擠到單獨一行 */
+  .learning-lesson > summary, .evidence-pdf-lab > summary { display: grid; grid-template-columns: 22px minmax(0, 1fr); column-gap: 12px; row-gap: 2px; align-items: center; }
+  .learning-lesson > summary .lesson-topic, .evidence-pdf-lab > summary .lesson-topic { grid-column: 2; padding-left: 0; }
 }
