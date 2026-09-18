@@ -1,6 +1,6 @@
 # AI Handbook — Agent Instructions
 
-This repository is a learning handbook for a non-technical graduate student who is about to study urban planning in the UK.
+This repository is a learning handbook for graduate students without a technical background.
 
 ## Primary objective
 
