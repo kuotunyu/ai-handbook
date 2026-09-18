@@ -170,6 +170,9 @@ html[lang="zh-Hant"] .hero-card { --hero-em: 9.2; }
 @media (min-width: 701px) { .hero-card :is(.hero-tool-options, .tool-former-name) { font-size: clamp(12px, 100cqi / 13.4, var(--fs-meta)); } }
 /* 平板(744–1000px，iPad 直放)三張卡並排很窄：卡片間距與左右內距各省 4px，小字才能維持 14px 以上又是一行 */
 @media (min-width: 701px) and (max-width: 1000px) { .hero-grid { gap: 8px; } .hero-card { padding-inline: 10px; } }
+/* 英文電腦寬度(1261px 以上，首屏左右兩欄，含 MacBook Air 的 1470px)：卡片窄，Agent 卡的「Codex or Claude Code」放不進第一行，
+   會剩「Codex or」兩個字；面板、卡片間距和卡片左右內距各省一點，讓它排在同一行 */
+@media (min-width: 1261px) { html[lang="en"] .hero-panel { padding-inline: 14px; } html[lang="en"] .hero-grid { gap: 8px; } html[lang="en"] .hero-card { padding-inline: 10px; } }
 .tool-name-note { font-size: var(--fs-sm); color: var(--ink-muted); margin: 0 0 16px; }
 .hero-card .hero-tool-options { margin-top: 3px; color: var(--on-dark-sky); font-weight: 700; }
 .hero-rule { display: grid; grid-template-columns: auto repeat(3, minmax(0, 1fr)); margin-top: 14px; border-top: 1px solid var(--on-dark-line); }
