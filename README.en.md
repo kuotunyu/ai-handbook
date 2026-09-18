@@ -67,7 +67,7 @@ The site is plain HTML, CSS and JavaScript. Open `en.html` and it works offline;
 
 ### Two languages, one codebase
 
-- The English edition is not a second hand-written site. `en.html` and `app.en.js` are generated from the Chinese structure and interaction code plus an entry-by-entry translation catalogue (467 page entries, 132 interface strings). If Chinese source text changes without a matching translation, generation fails. Chinese punctuation left between links is converted, and CI rejects any Chinese character or punctuation that remains.
+- The English edition is not a second hand-written site. `en.html` and `app.en.js` are generated from the Chinese structure and interaction code plus an entry-by-entry translation catalogue (464 page entries, 132 interface strings). If Chinese source text changes without a matching translation, generation fails. Chinese punctuation left between links is converted, and CI rejects any Chinese character or punctuation that remains.
 - The diagrams, practice data, result previews and all five animations have English versions. Switching language keeps the reader in the same chapter, with drafts kept separately per language.
 
 ### Reproducible media
