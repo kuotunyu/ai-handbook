@@ -55,7 +55,7 @@ The site is plain HTML, CSS and JavaScript. Open `en.html` and it works offline;
 | 06 | Agents | Meet each company's five forms (model, web, desktop, IDE, CLI, each with an interface illustration); hand off rent data with built-in traps, check the acceptance table, use the unit-conversion and missing-value labs |
 | 07 | Diagrams | Six diagram types, one relationship each; plain request → Mermaid code → figure |
 | 08 | AI rules | A five-step checklist for this year's university policy and a disclosure template |
-| 09 | Prompt library | Ten editable examples that can be reset |
+| 09 | Prompt library | Eleven editable examples that can be reset, including building a source library with Deep Research |
 
 ## Engineering
 

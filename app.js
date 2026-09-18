@@ -618,6 +618,12 @@ function setupChecklist() {
 ==================================================================== */
 const PROMPT_CARDS = [
   {
+    "title": "用 Deep Research 建立來源庫",
+    "when": "Gemini Notebook",
+    "where": "貼在左側「來源」的「新增來源」搜尋框，選「網路」和「Deep Research」再送出，不是貼在中間的對話框。結果出來後，先看它找到哪些來源，只把可信的加入筆記本，再用下面的範例提問。",
+    "text": "我要研究 [想研究的主題]。請先建立研究架構，找出核心問題與關鍵子題，暫時不要下結論。接著搜尋可信來源，優先使用一手資料，再以高品質二手來源補充。建立來源庫後，比較各來源之間的共識、分歧、矛盾與資訊缺口，並指出哪些資訊已有充分證據支持、哪些仍有爭議、哪些需要進一步查證。若資料不足，請明確指出，不要以推測補齊。"
+  },
+  {
     "title": "讀懂文章與查證",
     "when": "Gemini Notebook",
     "text": "請只根據我提供的文章，用白話中文說明主要問題、作者的主張與限制，附上引用。\n我不懂的段落是[貼上段落或填入問題]，請再解釋這一段；若用自編例子說明，請明確標示。分清原文內容和你的推論。"
@@ -718,7 +724,9 @@ function renderCards() {
     actions.append(copy, reset);
     editor.addEventListener("input", () => autoGrow(editor));
     details.addEventListener("toggle", () => { if (details.open) autoGrow(editor); });
-    details.append(summary, label, editor, actions);
+    // 選填：這張提示詞不是貼在對話框時，先說清楚要貼在哪裡
+    const where = card.where ? Object.assign(document.createElement("p"), { className: "prompt-where", textContent: card.where }) : null;
+    details.append(summary, ...(where ? [where] : []), label, editor, actions);
     section.append(details);
     });
   });

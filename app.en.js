@@ -619,6 +619,12 @@ function setupChecklist() {
 ==================================================================== */
 const PROMPT_CARDS = [
   {
+    "title": "Build a source library with Deep Research",
+    "when": "Gemini Notebook",
+    "where": "Paste this into the Add sources search box in the Sources panel on the left, choose Web and Deep Research, then send. Do not paste it into the chat box in the middle. When the results arrive, check which sources it found, add only credible ones to the notebook, then use the examples below.",
+    "text": "I want to research [topic]. First build a research framework: identify the core question and key sub-questions, and do not draw conclusions yet. Then search for credible sources, prioritising primary sources and adding high-quality secondary sources. Once the source library is built, compare the sources for agreement, disagreement, contradictions and gaps, and state which points are well supported by evidence, which remain contested and which need further checking. If the information is insufficient, say so clearly instead of filling the gaps with speculation."
+  },
+  {
     "title": "Understand and verify a reading",
     "when": "Gemini Notebook",
     "text": "Using only my article, explain the main question, the author's claims and the limitations in plain English, with citations.\nI am struggling with [passage or question]. Explain this part; clearly label any invented examples. Separate the source's content from your inferences."
@@ -719,7 +725,9 @@ function renderCards() {
     actions.append(copy, reset);
     editor.addEventListener("input", () => autoGrow(editor));
     details.addEventListener("toggle", () => { if (details.open) autoGrow(editor); });
-    details.append(summary, label, editor, actions);
+    // 選填：這張提示詞不是貼在對話框時，先說清楚要貼在哪裡
+    const where = card.where ? Object.assign(document.createElement("p"), { className: "prompt-where", textContent: card.where }) : null;
+    details.append(summary, ...(where ? [where] : []), label, editor, actions);
     section.append(details);
     });
   });
