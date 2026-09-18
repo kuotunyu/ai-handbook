@@ -933,6 +933,27 @@ html[lang="zh-Hant"] :is(.forms-table, .forms-legend) { --head-em: 10; --cap-em:
   .forms-legend strong { font-size: clamp(17px, 100cqi / var(--head-em), 22px); }
   .forms-table figcaption { font-size: clamp(15px, (max(100cqi, 980px) * .19 - 24px) / var(--cap-em), 21px); }
 }
+/* 平板與窄視窗(701–1260px)：表格放不下(要左右捲動、模型名稱在框內斷行)，改成和手機一樣每家一張卡：
+   公司名稱、AI 模型(晶片排成一行)，四種介面並排一列；小標、圖說都維持一行 */
+@media (min-width: 701px) and (max-width: 1260px) {
+  #ai-forms .table-scroll { overflow: visible; background: transparent; box-shadow: none; border-radius: 0; }
+  .forms-table, .forms-table tbody, .forms-table tr, .forms-table td { display: block; }
+  .forms-table { min-width: 0; width: 100%; }
+  .forms-table thead { display: none; }
+  .forms-table tbody tr { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 10px; padding: 16px; margin: 0 0 12px; background: var(--bg-white); border-radius: var(--radius-sm); box-shadow: var(--shadow-soft); }
+  .forms-table td { width: auto !important; border: 0 !important; background: transparent; }
+  .forms-table td:first-child, .forms-table td:nth-child(2) { grid-column: 1 / -1; padding: 0 6px 12px; }
+  .forms-table td:first-child { padding-left: 0; }
+  .forms-table td:nth-child(n+3) { container-type: inline-size; padding: 6px 6px 8px; }
+  .forms-table td.use { border-radius: var(--radius-xs); background: color-mix(in srgb, var(--emerald-wash) 60%, var(--bg-white)); }
+  .forms-table tbody tr:hover td { background: transparent; }
+  .forms-table tbody tr:hover td.use { background: color-mix(in srgb, var(--emerald-wash) 60%, var(--bg-white)); }
+  .forms-table td::before { content: attr(data-label); display: block; margin-bottom: 4px; font-size: 16px; font-weight: 700; color: var(--brand); white-space: nowrap; }
+  .forms-table td:first-child::before { display: none; }
+  .forms-table td:nth-child(n+3)::before { font-size: clamp(13px, 100cqi / var(--head-em), 16px); }
+  .model-chip { display: inline-block; margin: 2px 6px 4px 0; white-space: nowrap; }
+  .forms-table figcaption { font-size: clamp(14px, 100cqi / var(--cap-em), 21px); }
+}
 @media (max-width: 700px) {
   .ai-layers { grid-template-columns: 1fr; gap: 14px; }
   .layer-pyramid { max-width: 190px; margin: 0 auto; }
