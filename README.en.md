@@ -52,7 +52,7 @@ The site is plain HTML, CSS and JavaScript. Open `en.html` and it works offline;
 | 03 | Tools | Separate the three layers of an AI tool (interface, harness, model), then tell generation, search, calculation and operation apart and how to check each |
 | 04 | Prompting | Build a prompt from blocks, edit it, reset it, copy it |
 | 05 | Reading | Read a fictional passage in Gemini Notebook, interpret a sampling animation, verify a citation in the original PDF |
-| 06 | Agents | Meet each company's five forms (model, web, desktop, IDE, CLI); hand off rent data with built-in traps, check the acceptance table, use the unit-conversion and missing-value labs |
+| 06 | Agents | Meet each company's five forms (model, web, desktop, IDE, CLI, each with an interface illustration); hand off rent data with built-in traps, check the acceptance table, use the unit-conversion and missing-value labs |
 | 07 | Diagrams | Six diagram types, one relationship each; plain request → Mermaid code → figure |
 | 08 | AI rules | A five-step checklist for this year's university policy and a disclosure template |
 | 09 | Prompt library | Ten editable examples that can be reset |
