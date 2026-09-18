@@ -923,7 +923,14 @@ html[lang="en"] .clip.needs-tap::after { content: "Tap to play"; }
 .forms-table td.use { background: color-mix(in srgb, var(--emerald-wash) 60%, var(--bg-white)); font-weight: 700; color: var(--ink-primary); }
 .forms-table tbody tr:hover td.use { background: var(--emerald-wash); }
 .forms-choice { margin: 12px 0 4px; font-size: var(--fs-table); color: var(--ink-body); }
-@media (max-width: 1100px) { .forms-legend { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 1200px) { .forms-legend { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+/* 中文欄名「IDE 版(整合開發環境)」要約 10 個字寬。表頭和說明卡都維持一行(換行看了不舒服)：
+   欄寬不夠時字級跟著欄寬縮一點，最多縮到 16／17px；1440px 以上與手機不變。 */
+html[lang="zh-Hant"] #ai-forms .table-scroll, html[lang="zh-Hant"] .forms-legend li { container-type: inline-size; }
+@media (min-width: 701px) and (max-width: 1440px) {
+  html[lang="zh-Hant"] .forms-table th { padding-inline: 12px; font-size: clamp(16px, (max(100cqi, 980px) * .19 - 24px) / 10, 22px); }
+  html[lang="zh-Hant"] .forms-legend strong { font-size: clamp(17px, 100cqi / 10, 22px); }
+}
 @media (max-width: 700px) {
   .ai-layers { grid-template-columns: 1fr; gap: 14px; }
   .layer-pyramid { max-width: 190px; margin: 0 auto; }
@@ -940,6 +947,11 @@ html[lang="en"] .clip.needs-tap::after { content: "Tap to play"; }
   .forms-table td.use { padding: 6px 8px 8px; margin-bottom: 8px; border-radius: var(--radius-xs); }
   .forms-table td::before { font-size: 14px; }
   .form-shot figcaption { font-size: 16px; }
+}
+/* 375px 等小手機：格子間距和內距各省一點，小標「IDE 版(整合開發環境)」才放得進一行 */
+@media (max-width: 390px) {
+  .forms-table tbody tr { column-gap: 6px; }
+  .forms-table td:nth-child(n+3) { padding-inline: 6px; }
 }
 
 /* ============ 手機版細修(2026-09-18，依 iPhone 17 的 402px 驗證) ============ */
