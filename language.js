@@ -9,13 +9,14 @@
   // Retain explicit reading/editing intent when focusing the sticky header
   // scrolls the viewport. Actual reader scrolling resumes geometric tracking.
   let intendedChapter = validChapter(location.hash) ? location.hash : null;
+  let intentScroll = scrollY; // where the page was when the reader showed that intent
   document.addEventListener('focusin', event => {
     const section = event.target.closest('main > section[id]');
-    if (section) intendedChapter = '#' + section.id;
+    if (section) { intendedChapter = '#' + section.id; intentScroll = scrollY; updateLinks(); }
   });
   document.querySelector('#topnav').addEventListener('click', event => {
     const link = event.target.closest('a');
-    if (link && validChapter(link.hash)) intendedChapter = link.hash;
+    if (link && validChapter(link.hash)) { intendedChapter = link.hash; intentScroll = scrollY; updateLinks(); }
   });
   const resumeScrollTracking = () => { intendedChapter = null; };
   window.addEventListener('wheel', resumeScrollTracking, { passive: true });
@@ -62,10 +63,10 @@
     // passes the upper third of the screen, not only after it slides under the sticky bar.
     const threshold = document.querySelector('.topbar').getBoundingClientRect().height + Math.min(innerHeight * 0.3, 260);
     const onScreen = el => { const rect = el.getBoundingClientRect(); return rect.top < innerHeight - 40 && rect.bottom > threshold; };
-    // A chapter the reader focused or picked from the menu wins only while it is still on screen:
-    // dragging the scrollbar away from it fires no wheel or touch event to clear it.
+    // A chapter the reader focused or picked from the menu wins while it is on screen or the page
+    // has not moved far since; dragging the scrollbar elsewhere fires no wheel or touch event to clear it.
     const intended = intendedChapter && document.getElementById(intendedChapter.slice(1));
-    if (intended && onScreen(intended)) return intendedChapter;
+    if (intended && (onScreen(intended) || Math.abs(scrollY - intentScroll) < innerHeight / 2)) return intendedChapter;
     // Focusing a sticky-header control can scroll the page. If the explicitly
     // selected chapter is still on screen, keep that chapter during the switch.
     const anchored = document.getElementById(location.hash.slice(1));
