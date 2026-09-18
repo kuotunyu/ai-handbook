@@ -104,12 +104,9 @@ body {
 }
 h1, h2, h3, h4 { margin: 0; color: var(--ink-primary); line-height: 1.25; }
 p { margin: 0 0 10px; }
-/* 英文：段落最後一行不只剩一個字，標題與短標籤各行長度接近。
+/* 英文：標題與短標籤讓各行長度接近(balance)。段落不用 pretty：Safari(iPhone、Mac)的 pretty 會把整段每行都縮短，右側留一大片空白。
    中文照慣例排滿每一行，最後幾個字由 app.js 綁在一起，不用 pretty／balance(會讓行尾參差、照樣拆詞)。 */
-html[lang="en"] main { text-wrap-style: pretty; }
-html[lang="en"] main :is(h1, h2, h3, h4, summary, th, figcaption, .block-desc, .diagram-tab span, .hero-card strong, .forms-legend strong) { text-wrap-style: balance; }
-html[lang="en"] .hero-tool-options { text-wrap-style: auto; }
-html[lang="en"] main textarea { text-wrap-style: auto; } /* 編輯中的文字換行不跳動 */
+html[lang="en"] main :is(h1, h2, h3, h4, summary, th, figcaption, .block-desc, .diagram-tab span, .hero-card strong, .forms-legend strong, .step-list li strong, .prompt-group-note) { text-wrap-style: balance; }
 keep-together { white-space: nowrap; }
 a { color: var(--brand); text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: 4px; }
@@ -450,11 +447,11 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 .step-heading > span { font-size: var(--fs-meta); color: var(--ink-light); }
 .step-heading .copy-btn { margin-left: auto; align-self: center; }
 #readingSource { columns: 2; column-gap: 32px; }
-#readingSource p { font-size: var(--fs-table); color: var(--ink-body); margin: 0; padding-bottom: 8px; line-height: 1.6; break-inside: avoid; text-wrap-style: pretty; }
+#readingSource p { font-size: var(--fs-table); color: var(--ink-body); margin: 0; padding-bottom: 8px; line-height: 1.6; break-inside: avoid; }
 .step-list { list-style: none; counter-reset: s; padding: 0; margin: 6px 0 14px; border-top: 1px solid var(--border-subtle); }
 .step-list li { counter-increment: s; position: relative; padding: 11px 0 11px 60px; border-bottom: 1px solid var(--border-subtle); font-size: var(--fs-table); }
 .step-list li::before { content: counter(s, decimal-leading-zero); position: absolute; left: 0; top: 11px; font-size: var(--fs-num); font-weight: 800; color: var(--terracotta); line-height: 1; font-variant-numeric: tabular-nums; }
-.step-list li strong { font-weight: 800; font-size: var(--fs-lg); color: var(--ink-primary); }
+.step-list li strong { display: block; font-weight: 800; font-size: var(--fs-lg); color: var(--ink-primary); }
 .step-list li span { color: var(--ink-body); display: block; margin: 3px 0 0; max-width: 72ch; }
 .learning-examples { margin: 6px 0 12px; display: grid; gap: 12px; }
 .learning-lesson { background: var(--bg-white); border-radius: var(--radius-sm); box-shadow: var(--shadow-soft); border-left: 4px solid var(--brand-mid); padding: 10px 20px 12px; }
