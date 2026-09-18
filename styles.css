@@ -168,6 +168,8 @@ html[lang="zh-Hant"] .hero-card { --hero-em: 9.2; }
 .hero-card .tool-former-name { margin-top: 4px; font-size: var(--fs-meta); color: var(--on-dark-teal); }
 /* 卡片小字 Gemini / ChatGPT / Claude(約 12.6 個字寬)、Formerly NotebookLM 也維持一行：701px 以上跟著卡片寬度縮(最小 12px，只有 701–743px 這種非實機寬度會到)；手機卡片夠寬，不變 */
 @media (min-width: 701px) { .hero-card :is(.hero-tool-options, .tool-former-name) { font-size: clamp(12px, 100cqi / 13.4, var(--fs-meta)); } }
+/* 平板(744–1000px，iPad 直放)三張卡並排很窄：卡片間距與左右內距各省 4px，小字才能維持 14px 以上又是一行 */
+@media (min-width: 701px) and (max-width: 1000px) { .hero-grid { gap: 8px; } .hero-card { padding-inline: 10px; } }
 .tool-name-note { font-size: var(--fs-sm); color: var(--ink-muted); margin: 0 0 16px; }
 .hero-card .hero-tool-options { margin-top: 3px; color: var(--on-dark-sky); font-weight: 700; }
 .hero-rule { display: grid; grid-template-columns: auto repeat(3, minmax(0, 1fr)); margin-top: 14px; border-top: 1px solid var(--on-dark-line); }
@@ -771,6 +773,7 @@ details .table-scroll { margin: 10px 0 6px 32px; }
   .hero-panel-head { flex-wrap: wrap; gap: 4px 12px; }
   .hero-card { padding: 14px 16px; }
   .hero-card p { font-size: 18px; line-height: 1.6; }
+  .hero-card .hero-tool-options { font-size: var(--fs-meta); } /* 和「原名 NotebookLM」同一級(上面 18px 是給說明文字的) */
   .hero-rule span { padding-inline: 4px; }
   .section > h2 { font-size: 26px; gap: 10px; line-height: 1.35; }
   h2 .num { font-size: 30px; flex-shrink: 0; }
@@ -856,6 +859,13 @@ html[lang="en"] .hero h1 { font-size: clamp(36px, 3.5vw, 56px); line-height: 1.1
   .hero-inner { grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr); gap: 36px; }
 }
 html[lang="en"] .hero-rule { flex-wrap: wrap; }
+/* 手機英文：Provide material 等三句並排會各拆成兩行，改成一句一行、疊在 Remember 下面 */
+@media (max-width: 700px) {
+  html[lang="en"] .hero-rule { grid-template-columns: 1fr; }
+  html[lang="en"] .hero-rule span { padding: 10px 0; text-align: left; border-left: 0; }
+  html[lang="en"] .hero-rule span + span:not(.hero-rule-label + span) { border-top: 1px solid var(--on-dark-line-soft); }
+  html[lang="en"] .hero-rule .hero-rule-label { padding: 10px 0 0; }
+}
 html[lang="en"] .block-name { font-size: 21px; }
 html[lang="en"] .block-desc { font-size: 18px; }
 /* 英文積木名較長(Background 一個字就比 5.4em 寬)：輸出框的標籤欄加寬 */
