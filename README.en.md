@@ -49,10 +49,10 @@ The site is plain HTML, CSS and JavaScript. Open `en.html` and it works offline;
 |---|---|---|
 | 01 | Keywords | Four core concepts and six extended terms; Token, Context and hallucination each have a short animation |
 | 02 | Situations | Start from where they are stuck, then answer four think-first checks |
-| 03 | Tools | Tell generation, search, calculation and operation apart, and how to check each |
+| 03 | Tools | Separate the three layers of an AI tool (interface, harness, model), then tell generation, search, calculation and operation apart and how to check each |
 | 04 | Prompting | Build a prompt from blocks, edit it, reset it, copy it |
 | 05 | Reading | Read a fictional passage in Gemini Notebook, interpret a sampling animation, verify a citation in the original PDF |
-| 06 | Agents | Hand off rent data with built-in traps, check the acceptance table, use the unit-conversion and missing-value labs |
+| 06 | Agents | Meet each company's five forms (model, web, desktop, IDE, CLI); hand off rent data with built-in traps, check the acceptance table, use the unit-conversion and missing-value labs |
 | 07 | Diagrams | Six diagram types, one relationship each; plain request → Mermaid code → figure |
 | 08 | AI rules | A five-step checklist for this year's university policy and a disclosure template |
 | 09 | Prompt library | Ten editable examples that can be reset |
@@ -67,7 +67,7 @@ The site is plain HTML, CSS and JavaScript. Open `en.html` and it works offline;
 
 ### Two languages, one codebase
 
-- The English edition is not a second hand-written site. `en.html` and `app.en.js` are generated from the Chinese structure and interaction code plus an entry-by-entry translation catalogue (424 page entries, 132 interface strings). If Chinese source text changes without a matching translation, generation fails. Chinese punctuation left between links is converted, and CI rejects any Chinese character or punctuation that remains.
+- The English edition is not a second hand-written site. `en.html` and `app.en.js` are generated from the Chinese structure and interaction code plus an entry-by-entry translation catalogue (467 page entries, 132 interface strings). If Chinese source text changes without a matching translation, generation fails. Chinese punctuation left between links is converted, and CI rejects any Chinese character or punctuation that remains.
 - The diagrams, practice data, result previews and all five animations have English versions. Switching language keeps the reader in the same chapter, with drafts kept separately per language.
 
 ### Reproducible media

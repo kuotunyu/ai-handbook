@@ -9,7 +9,7 @@
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" />
   <title>研究所 AI 手冊</title>
-  <link rel="stylesheet" href="./styles.css?v=202609181418" />
+  <link rel="stylesheet" href="./styles.css?v=202609181716" />
 </head>
 <body>
 <!--
@@ -195,7 +195,24 @@
     <!-- 03 工具與觀念 -->
     <section class="section" id="concepts">
       <h2><span class="num">03</span>工具與功能</h2>
-      <p class="section-note">工具名稱會變。這章只分辨 AI 現在是在生成、搜尋、計算，還是操作檔案；不同工作要用不同方式檢查。</p>
+      <p class="section-note">工具名稱會變。這章先拆開一個 AI 工具的三層，再分辨它現在是在生成、搜尋、計算，還是操作檔案；不同工作要用不同方式檢查。</p>
+      <h3 class="compact-heading">一個 AI 工具的三層</h3>
+      <div class="ai-layers">
+        <svg class="layer-pyramid" viewBox="0 0 300 282" aria-hidden="true" focusable="false">
+          <path class="lp1" d="M150 6 L192 84 L108 84 Z" />
+          <path class="lp2" d="M102 96 L198 96 L240 180 L60 180 Z" />
+          <path class="lp3" d="M54 192 L246 192 L288 276 L12 276 Z" />
+          <g class="layer-icon on-light"><rect x="133" y="45" width="34" height="23" rx="3" /><path d="M150 68 V74 M141 75 H159" /></g>
+          <g class="layer-icon"><path d="M128 126 H172 M128 138 H172 M128 150 H172" /><circle cx="141" cy="126" r="4.5" /><circle cx="161" cy="138" r="4.5" /><circle cx="147" cy="150" r="4.5" /></g>
+          <g class="layer-icon"><path d="M131 222 L169 229 M131 222 L169 250 M131 236 L169 229 M131 236 L169 250 M131 250 L169 229 M131 250 L169 250" /><circle cx="131" cy="222" r="4.5" /><circle cx="131" cy="236" r="4.5" /><circle cx="131" cy="250" r="4.5" /><circle cx="169" cy="229" r="4.5" /><circle cx="169" cy="250" r="4.5" /></g>
+        </svg>
+        <ol class="layer-list">
+          <li class="l1"><strong class="layer-name">介面</strong><span class="layer-q">你在哪裡跟它互動</span><span class="layer-eg">網頁版、手機 App、桌面版、IDE 版、指令版。<a href="#ai-forms">各家的對照在 06 章</a>。</span></li>
+          <li class="l2"><strong class="layer-name">Harness</strong><span class="layer-q">決定 AI 怎麼做事</span><span class="layer-eg">能不能上網搜尋、能不能讀寫你的檔案、動手前要不要先問你。Harness 原意是馬具：模型出力，Harness 決定往哪走。</span></li>
+          <li class="l3"><strong class="layer-name">模型(LLM)</strong><span class="layer-q">用哪一顆 AI 腦</span><span class="layer-eg">GPT-6 Astra、Claude Opus 5、Gemini 3.1 Pro 等；版本幾個月就換，不用背。</span></li>
+        </ol>
+      </div>
+      <p class="layers-takeaway"><strong>同一顆 AI 腦，換一個 Harness 就是不同工具。</strong>同樣用 Gemini 模型：在 Gemini 裡聊天、上網查；在 Gemini Notebook 裡主要根據你放的來源回答並附引用；在 Antigravity 裡讀寫檔案、執行程式。手冊開頭的「聊和查、讀、動手」，差別主要就在 Harness。</p>
       <h3 class="compact-heading">AI 現在是在做哪種工作？</h3>
       <div class="table-scroll"><table class="reading-table howcheck-table"><thead><tr><th>工作類型</th><th>例子</th><th>怎麼檢查</th></tr></thead><tbody>
       <tr><td><span class="work-kind">生成</span><span class="work-desc">憑記憶和材料寫回答，流暢但可能編造</span></td><td>解釋概念、改寫句子、擬一封信</td><td>重要事實回原文核對；看摘要有沒有改變意思</td></tr>
@@ -372,6 +389,25 @@
             <button class="btn ghost" id="agentReset" type="button">重來</button>
           </div>
         </div>
+      </div>
+
+      <div class="ai-forms" id="ai-forms">
+        <h3 class="compact-heading">同一家公司的五種形態</h3>
+        <p>各家都把自己的 AI 模型放進好幾種介面。模型就是 03 章說的 AI 腦；另外四種是你跟它互動的地方。</p>
+        <ul class="forms-legend">
+          <li><strong>AI 模型(LLM)</strong><span>AI 腦。各家都有好幾顆，版本常換。</span></li>
+          <li class="use"><strong>網頁版</strong><span>在瀏覽器或手機 App 裡聊天。聊和查用這個。</span></li>
+          <li class="use"><strong>桌面版</strong><span>裝在電腦上的 App，Agent 在你的資料夾裡動手。動手用這個。</span></li>
+          <li><strong>IDE 版</strong><span>放進寫程式的編輯器(例如 VS Code)，給寫程式的人用。</span></li>
+          <li><strong>指令版(CLI)</strong><span>在黑色的終端機視窗打字操作，給寫程式的人用。</span></li>
+        </ul>
+        <div class="table-scroll"><table class="reading-table forms-table"><thead><tr><th>系列</th><th>AI 模型</th><th class="use">網頁版</th><th class="use">桌面版</th><th>IDE 版</th><th>指令版</th></tr></thead><tbody>
+        <tr><td><span class="forms-series">ChatGPT 系列</span><span class="forms-maker">OpenAI</span></td><td><span class="model-chip">GPT-6 Astra</span><span class="model-chip">GPT-5.6 Sol</span></td><td class="use">ChatGPT</td><td class="use">Codex 桌面版</td><td>Codex + VS Code</td><td>Codex 指令版</td></tr>
+        <tr><td><span class="forms-series">Claude 系列</span><span class="forms-maker">Anthropic</span></td><td><span class="model-chip">Claude Fable 5.1</span><span class="model-chip">Claude Opus 5</span><span class="model-chip">Claude Sonnet 5</span></td><td class="use">Claude</td><td class="use">Claude Code 桌面版</td><td>Claude Code + VS Code</td><td>Claude Code 指令版</td></tr>
+        <tr><td><span class="forms-series">Gemini 系列</span><span class="forms-maker">Google</span></td><td><span class="model-chip">Gemini 3.1 Pro</span><span class="model-chip">Gemini 3.8 Flash</span></td><td class="use">Gemini</td><td class="use">Antigravity 桌面版</td><td>Antigravity IDE 版</td><td>Antigravity 指令版</td></tr>
+        </tbody></table></div>
+        <p class="forms-choice"><strong>你會用到的：</strong>聊和查用網頁版或手機 App，Agent 用桌面版(綠底的兩種)。IDE 版和指令版是同一個工具換個介面；教學影片裡出現 VS Code 或黑色視窗，知道是同一個工具就好。</p>
+        <p class="source-note">模型名稱查核於 2026 年 9 月；之後以工具裡的模型選單為準。</p>
       </div>
 
       <div class="agent-tool-guide">
@@ -569,8 +605,8 @@
     <div class="diagram-zoom-area" tabindex="0" role="region" aria-label="放大圖表，可捲動"><img id="diagramZoomImg" alt="" /></div>
   </dialog>
   <div class="toast" id="toast" role="status">已複製！</div>
-  <script src="./diagrams.js?v=202609181418"></script>
-  <script src="./app.js?v=202609181418"></script>
-  <script src="./language.js?v=202609181418"></script>
+  <script src="./diagrams.js?v=202609181716"></script>
+  <script src="./app.js?v=202609181716"></script>
+  <script src="./language.js?v=202609181716"></script>
 </body>
 </html>

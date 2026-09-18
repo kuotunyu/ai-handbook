@@ -9,7 +9,7 @@
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
   <title>Graduate AI Handbook</title>
-  <link rel="stylesheet" href="./styles.css?v=202609181418">
+  <link rel="stylesheet" href="./styles.css?v=202609181716">
 </head>
 <body>
 
@@ -187,7 +187,24 @@
     
     <section class="section" id="concepts">
       <h2><span class="num">03</span>Tools and functions</h2>
-      <p class="section-note">Tool names change. Focus on whether AI is generating, searching, calculating or operating on files. Each calls for different checks.</p>
+      <p class="section-note">Tool names change. This chapter first separates the three layers of an AI tool, then tells apart generating, searching, calculating and operating on files; each needs a different check.</p>
+      <h3 class="compact-heading">The three layers of an AI tool</h3>
+      <div class="ai-layers">
+        <svg class="layer-pyramid" viewbox="0 0 300 282" aria-hidden="true" focusable="false">
+          <path class="lp1" d="M150 6 L192 84 L108 84 Z">
+          <path class="lp2" d="M102 96 L198 96 L240 180 L60 180 Z">
+          <path class="lp3" d="M54 192 L246 192 L288 276 L12 276 Z">
+          <g class="layer-icon on-light"><rect x="133" y="45" width="34" height="23" rx="3"><path d="M150 68 V74 M141 75 H159"></g>
+          <g class="layer-icon"><path d="M128 126 H172 M128 138 H172 M128 150 H172"><circle cx="141" cy="126" r="4.5"><circle cx="161" cy="138" r="4.5"><circle cx="147" cy="150" r="4.5"></g>
+          <g class="layer-icon"><path d="M131 222 L169 229 M131 222 L169 250 M131 236 L169 229 M131 236 L169 250 M131 250 L169 229 M131 250 L169 250"><circle cx="131" cy="222" r="4.5"><circle cx="131" cy="236" r="4.5"><circle cx="131" cy="250" r="4.5"><circle cx="169" cy="229" r="4.5"><circle cx="169" cy="250" r="4.5"></g>
+        </svg>
+        <ol class="layer-list">
+          <li class="l1"><strong class="layer-name">Interface</strong><span class="layer-q">Where you interact with it</span><span class="layer-eg">Web, phone app, desktop app, IDE and command line. <a href="#ai-forms">Each company's forms are compared in chapter 06</a>.</span></li>
+          <li class="l2"><strong class="layer-name">Harness</strong><span class="layer-q">Decides how the AI works</span><span class="layer-eg">Whether it can search the web, read and write your files, and ask before acting. A harness is horse tack: the model supplies the power, the harness sets the direction.</span></li>
+          <li class="l3"><strong class="layer-name">Model (LLM)</strong><span class="layer-q">Which AI brain it uses</span><span class="layer-eg">GPT-6 Astra, Claude Opus 5, Gemini 3.1 Pro and others; versions change every few months, so there is no need to memorise them.</span></li>
+        </ol>
+      </div>
+      <p class="layers-takeaway"><strong>Same AI brain, different harness, different tool.</strong> The same Gemini models chat and search the web in Gemini, answer mainly from your sources with citations in Gemini Notebook, and read and write files and run code in Antigravity. The opening's “chat and search, read, act” differ mainly in the harness.</p>
       <h3 class="compact-heading">What is AI doing right now?</h3>
       <div class="table-scroll"><table class="reading-table howcheck-table"><thead><tr><th>Type of work</th><th>Example</th><th>What to check</th></tr></thead><tbody>
       <tr><td><span class="work-kind">Generate</span><span class="work-desc">Write from learned patterns and supplied material; fluent answers can still be invented</span></td><td>Explain a concept, rewrite a sentence or draft an email</td><td>Check important facts against the original; make sure summaries preserve the meaning</td></tr>
@@ -364,6 +381,25 @@
             <button class="btn ghost" id="agentReset" type="button">Start again</button>
           </div>
         </div>
+      </div>
+
+      <div class="ai-forms" id="ai-forms">
+        <h3 class="compact-heading">One company, five forms</h3>
+        <p>Each company puts its AI models into several interfaces. The model is the AI brain from chapter 03; the other four are where you interact with it.</p>
+        <ul class="forms-legend">
+          <li><strong>AI model (LLM)</strong><span>The AI brain. Each company has several, and versions change often.</span></li>
+          <li class="use"><strong>Web</strong><span>Chat in a browser or phone app. Use it for chat and search.</span></li>
+          <li class="use"><strong>Desktop app</strong><span>An app installed on your computer, where the Agent works in your folder. Use it for Agent tasks.</span></li>
+          <li><strong>IDE</strong><span>Inside a code editor such as VS Code, for people who write code.</span></li>
+          <li><strong>Command line (CLI)</strong><span>Typed commands in a black terminal window, for people who write code.</span></li>
+        </ul>
+        <div class="table-scroll"><table class="reading-table forms-table"><thead><tr><th>Family</th><th>AI model</th><th class="use">Web</th><th class="use">Desktop app</th><th>IDE</th><th>Command line</th></tr></thead><tbody>
+        <tr><td><span class="forms-series">ChatGPT family</span><span class="forms-maker">OpenAI</span></td><td><span class="model-chip">GPT-6 Astra</span><span class="model-chip">GPT-5.6 Sol</span></td><td class="use">ChatGPT</td><td class="use">Codex desktop app</td><td>Codex + VS Code</td><td>Codex CLI</td></tr>
+        <tr><td><span class="forms-series">Claude family</span><span class="forms-maker">Anthropic</span></td><td><span class="model-chip">Claude Fable 5.1</span><span class="model-chip">Claude Opus 5</span><span class="model-chip">Claude Sonnet 5</span></td><td class="use">Claude</td><td class="use">Claude Code desktop app</td><td>Claude Code + VS Code</td><td>Claude Code CLI</td></tr>
+        <tr><td><span class="forms-series">Gemini family</span><span class="forms-maker">Google</span></td><td><span class="model-chip">Gemini 3.1 Pro</span><span class="model-chip">Gemini 3.8 Flash</span></td><td class="use">Gemini</td><td class="use">Antigravity desktop app</td><td>Antigravity IDE</td><td>Antigravity CLI</td></tr>
+        </tbody></table></div>
+        <p class="forms-choice"><strong>What you will use:</strong> the web version or phone app for chat and search, and the desktop app for the Agent (the two in green). The IDE and command-line versions are the same tools with another interface; if a tutorial shows VS Code or a black window, it is still the same tool.</p>
+        <p class="source-note">Model names checked in September 2026; after that, go by the model menu in each tool.</p>
       </div>
 
       <div class="agent-tool-guide">
@@ -561,8 +597,8 @@ After I confirm, provide only Mermaid code with English labels.</pre></div>
     <div class="diagram-zoom-area" tabindex="0" role="region" aria-label="Enlarged diagram; scroll to explore"><img id="diagramZoomImg" alt=""></div>
   </dialog>
   <div class="toast" id="toast" role="status">Copied!</div>
-  <script src="./diagrams.en.js?v=202609181418"></script>
-  <script src="./app.en.js?v=202609181418"></script>
-  <script src="./language.js?v=202609181418"></script>
+  <script src="./diagrams.en.js?v=202609181716"></script>
+  <script src="./app.en.js?v=202609181716"></script>
+  <script src="./language.js?v=202609181716"></script>
 </body>
 </html>
