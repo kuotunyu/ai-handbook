@@ -159,6 +159,9 @@ code { font-family: var(--mono); font-size: .92em; background: var(--bg-subtle);
 .hero-card.agent { border-top-color: var(--on-dark-accent); background: color-mix(in srgb, var(--on-dark-accent) 14%, transparent); }
 .hero-card-role { font-size: var(--fs-meta); font-weight: 700; color: var(--on-dark-mist); line-height: 1.25; }
 .hero-card strong { display: block; margin-top: 4px; color: var(--on-dark); font-size: var(--fs-lg); font-weight: 800; line-height: 1.25; }
+/* 英文最長的字 Conversational 約 7 個字寬，卡片窄時(約 700、1000–1110px)會超出；標題跟著卡片寬度縮一點，不超出 */
+html[lang="en"] .hero-card { container-type: inline-size; }
+html[lang="en"] .hero-card strong { font-size: min(var(--fs-lg), 100cqi / 7.4); }
 .hero-card p { margin: 8px 0 0; color: var(--on-dark-dim); font-size: var(--fs-meta); line-height: 1.45; }
 .hero-card .tool-former-name { margin-top: 4px; font-size: var(--fs-meta); color: var(--on-dark-teal); }
 .tool-name-note { font-size: var(--fs-sm); color: var(--ink-muted); margin: 0 0 16px; }
