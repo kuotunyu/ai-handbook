@@ -847,6 +847,70 @@ function migrateOldRoutes() {
   location.replace("#" + target);
 }
 
+/* Line breaks CSS cannot express. Product names such as Claude Code never split across lines,
+   and "A / B" lists break after the slash, not before it. Chinese can break between any two
+   characters and Chromium's text-wrap: pretty does not rebalance it, so the last words of each
+   block (at least two words and three letters) stay together with the closing punctuation: no
+   line holds a lone character and the final word is not split. Nothing is measured, so it holds
+   at every width. Text that a button copies and hidden labels are left untouched. */
+function keepPhrasesTogether() {
+  const skip = ["pre", "code", "textarea", "svg", "script", "style", ".sr-only", "#builderResult", "#readingSource",
+    ...[...document.querySelectorAll("[data-copy-target]")].map(btn => btn.dataset.copyTarget)].join(", ");
+  const nbsp = String.fromCharCode(160);
+  const names = /Claude Code|Gemini Notebook|VS Code|Deep Research/g;
+  const display = new Map();
+  const displayOf = el => {
+    if (!display.has(el)) display.set(el, getComputedStyle(el).display);
+    return display.get(el);
+  };
+  const lastText = new Map();
+  const walker = document.createTreeWalker($("main"), NodeFilter.SHOW_TEXT);
+  for (let node; (node = walker.nextNode());) {
+    if (!node.data.trim() || node.parentElement.closest(skip)) continue;
+    // The opening cards' titles are too narrow at laptop widths for an unbreakable "Gemini Notebook".
+    if (!node.parentElement.closest(".hero-card strong, .hero-tool-options")) {
+      node.data = node.data.replace(names, name => name.replace(" ", nbsp)).replace(/ \/ /g, nbsp + "/ ");
+    }
+    let block = node.parentElement;
+    while (block && ["inline", "contents"].includes(displayOf(block))) block = block.parentElement;
+    if (block) lastText.set(block, node);
+  }
+  if (!document.documentElement.lang.startsWith("zh") || !window.Intl?.Segmenter) return;
+  const words = new Intl.Segmenter("zh-Hant", { granularity: "word" });
+  const opening = new RegExp("[\\u300c\\u300e\\uff08(\\[]");
+  const onlyClosing = new RegExp("^[\\s\\u3000-\\u303f\\uff00-\\uffef)\\]]{1,3}$");
+  const glueEnding = node => {
+    const parts = [...words.segment(node.data)];
+    let start = -1, count = 0, letters = 0;
+    for (let k = parts.length - 1; k >= 0 && (count < 2 || letters < 3); k--) {
+      const part = parts[k];
+      if (part.isWordLike) {
+        if (node.data.length - part.index > 12) break;
+        count += 1;
+        letters += part.segment.length;
+        start = part.index;
+      } else if (count && opening.test(part.segment)) break;
+    }
+    if (!count) return false;
+    const glue = document.createElement("keep-together");
+    glue.textContent = node.data.slice(start);
+    node.data = node.data.slice(0, start);
+    node.after(glue);
+    return true;
+  };
+  lastText.forEach(node => {
+    // Directly inside a flex or grid container, a new element would become an item of its own.
+    if (/flex|grid/.test(displayOf(node.parentElement)) || glueEnding(node)) return;
+    // Only punctuation after a link or placeholder: punctuation never starts a line, so keeping
+    // the end of that element's own text together is enough.
+    const before = node.previousSibling;
+    if (onlyClosing.test(node.data) && before?.nodeType === Node.ELEMENT_NODE) {
+      const inner = [...before.childNodes].reverse().find(child => child.nodeType === Node.TEXT_NODE && child.data.trim());
+      if (inner) glueEnding(inner);
+    }
+  });
+}
+
 /* ---------- 啟動 ---------- */
 setupCopyTargets();
 renderBuilder();
@@ -862,6 +926,7 @@ setupNav();
 setupManifest();
 setupMobileMenu();
 labelTables();
+keepPhrasesTogether();
 setupClips();
 migrateOldRoutes();
 window.addEventListener("hashchange", migrateOldRoutes);

@@ -52,6 +52,7 @@ Use half-width brackets `[]` and parentheses `()` everywhere on the site, includ
 - `index.html`, `app.js` and `diagrams.js` are the source. `en.html` and `app.en.js` are generated from them plus a translation catalogue maintained outside this repository; do not hand-edit the generated files, because the next generation overwrites them.
 - `diagrams.en.js`, `diagrams/en/`, `materials/en/` and `media/en/` are the English counterparts. Every video and poster in `index.html` has an English render with the same file name under `media/en/`; keep them paired when media changes.
 - The English edition uses English punctuation. `npm run check:static` fails on Chinese characters or punctuation left in `en.html` or `app.en.js`.
+- Line breaks differ by language. English uses `text-wrap-style: pretty` for paragraphs and `balance` for headings and short labels. Chinese keeps full lines, as Chinese typesetting expects; `keepPhrasesTogether()` in `app.js` keeps each block's last two words with the closing punctuation and keeps product names such as Claude Code on one line. Do not add pretty or balance to Chinese text: it leaves ragged line ends and still splits words.
 
 ## Learning design rules
 
