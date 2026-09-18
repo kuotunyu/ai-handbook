@@ -813,7 +813,14 @@ html { scroll-padding-top: calc(var(--bar-h) + 16px); }
 .topnav { flex: 1; order: 2; margin: 0; justify-content: flex-end; }
 .topnav a { min-height: 68px; font-size: 18px; padding-inline: 8px; }
 .topnav a::before { display: none; }
+/* 英文版字型：Windows 預設會挑到微軟正黑體，它的英文粗體偏細，標題看起來不夠粗。
+   Windows 11 用 Segoe UI Variable(粗體到 700，800 會自動用 700)，Windows 10 用 Segoe UI；Mac 沒有這兩個字型，照舊用系統的 SF。 */
+html[lang="en"] { --font: "Segoe UI Variable Text", "Segoe UI", -apple-system, BlinkMacSystemFont, ui-sans-serif, system-ui, "Microsoft JhengHei UI", "PingFang TC", sans-serif; }
 html[lang="en"] .hero h1 { font-size: clamp(36px, 3.5vw, 56px); line-height: 1.12; }
+/* 英文比較長：筆電寬度下把首屏右邊的工具卡欄位加寬，卡片標題不會被拆成好幾行 */
+@media (min-width: 1001px) and (max-width: 1440px) {
+  html[lang="en"] .hero-inner { grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr); gap: 36px; }
+}
 html[lang="en"] .hero-rule { flex-wrap: wrap; }
 html[lang="en"] .block-name { font-size: 21px; }
 html[lang="en"] .block-desc { font-size: 18px; }
