@@ -656,6 +656,7 @@ const PROMPT_CARDS = [
   {
     "title": "影片轉資訊圖表",
     "when": "其他實用範例",
+    "hint": "貼上影片連結再複製",
     "text": "Generate a detailed infographic diagram\n請根據這部影片內容，製作一份詳細的資訊圖表\n\n（把影片連結貼在這裡——開放式課程、教學影片都行）\n\n頂部 Header: 占總高度的 5%，冒險科技藍(#0052CC)滿版橫條為底色，用閃電金(#FFD700)極粗體顯示標題。\n\n你可以自己判斷要加入哪些視覺設計，內容盡量豐富，希望可以包含這部影片 95% 以上的重點。\n文字請用正體中文(#zh-tw)，但專有名詞請保留原文。\n\n排版部分請設定背景為淺灰白，請充分利用版面空間，還有注意層級，並且善用配色(對比色、鄰近色、同色系)或變換字型來強調重點，字體盡量大一點，目標是讓讀者第一眼就能掃描出所有大重點。"
   },
   {
@@ -721,7 +722,7 @@ function renderCards() {
     // 提示詞放在深色框裡(全站可複製的提示詞都是深色框)，框頂寫明「提示詞」，複製按鈕貼著它
     const label = Object.assign(document.createElement("label"), { htmlFor: editor.id, className: "prompt-box-label", textContent: "提示詞" });
     const hasSlots = /\[[^\[\]\n]*[\u3400-\u9fff][^\[\]\n]*\]/.test(card.text);
-    const hint = Object.assign(document.createElement("span"), { className: "prompt-box-hint", textContent: hasSlots ? "[ ] 換成你的內容再複製" : "可以先修改再複製" });
+    const hint = Object.assign(document.createElement("span"), { className: "prompt-box-hint", textContent: card.hint || (hasSlots ? "[ ] 換成你的內容再複製" : "可以先修改再複製") });
     const actions = Object.assign(document.createElement("div"), { className: "prompt-box-actions" });
     actions.append(reset, copy);
     const head = Object.assign(document.createElement("div"), { className: "prompt-box-head" });

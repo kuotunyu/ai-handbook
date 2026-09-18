@@ -109,6 +109,7 @@ p { margin: 0 0 10px; }
 html[lang="en"] main { text-wrap-style: pretty; }
 html[lang="en"] main :is(h1, h2, h3, h4, summary, th, figcaption, .block-desc, .diagram-tab span, .hero-card strong, .forms-legend strong) { text-wrap-style: balance; }
 html[lang="en"] .hero-tool-options { text-wrap-style: auto; }
+html[lang="en"] main textarea { text-wrap-style: auto; } /* 編輯中的文字換行不跳動 */
 keep-together { white-space: nowrap; }
 a { color: var(--brand); text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: 4px; }
@@ -738,8 +739,8 @@ details .table-scroll { margin: 10px 0 6px 32px; }
   .mstep + .mstep { padding-left: 44px; }
   .prompt-example { padding: 6px 12px; }
   .prompt-box-head { padding: 12px; }
-  .prompt-box-actions { display: grid; grid-template-columns: 1fr 1fr; width: 100%; margin-left: 0; }
-  .prompt-box-actions .copy-btn { justify-content: center; }
+  .prompt-box-actions { display: grid; grid-template-columns: auto 1fr; width: 100%; margin-left: 0; }
+  .prompt-box-actions .copy-btn { justify-content: center; white-space: nowrap; }
   .prompt-box textarea { width: calc(100% - 20px); margin: 10px; min-height: 170px; font-size: 19px; padding: 12px; }
   details .table-scroll, details p, details .plain-list { margin-left: 0; }
   .toast { max-width: calc(100vw - 32px); width: max-content; font-size: 16px; bottom: 20px; }
@@ -802,7 +803,7 @@ details .table-scroll { margin: 10px 0 6px 32px; }
   .diagram-zoom-area { max-height: 65dvh; }
   .quote { padding-top: 64px; }
   .quote-box .copy-btn { min-height: 44px; }
-  .prompt-box-actions .copy-btn { min-height: 48px; padding-inline: 20px; }
+  .prompt-box-actions .copy-btn { min-height: 48px; padding-inline: 16px; }
   .prompt-example > summary { font-size: 20px; }
   .toast { bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
 }

@@ -657,6 +657,7 @@ const PROMPT_CARDS = [
   {
     "title": "Turn a video into an infographic",
     "when": "Other useful prompts",
+    "hint": "Add your video link, then copy",
     "text": "Generate a detailed infographic diagram\nBased on this video, create a detailed infographic.\n\n(Paste the video link here — an open course or educational video is fine.)\n\nTop header: Use 5% of the total height for a full-width technology-blue (#0052CC) bar, with the title in lightning gold (#FFD700) and an extra-bold font.\n\nChoose the visual elements you think are appropriate. Make the content as rich as possible, aiming to cover more than 95% of the video's key points.\nUse English for the text, retaining technical terms in their original language.\n\nUse a light grey-white background. Make good use of the available space, establish a clear visual hierarchy, and use contrasting, analogous or monochromatic colours, or different typefaces, to emphasise key points. Keep the text as large as possible so readers can identify all the main points at a glance."
   },
   {
@@ -722,7 +723,7 @@ function renderCards() {
     // 提示詞放在深色框裡(全站可複製的提示詞都是深色框)，框頂寫明「提示詞」，複製按鈕貼著它
     const label = Object.assign(document.createElement("label"), { htmlFor: editor.id, className: "prompt-box-label", textContent: "Prompt" });
     const hasSlots = /\[[^\[\]\n]*[A-Za-z][^\[\]\n]*\]/.test(card.text);
-    const hint = Object.assign(document.createElement("span"), { className: "prompt-box-hint", textContent: hasSlots ? "Replace the [ ] parts, then copy" : "Edit it if needed, then copy" });
+    const hint = Object.assign(document.createElement("span"), { className: "prompt-box-hint", textContent: card.hint || (hasSlots ? "Replace the [ ] parts, then copy" : "Edit it if needed, then copy") });
     const actions = Object.assign(document.createElement("div"), { className: "prompt-box-actions" });
     actions.append(reset, copy);
     const head = Object.assign(document.createElement("div"), { className: "prompt-box-head" });
