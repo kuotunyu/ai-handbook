@@ -166,6 +166,8 @@ html[lang="zh-Hant"] .hero-card { --hero-em: 9.2; }
 .hero-card strong { font-size: clamp(18px, 100cqi / var(--hero-em), var(--fs-lg)); }
 .hero-card p { margin: 8px 0 0; color: var(--on-dark-dim); font-size: var(--fs-meta); line-height: 1.45; }
 .hero-card .tool-former-name { margin-top: 4px; font-size: var(--fs-meta); color: var(--on-dark-teal); }
+/* 卡片小字 Gemini / ChatGPT / Claude(約 12.6 個字寬)、Formerly NotebookLM 也維持一行：701px 以上跟著卡片寬度縮(最小 12px，只有 701–743px 這種非實機寬度會到)；手機卡片夠寬，不變 */
+@media (min-width: 701px) { .hero-card :is(.hero-tool-options, .tool-former-name) { font-size: clamp(12px, 100cqi / 13.4, var(--fs-meta)); } }
 .tool-name-note { font-size: var(--fs-sm); color: var(--ink-muted); margin: 0 0 16px; }
 .hero-card .hero-tool-options { margin-top: 3px; color: var(--on-dark-sky); font-weight: 700; }
 .hero-rule { display: grid; grid-template-columns: auto repeat(3, minmax(0, 1fr)); margin-top: 14px; border-top: 1px solid var(--on-dark-line); }
