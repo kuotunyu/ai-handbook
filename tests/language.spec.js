@@ -20,8 +20,13 @@ test('language switch retains the chapter and separate drafts; a fresh root stay
 test('English prompts, diagrams and mobile layout are usable', async ({ page }) => {
   await page.setViewportSize({ width: 402, height: 874 });
   await page.goto('/en.html#cards');
-  await page.locator('.prompt-example summary').first().click();
-  expect(await page.locator('#saved-prompt-0').inputValue()).toContain('plain English');
+  // Find cards by title, not position: new examples can be added anywhere in a group.
+  const reading = page.locator('.prompt-example').filter({ has: page.locator('summary', { hasText: 'Understand and verify a reading' }) });
+  await reading.locator('summary').click();
+  expect(await reading.locator('textarea').inputValue()).toContain('plain English');
+  const deep = page.locator('.prompt-example').filter({ has: page.locator('summary', { hasText: 'Deep Research' }) });
+  await deep.locator('summary').click();
+  await expect(deep.locator('.prompt-where')).toContainText('Add sources');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.goto('/en.html#diagrams');
   for (const id of ['flow', 'framework', 'gantt', 'timeline', 'mindmap', 'quadrant']) {
