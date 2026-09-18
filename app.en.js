@@ -699,17 +699,14 @@ function renderCards() {
     details.className = "prompt-example";
     const summary = document.createElement("summary");
     summary.textContent = card.title;
-    const label = document.createElement("label");
-    label.htmlFor = `saved-prompt-${i}`;
-    label.className = "sr-only";
-    label.textContent = `${card.title}: editable prompt`;
     const editor = document.createElement("textarea");
-    editor.id = label.htmlFor;
+    editor.id = `saved-prompt-${i}`;
     editor.value = card.text;
     editor.rows = 3; // 展開後會自動長高到內容高度；3 行只是最小高度，短提示詞不會留一大塊空白
+    editor.setAttribute("aria-label", `${card.title}: editable prompt`);
     const copy = document.createElement("button");
     copy.type = "button";
-    copy.className = "copy-btn";
+    copy.className = "copy-btn primary";
     copy.textContent = "Copy";
     copy.addEventListener("click", () => {
       if (!editor.value.trim()) { showToast("Enter some text first."); return; }
@@ -717,17 +714,28 @@ function renderCards() {
     });
     const reset = document.createElement("button");
     reset.type = "button";
-    reset.className = "btn ghost";
+    reset.className = "copy-btn";
     reset.textContent = "Reset example";
     reset.addEventListener("click", () => { editor.value = card.text; autoGrow(editor); showToast("Example restored."); });
-    const actions = document.createElement("div");
-    actions.className = "card-actions";
-    actions.append(copy, reset);
     editor.addEventListener("input", () => autoGrow(editor));
     details.addEventListener("toggle", () => { if (details.open) autoGrow(editor); });
-    // 選填：這張提示詞不是貼在對話框時，先說清楚要貼在哪裡
-    const where = card.where ? Object.assign(document.createElement("p"), { className: "prompt-where", textContent: card.where }) : null;
-    details.append(summary, ...(where ? [where] : []), label, editor, actions);
+    // 提示詞放在深色框裡(全站可複製的提示詞都是深色框)，框頂寫明「提示詞」，複製按鈕貼著它
+    const label = Object.assign(document.createElement("label"), { htmlFor: editor.id, className: "prompt-box-label", textContent: "Prompt" });
+    const hasSlots = /\[[^\[\]\n]*[A-Za-z][^\[\]\n]*\]/.test(card.text);
+    const hint = Object.assign(document.createElement("span"), { className: "prompt-box-hint", textContent: hasSlots ? "Replace the [ ] parts, then copy" : "Edit it if needed, then copy" });
+    const actions = Object.assign(document.createElement("div"), { className: "prompt-box-actions" });
+    actions.append(reset, copy);
+    const head = Object.assign(document.createElement("div"), { className: "prompt-box-head" });
+    head.append(label, hint, actions);
+    const box = Object.assign(document.createElement("div"), { className: "prompt-box" });
+    box.append(head, editor);
+    // 選填：這張提示詞不是貼在對話框時，先在框外說清楚怎麼用
+    let where = null;
+    if (card.where) {
+      where = Object.assign(document.createElement("div"), { className: "prompt-where" });
+      where.append(Object.assign(document.createElement("strong"), { textContent: "How to use" }), Object.assign(document.createElement("p"), { textContent: card.where }));
+    }
+    details.append(summary, ...(where ? [where] : []), box);
     section.append(details);
     });
   });
