@@ -58,17 +58,18 @@
     });
   }
   const sectionHash = () => {
-    if (intendedChapter) return intendedChapter;
     // Same reading line as the chapter indicator in app.js: a chapter counts once its heading
     // passes the upper third of the screen, not only after it slides under the sticky bar.
     const threshold = document.querySelector('.topbar').getBoundingClientRect().height + Math.min(innerHeight * 0.3, 260);
+    const onScreen = el => { const rect = el.getBoundingClientRect(); return rect.top < innerHeight - 40 && rect.bottom > threshold; };
+    // A chapter the reader focused or picked from the menu wins only while it is still on screen:
+    // dragging the scrollbar away from it fires no wheel or touch event to clear it.
+    const intended = intendedChapter && document.getElementById(intendedChapter.slice(1));
+    if (intended && onScreen(intended)) return intendedChapter;
     // Focusing a sticky-header control can scroll the page. If the explicitly
     // selected chapter is still on screen, keep that chapter during the switch.
     const anchored = document.getElementById(location.hash.slice(1));
-    if (anchored?.matches('main > section[id]')) {
-      const rect = anchored.getBoundingClientRect();
-      if (rect.top < innerHeight - 40 && rect.bottom > threshold) return location.hash;
-    }
+    if (anchored?.matches('main > section[id]') && onScreen(anchored)) return location.hash;
     const sections = [...document.querySelectorAll('main > section[id]')];
     return '#' + (sections.filter(section => section.getBoundingClientRect().top <= threshold).at(-1)?.id || 'hero');
   };

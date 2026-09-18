@@ -706,7 +706,7 @@ function renderCards() {
     const editor = document.createElement("textarea");
     editor.id = label.htmlFor;
     editor.value = card.text;
-    editor.rows = 5;
+    editor.rows = 3; // 展開後會自動長高到內容高度；3 行只是最小高度，短提示詞不會留一大塊空白
     const copy = document.createElement("button");
     copy.type = "button";
     copy.className = "copy-btn";
