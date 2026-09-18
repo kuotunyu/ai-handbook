@@ -956,6 +956,7 @@ html[lang="zh-Hant"] :is(.forms-table, .forms-legend) { --head-em: 10; --cap-em:
 /* 手機：圖說依格子寬度縮一點(14–16px)，每個都維持一行 */
 @media (max-width: 700px) {
   .forms-table td:nth-child(n+3) { container-type: inline-size; padding-inline: 6px; }
+  .forms-table td:nth-child(2) { padding-inline: 6px; } /* AI 模型和晶片與下方四格的小標、圖同一條左緣 */
   .forms-table figcaption { font-size: clamp(14px, 100cqi / var(--cap-em), 16px); }
   /* 每格上方的小標(桌面版(Agent)、Desktop app (Agent))也維持一行 */
   .forms-table td:nth-child(n+3)::before { font-size: clamp(13px, 100cqi / var(--head-em), 14px); }
