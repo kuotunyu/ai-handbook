@@ -813,7 +813,8 @@ function setupNav() {
   let pending = false;
   const update = () => {
     pending = false;
-    const threshold = $(".topbar").getBoundingClientRect().height + 32;
+    // 章節標題捲過畫面上方約三成就算進入該章(只用頂欄下 32px 時，標題已在眼前卻還顯示上一章)
+    const threshold = $(".topbar").getBoundingClientRect().height + Math.min(window.innerHeight * 0.3, 260);
     let current = -1;
     sections.forEach((section, i) => { if (section.getBoundingClientRect().top <= threshold) current = i; });
     if (window.scrollY > 0 && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8) current = sections.length - 1;

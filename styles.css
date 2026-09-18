@@ -297,7 +297,7 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 .keyword-reference .keyword-entry:nth-child(4)::before { color: var(--brand); }
 .keyword-reference .keyword-entry:nth-child(5)::before { color: var(--plum); }
 .keyword-reference .keyword-entry:nth-child(6)::before { color: var(--emerald); }
-.keyword-reference .keyword-entry h4 { grid-column: 2; grid-row: 1 / span 3; margin: 0; align-self: stretch; padding-right: 16px; border-right: 1px solid var(--border-subtle); }
+.keyword-reference .keyword-entry h4 { grid-column: 2; grid-row: 1 / span 3; margin: 0; align-self: stretch; align-content: flex-start; padding-right: 16px; border-right: 1px solid var(--border-subtle); }
 .keyword-reference .keyword-definition { grid-column: 3; font-size: var(--fs-table); }
 .keyword-reference .keyword-example { grid-column: 3; margin-top: 0; }
 .keyword-reference .keyword-example > summary { min-height: 30px; padding: 2px 0; }
@@ -824,6 +824,8 @@ html[lang="en"] .hero h1 { font-size: clamp(36px, 3.5vw, 56px); line-height: 1.1
 html[lang="en"] .hero-rule { flex-wrap: wrap; }
 html[lang="en"] .block-name { font-size: 21px; }
 html[lang="en"] .block-desc { font-size: 18px; }
+/* 英文積木名較長(Background 一個字就比 5.4em 寬)：輸出框的標籤欄加寬 */
+@media (min-width: 701px) { html[lang="en"] .builder-output .prompt-part { grid-template-columns: 6.6em minmax(0, 1fr); } }
 html[lang="en"] .quote::before { content: "Template"; }
 html[lang="en"] .clip.needs-tap::after { content: "Tap to play"; }
 @media (max-width: 1260px) {

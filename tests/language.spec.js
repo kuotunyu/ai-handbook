@@ -17,6 +17,17 @@ test('language switch retains the chapter and separate drafts; a fresh root stay
   await expect(page.locator('html')).toHaveAttribute('lang', 'zh-Hant');
 });
 
+test('switching language after scrolling to a chapter lands on that chapter', async ({ page }) => {
+  // Readers scroll until a heading sits near the top, then switch; the switch used to pick the chapter above.
+  await page.setViewportSize({ width: 402, height: 874 });
+  await page.goto('/en.html');
+  const top = () => page.evaluate(() => document.getElementById('agent').getBoundingClientRect().top);
+  for (let i = 0; i < 400 && await top() > 180; i++) await page.mouse.wheel(0, Math.min(1200, (await top()) - 120));
+  await page.locator('[data-language="zh-Hant"]').click();
+  await expect(page).toHaveURL(/index\.html#agent$/);
+  await expect.poll(() => page.evaluate(() => Math.round(document.getElementById('agent').getBoundingClientRect().top)), { timeout: 6000 }).toBeLessThan(140);
+});
+
 test('English prompts, diagrams and mobile layout are usable', async ({ page }) => {
   await page.setViewportSize({ width: 402, height: 874 });
   await page.goto('/en.html#cards');

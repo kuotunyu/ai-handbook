@@ -44,12 +44,24 @@
     }
     requestAnimationFrame(() => {
       const target = document.getElementById(location.hash.slice(1));
-      target?.scrollIntoView({ behavior: 'instant', block: 'start' });
+      if (!target) return;
+      // Restored open sections above the chapter (PDF pages, charts, pictures) finish loading after
+      // this and push the chapter down. Keep it at the top until the reader scrolls, for a few seconds.
+      let readerMoved = false;
+      const stop = () => { readerMoved = true; };
+      ['wheel', 'touchstart', 'keydown'].forEach(type => window.addEventListener(type, stop, { once: true, passive: true }));
+      const pin = () => { if (!readerMoved) target.scrollIntoView({ behavior: 'instant', block: 'start' }); };
+      pin();
+      const watcher = new ResizeObserver(pin);
+      watcher.observe(document.querySelector('main'));
+      setTimeout(() => watcher.disconnect(), 4000);
     });
   }
   const sectionHash = () => {
     if (intendedChapter) return intendedChapter;
-    const threshold = document.querySelector('.topbar').getBoundingClientRect().height + 32;
+    // Same reading line as the chapter indicator in app.js: a chapter counts once its heading
+    // passes the upper third of the screen, not only after it slides under the sticky bar.
+    const threshold = document.querySelector('.topbar').getBoundingClientRect().height + Math.min(innerHeight * 0.3, 260);
     // Focusing a sticky-header control can scroll the page. If the explicitly
     // selected chapter is still on screen, keep that chapter during the switch.
     const anchored = document.getElementById(location.hash.slice(1));
