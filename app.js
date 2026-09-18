@@ -702,7 +702,7 @@ function renderCards() {
     const editor = document.createElement("textarea");
     editor.id = `saved-prompt-${i}`;
     editor.value = card.text;
-    editor.rows = 3; // 展開後會自動長高到內容高度；3 行只是最小高度，短提示詞不會留一大塊空白
+    editor.rows = 2; // 展開後會自動長高到內容高度；2 行只是最小高度，兩行的提示詞下方不會空一行
     editor.setAttribute("aria-label", `${card.title}：可編輯的提示詞`);
     const copy = document.createElement("button");
     copy.type = "button";
@@ -722,7 +722,7 @@ function renderCards() {
     // 提示詞放在深色框裡(全站可複製的提示詞都是深色框)，框頂寫明「提示詞」，複製按鈕貼著它
     const label = Object.assign(document.createElement("label"), { htmlFor: editor.id, className: "prompt-box-label", textContent: "提示詞" });
     const hasSlots = /\[[^\[\]\n]*[\u3400-\u9fff][^\[\]\n]*\]/.test(card.text);
-    const hint = Object.assign(document.createElement("span"), { className: "prompt-box-hint", textContent: card.hint || (hasSlots ? "[ ] 換成你的內容再複製" : "可以先修改再複製") });
+    const hint = Object.assign(document.createElement("span"), { className: "prompt-box-hint", textContent: card.hint || (hasSlots ? "把 [ ] 換成你的內容再複製" : "可以先修改再複製") });
     const actions = Object.assign(document.createElement("div"), { className: "prompt-box-actions" });
     actions.append(reset, copy);
     const head = Object.assign(document.createElement("div"), { className: "prompt-box-head" });

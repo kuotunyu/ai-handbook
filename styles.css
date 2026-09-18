@@ -594,7 +594,7 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 .prompt-box-actions .copy-btn.primary { background: var(--on-dark-teal); border-color: var(--on-dark-teal); color: var(--bg-inverse); }
 .prompt-box-actions .copy-btn.primary:hover { background: var(--emerald-wash); border-color: var(--emerald-wash); }
 .prompt-box-actions .copy-btn.copied { background: var(--on-dark-fill-strong); color: var(--on-dark-teal); border-color: var(--on-dark-teal); }
-.prompt-box textarea { display: block; box-sizing: border-box; width: calc(100% - 24px); margin: 12px; padding: 12px 14px; background: var(--on-dark-fill); color: var(--on-dark); border: 1px solid var(--on-dark-line); border-radius: var(--radius-xs); font: inherit; font-size: var(--fs-table); line-height: 1.6; min-height: 120px; resize: vertical; }
+.prompt-box textarea { display: block; box-sizing: border-box; width: calc(100% - 24px); margin: 12px; padding: 12px 14px; background: var(--on-dark-fill); color: var(--on-dark); border: 1px solid var(--on-dark-line); border-radius: var(--radius-xs); font: inherit; font-size: var(--fs-table); line-height: 1.6; resize: vertical; }
 .prompt-box textarea:focus-visible { outline: 2px solid var(--on-dark-clay); outline-offset: 2px; }
 .head-actions { display: inline-flex; flex-wrap: wrap; gap: 8px; }
 .panel-note { margin: 0; padding: 8px 16px 0; font-size: var(--fs-meta); color: var(--on-dark-muted); }

@@ -703,7 +703,7 @@ function renderCards() {
     const editor = document.createElement("textarea");
     editor.id = `saved-prompt-${i}`;
     editor.value = card.text;
-    editor.rows = 3; // 展開後會自動長高到內容高度；3 行只是最小高度，短提示詞不會留一大塊空白
+    editor.rows = 2; // 展開後會自動長高到內容高度；2 行只是最小高度，兩行的提示詞下方不會空一行
     editor.setAttribute("aria-label", `${card.title}: editable prompt`);
     const copy = document.createElement("button");
     copy.type = "button";
