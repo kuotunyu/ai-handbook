@@ -930,6 +930,8 @@ html[lang="zh-Hant"] #ai-forms .table-scroll, html[lang="zh-Hant"] .forms-legend
 @media (min-width: 701px) and (max-width: 1440px) {
   html[lang="zh-Hant"] .forms-table th { padding-inline: 12px; font-size: clamp(16px, (max(100cqi, 980px) * .19 - 24px) / 10, 22px); }
   html[lang="zh-Hant"] .forms-legend strong { font-size: clamp(17px, 100cqi / 10, 22px); }
+  /* 圖說最長是「Claude Code 桌面版」，約 9.5 個字寬 */
+  html[lang="zh-Hant"] .forms-table figcaption { font-size: clamp(15px, (max(100cqi, 980px) * .19 - 24px) / 9.8, 21px); }
 }
 @media (max-width: 700px) {
   .ai-layers { grid-template-columns: 1fr; gap: 14px; }
@@ -947,6 +949,11 @@ html[lang="zh-Hant"] #ai-forms .table-scroll, html[lang="zh-Hant"] .forms-legend
   .forms-table td.use { padding: 6px 8px 8px; margin-bottom: 8px; border-radius: var(--radius-xs); }
   .forms-table td::before { font-size: 14px; }
   .form-shot figcaption { font-size: 16px; }
+}
+/* 手機：圖說依格子寬度縮一點(14–16px)，每個都維持一行 */
+@media (max-width: 700px) {
+  html[lang="zh-Hant"] .forms-table td:nth-child(n+3) { container-type: inline-size; }
+  html[lang="zh-Hant"] .forms-table figcaption { font-size: clamp(14px, 100cqi / 9.8, 16px); }
 }
 /* 375px 等小手機：格子間距和內距各省一點，小標「IDE 版(整合開發環境)」才放得進一行 */
 @media (max-width: 390px) {
