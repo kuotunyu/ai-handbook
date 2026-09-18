@@ -924,15 +924,16 @@ html[lang="en"] .clip.needs-tap::after { content: "Tap to play"; }
 .forms-table tbody tr:hover td.use { background: var(--emerald-wash); }
 .forms-choice { margin: 12px 0 4px; font-size: var(--fs-table); color: var(--ink-body); }
 @media (max-width: 1200px) { .forms-legend { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-/* 中文欄名「IDE 版(整合開發環境)」要約 10 個字寬。表頭和說明卡都維持一行(換行看了不舒服)：
-   欄寬不夠時字級跟著欄寬縮一點，最多縮到 16／17px；1440px 以上與手機不變。 */
-#ai-forms .table-scroll, html[lang="zh-Hant"] .forms-legend li { container-type: inline-size; }
-/* 圖說最長的字寬(em)：中文「Claude Code 桌面版」約 9.5，英文「Claude Code app」約 8，各留一點餘裕(iPhone 的字型較寬) */
-.forms-table { --cap-em: 8.4; }
-html[lang="zh-Hant"] .forms-table { --cap-em: 9.8; }
+/* 06 章表頭、說明卡標題、圖說都維持一行(換行看了不舒服)：欄寬不夠時字級跟著欄寬縮一點；1440px 以上與手機不變。
+   --head-em、--cap-em 是最長那個名稱的字寬(em)，各留一點餘裕給 Mac／iPhone 較寬的字型：
+   表頭與說明卡最長是「IDE 版(整合開發環境)」約 9.7、英文 Desktop app (Agent) 約 9.8；
+   圖說最長是「Claude Code 桌面版」約 9.5、英文 Claude Code app 約 8。 */
+#ai-forms .table-scroll, .forms-legend li { container-type: inline-size; }
+.forms-table, .forms-legend { --head-em: 10.4; --cap-em: 8.4; }
+html[lang="zh-Hant"] :is(.forms-table, .forms-legend) { --head-em: 10; --cap-em: 9.8; }
 @media (min-width: 701px) and (max-width: 1440px) {
-  html[lang="zh-Hant"] .forms-table th { padding-inline: 12px; font-size: clamp(16px, (max(100cqi, 980px) * .19 - 24px) / 10, 22px); }
-  html[lang="zh-Hant"] .forms-legend strong { font-size: clamp(17px, 100cqi / 10, 22px); }
+  .forms-table th { padding-inline: 12px; font-size: clamp(15px, (max(100cqi, 980px) * .19 - 24px) / var(--head-em), 22px); }
+  .forms-legend strong { font-size: clamp(17px, 100cqi / var(--head-em), 22px); }
   .forms-table figcaption { font-size: clamp(15px, (max(100cqi, 980px) * .19 - 24px) / var(--cap-em), 21px); }
 }
 @media (max-width: 700px) {
@@ -954,13 +955,14 @@ html[lang="zh-Hant"] .forms-table { --cap-em: 9.8; }
 }
 /* 手機：圖說依格子寬度縮一點(14–16px)，每個都維持一行 */
 @media (max-width: 700px) {
-  .forms-table td:nth-child(n+3) { container-type: inline-size; }
+  .forms-table td:nth-child(n+3) { container-type: inline-size; padding-inline: 6px; }
   .forms-table figcaption { font-size: clamp(14px, 100cqi / var(--cap-em), 16px); }
+  /* 每格上方的小標(桌面版(Agent)、Desktop app (Agent))也維持一行 */
+  .forms-table td:nth-child(n+3)::before { font-size: clamp(13px, 100cqi / var(--head-em), 14px); }
 }
-/* 375px 等小手機：格子間距和內距各省一點，小標「IDE 版(整合開發環境)」才放得進一行 */
+/* 375px 等小手機：格子間距和卡片內距各省一點，小標和圖說才放得進一行 */
 @media (max-width: 390px) {
-  .forms-table tbody tr { column-gap: 6px; }
-  .forms-table td:nth-child(n+3) { padding-inline: 6px; }
+  .forms-table tbody tr { column-gap: 6px; padding-inline: 12px; }
 }
 
 /* ============ 手機版細修(2026-09-18，依 iPhone 17 的 402px 驗證) ============ */
