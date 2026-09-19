@@ -1,5 +1,5 @@
 /* Static editions also work without JavaScript. This enhances switching with
-   chapter continuity and separate, temporary drafts for each language. */
+   chapter continuity. Draft state is owned by drafts.js. */
 (() => {
   const language = document.documentElement.lang;
   const prefix = 'ai-handbook-language-';
@@ -31,15 +31,7 @@
     write('pending', null);
     const state = read(language);
     if (state) {
-      window.handbookBuilder?.restore(state.builder);
       details.forEach((el, i) => { el.open = Boolean(state.open?.[i]); });
-      Object.entries(state.editors || {}).forEach(([id, value]) => {
-        const editor = document.getElementById(id);
-        if (editor instanceof HTMLTextAreaElement) {
-          editor.value = value;
-          editor.dispatchEvent(new Event('input', { bubbles: true }));
-        }
-      });
       const diagram = document.querySelector(`[data-diagram="${state.diagram}"]`);
       diagram?.click();
     }
@@ -83,9 +75,7 @@
     event.preventDefault();
     const destination = link.href;
     write(language, {
-      builder: window.handbookBuilder?.snapshot(),
       open: details.map(el => el.open),
-      editors: Object.fromEntries([...document.querySelectorAll('.prompt-example textarea')].map(el => [el.id, el.value])),
       diagram: document.querySelector('.diagram-tab.active')?.dataset.diagram
     });
     write('pending', link.dataset.language);

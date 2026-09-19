@@ -318,7 +318,7 @@ function setupEvidencePdfLab() {
       canvas.height = 0;
       status.textContent = "Interactive PDF unavailable";
       message.hidden = false;
-      message.innerHTML = 'PDF.js could not load here. Use \'Open PDF directly\' above to read the original.';
+      message.innerHTML = 'The PDF cannot be displayed here right now. Use “Open the PDF to zoom in” above to read the original.';
     } finally {
       viewer.setAttribute("aria-busy", "false");
     }
@@ -622,58 +622,73 @@ const PROMPT_CARDS = [
     "title": "Build a source library with Deep Research",
     "when": "Gemini Notebook",
     "where": "Paste this into the Add sources search box in the Sources panel on the left, choose Web and Deep Research, then send. Do not paste it into the chat box in the middle. When the results arrive, check which sources it found, add only credible ones to the notebook, then use the examples below.",
-    "text": "I want to research [topic]. First build a research framework: identify the core question and key sub-questions, and do not draw conclusions yet. Then search for credible sources, prioritising primary sources and adding high-quality secondary sources. Once the source library is built, compare the sources for agreement, disagreement, contradictions and gaps, and state which points are well supported by evidence, which remain contested and which need further checking. If the information is insufficient, say so clearly instead of filling the gaps with speculation."
+    "text": "I want to research [topic]. First build a research framework: identify the core question and key sub-questions, and do not draw conclusions yet. Then search for credible sources, prioritising primary sources and adding high-quality secondary sources. Once the source library is built, compare the sources for agreement, disagreement, contradictions and gaps, and state which points are well supported by evidence, which remain contested and which need further checking. If the information is insufficient, say so clearly instead of filling the gaps with speculation.",
+    "id": "deep-research"
   },
   {
     "title": "Understand and verify a reading",
     "when": "Gemini Notebook",
-    "text": "Using only my article, explain the main question, the author's claims and the limitations in plain English, with citations.\nI am struggling with [passage or question]. Explain this part; clearly label any invented examples. Separate the source's content from your inferences."
+    "text": "Using only my article, explain the main question, the author's claims and the limitations in plain English, with citations.\nI am struggling with [passage or question]. Explain this part; clearly label any invented examples. Separate the source's content from your inferences.",
+    "id": "read-and-check"
   },
   {
     "title": "Compare several readings",
     "when": "Gemini Notebook",
-    "text": "Using only my sources, compare their claims, evidence and limitations about [research question], with citations I can follow.\nIdentify agreement and disagreement. Write 'not provided' where information is missing; do not guess."
+    "text": "Using only my sources, compare their claims, evidence and limitations about [research question], with citations I can follow.\nIdentify agreement and disagreement. Write 'not provided' where information is missing; do not guess.",
+    "id": "compare-literature"
   },
   {
     "title": "Find relevant passages",
     "when": "Gemini Notebook",
-    "text": "Find passages related to [concept or question]. Cite each and briefly explain its relevance.\nPreserve differences between sources rather than merging them into one conclusion. Say if nothing is found; I will also search the original text for relevant keywords."
+    "text": "Find passages related to [concept or question]. Cite each and briefly explain its relevance.\nPreserve differences between sources rather than merging them into one conclusion. Say if nothing is found; I will also search the original text for relevant keywords.",
+    "id": "find-original"
   },
   {
     "title": "Organise a lecture recording",
     "when": "Gemini Notebook",
-    "text": "I have permission to record and upload this audio. Using only the recording, summarise the main topics and explicitly stated assignment requirements, with references I can use to listen again.\nFlag unclear names, terms, figures and dates. Do not guess."
+    "text": "I have permission to record and upload this audio. Using only the recording, summarise the main topics and explicitly stated assignment requirements, with references I can use to listen again.\nFlag unclear names, terms, figures and dates. Do not guess.",
+    "id": "lecture-recording"
   },
   {
     "title": "Create an audio overview",
     "when": "Gemini Notebook",
-    "text": "Audience: a postgraduate new to this topic.\nFocus: [question I want to understand]. Compare the sources' main views and limitations.\nLevel: keep important technical terms and explain each simply on first use.\nLength: brief; avoid repeating background or adding facts absent from the sources."
+    "text": "Audience: a postgraduate new to this topic.\nFocus: [question I want to understand]. Compare the sources' main views and limitations.\nLevel: keep important technical terms and explain each simply on first use.\nLength: brief; avoid repeating background or adding facts absent from the sources.",
+    "id": "audio-overview",
+    "where": "In Gemini Notebook Studio, choose Audio Overview, open its customisation settings and paste this into the focus instructions before generating."
   },
   {
     "title": "Create an infographic or slides",
     "when": "Gemini Notebook",
-    "text": "Using the selected sources, create [a one-page infographic / slides] for [audience].\nFocus on [what readers should understand]. Present the main findings and limitations, using only numbers in the sources.\nKeep one main point per page or section, and retain important conditions and source details."
+    "text": "Using the selected sources, create [a one-page infographic / slides] for [audience].\nFocus on [what readers should understand]. Present the main findings and limitations, using only numbers in the sources.\nKeep one main point per page or section, and retain important conditions and source details.",
+    "id": "infographic-slides",
+    "where": "In Gemini Notebook Studio, choose Infographic or Slide Deck, open the customisation settings and paste these instructions before generating."
   },
   {
     "title": "Turn a video into an infographic",
     "when": "Other useful prompts",
     "hint": "Add your video link, then copy",
-    "text": "Generate a detailed infographic diagram\nBased on this video, create a detailed infographic.\n\n(Paste the video link here — an open course or educational video is fine.)\n\nTop header: Use 5% of the total height for a full-width technology-blue (#0052CC) bar, with the title in lightning gold (#FFD700) and an extra-bold font.\n\nChoose the visual elements you think are appropriate. Make the content as rich as possible, aiming to cover more than 95% of the video's key points.\nUse English for the text, retaining technical terms in their original language.\n\nUse a light grey-white background. Make good use of the available space, establish a clear visual hierarchy, and use contrasting, analogous or monochromatic colours, or different typefaces, to emphasise key points. Keep the text as large as possible so readers can identify all the main points at a glance."
+    "text": "Generate a detailed infographic diagram\nBased on this video, create a detailed infographic.\n\n(Paste the video link here — an open course or educational video is fine.)\n\nTop header: Use 5% of the total height for a full-width technology-blue (#0052CC) bar, with the title in lightning gold (#FFD700) and an extra-bold font.\n\nChoose the visual elements you think are appropriate. Make the content as rich as possible, aiming to cover more than 95% of the video's key points.\nUse English for the text, retaining technical terms in their original language.\n\nUse a light grey-white background. Make good use of the available space, establish a clear visual hierarchy, and use contrasting, analogous or monochromatic colours, or different typefaces, to emphasise key points. Keep the text as large as possible so readers can identify all the main points at a glance.",
+    "id": "video-infographic",
+    "where": "Use a tool that can read this video and create an image or visual layout. If it cannot read the video, provide a transcript or subtitles. After pasting the link, check that the content was read before asking it to create the infographic.",
+    "long": true
   },
   {
     "title": "Review a draft's argument and evidence",
     "when": "Other useful prompts",
-    "text": "Review my draft. Restate its main argument, then identify up to three priorities for revision, such as weak evidence, a leap in reasoning or an unclear concept.\nQuote specific sentences and explain the problem and direction for revision. Do not rewrite it yet or invent supporting evidence.\n\nAssignment requirements: [paste]\nDraft: [paste]"
+    "text": "Review my draft. Restate its main argument, then identify up to three priorities for revision, such as weak evidence, a leap in reasoning or an unclear concept.\nQuote specific sentences and explain the problem and direction for revision. Do not rewrite it yet or invent supporting evidence.\n\nAssignment requirements: [paste]\nDraft: [paste]",
+    "id": "review-draft"
   },
   {
     "title": "Practise a seminar discussion",
     "when": "Other useful prompts",
-    "text": "I will discuss [topic]. My view is [view]. Act as a classmate who asks thoughtful follow-up questions. Ask one question at a time and wait for my answer.\nFocus on content first; offer brief language advice if needed. Flag weak evidence without inventing support for me."
+    "text": "I will discuss [topic]. My view is [view]. Act as a classmate who asks thoughtful follow-up questions. Ask one question at a time and wait for my answer.\nFocus on content first; offer brief language advice if needed. Flag weak evidence without inventing support for me.",
+    "id": "seminar-practice"
   },
   {
     "title": "Organise requirements and deadlines",
     "when": "Other useful prompts",
-    "text": "Using my course documents, make a table of assignments: course, assignment name, required submission, deadline date and time, source filename and page.\nMark missing details 'not provided'. Show conflicting information side by side without choosing for me. I will check the originals.\nIf saving a file, create a new one without modifying the source material."
+    "text": "Using my course documents, make a table of assignments: course, assignment name, required submission, deadline date and time, source filename and page.\nMark missing details 'not provided'. Show conflicting information side by side without choosing for me. I will check the originals.\nIf saving a file, create a new one without modifying the source material.",
+    "id": "assignment-deadlines"
   }
 ];
 const CARD_GROUPS = [
@@ -698,6 +713,7 @@ function renderCards() {
     if (card.when !== group.when) return;
     const details = document.createElement("details");
     details.className = "prompt-example";
+    details.dataset.promptId = card.id;
     const summary = document.createElement("summary");
     summary.textContent = card.title;
     const editor = document.createElement("textarea");
@@ -716,6 +732,7 @@ function renderCards() {
     const reset = document.createElement("button");
     reset.type = "button";
     reset.className = "copy-btn";
+    reset.dataset.promptReset = "";
     reset.textContent = "Reset example";
     reset.addEventListener("click", () => { editor.value = card.text; autoGrow(editor); showToast("Example restored."); });
     editor.addEventListener("input", () => autoGrow(editor));
@@ -729,6 +746,17 @@ function renderCards() {
     head.append(label, hint, actions);
     const box = Object.assign(document.createElement("div"), { className: "prompt-box" });
     box.append(head, editor);
+    if (card.long) {
+      const bottom = copy.cloneNode(true);
+      bottom.dataset.copyBottom = "";
+      bottom.addEventListener("click", () => {
+        if (!editor.value.trim()) { showToast("Enter some text first."); return; }
+        copyText(editor.value, bottom);
+      });
+      const foot = Object.assign(document.createElement("div"), { className: "prompt-box-foot" });
+      foot.append(bottom);
+      box.append(foot);
+    }
     // 選填：這張提示詞不是貼在對話框時，先在框外說清楚怎麼用
     let where = null;
     if (card.where) {

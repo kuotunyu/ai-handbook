@@ -113,6 +113,22 @@ a:hover { text-decoration: underline; text-underline-offset: 4px; }
 b, strong { font-weight: 700; color: var(--ink-primary); }
 code { font-family: var(--mono); font-size: .92em; background: var(--bg-subtle); padding: 1px 6px; border-radius: var(--radius-xs); }
 :focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
+.topbar :is(a, button):focus-visible,
+.hero :is(a, button):focus-visible,
+.builder-output button:focus-visible,
+.prompt-box button:focus-visible,
+.pbox button:focus-visible { outline-color: var(--on-dark-clay); }
+[data-draft-undo][hidden] { display: none; }
+.draft-status { font-size: var(--fs-sm); margin: 12px 0 0; }
+.draft-status:empty { margin: 0; }
+.builder-output .draft-status { color: var(--on-dark-clay); padding: 0 18px 12px; }
+.builder-output .draft-status:empty { padding: 0; }
+.prompt-box-foot { display: flex; justify-content: flex-end; padding: 0 18px 18px; }
+.evidence-source-text { margin: 18px 0; }
+.evidence-source-page { min-width: 0; font-size: inherit; line-height: 1.65; overflow-wrap: anywhere; user-select: text; }
+.evidence-source-page :is(h4, h5) { font-size: 1em; margin: 1em 0 .5em; }
+.evidence-source-page p { margin: .65em 0; }
+.evidence-source-page ul { padding-left: 1.3em; }
 ::selection { background: var(--brand-wash); }
 
 .i { display: inline-block; width: 14px; height: 14px; flex: none; background-color: currentColor;

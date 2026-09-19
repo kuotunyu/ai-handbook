@@ -23,6 +23,11 @@ module.exports = defineConfig({
     {
       name: 'mobile-chromium',
       use: { ...devices['Pixel 7'] }
+    },
+    {
+      // Engine/device emulation complements, but does not replace, real iPhone QA.
+      name: 'mobile-webkit',
+      use: { ...devices['iPhone 13'] }
     }
   ]
 });

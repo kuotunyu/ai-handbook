@@ -3,7 +3,7 @@ name: Handbook quality
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, 'codex/**']
 
 jobs:
   check:
@@ -32,5 +32,13 @@ jobs:
       - name: Check CJK-English spacing with AutoCorrect
         continue-on-error: true
         run: npm run check:autocorrect
-      - run: npx playwright install --with-deps chromium
+      - run: npx playwright install --with-deps chromium webkit
       - run: npm run check
+      - name: Save browser traces and accessibility findings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: handbook-browser-results
+          path: test-results/
+          if-no-files-found: ignore
+          retention-days: 7

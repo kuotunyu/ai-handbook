@@ -9,7 +9,7 @@
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" />
   <title>Graduate AI Handbook</title>
-  <link rel="stylesheet" href="./styles.css?v=202609190148" />
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
 
@@ -47,7 +47,7 @@
           <p class="hero-en">Graduate AI Handbook</p>
           <h1>Graduate AI Handbook</h1>
           <p class="lead"><strong>Chat and search with conversational AI. Read with Gemini Notebook. Work on files with an Agent.</strong> Start with your situation, and look up unfamiliar terms as you go.</p>
-          <div class="hero-actions"><a class="btn primary" href="#keywords">Start reading</a><a class="btn ghost" href="#cards">Find a prompt</a></div>
+          <div class="hero-actions"><a class="btn primary" href="#keywords">Explore key terms</a><a class="btn ghost" href="#cards">Find a prompt</a></div>
         </div>
         <div class="hero-panel">
           <div class="hero-panel-head"><b>Choose by task</b><span>September 2026</span></div>
@@ -238,7 +238,7 @@
             <span>Edit and copy your prompt</span>
             <span class="head-actions"><button class="copy-btn" id="builderReset" type="button">Reset example</button><button class="copy-btn" id="builderCopy" type="button">Copy prompt</button></span>
           </div>
-          <p class="panel-note">Edits last for this visit; refreshing restores the examples. Copy your finished text before leaving.</p>
+          <p class="panel-note">Drafts stay in this tab through refreshes. Copy important text somewhere safe.</p>
           <div id="builderResult"></div>
         </div>
       </div>
@@ -305,7 +305,7 @@
             <button type="button" class="plot-mode" data-evidence-page="1" aria-pressed="false">Page 1</button>
             <button type="button" class="plot-mode" data-evidence-page="2" aria-pressed="true">Page 2</button>
             <span class="evidence-pdf-status" id="evidencePdfStatus" aria-live="polite">Preparing the original PDF…</span>
-            <a class="btn ghost" href="materials/evidence-library-pilot.pdf" target="_blank" rel="noopener">Open PDF directly</a>
+            <a class="btn ghost" href="materials/evidence-library-pilot.pdf" target="_blank" rel="noopener">Open the PDF to zoom in</a>
           </div>
           <div class="evidence-pdf-viewer" id="evidencePdfViewer" aria-busy="false">
             <canvas id="evidencePdfCanvas" role="img" aria-label="Fictional teaching PDF, page 2"></canvas>
@@ -320,7 +320,7 @@
 </div>
 </div>
 
-            <small>Citation.js formats known metadata in APA style. A well-formatted reference does not mean the source supports your sentence.</small>
+            <small>Known bibliographic details are formatted in APA style here. Correct formatting does not mean the source supports a claim.</small>
           </div>
           <details class="lesson-answer" id="evidencePdfAnswer">
             <summary>Check your answer</summary>
@@ -389,17 +389,17 @@
         <ul class="forms-legend">
           <li><strong>AI model (LLM)</strong><span>The AI brain. Each company has several, and versions change often.</span></li>
           <li class="use"><strong>Web</strong><span>Chat in a browser. It sees only what you paste or upload, and gives you an answer to copy or download yourself.</span></li>
-          <li class="use"><strong>Desktop app (Agent)</strong><span>An Agent installed on your computer. It opens your folder, reads and edits files and runs code, and asks before it acts.</span></li>
+          <li class="use"><strong>Desktop app (Agent)</strong><span>Reads and edits files and runs programs in a selected folder. Check its permissions and scope first.</span></li>
           <li><strong>IDE</strong><span>Inside a code editor such as VS Code, for people who write code.</span></li>
           <li><strong>Command line (CLI)</strong><span>Typed commands in a black terminal window, for people who write code.</span></li>
         </ul>
+        <p class="forms-choice"><strong>What you will use:</strong> the web version or phone app for chat and search, and the desktop app for the Agent (the two in green). The IDE and command-line versions are the same tools with another interface; if a tutorial shows VS Code or a black window, it is still the same tool.</p>
         <div class="table-scroll"><table class="reading-table forms-table"><thead><tr><th>Family</th><th>AI model</th><th class="use">Web</th><th class="use">Desktop app (Agent)</th><th>IDE</th><th>Command line</th></tr></thead><tbody>
         <tr><td><span class="forms-series">ChatGPT</span><span class="forms-maker">OpenAI</span></td><td><span class="model-chip">GPT-6 Astra</span><span class="model-chip">GPT-5.6 Sol</span></td><td class="use"><figure class="form-shot"><img src="media/forms/en/chatgpt-web.png" alt="Illustration: ChatGPT on the web" width="880" height="560" loading="lazy" /><figcaption>ChatGPT</figcaption></figure></td><td class="use"><figure class="form-shot"><img src="media/forms/en/codex-desktop.png" alt="Illustration: Codex desktop app" width="880" height="560" loading="lazy" /><figcaption>Codex app</figcaption></figure></td><td><figure class="form-shot"><img src="media/forms/en/codex-ide.png" alt="Illustration: Codex in VS Code" width="880" height="560" loading="lazy" /><figcaption>Codex IDE</figcaption></figure></td><td><figure class="form-shot"><img src="media/forms/en/codex-cli.png" alt="Illustration: Codex in a terminal" width="880" height="560" loading="lazy" /><figcaption>Codex CLI</figcaption></figure></td></tr>
         <tr><td><span class="forms-series">Claude</span><span class="forms-maker">Anthropic</span></td><td><span class="model-chip">Claude Fable 5.1</span><span class="model-chip">Claude Opus 5</span><span class="model-chip">Claude Sonnet 5</span></td><td class="use"><figure class="form-shot"><img src="media/forms/en/claude-web.png" alt="Illustration: Claude on the web" width="880" height="560" loading="lazy" /><figcaption>Claude</figcaption></figure></td><td class="use"><figure class="form-shot"><img src="media/forms/en/claudecode-desktop.png" alt="Illustration: Claude Code desktop app" width="880" height="560" loading="lazy" /><figcaption>Claude Code app</figcaption></figure></td><td><figure class="form-shot"><img src="media/forms/en/claudecode-ide.png" alt="Illustration: Claude Code in VS Code" width="880" height="560" loading="lazy" /><figcaption>Claude Code IDE</figcaption></figure></td><td><figure class="form-shot"><img src="media/forms/en/claudecode-cli.png" alt="Illustration: Claude Code in a terminal" width="880" height="560" loading="lazy" /><figcaption>Claude Code CLI</figcaption></figure></td></tr>
         <tr><td><span class="forms-series">Gemini</span><span class="forms-maker">Google</span></td><td><span class="model-chip">Gemini 3.1 Pro</span><span class="model-chip">Gemini 3.8 Flash</span></td><td class="use"><figure class="form-shot"><img src="media/forms/en/gemini-web.png" alt="Illustration: Gemini on the web" width="880" height="560" loading="lazy" /><figcaption>Gemini</figcaption></figure></td><td class="use"><figure class="form-shot"><img src="media/forms/en/antigravity-desktop.png" alt="Illustration: Antigravity desktop app" width="880" height="560" loading="lazy" /><figcaption>Antigravity app</figcaption></figure></td><td><figure class="form-shot"><img src="media/forms/en/antigravity-ide.png" alt="Illustration: Antigravity IDE" width="880" height="560" loading="lazy" /><figcaption>Antigravity IDE</figcaption></figure></td><td><figure class="form-shot"><img src="media/forms/en/antigravity-cli.png" alt="Illustration: Antigravity in a terminal" width="880" height="560" loading="lazy" /><figcaption>Antigravity CLI</figcaption></figure></td></tr>
         </tbody></table></div>
         <p class="forms-choice">ChatGPT, Claude and Gemini also have desktop chat apps that chat just like the web versions; in this table, desktop means the Agent app that works in your folder.</p>
-        <p class="forms-choice"><strong>What you will use:</strong> the web version or phone app for chat and search, and the desktop app for the Agent (the two in green). The IDE and command-line versions are the same tools with another interface; if a tutorial shows VS Code or a black window, it is still the same tool.</p>
         <p class="source-note">The pictures are illustrations, not each company's real screens; interfaces change often, so go by the version you open. Model names checked in September 2026; after that, go by the model menu in each tool.</p>
       </div>
 
@@ -421,11 +421,11 @@
 
       <figure class="task-preview"><img src="media/preview-units-en.png" alt="Example bar chart of monthly rents" /><img src="media/preview-missing-en.png" alt="Example map with D4 marked No data" /><figcaption>Illustration based on this exercise. Your Agent generates the actual output; D4 should be marked “No data”.</figcaption></figure>
       <h4>Prepare the material</h4>
-      <p>Create a practice folder on your computer and download the three files below into it. Extract the bundle if needed, then open the folder in Codex or Claude Code. The files are ready; you do not need to learn these formats first.</p>
+      <p>Create a practice folder on your computer and download the three files into it. If you download the bundle, unzip it first; if your browser already did that, use the resulting folder. Open the folder in Codex or Claude Code. The files are ready to use; you do not need to learn how to create these formats first.</p>
       <p class="material-links"><a href="materials/en/districts-task.zip" download>Download all three files</a><a href="materials/en/districts.csv" download>Download rent table (districts.csv)</a><a href="materials/en/districts.geojson" download>Download district shapes (districts.geojson)</a><a href="materials/en/data-dictionary.txt" download>Download data guide (data-dictionary.txt)</a></p>
 
       <h4>Give AI the task</h4>
-      <p>Expand and copy the instructions below into the Codex or Claude Code conversation. Ask it to inspect the material and report first, then wait for your confirmation before creating the output.</p>
+      <p>Expand the text below, copy it and paste it into Codex or Claude Code. The instructions ask it to read and report first. Check that it has stopped and that its approach is correct, then ask it to create the outputs.</p>
       <details class="task-disclosure"><summary>Show task instructions</summary>
 <div class="pbox"><div class="pbox-head"><span>Task instructions · paste into Codex or Claude Code</span><button class="copy-btn" type="button" data-copy-target="#delegatePrompt">Copy</button></div><pre id="delegatePrompt"># Goal
 Standardise the rents in districts.csv to monthly amounts. Create a map coloured by monthly rent and a bar chart that I can open in a browser.
@@ -584,7 +584,7 @@ After I confirm, provide only Mermaid code with English labels.</pre></div>
     
     <section class="section" id="cards">
       <h2><span class="num">09</span>Prompt examples</h2>
-      <p class="section-note">Expand what you need, adapt it to your material and copy. Refreshing restores the examples.</p>
+      <p class="section-note">Expand what you need, add your own material, then copy. Drafts are kept temporarily in this tab; save important text separately.</p>
       <div class="card-lib" id="cardLib"></div>
     </section>
 
@@ -598,8 +598,10 @@ After I confirm, provide only Mermaid code with English labels.</pre></div>
     <div class="diagram-zoom-area" tabindex="0" role="region" aria-label="Enlarged diagram; scroll to explore"><img id="diagramZoomImg" alt="" /></div>
   </dialog>
   <div class="toast" id="toast" role="status">Copied!</div>
-  <script src="./diagrams.en.js?v=202609190148"></script>
-  <script src="./app.en.js?v=202609190148"></script>
-  <script src="./language.js?v=202609190148"></script>
+  <script src="./diagrams.en.js"></script>
+  <script src="./app.en.js"></script>
+  <script src="./evidence-text.js"></script>
+  <script src="./language.js"></script>
+  <script src="./drafts.js"></script>
 </body>
 </html>
