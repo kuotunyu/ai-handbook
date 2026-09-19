@@ -82,6 +82,6 @@
     buttons.forEach(button => button.addEventListener('click', () => showPage(Number(button.dataset.evidencePage))));
   }
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', setup, { once: true });
-  else setup();
+  // Loaded below the complete page, before language.js snapshots disclosures.
+  setup();
 })();

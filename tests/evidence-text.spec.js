@@ -12,6 +12,17 @@ const sourcePages = [1, 2].map(number => {
 });
 const normalize = text => text.replace(/\s+/g, ' ').trim();
 
+test('original-text disclosure remains open after a language round trip', async ({ page }) => {
+  await page.goto('/index.html#reading');
+  await page.locator('#pdfEvidenceLab > summary').click();
+  await page.locator('#evidenceSourceText > summary').click();
+  await page.locator('[data-language="en"]').click();
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+  await page.locator('[data-language="zh-Hant"]').click();
+  await expect(page.locator('#pdfEvidenceLab')).toHaveAttribute('open');
+  await expect(page.locator('#evidenceSourceText')).toHaveAttribute('open');
+});
+
 for (const [file, label] of [
   ['index.html', '閱讀本頁原文文字'],
   ['en.html', 'Read the original text on this page']

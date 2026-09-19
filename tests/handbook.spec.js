@@ -128,8 +128,7 @@ for (const file of ['index.html', 'en.html']) {
   test(`${file}: has no critical or serious axe violations`, async ({ page }, testInfo) => {
     await page.goto(`/${file}`);
     const results = await new AxeBuilder({ page }).analyze();
-    // Review real serious findings before expanding the gate. Keep the complete
-    // violations and incomplete checks available; do not silently ignore rules.
+    // Keep complete findings for review; critical and serious issues block release.
     await testInfo.attach(`axe-${file}.json`, {
       body: JSON.stringify({ violations: results.violations, incomplete: results.incomplete }, null, 2),
       contentType: 'application/json'
