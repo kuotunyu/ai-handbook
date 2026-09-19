@@ -9,7 +9,7 @@
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" />
   <title>研究所 AI 手冊</title>
-  <link rel="stylesheet" href="./styles.css?v=202609190148" />
+  <link rel="stylesheet" href="./styles.css?v=202609200003" />
 </head>
 <body>
 <!--
@@ -55,7 +55,7 @@
           <p class="hero-en">Graduate AI Handbook</p>
           <h1>研究所 AI 手冊</h1>
           <p class="lead"><strong>聊和查用對話型 AI、讀用 Gemini Notebook、動手用 Agent。</strong>遇到事情查使用情境，陌生名詞再回來看。</p>
-          <div class="hero-actions"><a class="btn primary" href="#keywords">開始閱讀</a><a class="btn ghost" href="#cards">查找提示詞</a></div>
+          <div class="hero-actions"><a class="btn primary" href="#keywords">認識關鍵字</a><a class="btn ghost" href="#cards">查找提示詞</a></div>
         </div>
         <div class="hero-panel">
           <div class="hero-panel-head"><b>依任務選擇工具</b><span>2026 年 9 月版</span></div>
@@ -246,7 +246,7 @@
             <span>編輯後複製 prompt</span>
             <span class="head-actions"><button class="copy-btn" id="builderReset" type="button">還原範例</button><button class="copy-btn" id="builderCopy" type="button">複製 prompt</button></span>
           </div>
-          <p class="panel-note">改動只留在這次瀏覽，重新整理會還原成範例；改好請先複製。</p>
+          <p class="panel-note">草稿暫存在這個分頁，重新整理仍保留；重要內容請另行複製保存。</p>
           <div id="builderResult"></div>
         </div>
       </div>
@@ -313,7 +313,7 @@
             <button type="button" class="plot-mode" data-evidence-page="1" aria-pressed="false">第 1 頁</button>
             <button type="button" class="plot-mode" data-evidence-page="2" aria-pressed="true">第 2 頁</button>
             <span class="evidence-pdf-status" id="evidencePdfStatus" aria-live="polite">準備載入原始 PDF…</span>
-            <a class="btn ghost" href="materials/evidence-library-pilot.pdf" target="_blank" rel="noopener">直接開啟 PDF</a>
+            <a class="btn ghost" href="materials/evidence-library-pilot.pdf" target="_blank" rel="noopener">開啟原檔，放大閱讀</a>
           </div>
           <div class="evidence-pdf-viewer" id="evidencePdfViewer" aria-busy="false">
             <canvas id="evidencePdfCanvas" role="img" aria-label="虛構教學 PDF 第 2 頁"></canvas>
@@ -328,7 +328,7 @@
 </div>
 </div>
 <!-- evidence-citation:end -->
-            <small>Citation.js 只把已知 metadata 排成 APA；格式漂亮不代表來源真的支持你的句子。</small>
+            <small>這裡用已知書目資料排成 APA 格式；格式正確不代表原文支持主張。</small>
           </div>
           <details class="lesson-answer" id="evidencePdfAnswer">
             <summary>核對答案</summary>
@@ -397,17 +397,17 @@
         <ul class="forms-legend">
           <li><strong>AI 模型(LLM)</strong><span>AI 腦。各家都有好幾顆，版本常換。</span></li>
           <li class="use"><strong>網頁版</strong><span>在瀏覽器聊天。你貼上或上傳什麼，它就看什麼；它給你答案，你自己複製、下載。</span></li>
-          <li class="use"><strong>桌面版(Agent)</strong><span>裝在電腦上的 Agent，直接打開你的資料夾讀檔、改檔、執行程式，動手前會先問你。</span></li>
+          <li class="use"><strong>桌面版(Agent)</strong><span>在指定的資料夾讀檔、改檔與執行程式；先確認可用權限與操作範圍。</span></li>
           <li><strong>IDE 版(整合開發環境)</strong><span>放進寫程式的編輯器(例如 VS Code)，給寫程式的人用。</span></li>
           <li><strong>CLI 版(指令)</strong><span>在黑色的終端機視窗打字操作，給寫程式的人用。</span></li>
         </ul>
+        <p class="forms-choice"><strong>你會用到的：</strong>聊和查用網頁版或手機 App，Agent 用桌面版(綠底的兩種)。IDE 版和 CLI 版是同一個工具換個介面；教學影片裡出現 VS Code 或黑色視窗，知道是同一個工具就好。</p>
         <div class="table-scroll"><table class="reading-table forms-table"><thead><tr><th>系列</th><th>AI 模型</th><th class="use">網頁版</th><th class="use">桌面版(Agent)</th><th>IDE 版(整合開發環境)</th><th>CLI 版(指令)</th></tr></thead><tbody>
         <tr><td><span class="forms-series">ChatGPT</span><span class="forms-maker">OpenAI</span></td><td><span class="model-chip">GPT-6 Astra</span><span class="model-chip">GPT-5.6 Sol</span></td><td class="use"><figure class="form-shot"><img src="media/forms/chatgpt-web.png" alt="示意圖：ChatGPT 網頁版" width="880" height="560" loading="lazy" /><figcaption>ChatGPT</figcaption></figure></td><td class="use"><figure class="form-shot"><img src="media/forms/codex-desktop.png" alt="示意圖：Codex 桌面版" width="880" height="560" loading="lazy" /><figcaption>Codex 桌面版</figcaption></figure></td><td><figure class="form-shot"><img src="media/forms/codex-ide.png" alt="示意圖：VS Code 裡的 Codex" width="880" height="560" loading="lazy" /><figcaption>Codex IDE 版</figcaption></figure></td><td><figure class="form-shot"><img src="media/forms/codex-cli.png" alt="示意圖：終端機裡的 Codex" width="880" height="560" loading="lazy" /><figcaption>Codex CLI 版</figcaption></figure></td></tr>
         <tr><td><span class="forms-series">Claude</span><span class="forms-maker">Anthropic</span></td><td><span class="model-chip">Claude Fable 5.1</span><span class="model-chip">Claude Opus 5</span><span class="model-chip">Claude Sonnet 5</span></td><td class="use"><figure class="form-shot"><img src="media/forms/claude-web.png" alt="示意圖：Claude 網頁版" width="880" height="560" loading="lazy" /><figcaption>Claude</figcaption></figure></td><td class="use"><figure class="form-shot"><img src="media/forms/claudecode-desktop.png" alt="示意圖：Claude Code 桌面版" width="880" height="560" loading="lazy" /><figcaption>Claude Code 桌面版</figcaption></figure></td><td><figure class="form-shot"><img src="media/forms/claudecode-ide.png" alt="示意圖：VS Code 裡的 Claude Code" width="880" height="560" loading="lazy" /><figcaption>Claude Code IDE 版</figcaption></figure></td><td><figure class="form-shot"><img src="media/forms/claudecode-cli.png" alt="示意圖：終端機裡的 Claude Code" width="880" height="560" loading="lazy" /><figcaption>Claude Code CLI 版</figcaption></figure></td></tr>
         <tr><td><span class="forms-series">Gemini</span><span class="forms-maker">Google</span></td><td><span class="model-chip">Gemini 3.1 Pro</span><span class="model-chip">Gemini 3.8 Flash</span></td><td class="use"><figure class="form-shot"><img src="media/forms/gemini-web.png" alt="示意圖：Gemini 網頁版" width="880" height="560" loading="lazy" /><figcaption>Gemini</figcaption></figure></td><td class="use"><figure class="form-shot"><img src="media/forms/antigravity-desktop.png" alt="示意圖：Antigravity 桌面版" width="880" height="560" loading="lazy" /><figcaption>Antigravity 桌面版</figcaption></figure></td><td><figure class="form-shot"><img src="media/forms/antigravity-ide.png" alt="示意圖：Antigravity IDE" width="880" height="560" loading="lazy" /><figcaption>Antigravity IDE 版</figcaption></figure></td><td><figure class="form-shot"><img src="media/forms/antigravity-cli.png" alt="示意圖：終端機裡的 Antigravity" width="880" height="560" loading="lazy" /><figcaption>Antigravity CLI 版</figcaption></figure></td></tr>
         </tbody></table></div>
         <p class="forms-choice">ChatGPT、Claude、Gemini 也有桌面聊天 App，聊天功能跟網頁版一樣；這張表的桌面版，指的是會在資料夾裡動手的 Agent App。</p>
-        <p class="forms-choice"><strong>你會用到的：</strong>聊和查用網頁版或手機 App，Agent 用桌面版(綠底的兩種)。IDE 版和 CLI 版是同一個工具換個介面；教學影片裡出現 VS Code 或黑色視窗，知道是同一個工具就好。</p>
         <p class="source-note">圖為示意，不是各家的真實畫面；介面常改版，實際以你打開的版本為準。模型名稱查核於 2026 年 9 月；之後以工具裡的模型選單為準。</p>
       </div>
 
@@ -429,11 +429,11 @@
 
       <figure class="task-preview"><img src="media/preview-units.png" alt="完成後的長條圖示意：月租金比較" /><img src="media/preview-missing.png" alt="完成後的地圖示意：D4 標示無資料" /><figcaption>示意取自本章練習；實際輸出由 Agent 產生，D4 會標示無資料。</figcaption></figure>
       <h4>準備材料</h4>
-      <p>在電腦建立一個練習資料夾，把下面三個檔案下載到裡面(整包下載會自動解壓成資料夾)，再用 Codex 或 Claude Code 開啟這個資料夾。檔案已準備好，不需要先學會製作這些格式。</p>
+      <p>在電腦建立一個練習資料夾，把下面三個檔案下載到裡面。整包下載後先解壓縮；如果瀏覽器已自動解壓，直接使用得到的資料夾，再用 Codex 或 Claude Code 開啟。檔案已準備好，不需要先學會製作這些格式。</p>
       <p class="material-links"><a href="materials/districts-task.zip" download>整包下載(三個檔案)</a><a href="materials/districts.csv" download>下載租金表(districts.csv)</a><a href="materials/districts.geojson" download>下載區域形狀(districts.geojson)</a><a href="materials/data-dictionary.txt" download>下載資料說明(data-dictionary.txt)</a></p>
 
       <h4>把任務交給 AI</h4>
-      <p>展開下方文字，按「複製」，貼進剛才開啟的 Codex 或 Claude Code 對話。它會先查看資料並回報，等你確認後才開始製作。</p>
+      <p>展開下方文字，按「複製」，貼進剛才開啟的 Codex 或 Claude Code 對話。這份說明要求它先讀取並回報。確認它有停下來、處理方式也正確後，再請它製作。</p>
       <details class="task-disclosure"><summary>展開可複製的任務說明</summary>
 <div class="pbox"><div class="pbox-head"><span>交辦內容 · 貼進 Codex 或 Claude Code</span><button class="copy-btn" type="button" data-copy-target="#delegatePrompt">複製</button></div><pre id="delegatePrompt"># 目標
 把 districts.csv 的租金統一成每月單位，做成一張依月租金上色的地圖和一張長條圖，讓我在瀏覽器打開就能看。
@@ -592,7 +592,7 @@
     <!-- 09 提示詞庫 -->
     <section class="section" id="cards">
       <h2><span class="num">09</span>提示詞範例</h2>
-      <p class="section-note">依需要展開，改成自己的材料後再複製；重新整理會還原成範例。</p>
+      <p class="section-note">依需要展開，改成自己的材料後再複製。草稿暫存在這個分頁；重要內容請另行保存。</p>
       <div class="card-lib" id="cardLib"></div>
     </section>
 
@@ -606,8 +606,10 @@
     <div class="diagram-zoom-area" tabindex="0" role="region" aria-label="放大圖表，可捲動"><img id="diagramZoomImg" alt="" /></div>
   </dialog>
   <div class="toast" id="toast" role="status">已複製！</div>
-  <script src="./diagrams.js?v=202609190148"></script>
-  <script src="./app.js?v=202609190148"></script>
-  <script src="./language.js?v=202609190148"></script>
+  <script src="./diagrams.js?v=202609200003"></script>
+  <script src="./app.js?v=202609200003"></script>
+  <script src="./evidence-text.js?v=202609200003"></script>
+  <script src="./language.js?v=202609200003"></script>
+  <script src="./drafts.js?v=202609200003"></script>
 </body>
 </html>

@@ -21,8 +21,13 @@ test('switching language after scrolling to a chapter lands on that chapter', as
   // Readers scroll until a heading sits near the top, then switch; the switch used to pick the chapter above.
   await page.setViewportSize({ width: 402, height: 874 });
   await page.goto('/en.html');
-  const top = () => page.evaluate(() => document.getElementById('agent').getBoundingClientRect().top);
-  for (let i = 0; i < 400 && await top() > 180; i++) await page.mouse.wheel(0, Math.min(1200, (await top()) - 120));
+  // Scroll without changing the fragment. Mobile WebKit has no mouse wheel;
+  // this test concerns the chapter chosen after scrolling, not the input device.
+  await page.evaluate(() => window.scrollTo({
+    top: window.scrollY + document.getElementById('agent').getBoundingClientRect().top - 120,
+    behavior: 'instant'
+  }));
+  await expect.poll(() => page.evaluate(() => Math.round(document.getElementById('agent').getBoundingClientRect().top))).toBeLessThan(180);
   await page.locator('[data-language="zh-Hant"]').click();
   await expect(page).toHaveURL(/index\.html#agent$/);
   await expect.poll(() => page.evaluate(() => Math.round(document.getElementById('agent').getBoundingClientRect().top)), { timeout: 6000 }).toBeLessThan(140);

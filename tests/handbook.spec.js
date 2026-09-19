@@ -124,8 +124,18 @@ test('missing-value Plot lab lazy-loads and changes the interpretation', async (
   await expect(page.locator('[data-missing-mode="zero"]')).toHaveAttribute('aria-pressed', 'true');
 });
 
-test('has no critical axe accessibility violations', async ({ page }) => {
-  const results = await new AxeBuilder({ page }).analyze();
-  const critical = results.violations.filter(violation => violation.impact === 'critical');
-  expect(critical, JSON.stringify(critical, null, 2)).toEqual([]);
-});
+for (const file of ['index.html', 'en.html']) {
+  test(`${file}: has no critical or serious axe violations`, async ({ page }, testInfo) => {
+    await page.goto(`/${file}`);
+    const results = await new AxeBuilder({ page }).analyze();
+    // Keep complete findings for review; critical and serious issues block release.
+    await testInfo.attach(`axe-${file}.json`, {
+      body: JSON.stringify({ violations: results.violations, incomplete: results.incomplete }, null, 2),
+      contentType: 'application/json'
+    });
+    const serious = results.violations.filter(violation => violation.impact === 'serious');
+    if (serious.length) console.warn(`Serious axe findings for ${file}: ${JSON.stringify(serious, null, 2)}`);
+    const critical = results.violations.filter(violation => ['critical', 'serious'].includes(violation.impact));
+    expect(critical, JSON.stringify(critical, null, 2)).toEqual([]);
+  });
+}

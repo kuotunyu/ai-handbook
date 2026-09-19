@@ -4,7 +4,7 @@ module.exports = defineConfig({
   testDir: './tests',
   timeout: 30_000,
   retries: process.env.CI ? 1 : 0,
-  reporter: process.env.CI ? 'github' : 'list',
+  reporter: process.env.CI ? [['github'], ['html', { open: 'never' }]] : 'list',
   use: {
     baseURL: 'http://127.0.0.1:4173',
     trace: 'on-first-retry'
@@ -23,6 +23,11 @@ module.exports = defineConfig({
     {
       name: 'mobile-chromium',
       use: { ...devices['Pixel 7'] }
+    },
+    {
+      // Engine/device emulation complements, but does not replace, real iPhone QA.
+      name: 'mobile-webkit',
+      use: { ...devices['iPhone 13'] }
     }
   ]
 });

@@ -317,7 +317,7 @@ function setupEvidencePdfLab() {
       canvas.height = 0;
       status.textContent = "互動 PDF 未載入";
       message.hidden = false;
-      message.innerHTML = 'PDF.js 未能在這個開啟方式載入；可用上方「直接開啟 PDF」回原文。';
+      message.innerHTML = '這裡暫時無法顯示 PDF，請用上方「開啟原檔，放大閱讀」查看原文。';
     } finally {
       viewer.setAttribute("aria-busy", "false");
     }
@@ -621,58 +621,73 @@ const PROMPT_CARDS = [
     "title": "用 Deep Research 建立來源庫",
     "when": "Gemini Notebook",
     "where": "貼在左側「來源」的「新增來源」搜尋框，選「網路」和「Deep Research」再送出，不是貼在中間的對話框。結果出來後，先看它找到哪些來源，只把可信的加入筆記本，再用下面的範例提問。",
-    "text": "我要研究 [想研究的主題]。請先建立研究架構，找出核心問題與關鍵子題，暫時不要下結論。接著搜尋可信來源，優先使用一手資料，再以高品質二手來源補充。建立來源庫後，比較各來源之間的共識、分歧、矛盾與資訊缺口，並指出哪些資訊已有充分證據支持、哪些仍有爭議、哪些需要進一步查證。若資料不足，請明確指出，不要以推測補齊。"
+    "text": "我要研究 [想研究的主題]。請先建立研究架構，找出核心問題與關鍵子題，暫時不要下結論。接著搜尋可信來源，優先使用一手資料，再以高品質二手來源補充。建立來源庫後，比較各來源之間的共識、分歧、矛盾與資訊缺口，並指出哪些資訊已有充分證據支持、哪些仍有爭議、哪些需要進一步查證。若資料不足，請明確指出，不要以推測補齊。",
+    "id": "deep-research"
   },
   {
     "title": "讀懂文章與查證",
     "when": "Gemini Notebook",
-    "text": "請只根據我提供的文章，用白話中文說明主要問題、作者的主張與限制，附上引用。\n我不懂的段落是[貼上段落或填入問題]，請再解釋這一段；若用自編例子說明，請明確標示。分清原文內容和你的推論。"
+    "text": "請只根據我提供的文章，用白話中文說明主要問題、作者的主張與限制，附上引用。\n我不懂的段落是[貼上段落或填入問題]，請再解釋這一段；若用自編例子說明，請明確標示。分清原文內容和你的推論。",
+    "id": "read-and-check"
   },
   {
     "title": "比較多篇文獻",
     "when": "Gemini Notebook",
-    "text": "請只根據我提供的來源，比較它們對「[研究問題]」的主張、證據與限制，附上可回查的引用。\n指出主要共識與分歧；資料沒有提到的部分請寫「未提供」，不要補猜。"
+    "text": "請只根據我提供的來源，比較它們對「[研究問題]」的主張、證據與限制，附上可回查的引用。\n指出主要共識與分歧；資料沒有提到的部分請寫「未提供」，不要補猜。",
+    "id": "compare-literature"
   },
   {
     "title": "找出相關原文",
     "when": "Gemini Notebook",
-    "text": "請找出來源中與「[概念或問題]」相關的段落，逐項附上引用，並簡短說明關聯。\n保留各篇來源的差異，不要合併成一個結論。找不到就說明；我會再用原文關鍵字搜尋補查。"
+    "text": "請找出來源中與「[概念或問題]」相關的段落，逐項附上引用，並簡短說明關聯。\n保留各篇來源的差異，不要合併成一個結論。找不到就說明；我會再用原文關鍵字搜尋補查。",
+    "id": "find-original"
   },
   {
     "title": "整理課堂錄音",
     "when": "Gemini Notebook",
-    "text": "這份錄音已確認可錄製及上傳。請只根據錄音整理主要主題，以及老師明確提到的作業要求，各附引用方便回聽。\n聽不清楚的姓名、術語、數字或日期請標示不確定，不要補猜。"
+    "text": "這份錄音已確認可錄製及上傳。請只根據錄音整理主要主題，以及老師明確提到的作業要求，各附引用方便回聽。\n聽不清楚的姓名、術語、數字或日期請標示不確定，不要補猜。",
+    "id": "lecture-recording"
   },
   {
     "title": "製作語音導覽",
     "when": "Gemini Notebook",
-    "text": "受眾：第一次接觸這個主題的研究所學生。\n重點：聚焦[想理解的問題]，比較來源中的主要觀點與限制。\n程度：保留重要英文名詞，第一次出現時用白話解釋。\n長度：簡短，避免重複背景；不要加入來源沒有的事實。"
+    "text": "受眾：第一次接觸這個主題的研究所學生。\n重點：聚焦[想理解的問題]，比較來源中的主要觀點與限制。\n程度：保留重要英文名詞，第一次出現時用白話解釋。\n長度：簡短，避免重複背景；不要加入來源沒有的事實。",
+    "id": "audio-overview",
+    "where": "在 Gemini Notebook 的 Studio 選「語音導覽」，開啟自訂設定，將文字貼到重點說明欄後再生成。"
   },
   {
     "title": "製作資訊圖表或簡報",
     "when": "Gemini Notebook",
-    "text": "請根據選取的來源製作[一頁資訊圖表／簡報]，給[受眾]閱讀。\n重點是[希望讀者理解的問題]，呈現主要發現與限制，只用來源中的數字。\n每頁或每區只表達一個重點，保留重要條件與來源資訊。"
+    "text": "請根據選取的來源製作[一頁資訊圖表／簡報]，給[受眾]閱讀。\n重點是[希望讀者理解的問題]，呈現主要發現與限制，只用來源中的數字。\n每頁或每區只表達一個重點，保留重要條件與來源資訊。",
+    "id": "infographic-slides",
+    "where": "在 Gemini Notebook 的 Studio 選「資訊圖表」或「簡報」，點自訂設定，貼上這段說明後再生成。"
   },
   {
     "title": "影片轉資訊圖表",
     "when": "其他實用範例",
     "hint": "貼上影片連結再複製",
-    "text": "Generate a detailed infographic diagram\n請根據這部影片內容，製作一份詳細的資訊圖表\n\n（把影片連結貼在這裡——開放式課程、教學影片都行）\n\n頂部 Header: 占總高度的 5%，冒險科技藍(#0052CC)滿版橫條為底色，用閃電金(#FFD700)極粗體顯示標題。\n\n你可以自己判斷要加入哪些視覺設計，內容盡量豐富，希望可以包含這部影片 95% 以上的重點。\n文字請用正體中文(#zh-tw)，但專有名詞請保留原文。\n\n排版部分請設定背景為淺灰白，請充分利用版面空間，還有注意層級，並且善用配色(對比色、鄰近色、同色系)或變換字型來強調重點，字體盡量大一點，目標是讓讀者第一眼就能掃描出所有大重點。"
+    "text": "Generate a detailed infographic diagram\n請根據這部影片內容，製作一份詳細的資訊圖表\n\n（把影片連結貼在這裡——開放式課程、教學影片都行）\n\n頂部 Header: 占總高度的 5%，冒險科技藍(#0052CC)滿版橫條為底色，用閃電金(#FFD700)極粗體顯示標題。\n\n你可以自己判斷要加入哪些視覺設計，內容盡量豐富，希望可以包含這部影片 95% 以上的重點。\n文字請用正體中文(#zh-tw)，但專有名詞請保留原文。\n\n排版部分請設定背景為淺灰白，請充分利用版面空間，還有注意層級，並且善用配色(對比色、鄰近色、同色系)或變換字型來強調重點，字體盡量大一點，目標是讓讀者第一眼就能掃描出所有大重點。",
+    "id": "video-infographic",
+    "where": "先選能讀取這部影片、也能製作圖像或視覺版面的工具。若讀不到影片，先提供逐字稿或字幕；貼上連結後，確認它讀到內容再製作。",
+    "long": true
   },
   {
     "title": "檢查草稿的論點與證據",
     "when": "其他實用範例",
-    "text": "請檢查我的草稿，先重述主要論點，再指出最多三個最值得修改的地方，例如證據不足、推論跳躍或概念不清。\n引用草稿中的具體句子，說明原因與修改方向，先不要替我重寫，也不要編造支持證據。\n\n作業要求：[貼上]\n草稿：[貼上]"
+    "text": "請檢查我的草稿，先重述主要論點，再指出最多三個最值得修改的地方，例如證據不足、推論跳躍或概念不清。\n引用草稿中的具體句子，說明原因與修改方向，先不要替我重寫，也不要編造支持證據。\n\n作業要求：[貼上]\n草稿：[貼上]",
+    "id": "review-draft"
   },
   {
     "title": "練習 seminar 討論",
     "when": "其他實用範例",
-    "text": "我要討論[議題]，我的看法是[填入]。請扮演會認真追問的同學，一次只問一個問題，等我回答再繼續。\n先討論內容，有需要再給簡短的英文表達建議；如果證據不足，請指出，不要替我編造。"
+    "text": "我要討論[議題]，我的看法是[填入]。請扮演會認真追問的同學，一次只問一個問題，等我回答再繼續。\n先討論內容，有需要再給簡短的英文表達建議；如果證據不足，請指出，不要替我編造。",
+    "id": "seminar-practice"
   },
   {
     "title": "整理作業要求與截止日",
     "when": "其他實用範例",
-    "text": "請根據我提供的課程文件，把各項作業整理成表格：課程、作業名稱、要交的內容、截止日期與時間、來源檔名和頁碼。\n未寫明的資訊標示「未提供」；不同文件有衝突時並列，先不要自行選定。我會回原文件核對。\n若需要另存檔案，請另存新檔，不修改原始材料。"
+    "text": "請根據我提供的課程文件，把各項作業整理成表格：課程、作業名稱、要交的內容、截止日期與時間、來源檔名和頁碼。\n未寫明的資訊標示「未提供」；不同文件有衝突時並列，先不要自行選定。我會回原文件核對。\n若需要另存檔案，請另存新檔，不修改原始材料。",
+    "id": "assignment-deadlines"
   }
 ];
 const CARD_GROUPS = [
@@ -697,6 +712,7 @@ function renderCards() {
     if (card.when !== group.when) return;
     const details = document.createElement("details");
     details.className = "prompt-example";
+    details.dataset.promptId = card.id;
     const summary = document.createElement("summary");
     summary.textContent = card.title;
     const editor = document.createElement("textarea");
@@ -715,6 +731,7 @@ function renderCards() {
     const reset = document.createElement("button");
     reset.type = "button";
     reset.className = "copy-btn";
+    reset.dataset.promptReset = "";
     reset.textContent = "還原範例";
     reset.addEventListener("click", () => { editor.value = card.text; autoGrow(editor); showToast("已還原成範例。"); });
     editor.addEventListener("input", () => autoGrow(editor));
@@ -728,6 +745,17 @@ function renderCards() {
     head.append(label, hint, actions);
     const box = Object.assign(document.createElement("div"), { className: "prompt-box" });
     box.append(head, editor);
+    if (card.long) {
+      const bottom = copy.cloneNode(true);
+      bottom.dataset.copyBottom = "";
+      bottom.addEventListener("click", () => {
+        if (!editor.value.trim()) { showToast("請先輸入內容。"); return; }
+        copyText(editor.value, bottom);
+      });
+      const foot = Object.assign(document.createElement("div"), { className: "prompt-box-foot" });
+      foot.append(bottom);
+      box.append(foot);
+    }
     // 選填：這張提示詞不是貼在對話框時，先在框外說清楚怎麼用
     let where = null;
     if (card.where) {
