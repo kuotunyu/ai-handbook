@@ -30,11 +30,13 @@
   if (pending === language) {
     write('pending', null);
     const state = read(language);
-    if (state) {
+    if (state?.version === 2) {
       details.forEach((el, i) => { el.open = Boolean(state.open?.[i]); });
       const diagram = document.querySelector(`[data-diagram="${state.diagram}"]`);
       diagram?.click();
     }
+    // An explicit reference link takes priority over a saved closed state.
+    if (location.hash === '#ai-forms') document.getElementById('ai-forms').open = true;
     requestAnimationFrame(() => {
       const target = document.getElementById(location.hash.slice(1));
       if (!target) return;
@@ -75,6 +77,7 @@
     event.preventDefault();
     const destination = link.href;
     write(language, {
+      version: 2,
       open: details.map(el => el.open),
       diagram: document.querySelector('.diagram-tab.active')?.dataset.diagram
     });

@@ -9,7 +9,7 @@
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" />
   <title>研究所 AI 手冊</title>
-  <link rel="stylesheet" href="./styles.css?v=202609200003" />
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
 <!--
@@ -168,8 +168,8 @@
       </div>
 
       <div class="decision-practice" id="decision-practice">
-        <h3 class="compact-heading">先判斷，再展開</h3>
-        <p>不用背答案。先在心裡選一個，再打開看判斷依據。</p>
+        <h3 class="compact-heading">情境選擇示例</h3>
+        <p>可以先想一想，也可以直接展開看判斷依據。</p>
         <div class="situation-list">
           <details class="situation-entry">
             <summary><span class="situation-name">教授給你 15 篇指定 paper，要比較作者觀點。第一個用什麼？</span><span class="situation-examples">對話型 AI / Gemini Notebook / Agent</span></summary>
@@ -246,7 +246,7 @@
             <span>編輯後複製 prompt</span>
             <span class="head-actions"><button class="copy-btn" id="builderReset" type="button">還原範例</button><button class="copy-btn" id="builderCopy" type="button">複製 prompt</button></span>
           </div>
-          <p class="panel-note">草稿暫存在這個分頁，重新整理仍保留；重要內容請另行複製保存。</p>
+          <p class="panel-note">草稿在同一分頁重新整理後仍保留；中英文分開保存，不會自動翻譯。重要內容請另行複製保存。</p>
           <div id="builderResult"></div>
         </div>
       </div>
@@ -274,10 +274,10 @@
       <h3 class="compact-heading">閱讀與查證步驟</h3>
       <p>新建筆記本，新增來源時選「複製的文字」，貼上短文。然後照這張表問，重要結論回原文對。短來源可能只引用整篇，此時用 [1]–[3] 段落編號自行定位。</p>
       <div class="table-scroll"><table class="reading-table"><thead><tr><th>目的</th><th>可以這樣問</th><th>對照這篇原文</th></tr></thead><tbody>
-      <tr><td>1 抓大意</td><td>「只根據這篇短文，用兩句中文說明發生什麼事、作者建議什麼。不要補外部資訊。」</td><td>延長開館期間晚間造訪增加；工作人員建議繼續。這還不是成效的因果證明。</td></tr>
-      <tr><td>2 解釋卡住的地方</td><td>「voluntary survey 是什麼？為什麼沒有訪問未到館的人會影響解讀？」</td><td>自願填答者可能與未填答者不同；結果不能直接代表所有學生。</td></tr>
-      <tr><td>3 分開主張與證據</td><td>「列出作者的建議、支持它的數據、研究限制，各附段落編號。」</td><td>建議在 [3]；造訪數在 [1]；問卷在 [2]；考試季與缺乏比較對象在 [3]。</td></tr>
-      <tr><td>4 回原文查證</td><td>「文中有證明延長開館讓成績進步嗎？請指出原文，不要推測。」</td><td>[3] 明確說不能建立這個結論。看到「使」「讓」「導致」「證明」這類字，回原文。若它說「成績改善」，回覆：「第 3 段說沒有建立這個結論，請修正摘要，分清觀察到的變化與尚未證明的原因。」</td></tr>
+      <tr><td>1 抓大意</td><td><span id="reading-prompt-1">只根據這篇短文，用兩句中文說明發生什麼事、作者建議什麼。不要補外部資訊。</span><button type="button" class="copy-btn reading-question-copy" data-copy-target="#reading-prompt-1" aria-label="複製提問：抓大意">複製</button></td><td>延長開館期間晚間造訪增加；工作人員建議繼續。這還不是成效的因果證明。</td></tr>
+      <tr><td>2 解釋卡住的地方</td><td><span id="reading-prompt-2">voluntary survey 是什麼？為什麼沒有訪問未到館的人會影響解讀？</span><button type="button" class="copy-btn reading-question-copy" data-copy-target="#reading-prompt-2" aria-label="複製提問：解釋卡住的地方">複製</button></td><td>自願填答者可能與未填答者不同；結果不能直接代表所有學生。</td></tr>
+      <tr><td>3 分開主張與證據</td><td><span id="reading-prompt-3">列出作者的建議、支持它的數據、研究限制，各附段落編號。</span><button type="button" class="copy-btn reading-question-copy" data-copy-target="#reading-prompt-3" aria-label="複製提問：分開主張與證據">複製</button></td><td>建議在 [3]；造訪數在 [1]；問卷在 [2]；考試季與缺乏比較對象在 [3]。</td></tr>
+      <tr><td>4 回原文查證</td><td><span id="reading-prompt-4">文中有證明延長開館讓成績進步嗎？請指出原文，不要推測。</span><button type="button" class="copy-btn reading-question-copy" data-copy-target="#reading-prompt-4" aria-label="複製提問：回原文查證">複製</button></td><td>[3] 明確說不能建立這個結論。看到「使」「讓」「導致」「證明」這類字，回原文。若它說「成績改善」，回覆：「第 3 段說沒有建立這個結論，請修正摘要，分清觀察到的變化與尚未證明的原因。」</td></tr>
       </tbody></table></div>
 
       <h3 class="compact-heading">證據判讀練習</h3>
@@ -343,7 +343,7 @@
       </details>
       <h4 class="learning-synthesis">綜合判讀</h4>
       <p>先不看上表的答案，也先不問 AI：有人說「75% 的學生支持延長開館，而且延長開館提升了成績」。這句話哪裡超出證據？請用自己的話改寫，指出還需要什麼資料。</p>
-      <details id="readingCheck"><summary>回答後，再展開核對</summary><p>就是上面兩段練習的結論合在一起：75% 只描述 40 位自願填答的到館者；原文沒有證明成績改善。要談全體學生，需要更有代表性的調查；要談成績，需要成績資料與比較設計。</p><p>再找一段自己的材料，用同樣方式分開「觀察到什麼」和「還不能說什麼」。最後請 AI 挑戰你的解讀，回原文決定要不要修改。</p></details>
+      <details id="readingCheck"><summary>展開看判斷依據</summary><p>就是上面兩段練習的結論合在一起：75% 只描述 40 位自願填答的到館者；原文沒有證明成績改善。要談全體學生，需要更有代表性的調查；要談成績，需要成績資料與比較設計。</p><p>再找一段自己的材料，用同樣方式分開「觀察到什麼」和「還不能說什麼」。最後請 AI 挑戰你的解讀，回原文決定要不要修改。</p></details>
 
       <h3 class="compact-heading">文獻筆記本的建立</h3>
       <ol class="step-list">
@@ -391,8 +391,9 @@
         </div>
       </div>
 
-      <div class="ai-forms" id="ai-forms">
-        <h3 class="compact-heading">同一家公司的五種形態</h3>
+      <p class="forms-choice">聊和查用網頁版或手機 App；整理電腦裡的檔案，用桌面版 Agent。各家工具的模型與介面對照，需要時再展開查看。</p>
+      <details class="ai-forms" id="ai-forms">
+        <summary>各家工具與介面對照(需要時再看)</summary>
         <p>各家都把自己的 AI 模型放進好幾種介面。模型就是 03 章說的 AI 腦；另外四種是你跟它互動的地方。點圖可以放大。</p>
         <ul class="forms-legend">
           <li><strong>AI 模型(LLM)</strong><span>AI 腦。各家都有好幾顆，版本常換。</span></li>
@@ -401,7 +402,6 @@
           <li><strong>IDE 版(整合開發環境)</strong><span>放進寫程式的編輯器(例如 VS Code)，給寫程式的人用。</span></li>
           <li><strong>CLI 版(指令)</strong><span>在黑色的終端機視窗打字操作，給寫程式的人用。</span></li>
         </ul>
-        <p class="forms-choice"><strong>你會用到的：</strong>聊和查用網頁版或手機 App，Agent 用桌面版(綠底的兩種)。IDE 版和 CLI 版是同一個工具換個介面；教學影片裡出現 VS Code 或黑色視窗，知道是同一個工具就好。</p>
         <div class="table-scroll"><table class="reading-table forms-table"><thead><tr><th>系列</th><th>AI 模型</th><th class="use">網頁版</th><th class="use">桌面版(Agent)</th><th>IDE 版(整合開發環境)</th><th>CLI 版(指令)</th></tr></thead><tbody>
         <tr><td><span class="forms-series">ChatGPT</span><span class="forms-maker">OpenAI</span></td><td><span class="model-chip">GPT-6 Astra</span><span class="model-chip">GPT-5.6 Sol</span></td><td class="use"><figure class="form-shot"><img src="media/forms/chatgpt-web.png" alt="示意圖：ChatGPT 網頁版" width="880" height="560" loading="lazy" /><figcaption>ChatGPT</figcaption></figure></td><td class="use"><figure class="form-shot"><img src="media/forms/codex-desktop.png" alt="示意圖：Codex 桌面版" width="880" height="560" loading="lazy" /><figcaption>Codex 桌面版</figcaption></figure></td><td><figure class="form-shot"><img src="media/forms/codex-ide.png" alt="示意圖：VS Code 裡的 Codex" width="880" height="560" loading="lazy" /><figcaption>Codex IDE 版</figcaption></figure></td><td><figure class="form-shot"><img src="media/forms/codex-cli.png" alt="示意圖：終端機裡的 Codex" width="880" height="560" loading="lazy" /><figcaption>Codex CLI 版</figcaption></figure></td></tr>
         <tr><td><span class="forms-series">Claude</span><span class="forms-maker">Anthropic</span></td><td><span class="model-chip">Claude Fable 5.1</span><span class="model-chip">Claude Opus 5</span><span class="model-chip">Claude Sonnet 5</span></td><td class="use"><figure class="form-shot"><img src="media/forms/claude-web.png" alt="示意圖：Claude 網頁版" width="880" height="560" loading="lazy" /><figcaption>Claude</figcaption></figure></td><td class="use"><figure class="form-shot"><img src="media/forms/claudecode-desktop.png" alt="示意圖：Claude Code 桌面版" width="880" height="560" loading="lazy" /><figcaption>Claude Code 桌面版</figcaption></figure></td><td><figure class="form-shot"><img src="media/forms/claudecode-ide.png" alt="示意圖：VS Code 裡的 Claude Code" width="880" height="560" loading="lazy" /><figcaption>Claude Code IDE 版</figcaption></figure></td><td><figure class="form-shot"><img src="media/forms/claudecode-cli.png" alt="示意圖：終端機裡的 Claude Code" width="880" height="560" loading="lazy" /><figcaption>Claude Code CLI 版</figcaption></figure></td></tr>
@@ -409,7 +409,7 @@
         </tbody></table></div>
         <p class="forms-choice">ChatGPT、Claude、Gemini 也有桌面聊天 App，聊天功能跟網頁版一樣；這張表的桌面版，指的是會在資料夾裡動手的 Agent App。</p>
         <p class="source-note">圖為示意，不是各家的真實畫面；介面常改版，實際以你打開的版本為準。模型名稱查核於 2026 年 9 月；之後以工具裡的模型選單為準。</p>
-      </div>
+      </details>
 
       <div class="agent-tool-guide">
         <p class="phone-note">手機上可以先看流程、修改與複製任務說明；下方需要讀寫資料夾的練習，請回到 Mac 使用 Codex 或 Claude Code 完成。</p>
@@ -516,7 +516,7 @@
       </div>
       <h4 class="learning-synthesis">綜合判讀</h4>
       <p>先自己回答：「租金最低的區，最適合學生居住嗎？」說出這份資料能回答什麼，以及你還想知道的兩件事，再請 AI 檢查有沒有漏掉重要條件。</p>
-      <details id="agentCheck"><summary>回答後，再展開核對</summary><p>這份虛構資料只能比較統一單位後的刊登租金。適不適合居住還要看通勤、住宅面積與品質、個人需求等；沒有收入資料，也不能直接判斷住宅負擔。D4 的缺值表示不知道，不能當成零或排成最便宜。</p><p>下一次換自己的小任務：自己寫目標、材料、可改範圍和驗收方式，先讓 Agent 回報理解，再決定是否執行。驗收標準要由你依用途確認。</p></details>
+      <details id="agentCheck"><summary>展開看判斷依據</summary><p>這份虛構資料只能比較統一單位後的刊登租金。適不適合居住還要看通勤、住宅面積與品質、個人需求等；沒有收入資料，也不能直接判斷住宅負擔。D4 的缺值表示不知道，不能當成零或排成最便宜。</p><p>下一次換自己的小任務：自己寫目標、材料、可改範圍和驗收方式，先讓 Agent 回報理解，再決定是否執行。驗收標準要由你依用途確認。</p></details>
       <p class="section-note">沒有 Agent 訂閱的月份：先在家人的電腦上看一次完整流程，再把六筆資料貼給對話型 AI 練習描述處理規則與驗收條件。</p>
     </section>
 
@@ -592,7 +592,7 @@
     <!-- 09 提示詞庫 -->
     <section class="section" id="cards">
       <h2><span class="num">09</span>提示詞範例</h2>
-      <p class="section-note">依需要展開，改成自己的材料後再複製。草稿暫存在這個分頁；重要內容請另行保存。</p>
+      <p class="section-note">依需要展開，改成自己的材料後再複製。草稿暫存在這個分頁；中英文分開保存，不會自動翻譯。重要內容請另行複製保存。</p>
       <div class="card-lib" id="cardLib"></div>
     </section>
 
@@ -606,10 +606,10 @@
     <div class="diagram-zoom-area" tabindex="0" role="region" aria-label="放大圖表，可捲動"><img id="diagramZoomImg" alt="" /></div>
   </dialog>
   <div class="toast" id="toast" role="status">已複製！</div>
-  <script src="./diagrams.js?v=202609200003"></script>
-  <script src="./app.js?v=202609200003"></script>
-  <script src="./evidence-text.js?v=202609200003"></script>
-  <script src="./language.js?v=202609200003"></script>
-  <script src="./drafts.js?v=202609200003"></script>
+  <script src="./diagrams.js"></script>
+  <script src="./app.js"></script>
+  <script src="./evidence-text.js"></script>
+  <script src="./language.js"></script>
+  <script src="./drafts.js"></script>
 </body>
 </html>

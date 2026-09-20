@@ -7,7 +7,12 @@ const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 const STORE_KEY = "ai-handbook-v3";
 
-function loadStore() { try { return JSON.parse(localStorage.getItem(STORE_KEY) || "{}") || {}; } catch (e) { return {}; } }
+function loadStore() {
+  try {
+    const value = JSON.parse(localStorage.getItem(STORE_KEY) || "{}");
+    return value && typeof value === "object" && !Array.isArray(value) ? value : {};
+  } catch (e) { return {}; }
+}
 function saveStore(patch) { try { localStorage.setItem(STORE_KEY, JSON.stringify({ ...loadStore(), ...patch })); } catch (e) { /* storage unavailable: keep working */ } }
 
 /* ---------- 共用：複製 + toast ---------- */
@@ -19,14 +24,22 @@ function showToast(msg) {
   showToast._timer = setTimeout(() => t.classList.remove("show"), 1600);
 }
 
+const copyFeedback = new WeakMap();
+
 function copyText(text, btn) {
   const done = () => {
     showToast("已複製，記得換成自己的材料。");
     if (btn) {
+      const state = copyFeedback.get(btn) || { label: btn.textContent, timer: null };
+      clearTimeout(state.timer);
       btn.classList.add("copied");
-      const old = btn.textContent;
       btn.textContent = "已複製";
-      setTimeout(() => { btn.classList.remove("copied"); btn.textContent = old; }, 1500);
+      state.timer = setTimeout(() => {
+        btn.classList.remove("copied");
+        btn.textContent = state.label;
+        copyFeedback.delete(btn);
+      }, 1500);
+      copyFeedback.set(btn, state);
     }
   };
   const fallback = () => {
@@ -90,6 +103,21 @@ function highlightPlaceholders(root = $("main")) {
 }
 
 /* 任何 data-copy-target="#id" 的按鈕都能複製對應元素的文字 */
+function setupFormsReference() {
+  const panel = document.getElementById("ai-forms");
+  if (!(panel instanceof HTMLDetailsElement)) return;
+  const reveal = () => {
+    if (location.hash !== "#ai-forms") return;
+    panel.open = true;
+    requestAnimationFrame(() => panel.scrollIntoView({ block: "start" }));
+  };
+  document.querySelectorAll('a[href="#ai-forms"]').forEach(link => {
+    link.addEventListener("click", () => { panel.open = true; });
+  });
+  window.addEventListener("hashchange", reveal);
+  reveal();
+}
+
 function setupCopyTargets() {
   document.addEventListener("click", e => {
     const btn = e.target.closest("[data-copy-target]");
@@ -599,7 +627,11 @@ function renderDiagrams() {
 function setupChecklist() {
   const boxes = $$("#rulesChecklist input[data-rule]");
   if (!boxes.length) return;
-  const done = new Set(loadStore().rules || []);
+  const validRules = new Set(boxes.map(box => box.dataset.rule));
+  const savedRules = loadStore().rules;
+  const done = new Set(Array.isArray(savedRules)
+    ? savedRules.filter(rule => typeof rule === "string" && validRules.has(rule))
+    : []);
   boxes.forEach(cb => {
     cb.checked = done.has(cb.dataset.rule);
     cb.addEventListener("change", () => { if (cb.checked) done.add(cb.dataset.rule); else done.delete(cb.dataset.rule); saveStore({ rules: [...done] }); });
@@ -960,6 +992,7 @@ function keepPhrasesTogether() {
 
 /* ---------- 啟動 ---------- */
 setupCopyTargets();
+setupFormsReference();
 renderBuilder();
 renderAgent();
 setupEvidencePdfLab();
