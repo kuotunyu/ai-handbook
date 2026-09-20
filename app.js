@@ -30,13 +30,16 @@ function copyText(text, btn) {
   const done = () => {
     showToast("已複製，記得換成自己的材料。");
     if (btn) {
-      const state = copyFeedback.get(btn) || { label: btn.textContent, timer: null };
+      const state = copyFeedback.get(btn) || { label: btn.textContent, minWidth: btn.style.minWidth, timer: null };
+      // Keep the target in place when a shorter success label would reflow a flex row.
+      btn.style.minWidth = btn.getBoundingClientRect().width + "px";
       clearTimeout(state.timer);
       btn.classList.add("copied");
       btn.textContent = "已複製";
       state.timer = setTimeout(() => {
         btn.classList.remove("copied");
         btn.textContent = state.label;
+        btn.style.minWidth = state.minWidth;
         copyFeedback.delete(btn);
       }, 1500);
       copyFeedback.set(btn, state);
