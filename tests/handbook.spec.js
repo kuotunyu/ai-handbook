@@ -77,9 +77,18 @@ test('mobile menu remains keyboard-usable', async ({ page }, testInfo) => {
   await button.click();
   await expect(button).toHaveAttribute('aria-expanded', 'true');
   await expect(page.locator('#topnav')).toBeVisible();
+  await expect(page.locator('main')).toHaveJSProperty('inert', true);
+  const lastLink = page.locator('#topnav a').last();
+  await lastLink.focus();
+  await page.keyboard.press('Tab');
+  await expect(button).toBeFocused();
+  await page.keyboard.press('Shift+Tab');
+  await expect(lastLink).toBeFocused();
 
   await page.keyboard.press('Escape');
   await expect(button).toHaveAttribute('aria-expanded', 'false');
+  await expect(button).toBeFocused();
+  await expect(page.locator('main')).toHaveJSProperty('inert', false);
 });
 
 test('inline explanations stay optional and expand in place', async ({ page }) => {
@@ -137,5 +146,19 @@ for (const file of ['index.html', 'en.html']) {
     if (serious.length) console.warn(`Serious axe findings for ${file}: ${JSON.stringify(serious, null, 2)}`);
     const critical = results.violations.filter(violation => ['critical', 'serious'].includes(violation.impact));
     expect(critical, JSON.stringify(critical, null, 2)).toEqual([]);
+  });
+}
+
+for (const file of ['index.html', 'en.html']) {
+  test(`${file}: expanded reference and editable prompt have no serious accessibility issues`, async ({ page }, testInfo) => {
+    await page.goto(`/${file}#ai-forms`);
+    await expect(page.locator('#ai-forms')).toHaveJSProperty('open', true);
+    await page.locator('#cardLib .prompt-example').first().locator('summary').click();
+    const results = await new AxeBuilder({ page }).include('#ai-forms').include('#cardLib').analyze();
+    await testInfo.attach(`axe-expanded-${file}.json`, {
+      body: JSON.stringify({ violations: results.violations, incomplete: results.incomplete }, null, 2),
+      contentType: 'application/json'
+    });
+    expect(results.violations.filter(v => ['critical', 'serious'].includes(v.impact))).toEqual([]);
   });
 }

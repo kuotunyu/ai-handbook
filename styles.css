@@ -420,6 +420,7 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 .btn.ghost:hover { background: var(--bg-white); }
 .btn:disabled { opacity: .5; cursor: default; }
 .copy-btn.copied { background: var(--emerald-wash); border-color: var(--emerald-border); color: var(--emerald); }
+.reading-question-copy { display: block; margin-top: 8px; min-height: 44px; }
 
 /* ============ 04 提問積木 ============ */
 .formula-tabs { display: inline-flex; gap: 4px; padding: 4px; background: var(--bg-subtle); border-radius: var(--radius-sm); margin: 2px 0 10px; }
@@ -925,7 +926,8 @@ html[lang="en"] .clip.needs-tap::after { content: "Tap to play"; }
 .layers-takeaway strong { color: var(--ink-primary); }
 
 /* ============ 06 同一家公司的五種形態：綠底是她會用到的兩種 ============ */
-.ai-forms { margin: 8px 0 22px; }
+.ai-forms { margin: 8px 0 22px; scroll-margin-top: calc(var(--bar-h) + 24px); }
+.ai-forms > p, .ai-forms > .table-scroll { margin-left: 0; }
 .ai-forms > p { font-size: var(--fs-table); color: var(--ink-body); max-width: 72ch; }
 .forms-legend { list-style: none; margin: 10px 0 14px; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
 .forms-legend li { display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; background: var(--bg-white); border-radius: var(--radius-sm); box-shadow: var(--shadow-soft); border-top: 4px solid var(--border-medium); }

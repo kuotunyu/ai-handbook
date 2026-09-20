@@ -9,7 +9,7 @@
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" />
   <title>Graduate AI Handbook</title>
-  <link rel="stylesheet" href="./styles.css?v=202609200003" />
+  <link rel="stylesheet" href="./styles.css?v=202609201830" />
 </head>
 <body>
 
@@ -160,8 +160,8 @@
       </div>
 
       <div class="decision-practice" id="decision-practice">
-        <h3 class="compact-heading">Think first, then expand</h3>
-        <p>Choose an answer in your head, then open the explanation. There is nothing to memorise.</p>
+        <h3 class="compact-heading">Examples of choosing an approach</h3>
+        <p>You can think it through first, or expand an example to see the reasoning.</p>
         <div class="situation-list">
           <details class="situation-entry">
             <summary><span class="situation-name">Your lecturer assigns 15 papers to compare. Which tool would you start with?</span><span class="situation-examples">Conversational AI / Gemini Notebook / Agent</span></summary>
@@ -238,7 +238,7 @@
             <span>Edit and copy your prompt</span>
             <span class="head-actions"><button class="copy-btn" id="builderReset" type="button">Reset example</button><button class="copy-btn" id="builderCopy" type="button">Copy prompt</button></span>
           </div>
-          <p class="panel-note">Drafts stay in this tab through refreshes. Copy important text somewhere safe.</p>
+          <p class="panel-note">Drafts survive a refresh in the same tab. Chinese and English drafts are separate and are not translated automatically. Save important text separately.</p>
           <div id="builderResult"></div>
         </div>
       </div>
@@ -266,10 +266,10 @@
       <h3 class="compact-heading">Read and verify</h3>
       <p>Create a notebook and add the passage as a copied-text source. Try the questions below and check important conclusions against the original. A short source may be cited as a whole; use paragraph numbers [1]–[3] to locate the evidence yourself.</p>
       <div class="table-scroll"><table class="reading-table"><thead><tr><th>Purpose</th><th>Try asking</th><th>Check against the passage</th></tr></thead><tbody>
-      <tr><td>1 Get the gist</td><td>“Using only this passage, explain what happened and what the authors recommend in two sentences. Do not add external information.”</td><td>Evening visits rose during extended hours; staff recommend continuing. This is not proof of a causal effect.</td></tr>
-      <tr><td>2 Explain a difficult point</td><td>“What is a voluntary survey? Why does excluding non-visitors affect interpretation?”</td><td>Volunteers may differ from non-respondents; the result cannot directly represent all students.</td></tr>
-      <tr><td>3 Separate claims and evidence</td><td>“List the recommendation, supporting data and limitations, with paragraph numbers for each.”</td><td>Recommendation: [3]; visits: [1]; survey: [2]; exam season and no comparison library: [3].</td></tr>
-      <tr><td>4 Check the original</td><td>“Does the passage prove that longer hours improved grades? Point to the text; do not speculate.”</td><td>[3] explicitly says this conclusion is not established. Check words such as “caused”, “improved” and “proved”. If AI says grades improved, reply: “Paragraph 3 says this was not established. Revise the summary and separate observed changes from unproven causes.”</td></tr>
+      <tr><td>1 Get the gist</td><td><span id="reading-prompt-1">Using only this passage, explain what happened and what the authors recommend in two sentences. Do not add external information.</span><button type="button" class="copy-btn reading-question-copy" data-copy-target="#reading-prompt-1" aria-label="Copy question: overview">Copy</button></td><td>Evening visits rose during extended hours; staff recommend continuing. This is not proof of a causal effect.</td></tr>
+      <tr><td>2 Explain a difficult point</td><td><span id="reading-prompt-2">What is a voluntary survey? Why does excluding non-visitors affect interpretation?</span><button type="button" class="copy-btn reading-question-copy" data-copy-target="#reading-prompt-2" aria-label="Copy question: unclear passage">Copy</button></td><td>Volunteers may differ from non-respondents; the result cannot directly represent all students.</td></tr>
+      <tr><td>3 Separate claims and evidence</td><td><span id="reading-prompt-3">List the recommendation, supporting data and limitations, with paragraph numbers for each.</span><button type="button" class="copy-btn reading-question-copy" data-copy-target="#reading-prompt-3" aria-label="Copy question: claims and evidence">Copy</button></td><td>Recommendation: [3]; visits: [1]; survey: [2]; exam season and no comparison library: [3].</td></tr>
+      <tr><td>4 Check the original</td><td><span id="reading-prompt-4">Does the passage prove that longer hours improved grades? Point to the text; do not speculate.</span><button type="button" class="copy-btn reading-question-copy" data-copy-target="#reading-prompt-4" aria-label="Copy question: source check">Copy</button></td><td>[3] explicitly says this conclusion is not established. Check words such as “caused”, “improved” and “proved”. If AI says grades improved, reply: “Paragraph 3 says this was not established. Revise the summary and separate observed changes from unproven causes.”</td></tr>
       </tbody></table></div>
 
       <h3 class="compact-heading">Interpreting evidence</h3>
@@ -335,7 +335,7 @@
       </details>
       <h4 class="learning-synthesis">Put it together</h4>
       <p>Without looking at the answers or asking AI first, consider: “75% of students support longer hours, and longer hours improved grades.” Where does this exceed the evidence? Rewrite it in your own words and say what further data is needed.</p>
-      <details id="readingCheck"><summary>Answer first, then check</summary><p>Combine the two exercises: 75% describes only 40 voluntary visitor respondents, and the source does not establish improved grades. Generalising requires a more representative survey; assessing grades requires performance data and a comparison design.</p><p>Try a passage from your own reading. Separate what was observed from what cannot yet be claimed. Ask AI to challenge your interpretation, then use the source to decide whether to revise it.</p></details>
+      <details id="readingCheck"><summary>Expand to see the reasoning</summary><p>Combine the two exercises: 75% describes only 40 voluntary visitor respondents, and the source does not establish improved grades. Generalising requires a more representative survey; assessing grades requires performance data and a comparison design.</p><p>Try a passage from your own reading. Separate what was observed from what cannot yet be claimed. Ask AI to challenge your interpretation, then use the source to decide whether to revise it.</p></details>
 
       <h3 class="compact-heading">Organising a literature notebook</h3>
       <ol class="step-list">
@@ -383,8 +383,9 @@
         </div>
       </div>
 
-      <div class="ai-forms" id="ai-forms">
-        <h3 class="compact-heading">One company, five forms</h3>
+      <p class="forms-choice">Use a web or mobile app for chat and research; use a desktop Agent to work with files on your computer. Expand the model and interface comparison when you need it.</p>
+      <details class="ai-forms" id="ai-forms">
+        <summary>Tools and interfaces (reference when needed)</summary>
         <p>Each company puts its AI models into several interfaces. The model is the AI brain from chapter 03; the other four are where you interact with it. Tap a picture to enlarge it.</p>
         <ul class="forms-legend">
           <li><strong>AI model (LLM)</strong><span>The AI brain. Each company has several, and versions change often.</span></li>
@@ -393,7 +394,6 @@
           <li><strong>IDE</strong><span>Inside a code editor such as VS Code, for people who write code.</span></li>
           <li><strong>Command line (CLI)</strong><span>Typed commands in a black terminal window, for people who write code.</span></li>
         </ul>
-        <p class="forms-choice"><strong>What you will use:</strong> the web version or phone app for chat and search, and the desktop app for the Agent (the two in green). The IDE and command-line versions are the same tools with another interface; if a tutorial shows VS Code or a black window, it is still the same tool.</p>
         <div class="table-scroll"><table class="reading-table forms-table"><thead><tr><th>Family</th><th>AI model</th><th class="use">Web</th><th class="use">Desktop app (Agent)</th><th>IDE</th><th>Command line</th></tr></thead><tbody>
         <tr><td><span class="forms-series">ChatGPT</span><span class="forms-maker">OpenAI</span></td><td><span class="model-chip">GPT-6 Astra</span><span class="model-chip">GPT-5.6 Sol</span></td><td class="use"><figure class="form-shot"><img src="media/forms/en/chatgpt-web.png" alt="Illustration: ChatGPT on the web" width="880" height="560" loading="lazy" /><figcaption>ChatGPT</figcaption></figure></td><td class="use"><figure class="form-shot"><img src="media/forms/en/codex-desktop.png" alt="Illustration: Codex desktop app" width="880" height="560" loading="lazy" /><figcaption>Codex app</figcaption></figure></td><td><figure class="form-shot"><img src="media/forms/en/codex-ide.png" alt="Illustration: Codex in VS Code" width="880" height="560" loading="lazy" /><figcaption>Codex IDE</figcaption></figure></td><td><figure class="form-shot"><img src="media/forms/en/codex-cli.png" alt="Illustration: Codex in a terminal" width="880" height="560" loading="lazy" /><figcaption>Codex CLI</figcaption></figure></td></tr>
         <tr><td><span class="forms-series">Claude</span><span class="forms-maker">Anthropic</span></td><td><span class="model-chip">Claude Fable 5.1</span><span class="model-chip">Claude Opus 5</span><span class="model-chip">Claude Sonnet 5</span></td><td class="use"><figure class="form-shot"><img src="media/forms/en/claude-web.png" alt="Illustration: Claude on the web" width="880" height="560" loading="lazy" /><figcaption>Claude</figcaption></figure></td><td class="use"><figure class="form-shot"><img src="media/forms/en/claudecode-desktop.png" alt="Illustration: Claude Code desktop app" width="880" height="560" loading="lazy" /><figcaption>Claude Code app</figcaption></figure></td><td><figure class="form-shot"><img src="media/forms/en/claudecode-ide.png" alt="Illustration: Claude Code in VS Code" width="880" height="560" loading="lazy" /><figcaption>Claude Code IDE</figcaption></figure></td><td><figure class="form-shot"><img src="media/forms/en/claudecode-cli.png" alt="Illustration: Claude Code in a terminal" width="880" height="560" loading="lazy" /><figcaption>Claude Code CLI</figcaption></figure></td></tr>
@@ -401,7 +401,7 @@
         </tbody></table></div>
         <p class="forms-choice">ChatGPT, Claude and Gemini also have desktop chat apps that chat just like the web versions; in this table, desktop means the Agent app that works in your folder.</p>
         <p class="source-note">The pictures are illustrations, not each company's real screens; interfaces change often, so go by the version you open. Model names checked in September 2026; after that, go by the model menu in each tool.</p>
-      </div>
+      </details>
 
       <div class="agent-tool-guide">
         <p class="phone-note">On your phone, you can review the workflow, edit instructions and copy them. For the folder exercise below, use Codex or Claude Code on your Mac.</p>
@@ -508,7 +508,7 @@ Input and output must both have 6 rows. Convert weekly rent × 52 ÷ 12 to month
       </div>
       <h4 class="learning-synthesis">Put it together</h4>
       <p>Answer first: “Is the cheapest district the best place for students?” Say what this data can tell you and two other things you need to know. Then ask AI whether you missed any important conditions.</p>
-      <details id="agentCheck"><summary>Answer first, then check</summary><p>This fictional data only compares listed rents after unit conversion. Suitability also depends on commuting, housing size and quality, and personal needs. Without income data, it cannot establish affordability. D4 is unknown, not zero or cheapest.</p><p>Next, try your own small task. Write the goal, materials, permitted changes and checks. Ask the Agent to report its understanding before deciding to proceed. Choose acceptance criteria that fit your purpose.</p></details>
+      <details id="agentCheck"><summary>Expand to see the reasoning</summary><p>This fictional data only compares listed rents after unit conversion. Suitability also depends on commuting, housing size and quality, and personal needs. Without income data, it cannot establish affordability. D4 is unknown, not zero or cheapest.</p><p>Next, try your own small task. Write the goal, materials, permitted changes and checks. Ask the Agent to report its understanding before deciding to proceed. Choose acceptance criteria that fit your purpose.</p></details>
       <p class="section-note">Without an Agent subscription, watch a complete demonstration on a family member’s computer, then paste the six records into conversational AI to practise describing processing rules and checks.</p>
     </section>
 
@@ -584,7 +584,7 @@ After I confirm, provide only Mermaid code with English labels.</pre></div>
     
     <section class="section" id="cards">
       <h2><span class="num">09</span>Prompt examples</h2>
-      <p class="section-note">Expand what you need, add your own material, then copy. Drafts are kept temporarily in this tab; save important text separately.</p>
+      <p class="section-note">Expand what you need, adapt it to your own materials, then copy. Drafts are kept temporarily in this tab. Chinese and English drafts are separate and are not translated automatically. Save important text separately.</p>
       <div class="card-lib" id="cardLib"></div>
     </section>
 
@@ -598,10 +598,10 @@ After I confirm, provide only Mermaid code with English labels.</pre></div>
     <div class="diagram-zoom-area" tabindex="0" role="region" aria-label="Enlarged diagram; scroll to explore"><img id="diagramZoomImg" alt="" /></div>
   </dialog>
   <div class="toast" id="toast" role="status">Copied!</div>
-  <script src="./diagrams.en.js?v=202609200003"></script>
-  <script src="./app.en.js?v=202609200003"></script>
-  <script src="./evidence-text.js?v=202609200003"></script>
-  <script src="./language.js?v=202609200003"></script>
-  <script src="./drafts.js?v=202609200003"></script>
+  <script src="./diagrams.en.js?v=202609201830"></script>
+  <script src="./app.en.js?v=202609201830"></script>
+  <script src="./evidence-text.js?v=202609201830"></script>
+  <script src="./language.js?v=202609201830"></script>
+  <script src="./drafts.js?v=202609201830"></script>
 </body>
 </html>
