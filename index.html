@@ -9,7 +9,7 @@
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" />
   <title>研究所 AI 手冊</title>
-  <link rel="stylesheet" href="./styles.css?v=202609201830" />
+  <link rel="stylesheet" href="./styles.css?v=202609252149" />
 </head>
 <body>
 <!--
@@ -412,7 +412,6 @@
       </details>
 
       <div class="agent-tool-guide">
-        <p class="phone-note">手機上可以先看流程、修改與複製任務說明；下方需要讀寫資料夾的練習，請回到 Mac 使用 Codex 或 Claude Code 完成。</p>
         <h3 class="compact-heading">用哪個 Agent 都先做這三件事</h3>
         <ol class="step-list">
           <li><strong>開工作範圍</strong><span>用練習資料夾開始，真實任務先在工作範圍外保留原檔備份。</span></li>
@@ -428,6 +427,7 @@
       <p class="task-outcome"><strong>完成後會得到：</strong>一份整理好的租金表、一張比較高低的長條圖，以及一張用顏色表示租金的示意地圖。材料與區域都是虛構的。</p>
 
       <figure class="task-preview"><img src="media/preview-units.png" alt="完成後的長條圖示意：月租金比較" /><img src="media/preview-missing.png" alt="完成後的地圖示意：D4 標示無資料" /><figcaption>示意取自本章練習；實際輸出由 Agent 產生，D4 會標示無資料。</figcaption></figure>
+      <p class="phone-note">手機上可以先看流程、修改與複製任務說明；下方需要讀寫資料夾的練習，請回到 Mac 使用 Codex 或 Claude Code 完成。</p>
       <h4>準備材料</h4>
       <p>在電腦建立一個練習資料夾，把下面三個檔案下載到裡面。整包下載後先解壓縮；如果瀏覽器已自動解壓，直接使用得到的資料夾，再用 Codex 或 Claude Code 開啟。檔案已準備好，不需要先學會製作這些格式。</p>
       <p class="material-links"><a href="materials/districts-task.zip" download>整包下載(三個檔案)</a><a href="materials/districts.csv" download>下載租金表(districts.csv)</a><a href="materials/districts.geojson" download>下載區域形狀(districts.geojson)</a><a href="materials/data-dictionary.txt" download>下載資料說明(data-dictionary.txt)</a></p>
@@ -528,7 +528,7 @@
       <div class="diagram-viewer">
         <div class="diagram-tabs" id="diagramTabs" role="tablist" aria-label="圖表類型"></div>
         <div id="diagramPanel" role="tabpanel" tabindex="0" aria-labelledby="diagram-tab-flow">
-        <div class="diagram-stage"><img id="diagramImg" src="diagrams/flow.svg" alt="流程圖範例" /></div>
+        <button class="diagram-stage" id="diagramZoomPreview" type="button" aria-haspopup="dialog"><img id="diagramImg" src="diagrams/flow.svg" alt="流程圖範例" /></button>
         <div class="diagram-meta"><p class="diagram-caption" id="diagramCaption"></p><button class="btn ghost" id="diagramZoomOpen" type="button" aria-haspopup="dialog">放大圖表</button></div>
         <div class="diagram-cols">
           <div class="pbox"><div class="pbox-head"><span>用白話說明需求</span><button class="copy-btn" type="button" data-copy-target="#diagramSay">複製</button></div><pre id="diagramSay"></pre><p class="pbox-note" id="diagramTweak"></p></div>
@@ -606,10 +606,10 @@
     <div class="diagram-zoom-area" tabindex="0" role="region" aria-label="放大圖表，可捲動"><img id="diagramZoomImg" alt="" /></div>
   </dialog>
   <div class="toast" id="toast" role="status">已複製！</div>
-  <script src="./diagrams.js?v=202609201830"></script>
-  <script src="./app.js?v=202609201830"></script>
-  <script src="./evidence-text.js?v=202609201830"></script>
-  <script src="./language.js?v=202609201830"></script>
-  <script src="./drafts.js?v=202609201830"></script>
+  <script src="./diagrams.js?v=202609252149"></script>
+  <script src="./app.js?v=202609252149"></script>
+  <script src="./evidence-text.js?v=202609252149"></script>
+  <script src="./language.js?v=202609252149"></script>
+  <script src="./drafts.js?v=202609252149"></script>
 </body>
 </html>

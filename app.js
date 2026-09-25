@@ -611,6 +611,7 @@ function renderDiagrams() {
     setScale(false);
     dialog.showModal();
   };
+  $("#diagramZoomPreview").addEventListener("click", () => openZoom($("#diagramImg")));
   $("#diagramZoomOpen").addEventListener("click", () => openZoom($("#diagramImg")));
   // 06 章五種形態的示意圖在手機上很小：點圖(或按 Enter)用同一個檢視窗放大
   $$(".form-shot img").forEach(img => {

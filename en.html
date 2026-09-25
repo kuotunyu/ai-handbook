@@ -9,7 +9,7 @@
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" />
   <title>Graduate AI Handbook</title>
-  <link rel="stylesheet" href="./styles.css?v=202609201830" />
+  <link rel="stylesheet" href="./styles.css?v=202609252149" />
 </head>
 <body>
 
@@ -404,7 +404,6 @@
       </details>
 
       <div class="agent-tool-guide">
-        <p class="phone-note">On your phone, you can review the workflow, edit instructions and copy them. For the folder exercise below, use Codex or Claude Code on your Mac.</p>
         <h3 class="compact-heading">Three steps for any Agent</h3>
         <ol class="step-list">
           <li><strong>Set the working scope</strong><span>Start with a practice folder. For real tasks, keep a backup of originals outside the working scope.</span></li>
@@ -420,6 +419,7 @@
       <p class="task-outcome"><strong>You will get:</strong> A cleaned rent table, a comparison bar chart and a schematic map coloured by rent. The data and districts are fictional.</p>
 
       <figure class="task-preview"><img src="media/preview-units-en.png" alt="Example bar chart of monthly rents" /><img src="media/preview-missing-en.png" alt="Example map with D4 marked No data" /><figcaption>Illustration based on this exercise. Your Agent generates the actual output; D4 should be marked “No data”.</figcaption></figure>
+      <p class="phone-note">On your phone, you can review the workflow, edit instructions and copy them. For the folder exercise below, use Codex or Claude Code on your Mac.</p>
       <h4>Prepare the material</h4>
       <p>Create a practice folder on your computer and download the three files into it. If you download the bundle, unzip it first; if your browser already did that, use the resulting folder. Open the folder in Codex or Claude Code. The files are ready to use; you do not need to learn how to create these formats first.</p>
       <p class="material-links"><a href="materials/en/districts-task.zip" download>Download all three files</a><a href="materials/en/districts.csv" download>Download rent table (districts.csv)</a><a href="materials/en/districts.geojson" download>Download district shapes (districts.geojson)</a><a href="materials/en/data-dictionary.txt" download>Download data guide (data-dictionary.txt)</a></p>
@@ -520,7 +520,7 @@ Input and output must both have 6 rows. Convert weekly rent × 52 ÷ 12 to month
       <div class="diagram-viewer">
         <div class="diagram-tabs" id="diagramTabs" role="tablist" aria-label="Diagram types"></div>
         <div id="diagramPanel" role="tabpanel" tabindex="0" aria-labelledby="diagram-tab-flow">
-        <div class="diagram-stage"><img id="diagramImg" src="diagrams/en/flow.svg" alt="Flowchart example" /></div>
+        <button class="diagram-stage" id="diagramZoomPreview" type="button" aria-haspopup="dialog"><img id="diagramImg" src="diagrams/en/flow.svg" alt="Flowchart example" /></button>
         <div class="diagram-meta"><p class="diagram-caption" id="diagramCaption"></p><button class="btn ghost" id="diagramZoomOpen" type="button" aria-haspopup="dialog">Enlarge diagram</button></div>
         <div class="diagram-cols">
           <div class="pbox"><div class="pbox-head"><span>Describe your needs in plain language</span><button class="copy-btn" type="button" data-copy-target="#diagramSay">Copy</button></div><pre id="diagramSay"></pre><p class="pbox-note" id="diagramTweak"></p></div>
@@ -598,10 +598,10 @@ After I confirm, provide only Mermaid code with English labels.</pre></div>
     <div class="diagram-zoom-area" tabindex="0" role="region" aria-label="Enlarged diagram; scroll to explore"><img id="diagramZoomImg" alt="" /></div>
   </dialog>
   <div class="toast" id="toast" role="status">Copied!</div>
-  <script src="./diagrams.en.js?v=202609201830"></script>
-  <script src="./app.en.js?v=202609201830"></script>
-  <script src="./evidence-text.js?v=202609201830"></script>
-  <script src="./language.js?v=202609201830"></script>
-  <script src="./drafts.js?v=202609201830"></script>
+  <script src="./diagrams.en.js?v=202609252149"></script>
+  <script src="./app.en.js?v=202609252149"></script>
+  <script src="./evidence-text.js?v=202609252149"></script>
+  <script src="./language.js?v=202609252149"></script>
+  <script src="./drafts.js?v=202609252149"></script>
 </body>
 </html>

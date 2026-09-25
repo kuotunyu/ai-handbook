@@ -561,7 +561,8 @@ details .table-scroll { margin: 10px 0 6px 32px; }
 .diagram-tab:hover { border-top-color: var(--brand-mid); }
 .diagram-tab.active { background: var(--brand); border-top-color: var(--on-dark-clay); }
 .diagram-tab.active b, .diagram-tab.active span { color: var(--on-dark); }
-.diagram-stage { background: var(--bg-white); border-radius: var(--radius-sm); box-shadow: var(--shadow-soft); padding: 16px; min-height: 200px; display: grid; place-items: center; }
+.diagram-stage { appearance: none; width: 100%; border: 0; font: inherit; color: inherit; text-align: center; cursor: zoom-in; background: var(--bg-white); border-radius: var(--radius-sm); box-shadow: var(--shadow-soft); padding: 16px; min-height: 200px; display: grid; place-items: center; }
+.diagram-stage:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
 .diagram-stage img { display: block; width: 100%; max-height: 600px; object-fit: contain; }
 .diagram-meta { display: flex; align-items: center; gap: 16px; justify-content: space-between; margin: 10px 0; }
 .diagram-meta .btn { flex: none; }
@@ -1041,6 +1042,8 @@ html[lang="zh-Hant"] :is(.forms-table, .forms-legend) { --head-em: 10; --cap-em:
 @media (max-width: 700px) {
   .keyword-example > summary, .keyword-reference .keyword-example > summary { min-height: 44px; }
   .situation-links a { display: inline-flex; align-items: center; min-height: 44px; }
+  .material-links a { min-height: 44px; }
+  .agent-tool-guide .source-note a { display: inline-flex; align-items: center; min-height: 44px; }
   .situation-reference a, .layer-eg a, .source-note a { padding-block: 10px; }
   /* 判讀練習與 PDF 查證的標題：「+」固定在左欄，長標題(英文版)換行時不會把「+」擠到單獨一行 */
   .learning-lesson > summary, .evidence-pdf-lab > summary { display: grid; grid-template-columns: 22px minmax(0, 1fr); column-gap: 12px; row-gap: 2px; align-items: center; }
